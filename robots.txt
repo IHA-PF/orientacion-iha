@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://iha-pf.github.io/orientacion-iha/sitemap.xml
