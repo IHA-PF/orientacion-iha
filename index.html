@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Orientación legal gratuita en 2 minutos: anfitriones, consumidores y conflictos con plataformas digitales en Colombia.">
+<meta name="description" content="Orientación legal gratuita en 2 minutos: anfitriones, consumidores y conflictos con plataformas digitales en Colombia. Español, English, Français, Português.">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
 <title>Orientación legal IHA</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -82,10 +82,6 @@ h3{font-size:17px;font-weight:700;line-height:1.3}
 .tab:hover{color:var(--ink);background:var(--surface-2)}
 .tab[aria-current="page"]{color:var(--ink)}
 .tab[aria-current="page"]::after{content:"";position:absolute;left:12px;right:12px;bottom:3px;height:2px;border-radius:2px;background:var(--teal)}
-.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--surface-2)}
-.lang button{border:0;background:transparent;color:var(--muted);font:600 13px var(--body);padding:7px 10px;border-radius:999px;cursor:pointer;min-width:36px}
-.lang button[aria-pressed="true"]{background:var(--primary);color:var(--on-primary)}
-@media (max-width:370px){.bar-in{gap:6px}.tab{padding:10px 7px}.lang button{padding:7px 8px;min-width:30px}.mark{width:32px;height:32px}}
 @media (min-width:420px){.brand-t{display:flex}.brand-t span{display:none}}
 @media (min-width:820px){.brand-t span{display:block}.tab{padding:10px 16px}}
 
@@ -401,6 +397,56 @@ footer::before{content:"";display:block;height:10px;background:#0F2A43 url("data
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
+/* ---- v8: header tools (emergency, theme, language), emergency dialog, forced light/dark ---- */
+:root[data-theme="light"]{color-scheme:light}
+html.noscroll{overflow:hidden}
+.tools{display:flex;align-items:center;gap:6px;flex:none}
+.sosbtn,.tbtn,.lbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;border-radius:999px;cursor:pointer;font:700 13px var(--body);line-height:1;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);transition:background .15s,border-color .15s}
+.sosbtn .ic,.tbtn .ic{width:18px;height:18px}
+.tbtn{width:38px;padding:0}
+.tbtn:hover,.lbtn:hover{background:var(--teal-soft);border-color:var(--line-strong)}
+.sosbtn{padding:0 13px 0 10px;background:var(--red-soft);border-color:transparent;color:var(--red)}
+.sosbtn:hover{border-color:var(--red)}
+.sosbtn b{font-size:14px;letter-spacing:.02em}
+.lbtn{padding:0 9px 0 13px}
+.lbtn .ic{width:14px;height:14px;transition:transform .15s}
+.lbtn[aria-expanded="true"] .ic{transform:rotate(180deg)}
+.lm{position:relative}
+.lpop{position:absolute;right:0;top:calc(100% + 10px);min-width:184px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:6px;z-index:40;display:flex;flex-direction:column;gap:2px}
+.lpop button{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:44px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:var(--ink);font:600 15px var(--body);cursor:pointer;text-align:left}
+.lpop button:hover{background:var(--surface-2)}
+.lpop button[aria-pressed="true"]{background:var(--teal-soft)}
+.lpop button .ic{width:16px;height:16px;color:var(--teal);visibility:hidden}
+.lpop button[aria-pressed="true"] .ic{visibility:visible}
+@media (max-width:480px){.tab[data-nav="home"]{display:none}}
+@media (max-width:370px){.bar-in{gap:6px}.tools{gap:4px}.tab{padding:10px 7px}.mark{width:32px;height:32px}.sosbtn{padding:0 10px}.sosbtn .ic{display:none}.sosbtn,.tbtn,.lbtn{height:36px}.tbtn{width:36px}.lbtn{padding:0 7px 0 10px}}
+
+.dlg{border:0;padding:0;margin:auto;width:min(460px,calc(100vw - 24px));max-height:calc(100dvh - 24px);border-radius:22px;background:var(--surface);color:var(--ink);box-shadow:0 24px 64px rgba(5,15,25,.45);overflow:auto}
+.dlg::backdrop{background:rgba(8,20,32,.62)}
+.dlg-in{padding:20px 20px 22px;display:flex;flex-direction:column;gap:14px}
+.dlg-h{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.dlg-h h2{font-size:clamp(21px,5vw,25px)}
+.dlg-x{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.dlg-x:hover{background:var(--teal-soft)}
+.dlg-lead{font-size:15px;color:var(--ink)}
+.nums{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.num{display:grid;grid-template-columns:3.4ch minmax(0,1fr) auto;align-items:center;gap:14px;padding:12px 14px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);text-decoration:none}
+.num:hover{border-color:var(--red)}
+.num-first{border-color:var(--red);background:var(--red-soft)}
+.num .n{font-family:var(--display);font-weight:700;font-size:28px;line-height:1;color:var(--red)}
+.num .d{font-size:14px;line-height:1.4}
+.num .d em{display:block;font-style:normal;font-size:12px;font-weight:700;color:var(--muted);margin-top:3px}
+.num .call{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:13px;color:var(--red);background:var(--red-soft);border-radius:999px;padding:8px 12px;min-height:36px}
+.num-first .call{background:var(--surface)}
+.num .call .ic{width:16px;height:16px}
+@media (max-width:400px){.num{gap:10px;padding:12px}.num .call{width:38px;height:38px;padding:0}.num .call span:not(.icw){display:none}}
+.dlg-foot{font-size:13px;color:var(--muted)}
+.linkbtn{display:inline-flex;align-items:center;margin-top:4px;padding:8px 0;min-height:36px;border:0;background:none;color:var(--teal);font:700 14px var(--body);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.sos .sos-body{display:flex;flex-direction:column;align-items:flex-start}
+.foot-co{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+.foot-co b{font-size:13px;overflow-wrap:anywhere}
+.foot-co small{font-weight:600;font-size:12px;color:var(--muted)}
+
 /* ===== v7: paleta de las ilustraciones, escenas y temas por vista ===== */
 :root{
   --i-ink:#16324B; --i-paper:#FFFFFF; --i-cream:#FFF3DA; --i-sun:#F7B731; --i-sun2:#FFD879;
@@ -512,18 +558,27 @@ body[data-th="otros"]{--ta:#E2D5F1;--tb:#FDEEF2;--th:#6A4F86;--th-soft:#EDE8F3}
       <button class="tab" type="button" data-nav="home" data-t="navHome"></button>
       <button class="tab" type="button" data-nav="guide" data-t="navGuide"></button>
     </nav>
-    <div class="lang" role="group" data-aria="langAria">
-      <button type="button" data-lang="es" aria-pressed="true">ES</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+    <div class="tools">
+      <button class="sosbtn" type="button" id="sosbtn" aria-haspopup="dialog"><b>123</b></button>
+      <button class="tbtn" type="button" id="themebtn" aria-pressed="false" data-aria="themeLbl"></button>
+      <div class="lm" id="lm">
+        <button class="lbtn" type="button" id="lbtn" aria-haspopup="true" aria-expanded="false"><span id="lcur">ES</span></button>
+        <div class="lpop" id="lpop" role="group" data-aria="langAria" hidden>
+          <button type="button" data-lang="es" lang="es" aria-pressed="true"><span>Español</span></button>
+          <button type="button" data-lang="en" lang="en" aria-pressed="false"><span>English</span></button>
+          <button type="button" data-lang="fr" lang="fr" aria-pressed="false"><span>Français</span></button>
+          <button type="button" data-lang="pt" lang="pt" aria-pressed="false"><span>Português</span></button>
+        </div>
+      </div>
     </div>
   </div>
 </header>
+<dialog class="dlg" id="sosdlg"></dialog>
 <main id="app"></main>
 <footer>
   <div class="skyline" id="skyline" aria-hidden="true"></div>
   <div class="in foot-in">
-    <div class="foot-brand"><span class="mark" aria-hidden="true">IHA</span><span>IHA</span></div>
+    <div class="foot-brand"><span class="mark" aria-hidden="true">IHA</span><span class="foot-co"><b>IHA SOLUCIONES LEGALES Y TECNICAS S.A.S.</b><small>NIT 900.365.039-8</small></span></div>
     <p data-t="foot1"></p>
     <p data-t="foot2"></p>
   </div>
@@ -536,123 +591,141 @@ body[data-th="otros"]{--ta:#E2D5F1;--tb:#FDEEF2;--th:#6A4F86;--th-soft:#EDE8F3}
 const WA_NUMBER = "";
 
 const UI = {
-  brandSub:{es:"Orientación legal en plataformas digitales · Colombia",en:"Legal guidance on digital platforms · Colombia",fr:"Orientation juridique et plateformes numériques · Colombie"},
-  heroEye:{es:"Orientación gratuita en 2 minutos",en:"Free guidance in 2 minutes",fr:"Orientation gratuite en 2 minutes"},
-  heroH:{es:"¿Qué necesita resolver?",en:"What do you need to sort out?",fr:"Que devez-vous régler ?"},
-  heroP:{es:"Responda unas preguntas y reciba su ficha de orientación: qué revisar, qué hacer ahora y qué servicio le conviene. Usted decide si nos escribe.",en:"Answer a few questions and get your guidance sheet: what to check, what to do now and which service fits. You decide whether to contact us.",fr:"Répondez à quelques questions et recevez votre fiche d’orientation : quoi vérifier, quoi faire maintenant et quel service vous convient. Vous décidez si vous nous écrivez."},
-  sos:{es:"¿Está en peligro o fue víctima de un delito? Llame primero al 123, la línea de emergencias en Colombia. La orientación legal viene después.",en:"In danger or the victim of a crime? Call 123 first, Colombia’s emergency line. Legal guidance comes after.",fr:"En danger ou victime d’un délit ? Appelez d’abord le 123, le numéro d’urgence en Colombie. L’orientation juridique vient ensuite."},
-  sosB:{es:"Urgencia:",en:"Emergency:",fr:"Urgence :"},
-  t1b:{es:"Precio claro",en:"Clear prices",fr:"Prix clairs"}, t1:{es:"Sabe cuánto cuesta antes de decidir.",en:"You know the cost before you decide.",fr:"Vous connaissez le prix avant de décider."},
-  t2b:{es:"Abogada colombiana",en:"Colombian lawyer",fr:"Avocate colombienne"}, t2:{es:"Revisa cada caso antes de actuar.",en:"Reviews every case before acting.",fr:"Examine chaque dossier avant d’agir."},
-  t3b:{es:"Tres idiomas",en:"Three languages",fr:"Trois langues"}, t3:{es:"Español, inglés y francés.",en:"Spanish, English and French.",fr:"Espagnol, anglais et français."},
-  back:{es:"Atrás",en:"Back",fr:"Retour"}, home:{es:"Volver al inicio",en:"Start over",fr:"Recommencer"},
-  step:{es:"Pregunta",en:"Question",fr:"Question"}, of:{es:"de",en:"of",fr:"sur"},
-  sheet:{es:"Ficha de orientación",en:"Guidance sheet",fr:"Fiche d’orientation"},
-  folio:{es:"Folio",en:"Ref.",fr:"Réf."},
-  check:{es:"Lo que conviene revisar",en:"What to check",fr:"Ce qu’il faut vérifier"},
-  now:{es:"Qué hacer ahora",en:"What to do now",fr:"Que faire maintenant"},
-  route:{es:"Ruta probable",en:"Likely route",fr:"Voie probable"},
-  rec:{es:"Servicio recomendado",en:"Recommended service",fr:"Service recommandé"},
-  from:{es:"Precio",en:"Price",fr:"Prix"},
-  yourAns:{es:"Sus respuestas",en:"Your answers",fr:"Vos réponses"},
-  sendWa:{es:"Enviar mi ficha por WhatsApp",en:"Send my sheet on WhatsApp",fr:"Envoyer ma fiche par WhatsApp"},
-  waOff:{es:"WhatsApp: número por configurar",en:"WhatsApp: number not set yet",fr:"WhatsApp : numéro à configurer"},
-  copy:{es:"Copiar la ficha",en:"Copy the sheet",fr:"Copier la fiche"},
-  copied:{es:"Ficha copiada.",en:"Sheet copied.",fr:"Fiche copiée."},
-  copyFail:{es:"Seleccione el texto y cópielo con el teclado.",en:"Select the text and copy it with your keyboard.",fr:"Sélectionnez le texte et copiez-le au clavier."},
-  privacy:{es:"Esta página no guarda sus respuestas. Si nos envía la ficha, usamos sus datos solo para orientarle (Ley 1581 de 2012) y puede pedir que los borremos cuando quiera.",en:"This page does not store your answers. If you send us the sheet, we use your data only to guide you (Colombian Law 1581 of 2012), and you can ask us to delete it at any time.",fr:"Cette page n’enregistre pas vos réponses. Si vous nous envoyez la fiche, nous utilisons vos données uniquement pour vous orienter (loi colombienne 1581 de 2012) et vous pouvez demander leur suppression à tout moment."},
-  noPromise:{es:"Orientación general, no es un concepto jurídico. No prometemos resultados: le decimos con claridad qué es posible y cuánto cuesta.",en:"General guidance, not legal advice. We do not promise outcomes: we tell you clearly what is possible and what it costs.",fr:"Orientation générale, pas un avis juridique. Nous ne promettons pas de résultat : nous vous disons clairement ce qui est possible et ce que cela coûte."},
-  foot1:{es:"IHA Soluciones Legales y Técnicas S.A.S. · Medellín, Colombia · Con revisión de una abogada colombiana.",en:"IHA Soluciones Legales y Técnicas S.A.S. · Medellín, Colombia · Reviewed by a Colombian lawyer.",fr:"IHA Soluciones Legales y Técnicas S.A.S. · Medellín, Colombie · Avec l’examen d’une avocate colombienne."},
-  foot2:{es:"Orientación general; no reemplaza un concepto jurídico. Las normas cambian: verificamos su caso antes de actuar.",en:"General guidance; not a substitute for legal advice. Rules change: we check your case before acting.",fr:"Orientation générale ; ne remplace pas un avis juridique. Les règles changent : nous vérifions votre cas avant d’agir."},
-  waHello:{es:"Hola, hice la orientación en línea y quisiera agendar una cita.",en:"Hello, I completed the online guidance and would like to book an appointment.",fr:"Bonjour, j’ai fait l’orientation en ligne et je souhaite prendre rendez-vous."},
-  waRes:{es:"Resultado",en:"Result",fr:"Résultat"}, waSvc:{es:"Servicio sugerido",en:"Suggested service",fr:"Service suggéré"}, waProfile:{es:"Tema",en:"Topic",fr:"Sujet"},
-  waCase:{es:"Situación",en:"Situation",fr:"Situation"},
-  guideB:{es:"Guía de derechos del consumidor",en:"Consumer rights guide",fr:"Guide des droits du consommateur"},
-  guideS:{es:"30 situaciones: alojamiento, transporte y otros consumos, con plazos y a quién reclamar.",en:"30 situations: accommodation, transport and other purchases, with deadlines and where to complain.",fr:"30 situations : hébergement, transport et autres achats, avec délais et où réclamer."},
-  guideH:{es:"Sus derechos como consumidor en Colombia",en:"Your consumer rights in Colombia",fr:"Vos droits de consommateur en Colombie"},
-  guideP:{es:"Busque su situación y vea qué dice la ley, qué plazos corren y a quién reclamar. Información general, con fuentes.",en:"Find your situation and see what the law says, which deadlines apply and where to complain. General information, with sources.",fr:"Trouvez votre situation : ce que dit la loi, les délais et où réclamer. Information générale, avec sources."},
-  all:{es:"Todos",en:"All",fr:"Tous"},
-  searchPh:{es:"Buscar: vuelo, garantía, depósito, factura…",en:"Search (in Spanish): vuelo, garantía, depósito…",fr:"Rechercher (en espagnol) : vuelo, garantía, depósito…"},
-  generalH:{es:"Reglas que aplican a casi todo",en:"Rules that apply to almost everything",fr:"Règles qui s’appliquent presque partout"},
-  rights:{es:"Lo que dice la ley",en:"What the law says",fr:"Ce que dit la loi"},
-  deadlines:{es:"Plazos que importan",en:"Deadlines that matter",fr:"Délais importants"},
-  where:{es:"Dónde y cómo reclamar",en:"Where and how to complain",fr:"Où et comment réclamer"},
-  docs:{es:"Documentos para reunir",en:"Documents to gather",fr:"Documents à réunir"},
-  sources:{es:"Fuentes",en:"Sources",fr:"Sources"},
-  orientMe:{es:"Orientarme en este caso",en:"Guide me on this case",fr:"M’orienter sur ce cas"},
-  results:{es:"situaciones",en:"situations",fr:"situations"},
-  noResults:{es:"No encontramos esa palabra. Pruebe con otra o escríbanos.",en:"No match. Try another word (in Spanish) or contact us.",fr:"Aucun résultat. Essayez un autre mot (en espagnol) ou écrivez-nous."},
-  esOnly:{es:"",en:"Legal details are in Spanish for now. We explain them in English on WhatsApp.",fr:"Le détail juridique est en espagnol pour l’instant. Nous vous l’expliquons en français sur WhatsApp."},
-  validated:{es:"Información general sobre normas vigentes. Las normas pueden cambiar: la abogada verifica su caso antes de cualquier actuación.",en:"General information on rules in force. Rules can change: the lawyer checks your case before any action.",fr:"Information générale sur les règles en vigueur. Les règles peuvent changer : l’avocate vérifie votre cas avant toute démarche."}
+  brandSub:{es:"Orientación legal en plataformas digitales · Colombia",en:"Legal guidance on digital platforms · Colombia",fr:"Orientation juridique et plateformes numériques · Colombie",pt:"Orientação jurídica em plataformas digitais · Colômbia"},
+  heroEye:{es:"Orientación gratuita en 2 minutos",en:"Free guidance in 2 minutes",fr:"Orientation gratuite en 2 minutes",pt:"Orientação gratuita em 2 minutos"},
+  heroH:{es:"¿Qué necesita resolver?",en:"What do you need to sort out?",fr:"Que devez-vous régler ?",pt:"O que você precisa resolver?"},
+  heroP:{es:"Responda unas preguntas y reciba su ficha de orientación: qué revisar, qué hacer ahora y qué servicio le conviene. Usted decide si nos escribe.",en:"Answer a few questions and get your guidance sheet: what to check, what to do now and which service fits. You decide whether to contact us.",fr:"Répondez à quelques questions et recevez votre fiche d’orientation : quoi vérifier, quoi faire maintenant et quel service vous convient. Vous décidez si vous nous écrivez.",pt:"Responda a algumas perguntas e receba a sua ficha de orientação: o que revisar, o que fazer agora e qual serviço combina com você. Você decide se quer falar com a gente."},
+  sos:{es:"¿Está en peligro o fue víctima de un delito? Llame primero al 123, la línea de emergencias en Colombia. La orientación legal viene después.",en:"In danger or the victim of a crime? Call 123 first, Colombia’s emergency line. Legal guidance comes after.",fr:"En danger ou victime d’un délit ? Appelez d’abord le 123, le numéro d’urgence en Colombie. L’orientation juridique vient ensuite.",pt:"Está em perigo ou foi vítima de um crime? Ligue primeiro para o 123, a linha de emergências da Colômbia. A orientação jurídica vem depois."},
+  sosB:{es:"Urgencia:",en:"Emergency:",fr:"Urgence :",pt:"Emergência:"},
+  t1b:{es:"Precio claro",en:"Clear prices",fr:"Prix clairs",pt:"Preço claro"}, t1:{es:"Sabe cuánto cuesta antes de decidir.",en:"You know the cost before you decide.",fr:"Vous connaissez le prix avant de décider.",pt:"Você sabe quanto custa antes de decidir."},
+  t2b:{es:"Abogada colombiana",en:"Colombian lawyer",fr:"Avocate colombienne",pt:"Advogada colombiana"}, t2:{es:"Revisa cada caso antes de actuar.",en:"Reviews every case before acting.",fr:"Examine chaque dossier avant d’agir.",pt:"Revisa cada caso antes de agir."},
+  t3b:{es:"Cuatro idiomas",en:"Four languages",fr:"Quatre langues",pt:"Quatro idiomas"}, t3:{es:"Español, inglés, francés y portugués.",en:"Spanish, English, French and Portuguese.",fr:"Espagnol, anglais, français et portugais.",pt:"Espanhol, inglês, francês e português."},
+  back:{es:"Atrás",en:"Back",fr:"Retour",pt:"Voltar"}, home:{es:"Volver al inicio",en:"Start over",fr:"Recommencer",pt:"Voltar ao início"},
+  step:{es:"Pregunta",en:"Question",fr:"Question",pt:"Pergunta"}, of:{es:"de",en:"of",fr:"sur",pt:"de"},
+  sheet:{es:"Ficha de orientación",en:"Guidance sheet",fr:"Fiche d’orientation",pt:"Ficha de orientação"},
+  folio:{es:"Folio",en:"Ref.",fr:"Réf.",pt:"Ref."},
+  check:{es:"Lo que conviene revisar",en:"What to check",fr:"Ce qu’il faut vérifier",pt:"O que convém revisar"},
+  now:{es:"Qué hacer ahora",en:"What to do now",fr:"Que faire maintenant",pt:"O que fazer agora"},
+  route:{es:"Ruta probable",en:"Likely route",fr:"Voie probable",pt:"Caminho provável"},
+  rec:{es:"Servicio recomendado",en:"Recommended service",fr:"Service recommandé",pt:"Serviço recomendado"},
+  from:{es:"Precio",en:"Price",fr:"Prix",pt:"Preço"},
+  yourAns:{es:"Sus respuestas",en:"Your answers",fr:"Vos réponses",pt:"Suas respostas"},
+  sendWa:{es:"Enviar mi ficha por WhatsApp",en:"Send my sheet on WhatsApp",fr:"Envoyer ma fiche par WhatsApp",pt:"Enviar minha ficha pelo WhatsApp"},
+  waOff:{es:"WhatsApp: número por configurar",en:"WhatsApp: number not set yet",fr:"WhatsApp : numéro à configurer",pt:"WhatsApp: número ainda não configurado"},
+  copy:{es:"Copiar la ficha",en:"Copy the sheet",fr:"Copier la fiche",pt:"Copiar a ficha"},
+  copied:{es:"Ficha copiada.",en:"Sheet copied.",fr:"Fiche copiée.",pt:"Ficha copiada."},
+  copyFail:{es:"Seleccione el texto y cópielo con el teclado.",en:"Select the text and copy it with your keyboard.",fr:"Sélectionnez le texte et copiez-le au clavier.",pt:"Selecione o texto e copie-o com o teclado."},
+  privacy:{es:"Esta página no guarda sus respuestas. Si nos envía la ficha, usamos sus datos solo para orientarle (Ley 1581 de 2012) y puede pedir que los borremos cuando quiera.",en:"This page does not store your answers. If you send us the sheet, we use your data only to guide you (Colombian Law 1581 of 2012), and you can ask us to delete it at any time.",fr:"Cette page n’enregistre pas vos réponses. Si vous nous envoyez la fiche, nous utilisons vos données uniquement pour vous orienter (loi colombienne 1581 de 2012) et vous pouvez demander leur suppression à tout moment.",pt:"Esta página não guarda as suas respostas. Se você nos enviar a ficha, usamos os seus dados apenas para orientar você (Lei 1581 de 2012 da Colômbia) e você pode pedir que os apaguemos quando quiser."},
+  noPromise:{es:"Orientación general, no es un concepto jurídico. No prometemos resultados: le decimos con claridad qué es posible y cuánto cuesta.",en:"General guidance, not legal advice. We do not promise outcomes: we tell you clearly what is possible and what it costs.",fr:"Orientation générale, pas un avis juridique. Nous ne promettons pas de résultat : nous vous disons clairement ce qui est possible et ce que cela coûte.",pt:"Orientação geral, não é parecer jurídico. Não prometemos resultados: dizemos com clareza o que é possível e quanto custa."},
+  foot1:{es:"Medellín, Colombia · Con revisión de una abogada colombiana.",en:"Medellín, Colombia · Reviewed by a Colombian lawyer.",fr:"Medellín, Colombie · Avec l’examen d’une avocate colombienne.",pt:"Medellín, Colômbia · Com revisão de uma advogada colombiana."},
+  foot2:{es:"Orientación general; no reemplaza un concepto jurídico. Las normas cambian: verificamos su caso antes de actuar.",en:"General guidance; not a substitute for legal advice. Rules change: we check your case before acting.",fr:"Orientation générale ; ne remplace pas un avis juridique. Les règles changent : nous vérifions votre cas avant d’agir.",pt:"Orientação geral; não substitui um parecer jurídico. As normas mudam: verificamos o seu caso antes de agir."},
+  waHello:{es:"Hola, hice la orientación en línea y quisiera agendar una cita.",en:"Hello, I completed the online guidance and would like to book an appointment.",fr:"Bonjour, j’ai fait l’orientation en ligne et je souhaite prendre rendez-vous.",pt:"Olá, fiz a orientação on-line e gostaria de marcar uma consulta."},
+  waRes:{es:"Resultado",en:"Result",fr:"Résultat",pt:"Resultado"}, waSvc:{es:"Servicio sugerido",en:"Suggested service",fr:"Service suggéré",pt:"Serviço sugerido"}, waProfile:{es:"Tema",en:"Topic",fr:"Sujet",pt:"Tema"},
+  waCase:{es:"Situación",en:"Situation",fr:"Situation",pt:"Situação"},
+  guideB:{es:"Guía de derechos del consumidor",en:"Consumer rights guide",fr:"Guide des droits du consommateur",pt:"Guia de direitos do consumidor"},
+  guideS:{es:"30 situaciones: alojamiento, transporte y otros consumos, con plazos y a quién reclamar.",en:"30 situations: accommodation, transport and other purchases, with deadlines and where to complain.",fr:"30 situations : hébergement, transport et autres achats, avec délais et où réclamer.",pt:"30 situações: hospedagem, transporte e outros consumos, com prazos e a quem reclamar."},
+  guideH:{es:"Sus derechos como consumidor en Colombia",en:"Your consumer rights in Colombia",fr:"Vos droits de consommateur en Colombie",pt:"Seus direitos como consumidor na Colômbia"},
+  guideP:{es:"Busque su situación y vea qué dice la ley, qué plazos corren y a quién reclamar. Información general, con fuentes.",en:"Find your situation and see what the law says, which deadlines apply and where to complain. General information, with sources.",fr:"Trouvez votre situation : ce que dit la loi, les délais et où réclamer. Information générale, avec sources.",pt:"Busque a sua situação e veja o que diz a lei, quais prazos correm e a quem reclamar. Informação geral, com fontes."},
+  all:{es:"Todos",en:"All",fr:"Tous",pt:"Todos"},
+  searchPh:{es:"Buscar: vuelo, garantía, depósito, factura…",en:"Search (in Spanish): vuelo, garantía, depósito…",fr:"Rechercher (en espagnol) : vuelo, garantía, depósito…",pt:"Buscar (em espanhol): vuelo, garantía, depósito…"},
+  generalH:{es:"Reglas que aplican a casi todo",en:"Rules that apply to almost everything",fr:"Règles qui s’appliquent presque partout",pt:"Regras que valem para quase tudo"},
+  rights:{es:"Lo que dice la ley",en:"What the law says",fr:"Ce que dit la loi",pt:"O que diz a lei"},
+  deadlines:{es:"Plazos que importan",en:"Deadlines that matter",fr:"Délais importants",pt:"Prazos que importam"},
+  where:{es:"Dónde y cómo reclamar",en:"Where and how to complain",fr:"Où et comment réclamer",pt:"Onde e como reclamar"},
+  docs:{es:"Documentos para reunir",en:"Documents to gather",fr:"Documents à réunir",pt:"Documentos para reunir"},
+  sources:{es:"Fuentes",en:"Sources",fr:"Sources",pt:"Fontes"},
+  orientMe:{es:"Orientarme en este caso",en:"Guide me on this case",fr:"M’orienter sur ce cas",pt:"Orientar-me neste caso"},
+  results:{es:"situaciones",en:"situations",fr:"situations",pt:"situações"},
+  noResults:{es:"No encontramos esa palabra. Pruebe con otra o escríbanos.",en:"No match. Try another word (in Spanish) or contact us.",fr:"Aucun résultat. Essayez un autre mot (en espagnol) ou écrivez-nous.",pt:"Não encontramos essa palavra. Tente outra (em espanhol) ou fale com a gente."},
+  esOnly:{es:"",en:"Legal details are in Spanish for now. We explain them in English on WhatsApp.",fr:"Le détail juridique est en espagnol pour l’instant. Nous vous l’expliquons en français sur WhatsApp.",pt:"Os detalhes jurídicos estão em espanhol por enquanto. Explicamos em português pelo WhatsApp."},
+  validated:{es:"Información general sobre normas vigentes. Las normas pueden cambiar: la abogada verifica su caso antes de cualquier actuación.",en:"General information on rules in force. Rules can change: the lawyer checks your case before any action.",fr:"Information générale sur les règles en vigueur. Les règles peuvent changer : l’avocate vérifie votre cas avant toute démarche.",pt:"Informação geral sobre normas em vigor. As normas podem mudar: a advogada verifica o seu caso antes de qualquer ação."}
 };
 
 // ===== Textos de la interfaz v5 (navegación, portada, ficha) =====
 Object.assign(UI, {
-  skip:{es:"Ir al contenido",en:"Skip to content",fr:"Aller au contenu"},
-  brandAria:{es:"IHA, ir al inicio",en:"IHA, go to the start",fr:"IHA, retour à l’accueil"},
-  navAria:{es:"Navegación principal",en:"Main navigation",fr:"Navigation principale"},
-  langAria:{es:"Idioma",en:"Language",fr:"Langue"},
-  navHome:{es:"Inicio",en:"Home",fr:"Accueil"},
-  navGuide:{es:"Guía",en:"Guide",fr:"Guide"},
-  badge1:{es:"Gratis",en:"Free",fr:"Gratuit"},
-  badge2:{es:"2 minutos",en:"2 minutes",fr:"2 minutes"},
-  badge3:{es:"Sin registro",en:"No sign-up",fr:"Sans inscription"},
-  heroP:{es:"Elija su situación y reciba una ficha clara: qué hacer ahora, qué revisar y qué servicio le conviene. Usted decide si nos escribe.",en:"Choose your situation and get a clear sheet: what to do now, what to check and which service fits. You decide whether to contact us.",fr:"Choisissez votre situation et recevez une fiche claire : quoi faire maintenant, quoi vérifier et quel service vous convient. Vous décidez si vous nous écrivez."},
-  kick_anfitrion:{es:"Anfitriones e inversionistas",en:"Hosts and investors",fr:"Hôtes et investisseurs"},
-  kick_consumidor:{es:"Consumidores",en:"Consumers",fr:"Consommateurs"},
-  kick_plataforma:{es:"Usuarios de plataformas",en:"Platform users",fr:"Utilisateurs de plateformes"},
-  go:{es:"Empezar",en:"Start",fr:"Commencer"},
-  howH:{es:"Así funciona",en:"How it works",fr:"Comment ça marche"},
-  how1:{es:"Elija su situación",en:"Choose your situation",fr:"Choisissez votre situation"}, how1s:{es:"Un toque, sin registro.",en:"One tap, no sign-up.",fr:"Un clic, sans inscription."},
-  how2:{es:"Responda unas preguntas",en:"Answer a few questions",fr:"Répondez à quelques questions"}, how2s:{es:"De 4 a 7 preguntas cortas.",en:"4 to 7 short questions.",fr:"De 4 à 7 questions courtes."},
-  how3:{es:"Reciba su ficha",en:"Get your sheet",fr:"Recevez votre fiche"}, how3s:{es:"Qué hacer, qué revisar y qué servicio le conviene.",en:"What to do, what to check and which service fits.",fr:"Quoi faire, quoi vérifier et quel service vous convient."},
-  topics:{es:"Explorar por tema",en:"Browse by topic",fr:"Explorer par thème"},
-  guideGo:{es:"Ver las 30 situaciones",en:"See all 30 situations",fr:"Voir les 30 situations"},
-  restart:{es:"Recomenzar",en:"Restart",fr:"Recommencer"},
-  stepOf:{es:"Pregunta {n} de {m}",en:"Question {n} of {m}",fr:"Question {n} sur {m}"},
-  priv1:{es:"No guardamos sus respuestas.",en:"We don’t store your answers.",fr:"Nous n’enregistrons pas vos réponses."},
-  sGreen:{es:"Sin urgencia",en:"No rush",fr:"Pas d’urgence"}, sOrange:{es:"Revisar pronto",en:"Check soon",fr:"À vérifier bientôt"}, sRed:{es:"Actuar ya",en:"Act now",fr:"Agir maintenant"},
-  srRed:{es:"Urgente: ",en:"Urgent: ",fr:"Urgent : "}, srOrange:{es:"Por revisar: ",en:"To check: ",fr:"À vérifier : "}, srGreen:{es:"En orden: ",en:"In order: ",fr:"En ordre : "},
-  detailH:{es:"Detalle de su situación",en:"Details of your situation",fr:"Détail de votre situation"},
-  noticeH:{es:"Importante",en:"Important",fr:"Important"},
-  copyDone:{es:"Ficha copiada",en:"Sheet copied",fr:"Fiche copiée"},
-  clear:{es:"Borrar búsqueda",en:"Clear search",fr:"Effacer la recherche"},
-  navTopics:{es:"Filtrar por tema",en:"Filter by topic",fr:"Filtrer par thème"},
-  caseLead:{es:"Lo que dice la ley, los plazos y dónde reclamar. Después, oriéntese gratis en 2 minutos.",en:"What the law says, the deadlines and where to complain. Then get free guidance in 2 minutes.",fr:"Ce que dit la loi, les délais et où réclamer. Ensuite, orientez-vous gratuitement en 2 minutes."},
-  seeAll:{es:"Ver las otras situaciones",en:"See the other situations",fr:"Voir les autres situations"},
-  copyLink:{es:"Copiar enlace",en:"Copy link",fr:"Copier le lien"},
-  linkCopied:{es:"Enlace copiado",en:"Link copied",fr:"Lien copié"},
-  yourCase:{es:"Su caso",en:"Your case",fr:"Votre cas"},
-  waOrigin:{es:"Origen",en:"Source",fr:"Origine"},
-  claimH:{es:"Su reclamo escrito, listo para enviar",en:"Your written complaint, ready to send",fr:"Votre réclamation écrite, prête à envoyer"},
-  claimTag:{es:"Gratis",en:"Free",fr:"Gratuit"},
-  claimSub:{es:"Complete los datos y copie el texto. Envíelo a la empresa por un medio que le deje constancia, como el correo o su formulario de PQR, y guarde la copia.",en:"Fill in the details and copy the text. Send it to the company in a way that leaves a record, such as email or its complaints form, and keep a copy.",fr:"Remplissez les champs et copiez le texte. Envoyez-le à l’entreprise par un moyen qui laisse une trace, comme l’e-mail ou son formulaire de réclamation, et gardez une copie."},
-  claimEs:{es:"",en:"The letter is in Spanish because it is addressed to a Colombian company.",fr:"La lettre est en espagnol car elle s’adresse à une entreprise colombienne."},
-  claimPriv:{es:"Estos datos no se envían ni se guardan: el texto se arma en su pantalla.",en:"These details are not sent or stored: the text is built on your screen.",fr:"Ces données ne sont ni envoyées ni enregistrées : le texte se construit sur votre écran."},
-  fNombre:{es:"Nombre completo",en:"Full name",fr:"Nom complet"},
-  fDoc:{es:"Documento (tipo y número)",en:"ID document (type and number)",fr:"Pièce d’identité (type et numéro)"},
-  fCiudad:{es:"Ciudad",en:"City",fr:"Ville"},
-  fEmpresa:{es:"Empresa a la que reclama",en:"Company you are complaining to",fr:"Entreprise visée"},
-  fRef:{es:"Número de pedido, reserva o factura",en:"Order, booking or invoice number",fr:"Numéro de commande, réservation ou facture"},
-  fFecha:{es:"Fecha de la compra o de los hechos",en:"Date of purchase or of the events",fr:"Date de l’achat ou des faits"},
-  fValor:{es:"Valor pagado",en:"Amount paid",fr:"Montant payé"},
-  fHechos:{es:"Qué pasó, en pocas líneas",en:"What happened, in a few lines",fr:"Ce qui s’est passé, en quelques lignes"},
-  fPide:{es:"Qué pide",en:"What you ask for",fr:"Ce que vous demandez"},
-  fOtra:{es:"Su solicitud",en:"Your request",fr:"Votre demande"},
-  fContacto:{es:"Correo o teléfono para la respuesta",en:"Email or phone for the reply",fr:"E-mail ou téléphone pour la réponse"},
-  fAnexos:{es:"Documentos que adjunta",en:"Documents you attach",fr:"Documents joints"},
-  pDevolucion:{es:"Que me devuelvan el dinero",en:"A refund",fr:"Le remboursement"},
-  pCumplimiento:{es:"Que cumplan lo ofrecido",en:"That they deliver what was offered",fr:"Le respect de ce qui était offert"},
-  pGarantia:{es:"Reparación o cambio (garantía)",en:"Repair or replacement (warranty)",fr:"Réparation ou échange (garantie)"},
-  pOtra:{es:"Otra solicitud",en:"Another request",fr:"Autre demande"},
-  copyClaim:{es:"Copiar el reclamo",en:"Copy the complaint",fr:"Copier la réclamation"},
-  claimCopied:{es:"Reclamo copiado",en:"Complaint copied",fr:"Réclamation copiée"},
-  preview:{es:"Vista previa",en:"Preview",fr:"Aperçu"},
-  draftEye:{es:"Revisión interna",en:"Internal review",fr:"Revue interne"},
-  draftH:{es:"Modelo de reclamo escrito",en:"Written complaint template",fr:"Modèle de réclamation écrite"},
-  draftBanner:{es:"Borrador para revisión de la abogada. Los clientes no ven este modelo hasta que se active.",en:"Draft for the lawyer’s review. Clients do not see this template until it is switched on.",fr:"Brouillon pour relecture par l’avocate. Les clients ne voient pas ce modèle tant qu’il n’est pas activé."},
-  draftScope:{es:"Se ofrece solo en 12 situaciones donde el reclamo directo se basa en el Estatuto del Consumidor (Ley 1480), y solo si la persona aún no ha reclamado por escrito. Vuelos, buses, bancos, salud, servicios públicos, telecomunicaciones, datos personales y SOAT tienen otro régimen.",en:"Offered only in 12 situations where the direct complaint rests on the Consumer Statute (Law 1480), and only if the person has not yet complained in writing. Flights, buses, banks, health, utilities, telecoms, personal data and SOAT follow other rules.",fr:"Proposé seulement dans 12 situations où la réclamation directe repose sur le Statut du consommateur (loi 1480), et seulement si la personne n’a pas encore réclamé par écrit. Vols, bus, banques, santé, services publics, télécoms, données personnelles et SOAT relèvent d’autres régimes."},
-  draftSit:{es:"Situación de ejemplo",en:"Example situation",fr:"Situation d’exemple"}
+  skip:{es:"Ir al contenido",en:"Skip to content",fr:"Aller au contenu",pt:"Ir para o conteúdo"},
+  brandAria:{es:"IHA, ir al inicio",en:"IHA, go to the start",fr:"IHA, retour à l’accueil",pt:"IHA, ir para o início"},
+  navAria:{es:"Navegación principal",en:"Main navigation",fr:"Navigation principale",pt:"Navegação principal"},
+  langAria:{es:"Idioma",en:"Language",fr:"Langue",pt:"Idioma"},
+  navHome:{es:"Inicio",en:"Home",fr:"Accueil",pt:"Início"},
+  navGuide:{es:"Guía",en:"Guide",fr:"Guide",pt:"Guia"},
+  badge1:{es:"Gratis",en:"Free",fr:"Gratuit",pt:"Grátis"},
+  badge2:{es:"2 minutos",en:"2 minutes",fr:"2 minutes",pt:"2 minutos"},
+  badge3:{es:"Sin registro",en:"No sign-up",fr:"Sans inscription",pt:"Sem cadastro"},
+  heroP:{es:"Elija su situación y reciba una ficha clara: qué hacer ahora, qué revisar y qué servicio le conviene. Usted decide si nos escribe.",en:"Choose your situation and get a clear sheet: what to do now, what to check and which service fits. You decide whether to contact us.",fr:"Choisissez votre situation et recevez une fiche claire : quoi faire maintenant, quoi vérifier et quel service vous convient. Vous décidez si vous nous écrivez.",pt:"Escolha a sua situação e receba uma ficha clara: o que fazer agora, o que revisar e qual serviço combina com você. Você decide se fala com a gente."},
+  kick_anfitrion:{es:"Anfitriones e inversionistas",en:"Hosts and investors",fr:"Hôtes et investisseurs",pt:"Anfitriões e investidores"},
+  kick_consumidor:{es:"Consumidores",en:"Consumers",fr:"Consommateurs",pt:"Consumidores"},
+  kick_plataforma:{es:"Usuarios de plataformas",en:"Platform users",fr:"Utilisateurs de plateformes",pt:"Usuários de plataformas"},
+  go:{es:"Empezar",en:"Start",fr:"Commencer",pt:"Começar"},
+  howH:{es:"Así funciona",en:"How it works",fr:"Comment ça marche",pt:"Como funciona"},
+  how1:{es:"Elija su situación",en:"Choose your situation",fr:"Choisissez votre situation",pt:"Escolha a sua situação"}, how1s:{es:"Un toque, sin registro.",en:"One tap, no sign-up.",fr:"Un clic, sans inscription.",pt:"Um toque, sem cadastro."},
+  how2:{es:"Responda unas preguntas",en:"Answer a few questions",fr:"Répondez à quelques questions",pt:"Responda a algumas perguntas"}, how2s:{es:"De 4 a 7 preguntas cortas.",en:"4 to 7 short questions.",fr:"De 4 à 7 questions courtes.",pt:"De 4 a 7 perguntas curtas."},
+  how3:{es:"Reciba su ficha",en:"Get your sheet",fr:"Recevez votre fiche",pt:"Receba a sua ficha"}, how3s:{es:"Qué hacer, qué revisar y qué servicio le conviene.",en:"What to do, what to check and which service fits.",fr:"Quoi faire, quoi vérifier et quel service vous convient.",pt:"O que fazer, o que revisar e qual serviço combina com você."},
+  topics:{es:"Explorar por tema",en:"Browse by topic",fr:"Explorer par thème",pt:"Explorar por tema"},
+  guideGo:{es:"Ver las 30 situaciones",en:"See all 30 situations",fr:"Voir les 30 situations",pt:"Ver as 30 situações"},
+  restart:{es:"Recomenzar",en:"Restart",fr:"Recommencer",pt:"Recomeçar"},
+  stepOf:{es:"Pregunta {n} de {m}",en:"Question {n} of {m}",fr:"Question {n} sur {m}",pt:"Pergunta {n} de {m}"},
+  priv1:{es:"No guardamos sus respuestas.",en:"We don’t store your answers.",fr:"Nous n’enregistrons pas vos réponses.",pt:"Não guardamos as suas respostas."},
+  sGreen:{es:"Sin urgencia",en:"No rush",fr:"Pas d’urgence",pt:"Sem urgência"}, sOrange:{es:"Revisar pronto",en:"Check soon",fr:"À vérifier bientôt",pt:"Revisar em breve"}, sRed:{es:"Actuar ya",en:"Act now",fr:"Agir maintenant",pt:"Agir já"},
+  srRed:{es:"Urgente: ",en:"Urgent: ",fr:"Urgent : ",pt:"Urgente: "}, srOrange:{es:"Por revisar: ",en:"To check: ",fr:"À vérifier : ",pt:"A revisar: "}, srGreen:{es:"En orden: ",en:"In order: ",fr:"En ordre : ",pt:"Em ordem: "},
+  detailH:{es:"Detalle de su situación",en:"Details of your situation",fr:"Détail de votre situation",pt:"Detalhes da sua situação"},
+  noticeH:{es:"Importante",en:"Important",fr:"Important",pt:"Importante"},
+  copyDone:{es:"Ficha copiada",en:"Sheet copied",fr:"Fiche copiée",pt:"Ficha copiada"},
+  clear:{es:"Borrar búsqueda",en:"Clear search",fr:"Effacer la recherche",pt:"Limpar busca"},
+  navTopics:{es:"Filtrar por tema",en:"Filter by topic",fr:"Filtrer par thème",pt:"Filtrar por tema"},
+  caseLead:{es:"Lo que dice la ley, los plazos y dónde reclamar. Después, oriéntese gratis en 2 minutos.",en:"What the law says, the deadlines and where to complain. Then get free guidance in 2 minutes.",fr:"Ce que dit la loi, les délais et où réclamer. Ensuite, orientez-vous gratuitement en 2 minutes.",pt:"O que diz a lei, os prazos e onde reclamar. Depois, oriente-se de graça em 2 minutos."},
+  seeAll:{es:"Ver las otras situaciones",en:"See the other situations",fr:"Voir les autres situations",pt:"Ver as outras situações"},
+  copyLink:{es:"Copiar enlace",en:"Copy link",fr:"Copier le lien",pt:"Copiar link"},
+  linkCopied:{es:"Enlace copiado",en:"Link copied",fr:"Lien copié",pt:"Link copiado"},
+  yourCase:{es:"Su caso",en:"Your case",fr:"Votre cas",pt:"Seu caso"},
+  waOrigin:{es:"Origen",en:"Source",fr:"Origine",pt:"Origem"},
+  claimH:{es:"Su reclamo escrito, listo para enviar",en:"Your written complaint, ready to send",fr:"Votre réclamation écrite, prête à envoyer",pt:"Sua reclamação por escrito, pronta para enviar"},
+  claimTag:{es:"Gratis",en:"Free",fr:"Gratuit",pt:"Grátis"},
+  claimSub:{es:"Complete los datos y copie el texto. Envíelo a la empresa por un medio que le deje constancia, como el correo o su formulario de PQR, y guarde la copia.",en:"Fill in the details and copy the text. Send it to the company in a way that leaves a record, such as email or its complaints form, and keep a copy.",fr:"Remplissez les champs et copiez le texte. Envoyez-le à l’entreprise par un moyen qui laisse une trace, comme l’e-mail ou son formulaire de réclamation, et gardez une copie.",pt:"Preencha os dados e copie o texto. Envie-o à empresa por um meio que deixe comprovante, como e-mail ou o formulário de PQR, e guarde a cópia."},
+  claimEs:{es:"",en:"The letter is in Spanish because it is addressed to a Colombian company.",fr:"La lettre est en espagnol car elle s’adresse à une entreprise colombienne.",pt:"A carta está em espanhol porque é dirigida a uma empresa colombiana."},
+  claimPriv:{es:"Estos datos no se envían ni se guardan: el texto se arma en su pantalla.",en:"These details are not sent or stored: the text is built on your screen.",fr:"Ces données ne sont ni envoyées ni enregistrées : le texte se construit sur votre écran.",pt:"Estes dados não são enviados nem guardados: o texto é montado na sua tela."},
+  fNombre:{es:"Nombre completo",en:"Full name",fr:"Nom complet",pt:"Nome completo"},
+  fDoc:{es:"Documento (tipo y número)",en:"ID document (type and number)",fr:"Pièce d’identité (type et numéro)",pt:"Documento (tipo e número)"},
+  fCiudad:{es:"Ciudad",en:"City",fr:"Ville",pt:"Cidade"},
+  fEmpresa:{es:"Empresa a la que reclama",en:"Company you are complaining to",fr:"Entreprise visée",pt:"Empresa a quem você reclama"},
+  fRef:{es:"Número de pedido, reserva o factura",en:"Order, booking or invoice number",fr:"Numéro de commande, réservation ou facture",pt:"Número do pedido, reserva ou fatura"},
+  fFecha:{es:"Fecha de la compra o de los hechos",en:"Date of purchase or of the events",fr:"Date de l’achat ou des faits",pt:"Data da compra ou dos fatos"},
+  fValor:{es:"Valor pagado",en:"Amount paid",fr:"Montant payé",pt:"Valor pago"},
+  fHechos:{es:"Qué pasó, en pocas líneas",en:"What happened, in a few lines",fr:"Ce qui s’est passé, en quelques lignes",pt:"O que aconteceu, em poucas linhas"},
+  fPide:{es:"Qué pide",en:"What you ask for",fr:"Ce que vous demandez",pt:"O que você pede"},
+  fOtra:{es:"Su solicitud",en:"Your request",fr:"Votre demande",pt:"Seu pedido"},
+  fContacto:{es:"Correo o teléfono para la respuesta",en:"Email or phone for the reply",fr:"E-mail ou téléphone pour la réponse",pt:"E-mail ou telefone para a resposta"},
+  fAnexos:{es:"Documentos que adjunta",en:"Documents you attach",fr:"Documents joints",pt:"Documentos que você anexa"},
+  pDevolucion:{es:"Que me devuelvan el dinero",en:"A refund",fr:"Le remboursement",pt:"Que devolvam o meu dinheiro"},
+  pCumplimiento:{es:"Que cumplan lo ofrecido",en:"That they deliver what was offered",fr:"Le respect de ce qui était offert",pt:"Que cumpram o que foi oferecido"},
+  pGarantia:{es:"Reparación o cambio (garantía)",en:"Repair or replacement (warranty)",fr:"Réparation ou échange (garantie)",pt:"Reparo ou troca (garantia)"},
+  pOtra:{es:"Otra solicitud",en:"Another request",fr:"Autre demande",pt:"Outro pedido"},
+  copyClaim:{es:"Copiar el reclamo",en:"Copy the complaint",fr:"Copier la réclamation",pt:"Copiar a reclamação"},
+  claimCopied:{es:"Reclamo copiado",en:"Complaint copied",fr:"Réclamation copiée",pt:"Reclamação copiada"},
+  preview:{es:"Vista previa",en:"Preview",fr:"Aperçu",pt:"Pré-visualização"},
+  draftEye:{es:"Revisión interna",en:"Internal review",fr:"Revue interne",pt:"Revisão interna"},
+  draftH:{es:"Modelo de reclamo escrito",en:"Written complaint template",fr:"Modèle de réclamation écrite",pt:"Modelo de reclamação por escrito"},
+  draftBanner:{es:"Borrador para revisión de la abogada. Los clientes no ven este modelo hasta que se active.",en:"Draft for the lawyer’s review. Clients do not see this template until it is switched on.",fr:"Brouillon pour relecture par l’avocate. Les clients ne voient pas ce modèle tant qu’il n’est pas activé.",pt:"Rascunho para revisão da advogada. Os clientes não veem este modelo até que seja ativado."},
+  draftScope:{es:"Se ofrece solo en 12 situaciones donde el reclamo directo se basa en el Estatuto del Consumidor (Ley 1480), y solo si la persona aún no ha reclamado por escrito. Vuelos, buses, bancos, salud, servicios públicos, telecomunicaciones, datos personales y SOAT tienen otro régimen.",en:"Offered only in 12 situations where the direct complaint rests on the Consumer Statute (Law 1480), and only if the person has not yet complained in writing. Flights, buses, banks, health, utilities, telecoms, personal data and SOAT follow other rules.",fr:"Proposé seulement dans 12 situations où la réclamation directe repose sur le Statut du consommateur (loi 1480), et seulement si la personne n’a pas encore réclamé par écrit. Vols, bus, banques, santé, services publics, télécoms, données personnelles et SOAT relèvent d’autres régimes.",pt:"Oferecido apenas em 12 situações em que a reclamação direta se baseia no Estatuto do Consumidor (Lei 1480), e somente se a pessoa ainda não reclamou por escrito. Voos, ônibus, bancos, saúde, serviços públicos, telecomunicações, dados pessoais e SOAT seguem outro regime."},
+  draftSit:{es:"Situación de ejemplo",en:"Example situation",fr:"Situation d’exemple",pt:"Situação de exemplo"}
+});
+
+
+// ===== v8: tema, emergencias =====
+Object.assign(UI, {
+  themeLbl:{es:"Modo oscuro",en:"Dark mode",fr:"Mode sombre",pt:"Modo escuro"},
+  sosAria:{es:"Líneas de emergencia en Colombia",en:"Emergency numbers in Colombia",fr:"Numéros d’urgence en Colombie",pt:"Números de emergência na Colômbia"},
+  sosTitle:{es:"Emergencias en Colombia",en:"Emergencies in Colombia",fr:"Urgences en Colombie",pt:"Emergências na Colômbia"},
+  sosLead:{es:"Si usted o alguien cerca está en peligro, llame ahora. La orientación legal puede esperar.",en:"If you or someone near you is in danger, call now. Legal guidance can wait.",fr:"Si vous ou une personne proche êtes en danger, appelez maintenant. L’orientation juridique peut attendre.",pt:"Se você ou alguém por perto estiver em perigo, ligue agora. A orientação jurídica pode esperar."},
+  sos123:{es:"Emergencias generales: Policía, ambulancia y bomberos.",en:"General emergencies: police, ambulance and fire service.",fr:"Urgences : police, ambulance et pompiers.",pt:"Emergências em geral: polícia, ambulância e bombeiros."},
+  sos155:{es:"Mujeres víctimas de violencia: orientación y apoyo.",en:"Women facing violence: guidance and support.",fr:"Femmes victimes de violences : écoute et orientation.",pt:"Mulheres vítimas de violência: orientação e apoio."},
+  sos165:{es:"Extorsión y secuestro (Gaula, Policía Nacional).",en:"Extortion and kidnapping (Gaula, National Police).",fr:"Extorsion et enlèvement (Gaula, Police nationale).",pt:"Extorsão e sequestro (Gaula, Polícia Nacional)."},
+  sos141:{es:"Protección de niñas, niños y adolescentes (ICBF).",en:"Child protection (ICBF).",fr:"Protection de l’enfance (ICBF).",pt:"Proteção de crianças e adolescentes (ICBF)."},
+  sosFree:{es:"Gratuita, las 24 horas, en todo el país",en:"Free, 24 hours, nationwide",fr:"Gratuit, 24 h/24, dans tout le pays",pt:"Gratuita, 24 horas, em todo o país"},
+  sosCall:{es:"Llamar",en:"Call",fr:"Appeler",pt:"Ligar"},
+  sosClose:{es:"Cerrar",en:"Close",fr:"Fermer",pt:"Fechar"},
+  sosAll:{es:"Ver todas las líneas de emergencia",en:"See all emergency numbers",fr:"Voir tous les numéros d’urgence",pt:"Ver todos os números de emergência"},
+  sosFoot:{es:"Cuando esté a salvo, vuelva aquí: le orientamos sin costo.",en:"When you are safe, come back here: our guidance is free.",fr:"Quand vous serez en sécurité, revenez ici : notre orientation est gratuite.",pt:"Quando estiver em segurança, volte aqui: a nossa orientação é gratuita."}
 });
 
 // ===== Base de conocimiento: derecho del consumidor en Colombia (investigación al 8 de noviembre de 2026; validar con la abogada) =====
@@ -694,9 +767,9 @@ const SRC = {
 };
 
 const SECTORS = [
-  {v:"alojamiento", l:{es:"Alojamiento y turismo",en:"Accommodation and tourism",fr:"Hébergement et tourisme"}, s:{es:"Reservas, hoteles, apps de alojamiento, paquetes",en:"Bookings, hotels, lodging apps, packages",fr:"Réservations, hôtels, applis d’hébergement, forfaits"}},
-  {v:"transporte", l:{es:"Transporte",en:"Transport",fr:"Transport"}, s:{es:"Vuelos, equipaje, buses, apps y taxis, accidentes",en:"Flights, baggage, buses, ride apps and taxis, accidents",fr:"Vols, bagages, bus, VTC et taxis, accidents"}},
-  {v:"otros", l:{es:"Otros consumos",en:"Other purchases and services",fr:"Autres achats et services"}, s:{es:"Compras en línea, bancos, telefonía, servicios públicos, salud, vivienda…",en:"Online shopping, banks, phone and internet, utilities, health, housing…",fr:"Achats en ligne, banques, télécoms, eau-électricité, santé, logement…"}}
+  {v:"alojamiento", l:{es:"Alojamiento y turismo",en:"Accommodation and tourism",fr:"Hébergement et tourisme",pt:"Hospedagem e turismo"}, s:{es:"Reservas, hoteles, apps de alojamiento, paquetes",en:"Bookings, hotels, lodging apps, packages",fr:"Réservations, hôtels, applis d’hébergement, forfaits",pt:"Reservas, hotéis, apps de hospedagem, pacotes"}},
+  {v:"transporte", l:{es:"Transporte",en:"Transport",fr:"Transport",pt:"Transporte"}, s:{es:"Vuelos, equipaje, buses, apps y taxis, accidentes",en:"Flights, baggage, buses, ride apps and taxis, accidents",fr:"Vols, bagages, bus, VTC et taxis, accidents",pt:"Voos, bagagem, ônibus, apps e táxis, acidentes"}},
+  {v:"otros", l:{es:"Otros consumos",en:"Other purchases and services",fr:"Autres achats et services",pt:"Outros consumos"}, s:{es:"Compras en línea, bancos, telefonía, servicios públicos, salud, vivienda…",en:"Online shopping, banks, phone and internet, utilities, health, housing…",fr:"Achats en ligne, banques, télécoms, eau-électricité, santé, logement…",pt:"Compras on-line, bancos, telefonia, serviços públicos, saúde, moradia…"}}
 ];
 
 // Reglas que aplican a todo
@@ -715,7 +788,7 @@ const GENERAL_SRC = ["l1480","d735","l2439","sicFaq"];
 
 const SITS = [
   // ---------------- ALOJAMIENTO ----------------
-  {id:"a-cancelacion", sector:"alojamiento", t:{es:"Me cancelaron la reserva",en:"My booking was cancelled",fr:"Ma réservation a été annulée"},
+  {id:"a-cancelacion", sector:"alojamiento", t:{es:"Me cancelaron la reserva",en:"My booking was cancelled",fr:"Ma réservation a été annulée",pt:"Cancelaram a minha reserva"},
    d:["Si el prestador no cumple lo reservado, usted elige: otro servicio de la misma calidad o el reembolso o compensación del precio. Si no puede darle uno igual, debe contratarlo con un tercero a su costa (Ley 300 de 1996, art. 63).",
       "La sobreventa recibe el mismo trato (Ley 300 de 1996, art. 64).",
       "Cancelar una reserva confirmada para revenderla más cara es un incumplimiento que la SIC puede sancionar.",
@@ -724,7 +797,7 @@ const SITS = [
    r:["Escriba al anfitrión u hotel y a la plataforma pidiendo alojamiento equivalente o reembolso.","Si paga otro alojamiento más caro o transporte extra, guarde las facturas.","Si no resuelven, queja o demanda ante la SIC."],
    doc:["Confirmación de la reserva y comprobante de pago","Mensajes de cancelación con fecha","Capturas del anuncio","Facturas de los gastos adicionales"],
    src:["l300","sicCancel","l1480"]},
-  {id:"a-anuncio", sector:"alojamiento", t:{es:"El alojamiento no era el anunciado",en:"The place wasn’t as advertised",fr:"Le logement n’était pas conforme à l’annonce"},
+  {id:"a-anuncio", sector:"alojamiento", t:{es:"El alojamiento no era el anunciado",en:"The place wasn’t as advertised",fr:"Le logement n’était pas conforme à l’annonce",pt:"A hospedagem não era a anunciada"},
    d:["La información y la publicidad deben ser veraces; quien anuncia responde por lo que ofrece (Ley 1480, arts. 23 y 30).",
       "Si el servicio no corresponde, usted puede pedir que se preste como se contrató o la devolución del dinero (garantía de servicios, Decreto 735 de 2013, art. 16).",
       "Si la plataforma permite publicar a un prestador sin Registro Nacional de Turismo activo, responde ante usted por publicidad engañosa (Ley 2068 de 2020, art. 39)."],
@@ -732,7 +805,7 @@ const SITS = [
    r:["Al llegar, tome fotos y video con fecha visible.","Escriba al anfitrión y a la plataforma pidiendo solución, reubicación o reembolso.","Si no resuelven, queja o demanda ante la SIC."],
    doc:["Capturas del anuncio tal como estaba al reservar","Fotos y video del lugar","Mensajes con el anfitrión y la plataforma"],
    src:["l1480","d735","l2068"]},
-  {id:"a-cobros", sector:"alojamiento", t:{es:"Cobros de más o depósito no devuelto",en:"Extra charges or deposit not returned",fr:"Frais en trop ou caution non rendue"}, urgent:true,
+  {id:"a-cobros", sector:"alojamiento", t:{es:"Cobros de más o depósito no devuelto",en:"Extra charges or deposit not returned",fr:"Frais en trop ou caution non rendue",pt:"Cobranças a mais ou caução não devolvida"}, urgent:true,
    urgentMsg:"Si pagó en línea con tarjeta un cobro que no reconoce, la reversión del pago debe pedirse dentro de los 5 días hábiles siguientes a enterarse.",
    d:["Solo debe pagar el precio total anunciado antes de pagar (Ley 1480, art. 26).",
       "El depósito se devuelve según lo pactado; cualquier descuento por daños debe justificarse con pruebas.",
@@ -741,7 +814,7 @@ const SITS = [
    r:["Pida por escrito el desglose del cobro o la razón del descuento.","Si procede, pida la reversión al vendedor y a su banco.","Si no resuelven, queja o demanda ante la SIC."],
    doc:["Anuncio con el precio","Recibos y extractos","Fotos de entrega del lugar","Mensajes"],
    src:["l1480","d587"]},
-  {id:"a-dano", sector:"alojamiento", level:"red", t:{es:"Daño, accidente o robo en el alojamiento",en:"Damage, accident or theft at the property",fr:"Dommage, accident ou vol dans le logement"},
+  {id:"a-dano", sector:"alojamiento", level:"red", t:{es:"Daño, accidente o robo en el alojamiento",en:"Damage, accident or theft at the property",fr:"Dommage, accident ou vol dans le logement",pt:"Dano, acidente ou roubo na hospedagem"},
    d:["Usted tiene derecho a la seguridad y a no sufrir daños en condiciones normales de uso (Ley 1480).",
       "Los prestadores de alojamiento turístico deben tener una póliza de responsabilidad por daños a huéspedes y a terceros, que cubre como mínimo muerte, incapacidad, lesiones, daños a bienes de terceros y gastos médicos (Ley 2068 de 2020, art. 32). Pida los datos de la póliza.",
             "Si hubo un delito, la denuncia penal va primero; la reclamación de consumo, después."],
@@ -749,7 +822,7 @@ const SITS = [
    r:["Si hay peligro, llame al 123.","Atención médica y denuncia si corresponde.","Reporte escrito al hotel o anfitrión y a la plataforma.","Reclamación por los daños; si no responden, demanda civil o ante la SIC."],
    doc:["Fotos y video","Informe médico","Denuncia","Mensajes con el prestador"],
    src:["l2068","l1480"]},
-  {id:"a-paquete", sector:"alojamiento", t:{es:"La agencia o el paquete turístico no cumplió",en:"The travel agency or package didn’t deliver",fr:"L’agence ou le voyage organisé n’a pas tenu ses engagements"},
+  {id:"a-paquete", sector:"alojamiento", t:{es:"La agencia o el paquete turístico no cumplió",en:"The travel agency or package didn’t deliver",fr:"L’agence ou le voyage organisé n’a pas tenu ses engagements",pt:"A agência ou o pacote turístico não cumpriu"},
    d:["Si un servicio turístico vendido no se presta, usted elige otro de la misma calidad o el reembolso o compensación del precio (Ley 300 de 1996, art. 63).",
       "La información del paquete debe ser veraz, completa y entregada antes de pagar (Ley 1480).",
       "Reclame a la agencia y al prestador directo (hotel, aerolínea, operador): ambos pueden responder."],
@@ -757,7 +830,7 @@ const SITS = [
    r:["Reclamo escrito a la agencia y al prestador.","Si no resuelven, queja o demanda ante la SIC."],
    doc:["Contrato o voucher del paquete","Publicidad del paquete","Pagos","Mensajes"],
    src:["l300","l1480"]},
-  {id:"a-quiero-cancelar", sector:"alojamiento", t:{es:"Quiero cancelar mi reserva",en:"I want to cancel my booking",fr:"Je veux annuler ma réservation"},
+  {id:"a-quiero-cancelar", sector:"alojamiento", t:{es:"Quiero cancelar mi reserva",en:"I want to cancel my booking",fr:"Je veux annuler ma réservation",pt:"Quero cancelar a minha reserva"},
    d:["Rige la política de cancelación que aceptó, si se la informaron antes de pagar.",
       "Si usted no se presenta, el prestador puede cobrar hasta el 20 % del precio o retener el anticipo pactado (Ley 300 de 1996, art. 65).",
       "Una cláusula que impida todo reembolso en cualquier caso puede revisarse como abusiva (Ley 1480, arts. 42 y 43).",
@@ -768,7 +841,7 @@ const SITS = [
    src:["l300","l1480"]},
 
   // ---------------- TRANSPORTE ----------------
-  {id:"t-retraso", sector:"transporte", t:{es:"Mi vuelo se retrasó",en:"My flight was delayed",fr:"Mon vol a été retardé"},
+  {id:"t-retraso", sector:"transporte", t:{es:"Mi vuelo se retrasó",en:"My flight was delayed",fr:"Mon vol a été retardé",pt:"Meu voo atrasou"},
    d:["Más de 1 hora y menos de 3, por causa de la aerolínea: refrigerio y una llamada.",
       "Más de 3 y menos de 5 horas: además, alimentos según la hora.",
       "Más de 5 horas: compensación adicional mínima del 30 % del valor del trayecto.",
@@ -778,7 +851,7 @@ const SITS = [
    r:["Pida en el mostrador una constancia de la demora.","Reclamo escrito a la aerolínea o a la agencia.","Si no resuelven, queja ante la Superintendencia de Transporte; la SIC también es competente en protección al consumidor."],
    doc:["Tiquete y pase de abordar","Constancia de la demora","Recibos de gastos"],
    src:["stAereo","alVuelos"]},
-  {id:"t-cancelacion", sector:"transporte", t:{es:"Vuelo cancelado o no me dejaron abordar (sobreventa)",en:"Flight cancelled or denied boarding (overbooking)",fr:"Vol annulé ou refus d’embarquement (surréservation)"},
+  {id:"t-cancelacion", sector:"transporte", t:{es:"Vuelo cancelado o no me dejaron abordar (sobreventa)",en:"Flight cancelled or denied boarding (overbooking)",fr:"Vol annulé ou refus d’embarquement (surréservation)",pt:"Voo cancelado ou embarque negado (overbooking)"},
    d:["Cancelación por causa de la aerolínea: puede desistir y recibir el reembolso, o seguir viaje con la atención y la compensación que fija el reglamento aeronáutico.",
       "Sobreventa: deben embarcarlo en el siguiente vuelo disponible y compensarlo según el reglamento aeronáutico.",
       "Cancelación por causas ajenas a la aerolínea, como el clima: devolución total del precio sin penalidades."],
@@ -787,21 +860,21 @@ const SITS = [
    doc:["Tiquete","Constancia de cancelación o de no embarque","Recibos de gastos"],
    src:["stAereo","alVuelos"]},
   {id:"t-equipaje", sector:"transporte", urgent:true, urgentMsg:"Los plazos del equipaje son cortos: 7 días para daño o pérdida y 21 días para demora.",
-   t:{es:"Equipaje perdido, demorado o dañado",en:"Lost, delayed or damaged baggage",fr:"Bagage perdu, retardé ou endommagé"},
+   t:{es:"Equipaje perdido, demorado o dañado",en:"Lost, delayed or damaged baggage",fr:"Bagage perdu, retardé ou endommagé",pt:"Bagagem perdida, atrasada ou danificada"},
    d:["Si el equipaje se demora, la aerolínea debe cubrir artículos básicos y compensarlo según el reglamento aeronáutico.",
       "En vuelos internacionales, el Convenio de Montreal limita la indemnización por equipaje; declare objetos de valor al facturar."],
    p:["Daño, pérdida o hurto: protesta escrita a más tardar en 7 días.","Demora: reclamo dentro de los 21 días siguientes a la fecha en que debía llegar."],
    r:["Antes de salir del aeropuerto, reporte en el mostrador de la aerolínea y pida el número de reclamo.","Protesta escrita dentro del plazo.","Si no resuelven, Superintendencia de Transporte."],
    doc:["Tiquete y etiqueta del equipaje","Reporte del aeropuerto","Fotos del daño","Recibos de compras de emergencia"],
    src:["stAereo"]},
-  {id:"t-tiquete", sector:"transporte", t:{es:"Quiero devolver o cambiar un tiquete aéreo",en:"I want to return or change a plane ticket",fr:"Je veux rendre ou changer un billet d’avion"},
+  {id:"t-tiquete", sector:"transporte", t:{es:"Quiero devolver o cambiar un tiquete aéreo",en:"I want to return or change a plane ticket",fr:"Je veux rendre ou changer un billet d’avion",pt:"Quero devolver ou trocar uma passagem aérea"},
    d:["Puede desistir del viaje antes del vuelo; la aerolínea puede retener una parte limitada de la tarifa, según el reglamento aeronáutico.",
       "Las tarifas promocionales pueden tener condiciones distintas: revise las que aceptó al comprar."],
    p:["Haga la solicitud por escrito y antes del vuelo."],
    r:["Solicite por escrito el desistimiento o el retracto y guarde la constancia.","Si no reembolsan, reclamo y luego Superintendencia de Transporte o SIC."],
    doc:["Tiquete y condiciones de la tarifa","Comprobante de pago","Constancia de la solicitud"],
    src:["stAereo"]},
-  {id:"t-bus", sector:"transporte", t:{es:"Bus intermunicipal: tiquete, servicio o equipaje",en:"Intercity bus: ticket, service or luggage",fr:"Bus interurbain : billet, service ou bagages"},
+  {id:"t-bus", sector:"transporte", t:{es:"Bus intermunicipal: tiquete, servicio o equipaje",en:"Intercity bus: ticket, service or luggage",fr:"Bus interurbain : billet, service ou bagages",pt:"Ônibus intermunicipal: passagem, serviço ou bagagem"},
    d:["Tiene derecho a información, a viajar en condiciones de calidad, a la protección contra publicidad engañosa, a llevar su equipaje y, según las reglas, a retractarse o desistir del tiquete (guía de la Supertransporte).",
       "También hay reglas para viajar con mascotas y con menores de edad: pregunte a la empresa antes de comprar.",
       "Los porcentajes de devolución dependen de la norma y de la empresa: pida la política por escrito."],
@@ -809,7 +882,7 @@ const SITS = [
    r:["Reclamo a la empresa o al intermediario que le vendió.","Si no resuelven, Superintendencia de Transporte; luego jueces o SIC."],
    doc:["Tiquete","Fotos","Recibos","Datos del bus y la hora"],
    src:["stTerrestre"]},
-  {id:"t-app", sector:"transporte", t:{es:"App de transporte o taxi: cobro, trato o incidente",en:"Ride app or taxi: fare, treatment or incident",fr:"VTC ou taxi : tarif, comportement ou incident"},
+  {id:"t-app", sector:"transporte", t:{es:"App de transporte o taxi: cobro, trato o incidente",en:"Ride app or taxi: fare, treatment or incident",fr:"VTC ou taxi : tarif, comportement ou incident",pt:"App de transporte ou táxi: cobrança, tratamento ou incidente"},
    d:["Quien le cobra debe informarle el precio de forma veraz y atender su reclamo (Ley 1480).",
       "Taxis y transporte público: Superintendencia de Transporte y la secretaría de movilidad de la ciudad.",
       "Si hubo un incidente de seguridad, primero la denuncia (123)."],
@@ -817,7 +890,7 @@ const SITS = [
    r:["Reclamo en la app con capturas del viaje y del cobro.","Si el cobro fue con tarjeta en línea y procede, pida la reversión.","Queja ante la SIC; para taxis y servicio público, Superintendencia de Transporte."],
    doc:["Capturas del viaje (ruta, conductor, placa, precio)","Extracto del cobro","Mensajes con soporte"],
    src:["l1480","d587"]},
-  {id:"t-accidente", sector:"transporte", level:"red", t:{es:"Accidente de tránsito (SOAT)",en:"Road accident (SOAT insurance)",fr:"Accident de la route (assurance SOAT)"},
+  {id:"t-accidente", sector:"transporte", level:"red", t:{es:"Accidente de tránsito (SOAT)",en:"Road accident (SOAT insurance)",fr:"Accident de la route (assurance SOAT)",pt:"Acidente de trânsito (SOAT)"},
    d:["El SOAT cubre a las víctimas de accidentes de tránsito, sin discutir culpas: atención médica, incapacidad, muerte y transporte de la víctima.",
       "Si el vehículo no tenía SOAT o huyó, la reclamación se presenta ante la ADRES.",
       "El SOAT no cubre los daños a su vehículo ni a sus bienes: esos se reclaman al responsable o a su póliza."],
@@ -828,7 +901,7 @@ const SITS = [
 
   // ---------------- OTROS ----------------
   {id:"o-entrega", sector:"otros", urgent:true, urgentMsg:"Si pagó con tarjeta o medio electrónico y el producto no llegó, la reversión del pago debe pedirse dentro de 5 días hábiles.",
-   t:{es:"Compra en línea que no llegó o llegó tarde",en:"Online order not delivered or late",fr:"Achat en ligne non livré ou en retard"},
+   t:{es:"Compra en línea que no llegó o llegó tarde",en:"Online order not delivered or late",fr:"Achat en ligne non livré ou en retard",pt:"Compra on-line que não chegou ou chegou atrasada"},
    d:["Deben entregarle en el plazo que aceptó al comprar; si no se pactó, en el plazo máximo que fija la ley (Ley 2439 de 2024).",
       "Si no cumplen, puede terminar el contrato y recuperar lo pagado.",
       "Si el producto no está disponible, deben avisarle de inmediato; si cancela, el reembolso es en 15 días calendario. Si acepta un nuevo plazo (máximo 30 días) y lo incumplen, recupera todo sin descuentos."],
@@ -837,7 +910,7 @@ const SITS = [
    doc:["Confirmación del pedido con el plazo de entrega","Comprobante de pago","Número de radicado"],
    src:["l2439","abcOnline","d587"]},
   {id:"o-retracto", sector:"otros", urgent:true, urgentMsg:"El retracto vence a los 5 días hábiles: ejérzalo por escrito hoy.",
-   t:{es:"Quiero devolver una compra en línea (retracto)",en:"I want to return an online purchase",fr:"Je veux retourner un achat en ligne (rétractation)"},
+   t:{es:"Quiero devolver una compra en línea (retracto)",en:"I want to return an online purchase",fr:"Je veux retourner un achat en ligne (rétractation)",pt:"Quero devolver uma compra on-line (direito de arrependimento)"},
    d:["En compras a distancia puede retractarse dentro de 5 días hábiles, sin justificar (Ley 1480, art. 47).",
       "Devuelve el producto por los mismos medios; los costos de transporte de la devolución son suyos.",
       "Le devuelven el dinero en máximo 15 días calendario, al mismo medio de pago (Ley 2439 de 2024).",
@@ -846,7 +919,7 @@ const SITS = [
    r:["Escriba a la tienda ejerciendo el retracto y guarde la constancia.","Devuelva el producto como indiquen.","Si no reembolsan, queja o demanda ante la SIC."],
    doc:["Factura","Constancia del retracto","Guía de envío de la devolución"],
    src:["l1480","l2439"]},
-  {id:"o-garantia", sector:"otros", t:{es:"Producto defectuoso (garantía)",en:"Faulty product (warranty)",fr:"Produit défectueux (garantie)"},
+  {id:"o-garantia", sector:"otros", t:{es:"Producto defectuoso (garantía)",en:"Faulty product (warranty)",fr:"Produit défectueux (garantie)",pt:"Produto com defeito (garantia)"},
    d:["Reparación gratuita; si la falla se repite, usted elige nueva reparación, cambio o devolución del precio (Ley 1480, art. 11).",
       "Productor y vendedor responden solidariamente: puede reclamar a cualquiera (Ley 1480, art. 10).",
       "Reparación en máximo 30 días hábiles si la SIC no fija otro plazo; con bien en préstamo, hasta 60 (Decreto 735 de 2013, art. 8).",
@@ -856,7 +929,7 @@ const SITS = [
    doc:["Factura","Constancia de entrega a reparación","Fotos o video de la falla"],
    src:["l1480","d735"]},
   {id:"o-fraude", sector:"otros", urgent:true, level:"red", urgentMsg:"Bloquee hoy sus productos y avise al banco: cada hora cuenta en un fraude.",
-   t:{es:"Cobro no reconocido o fraude con mi tarjeta o cuenta",en:"Unrecognised charge or card/account fraud",fr:"Prélèvement non reconnu ou fraude sur ma carte ou mon compte"},
+   t:{es:"Cobro no reconocido o fraude con mi tarjeta o cuenta",en:"Unrecognised charge or card/account fraud",fr:"Prélèvement non reconnu ou fraude sur ma carte ou mon compte",pt:"Cobrança não reconhecida ou fraude no meu cartão ou conta"},
    d:["Reversión del pago: en compras en línea con tarjeta u otro instrumento electrónico, por fraude, operación no solicitada, producto no recibido, distinto o defectuoso (Ley 1480, art. 51; Decreto 587 de 2016).",
       "Fraude bancario: avise de inmediato al banco, inactive sus productos, guarde pruebas y denuncie ante la Policía (CAI Virtual) o la Fiscalía.",
       "Puede quejarse ante el banco, su Defensor del Consumidor Financiero o la Superfinanciera; si no hay acuerdo, demandar ante la Superfinanciera, sin abogado si el valor es menor a 40 salarios mínimos."],
@@ -864,7 +937,7 @@ const SITS = [
    r:["Llame al banco y bloquee.","Reclamo escrito al banco y, si aplica, solicitud de reversión al vendedor y al emisor.","Denuncia penal.","Defensor del Consumidor Financiero o Superfinanciera."],
    doc:["Extracto con los cobros","Capturas de mensajes o llamadas sospechosas","Denuncia","Radicado del reclamo"],
    src:["d587","sfcFraude","sfcAccion"]},
-  {id:"o-banco", sector:"otros", t:{es:"Banco, crédito o seguro",en:"Bank, loan or insurance",fr:"Banque, crédit ou assurance"},
+  {id:"o-banco", sector:"otros", t:{es:"Banco, crédito o seguro",en:"Bank, loan or insurance",fr:"Banque, crédit ou assurance",pt:"Banco, crédito ou seguro"},
    d:["Antes de demandar debe reclamar a la entidad; adjunte el reclamo y la respuesta a la demanda.",
       "Puede acudir al Defensor del Consumidor Financiero de la entidad o quejarse ante la Superfinanciera.",
       "Acción de protección al consumidor financiero: ante un juez o la Superfinanciera (una sola vía), sin abogado hasta 40 salarios mínimos.",
@@ -873,7 +946,7 @@ const SITS = [
    r:["Reclamo escrito a la entidad.","Defensor del Consumidor Financiero o queja ante la Superfinanciera.","Demanda ante la Superfinanciera o un juez."],
    doc:["Contrato o póliza","Extractos","Radicado del reclamo y respuesta"],
    src:["sfcAccion","sfcFraude"]},
-  {id:"o-cobranza", sector:"otros", t:{es:"Cobranza abusiva o reporte en centrales de riesgo",en:"Abusive debt collection or credit bureau report",fr:"Recouvrement abusif ou fichage bancaire"},
+  {id:"o-cobranza", sector:"otros", t:{es:"Cobranza abusiva o reporte en centrales de riesgo",en:"Abusive debt collection or credit bureau report",fr:"Recouvrement abusif ou fichage bancaire",pt:"Cobrança abusiva ou registro em birôs de crédito"},
    d:["Solo pueden contactarlo por los canales que usted autorizó, de lunes a viernes de 7 a. m. a 7 p. m. y sábados de 8 a. m. a 3 p. m.; nunca domingos ni festivos (Ley 2300 de 2023).",
       "No pueden usar varios canales la misma semana ni contactarlo más de una vez al día, ni llamar a sus referencias; tampoco visitar su casa o trabajo, salvo excepciones.",
       "Un reporte negativo dura el doble del tiempo de la mora, máximo 4 años, y caduca a los 8 años de la mora (Ley 2157 de 2021).",
@@ -882,7 +955,7 @@ const SITS = [
    r:["Reclamo escrito a la entidad que lo reporta o lo cobra.","Si no responde o incumple, queja ante la Superfinanciera o la SIC."],
    doc:["Registro de llamadas y mensajes con fecha y hora","Certificado de la central de riesgo","Paz y salvo, si lo tiene"],
    src:["l2300","l2157"]},
-  {id:"o-telco", sector:"otros", t:{es:"Internet, celular o TV",en:"Internet, mobile or TV",fr:"Internet, mobile ou télévision"},
+  {id:"o-telco", sector:"otros", t:{es:"Internet, celular o TV",en:"Internet, mobile or TV",fr:"Internet, mobile ou télévision",pt:"Internet, celular ou TV"},
    d:["Toda petición o queja recibe un código único (CUN); el operador debe responder en 15 días hábiles. Si no responde a tiempo, se entiende aceptada (silencio administrativo positivo).",
       "Si niega, presente reposición y, en subsidio, apelación en un solo escrito; la apelación la decide la SIC.",
       "Puede cancelar el servicio; el operador debe tramitar la solicitud sin trabas.",
@@ -892,7 +965,7 @@ const SITS = [
    doc:["Número CUN","Factura","Capturas de fallas o pruebas de velocidad"],
    src:["crc","telco"]},
   {id:"o-servpub", sector:"otros", urgent:true, urgentMsg:"Para recurrir una factura tiene solo 5 días desde que conoce la decisión de la empresa.",
-   t:{es:"Agua, luz o gas: factura o servicio",en:"Water, power or gas: bill or service",fr:"Eau, électricité ou gaz : facture ou service"},
+   t:{es:"Agua, luz o gas: factura o servicio",en:"Water, power or gas: bill or service",fr:"Eau, électricité ou gaz : facture ou service",pt:"Água, luz ou gás: conta ou serviço"},
    d:["Puede reclamar ante la empresa; debe responder en 15 días hábiles. Si no responde, el reclamo se entiende resuelto a su favor (Ley 142 de 1994, art. 158).",
       "No pueden exigirle pagar la factura reclamada para tramitar su recurso; pague lo no reclamado o el promedio de los últimos cinco periodos (art. 155).",
       "No pueden suspender ni cortar el servicio mientras resuelven el recurso presentado a tiempo, salvo excepciones (art. 155).",
@@ -901,7 +974,7 @@ const SITS = [
    r:["Reclamo escrito a la empresa.","Recurso de reposición y, en subsidio, apelación ante la Superintendencia de Servicios Públicos."],
    doc:["Facturas","Fotos del medidor","Radicado del reclamo"],
    src:["l142"]},
-  {id:"o-evento", sector:"otros", t:{es:"Concierto o evento cancelado o aplazado",en:"Concert or event cancelled or postponed",fr:"Concert ou événement annulé ou reporté"},
+  {id:"o-evento", sector:"otros", t:{es:"Concierto o evento cancelado o aplazado",en:"Concert or event cancelled or postponed",fr:"Concert ou événement annulé ou reporté",pt:"Show ou evento cancelado ou adiado"},
    d:["Si el servicio no se presta como se contrató, usted elige que se preste en las condiciones contratadas o la devolución del precio pagado (Ley 1480, art. 11, num. 3, citado por la SIC).",
       "El organizador debe informar la cancelación o el aplazamiento de forma oportuna, clara y veraz (Circular SIC 004 de 2022).",
       "La SIC puede ordenar medidas para evitar daños a los consumidores; la devolución de los cargos de servicio depende del caso."],
@@ -909,7 +982,7 @@ const SITS = [
    r:["Reclamo escrito al organizador y a la boletera.","Si no devuelven, demanda de efectividad de la garantía ante la SIC."],
    doc:["Boletas y comprobante de compra","Anuncio de la cancelación"],
    src:["sic004","l1480"]},
-  {id:"o-restaurante", sector:"otros", t:{es:"Restaurante: propina u otros cobros",en:"Restaurant: tip or other charges",fr:"Restaurant : pourboire ou autres frais"},
+  {id:"o-restaurante", sector:"otros", t:{es:"Restaurante: propina u otros cobros",en:"Restaurant: tip or other charges",fr:"Restaurant : pourboire ou autres frais",pt:"Restaurante: gorjeta ou outras cobranças"},
    d:["La propina es voluntaria (Ley 1935 de 2018).",
       "Deben preguntarle si la acepta antes de facturar; si aparece en la factura, puede negarse a pagarla.",
       "El precio que paga es el precio anunciado, con impuestos incluidos (Ley 1480, art. 26)."],
@@ -917,7 +990,7 @@ const SITS = [
    r:["Pida que retiren la propina o el cobro no informado.","Si se niegan, denuncia ante la SIC."],
    doc:["Factura","Foto de la carta con los precios"],
    src:["propina","l1480"]},
-  {id:"o-parqueadero", sector:"otros", t:{es:"Parqueadero: daño o robo del vehículo",en:"Car park: damage or theft",fr:"Parking : dommage ou vol du véhicule"},
+  {id:"o-parqueadero", sector:"otros", t:{es:"Parqueadero: daño o robo del vehículo",en:"Car park: damage or theft",fr:"Parking : dommage ou vol du véhicule",pt:"Estacionamento: dano ou roubo do veículo"},
    d:["El parqueadero debe custodiar el vehículo y devolverlo en el mismo estado en que lo recibió (Ley 1480).",
       "Los avisos de «no respondemos por daños ni robos» son cláusulas abusivas y no lo dejan sin derecho a reclamar (SIC, 2026).",
       "Deben darle un recibo con tarifas; si no anota daños previos, se presume que el vehículo entró en buen estado.",
@@ -926,7 +999,7 @@ const SITS = [
    r:["Deje constancia escrita antes de retirarse y tome fotos.","Reclamo escrito al parqueadero.","Si no responden, demanda ante la SIC."],
    doc:["Recibo de entrada","Fotos del daño","Testigos","Cotización de la reparación"],
    src:["parqueo","l1480"]},
-  {id:"o-vehiculo", sector:"otros", t:{es:"Vehículo nuevo con fallas",en:"New vehicle with defects",fr:"Véhicule neuf défectueux"},
+  {id:"o-vehiculo", sector:"otros", t:{es:"Vehículo nuevo con fallas",en:"New vehicle with defects",fr:"Véhicule neuf défectueux",pt:"Veículo novo com defeitos"},
    d:["El vehículo tiene la garantía indicada en su manual; si no se indicó plazo, un año desde la entrega (Ley 1480, art. 8).",
       "Reparación gratuita de piezas con defecto de fábrica; si la falla se repite, usted elige nueva reparación, cambio o devolución (Ley 1480, art. 11).",
       "Consulte si su modelo tiene una campaña de seguridad (llamado a revisión) vigente."],
@@ -934,7 +1007,7 @@ const SITS = [
    r:["Reclamo escrito al concesionario o al importador, con orden de servicio.","Si la falla se repite, pida por escrito el cambio o la devolución.","Demanda ante la SIC."],
    doc:["Factura y manual de garantía","Órdenes de servicio de cada ingreso al taller","Fotos o video de la falla"],
    src:["l1480","d735"]},
-  {id:"o-vivienda", sector:"otros", t:{es:"Vivienda nueva con defectos",en:"New home with defects",fr:"Logement neuf avec défauts"},
+  {id:"o-vivienda", sector:"otros", t:{es:"Vivienda nueva con defectos",en:"New home with defects",fr:"Logement neuf avec défauts",pt:"Imóvel novo com defeitos"},
    d:["Garantía legal de un inmueble: estabilidad de la obra por 10 años y acabados por 1 año (Ley 1480, art. 8).",
       "Los proyectos nuevos de cinco o más unidades, o de 2.000 m² o más, deben amparar al comprador si la estructura falla en los 10 años siguientes (Ley 1796 de 2016 y Decreto 282 de 2019).",
       "Al reclamar, deben darle constancia de recibo y hacer una visita de verificación en 5 días hábiles; los acabados se reparan en 30 días hábiles después de aceptar el reclamo (Decreto 735 de 2013, art. 13)."],
@@ -942,7 +1015,7 @@ const SITS = [
    r:["Reclamo escrito a la constructora con fotos.","Exija la visita en 5 días hábiles.","Si no responden, demanda ante la SIC."],
    doc:["Escritura y acta de entrega","Fotos con fecha","Reclamos y respuestas"],
    src:["l1480","vivienda","d735"]},
-  {id:"o-salud", sector:"otros", level:"red", t:{es:"Salud: EPS o medicina prepagada",en:"Health: EPS or private health plan",fr:"Santé : EPS ou assurance santé privée"},
+  {id:"o-salud", sector:"otros", level:"red", t:{es:"Salud: EPS o medicina prepagada",en:"Health: EPS or private health plan",fr:"Santé : EPS ou assurance santé privée",pt:"Saúde: EPS ou plano de saúde privado"},
    d:["Primero, PQRS ante su EPS y guarde el número de radicado.",
             "Si no responden o la respuesta no es satisfactoria, queja ante la Superintendencia de Salud.",
       "En urgencia vital puede presentar una tutela desde el primer día; el juez decide en máximo 10 días."],
@@ -950,7 +1023,7 @@ const SITS = [
    r:["PQRS a la EPS o a la prepagada.","Queja ante la Superintendencia de Salud con el radicado.","Tutela si hay urgencia."],
    doc:["Orden médica","Historia clínica","Radicado de la PQRS"],
    src:["eps"]},
-  {id:"o-datos", sector:"otros", t:{es:"Mis datos personales o mensajes no autorizados",en:"My personal data or unwanted marketing",fr:"Mes données personnelles ou messages non autorisés"},
+  {id:"o-datos", sector:"otros", t:{es:"Mis datos personales o mensajes no autorizados",en:"My personal data or unwanted marketing",fr:"Mes données personnelles ou messages non autorisés",pt:"Meus dados pessoais ou mensagens não autorizadas"},
    d:["Puede consultar sus datos; deben responder en 10 días hábiles (prorrogables 5) (Ley 1581 de 2012, art. 14).",
       "Puede reclamar para corregir, actualizar o suprimir sus datos; deben responder en 15 días hábiles (prorrogables 8) e incluir la leyenda «reclamo en trámite» (art. 15).",
       "Solo puede quejarse ante la SIC después de agotar la consulta o el reclamo ante la empresa (art. 16).",
@@ -959,7 +1032,7 @@ const SITS = [
    r:["Consulta o reclamo escrito a la empresa.","Si no responde o incumple, queja ante la SIC."],
    doc:["Capturas de los mensajes","Constancia de la consulta o del reclamo"],
    src:["l1581","l2300"]},
-  {id:"o-cancelar", sector:"otros", t:{es:"No me dejan cancelar un contrato o suscripción",en:"I can’t cancel a contract or subscription",fr:"Impossible de résilier un contrat ou un abonnement"},
+  {id:"o-cancelar", sector:"otros", t:{es:"No me dejan cancelar un contrato o suscripción",en:"I can’t cancel a contract or subscription",fr:"Impossible de résilier un contrat ou un abonnement",pt:"Não me deixam cancelar um contrato ou assinatura"},
    d:["La permanencia mínima solo vale si se pactó de forma expresa y, por regla general, por máximo un año (Ley 1480, art. 41).",
             "En ventas en línea de contratos continuos, deben informarle la duración mínima antes de contratar (Ley 2439 de 2024).",
       "Cargos por servicios que no aceptó no son exigibles."],
@@ -967,7 +1040,7 @@ const SITS = [
    r:["Solicite la cancelación por el canal por el que contrató y guarde la constancia.","Si siguen cobrando, reclamo y, si procede, reversión del pago.","Queja ante la SIC (o la Superfinanciera para productos financieros)."],
    doc:["Contrato o condiciones","Constancia de la solicitud","Extractos con los cobros"],
    src:["l1480","l2439"]},
-  {id:"o-publicidad", sector:"otros", t:{es:"Publicidad engañosa o precio distinto al anunciado",en:"Misleading ads or a different price",fr:"Publicité trompeuse ou prix différent"},
+  {id:"o-publicidad", sector:"otros", t:{es:"Publicidad engañosa o precio distinto al anunciado",en:"Misleading ads or a different price",fr:"Publicité trompeuse ou prix différent",pt:"Publicidade enganosa ou preço diferente do anunciado"},
    d:["La publicidad engañosa está prohibida; el anunciante responde por los daños que cause (Ley 1480, art. 30).",
       "Usted solo está obligado a pagar el precio anunciado (Ley 1480, art. 26).",
       "Las ofertas en línea deben indicar su vigencia y la disponibilidad del producto (Ley 2439 de 2024)."],
@@ -979,161 +1052,161 @@ const SITS = [
 
 
 const YN = [
-  {v:"si",l:{es:"Sí",en:"Yes",fr:"Oui"}},
-  {v:"no",l:{es:"No",en:"No",fr:"Non"}},
-  {v:"nose",l:{es:"No sé",en:"Not sure",fr:"Je ne sais pas"}}
+  {v:"si",l:{es:"Sí",en:"Yes",fr:"Oui",pt:"Sim"}},
+  {v:"no",l:{es:"No",en:"No",fr:"Non",pt:"Não"}},
+  {v:"nose",l:{es:"No sé",en:"Not sure",fr:"Je ne sais pas",pt:"Não sei"}}
 ];
 const AMOUNT = [
-  {v:"bajo",l:{es:"Menos de 100 USD",en:"Less than 100 USD",fr:"Moins de 100 USD"}},
-  {v:"medio",l:{es:"Entre 100 y 1.000 USD",en:"Between 100 and 1,000 USD",fr:"Entre 100 et 1 000 USD"}},
-  {v:"alto",l:{es:"Más de 1.000 USD",en:"More than 1,000 USD",fr:"Plus de 1 000 USD"}}
+  {v:"bajo",l:{es:"Menos de 100 USD",en:"Less than 100 USD",fr:"Moins de 100 USD",pt:"Menos de 100 USD"}},
+  {v:"medio",l:{es:"Entre 100 y 1.000 USD",en:"Between 100 and 1,000 USD",fr:"Entre 100 et 1 000 USD",pt:"Entre 100 e 1.000 USD"}},
+  {v:"alto",l:{es:"Más de 1.000 USD",en:"More than 1,000 USD",fr:"Plus de 1 000 USD",pt:"Mais de 1.000 USD"}}
 ];
 const RESIDE = [
-  {v:"co",l:{es:"En Colombia",en:"In Colombia",fr:"En Colombie"}},
-  {v:"ext",l:{es:"Fuera de Colombia",en:"Outside Colombia",fr:"Hors de Colombie"}}
+  {v:"co",l:{es:"En Colombia",en:"In Colombia",fr:"En Colombie",pt:"Na Colômbia"}},
+  {v:"ext",l:{es:"Fuera de Colombia",en:"Outside Colombia",fr:"Hors de Colombie",pt:"Fora da Colômbia"}}
 ];
 
 const FLOWS = {
   anfitrion:{
-    door:{es:"Soy anfitrión, coanfitrión o inversionista",en:"I’m a host, co-host or investor",fr:"Je suis hôte, co-hôte ou investisseur"},
-    doorSub:{es:"Alquiler por días: registro, reglamento, POT, reportes.",en:"Short-term rentals: registry, building rules, zoning, reporting.",fr:"Location courte durée : registre, règlement, urbanisme, déclarations."},
-    topic:{es:"Vivienda turística",en:"Short-term rental",fr:"Location touristique"},
+    door:{es:"Soy anfitrión, coanfitrión o inversionista",en:"I’m a host, co-host or investor",fr:"Je suis hôte, co-hôte ou investisseur",pt:"Sou anfitrião, coanfitrião ou investidor"},
+    doorSub:{es:"Alquiler por días: registro, reglamento, POT, reportes.",en:"Short-term rentals: registry, building rules, zoning, reporting.",fr:"Location courte durée : registre, règlement, urbanisme, déclarations.",pt:"Aluguel por temporada: registro, regulamento, zoneamento (POT), reportes."},
+    topic:{es:"Vivienda turística",en:"Short-term rental",fr:"Location touristique",pt:"Moradia turística"},
     qs:[
-      {id:"perfil",q:{es:"¿Cuál es su situación?",en:"What is your situation?",fr:"Quelle est votre situation ?"},opts:[
-        {v:"propietario",l:{es:"Alquilo mi inmueble por días",en:"I rent out my property short-term",fr:"Je loue mon bien à la nuitée"}},
-        {v:"coanfitrion",l:{es:"Administro inmuebles de otros (coanfitrión)",en:"I manage other owners’ properties (co-host)",fr:"Je gère les biens d’autres propriétaires (co-hôte)"}},
-        {v:"inversionista",l:{es:"Voy a comprar para alquilar",en:"I’m planning to buy to rent out",fr:"Je compte acheter pour louer"}}]},
-      {id:"ciudad",q:{es:"¿En qué ciudad está el inmueble?",en:"Which city is the property in?",fr:"Dans quelle ville se trouve le bien ?"},opts:[
-        {v:"medellin",l:{es:"Medellín o el Valle de Aburrá",en:"Medellín area",fr:"Medellín et sa région"}},
-        {v:"cartagena",l:{es:"Cartagena",en:"Cartagena",fr:"Carthagène"}},
-        {v:"bogota",l:{es:"Bogotá",en:"Bogotá",fr:"Bogotá"}},
-        {v:"otra",l:{es:"Otra ciudad",en:"Another city",fr:"Une autre ville"}}]},
-      {id:"zona",when:a=>a.perfil!=="inversionista",q:{es:"¿Sabe si el uso del suelo de su zona (POT) permite la vivienda turística?",en:"Do you know whether local zoning (POT) allows short-term rentals in your area?",fr:"Savez-vous si le zonage (POT) de votre quartier autorise la location touristique ?"},hint:{es:"Cada municipio fija en su Plan de Ordenamiento Territorial dónde se permite el alojamiento turístico.",en:"Each municipality’s zoning plan sets where tourist accommodation is allowed.",fr:"Chaque commune fixe dans son plan d’urbanisme où l’hébergement touristique est autorisé."},opts:[
-        {v:"si",l:{es:"Sí, lo verifiqué",en:"Yes, I checked",fr:"Oui, j’ai vérifié"}},{v:"no",l:{es:"Creo que no lo permite",en:"I think it doesn’t",fr:"Je crois que non"}},{v:"nose",l:{es:"No sé",en:"Not sure",fr:"Je ne sais pas"}}]},
-      {id:"rnt",when:a=>a.perfil!=="inversionista",q:{es:"¿El inmueble tiene Registro Nacional de Turismo (RNT) vigente?",en:"Does the property have a valid National Tourism Registry (RNT) number?",fr:"Le bien a-t-il un Registre national du tourisme (RNT) en vigueur ?"},opts:YN},
-      {id:"ph",q:{es:"¿El reglamento del edificio permite el alquiler turístico?",en:"Do the building rules allow short-term rentals?",fr:"Le règlement de l’immeuble autorise-t-il la location touristique ?"},opts:[...YN,{v:"casa",l:{es:"No está en un edificio o conjunto",en:"It’s not in a building or complex",fr:"Ce n’est pas dans un immeuble ou une copropriété"}}]},
-      {id:"sire",when:a=>a.perfil!=="inversionista",q:{es:"¿Reporta a los huéspedes extranjeros a Migración Colombia (SIRE)?",en:"Do you report foreign guests to Migración Colombia (SIRE)?",fr:"Déclarez-vous les voyageurs étrangers à Migración Colombia (SIRE) ?"},opts:YN},
-      {id:"n",q:{es:"¿Cuántos inmuebles?",en:"How many properties?",fr:"Combien de biens ?"},opts:[
-        {v:"1",l:{es:"Uno",en:"One",fr:"Un"}},{v:"2-5",l:{es:"De 2 a 5",en:"2 to 5",fr:"De 2 à 5"}},{v:"6+",l:{es:"Más de 5",en:"More than 5",fr:"Plus de 5"}}]}
+      {id:"perfil",q:{es:"¿Cuál es su situación?",en:"What is your situation?",fr:"Quelle est votre situation ?",pt:"Qual é a sua situação?"},opts:[
+        {v:"propietario",l:{es:"Alquilo mi inmueble por días",en:"I rent out my property short-term",fr:"Je loue mon bien à la nuitée",pt:"Alugo o meu imóvel por temporada"}},
+        {v:"coanfitrion",l:{es:"Administro inmuebles de otros (coanfitrión)",en:"I manage other owners’ properties (co-host)",fr:"Je gère les biens d’autres propriétaires (co-hôte)",pt:"Administro imóveis de terceiros (coanfitrião)"}},
+        {v:"inversionista",l:{es:"Voy a comprar para alquilar",en:"I’m planning to buy to rent out",fr:"Je compte acheter pour louer",pt:"Vou comprar para alugar"}}]},
+      {id:"ciudad",q:{es:"¿En qué ciudad está el inmueble?",en:"Which city is the property in?",fr:"Dans quelle ville se trouve le bien ?",pt:"Em que cidade fica o imóvel?"},opts:[
+        {v:"medellin",l:{es:"Medellín o el Valle de Aburrá",en:"Medellín area",fr:"Medellín et sa région",pt:"Medellín ou o Vale de Aburrá"}},
+        {v:"cartagena",l:{es:"Cartagena",en:"Cartagena",fr:"Carthagène",pt:"Cartagena"}},
+        {v:"bogota",l:{es:"Bogotá",en:"Bogotá",fr:"Bogotá",pt:"Bogotá"}},
+        {v:"otra",l:{es:"Otra ciudad",en:"Another city",fr:"Une autre ville",pt:"Outra cidade"}}]},
+      {id:"zona",when:a=>a.perfil!=="inversionista",q:{es:"¿Sabe si el uso del suelo de su zona (POT) permite la vivienda turística?",en:"Do you know whether local zoning (POT) allows short-term rentals in your area?",fr:"Savez-vous si le zonage (POT) de votre quartier autorise la location touristique ?",pt:"Você sabe se o uso do solo da sua região (POT) permite a moradia turística?"},hint:{es:"Cada municipio fija en su Plan de Ordenamiento Territorial dónde se permite el alojamiento turístico.",en:"Each municipality’s zoning plan sets where tourist accommodation is allowed.",fr:"Chaque commune fixe dans son plan d’urbanisme où l’hébergement touristique est autorisé.",pt:"Cada município define no seu Plano de Ordenamento Territorial onde a hospedagem turística é permitida."},opts:[
+        {v:"si",l:{es:"Sí, lo verifiqué",en:"Yes, I checked",fr:"Oui, j’ai vérifié",pt:"Sim, verifiquei"}},{v:"no",l:{es:"Creo que no lo permite",en:"I think it doesn’t",fr:"Je crois que non",pt:"Acho que não permite"}},{v:"nose",l:{es:"No sé",en:"Not sure",fr:"Je ne sais pas",pt:"Não sei"}}]},
+      {id:"rnt",when:a=>a.perfil!=="inversionista",q:{es:"¿El inmueble tiene Registro Nacional de Turismo (RNT) vigente?",en:"Does the property have a valid National Tourism Registry (RNT) number?",fr:"Le bien a-t-il un Registre national du tourisme (RNT) en vigueur ?",pt:"O imóvel tem Registro Nacional de Turismo (RNT) vigente?"},opts:YN},
+      {id:"ph",q:{es:"¿El reglamento del edificio permite el alquiler turístico?",en:"Do the building rules allow short-term rentals?",fr:"Le règlement de l’immeuble autorise-t-il la location touristique ?",pt:"O regulamento do prédio permite o aluguel turístico?"},opts:[...YN,{v:"casa",l:{es:"No está en un edificio o conjunto",en:"It’s not in a building or complex",fr:"Ce n’est pas dans un immeuble ou une copropriété",pt:"Não fica em um prédio ou condomínio"}}]},
+      {id:"sire",when:a=>a.perfil!=="inversionista",q:{es:"¿Reporta a los huéspedes extranjeros a Migración Colombia (SIRE)?",en:"Do you report foreign guests to Migración Colombia (SIRE)?",fr:"Déclarez-vous les voyageurs étrangers à Migración Colombia (SIRE) ?",pt:"Você reporta os hóspedes estrangeiros à Migración Colombia (SIRE)?"},opts:YN},
+      {id:"n",q:{es:"¿Cuántos inmuebles?",en:"How many properties?",fr:"Combien de biens ?",pt:"Quantos imóveis?"},opts:[
+        {v:"1",l:{es:"Uno",en:"One",fr:"Un",pt:"Um"}},{v:"2-5",l:{es:"De 2 a 5",en:"2 to 5",fr:"De 2 à 5",pt:"De 2 a 5"}},{v:"6+",l:{es:"Más de 5",en:"More than 5",fr:"Plus de 5",pt:"Mais de 5"}}]}
     ],
     result(a){
       const issues=[];
-      if(a.perfil==="inversionista") issues.push(["orange",{es:"Antes de firmar: uso del suelo de la zona, reglamento del edificio y registro de la inversión extranjera.",en:"Before signing: zoning of the area, building rules and registration of the foreign investment.",fr:"Avant de signer : zonage du quartier, règlement de l’immeuble et enregistrement de l’investissement étranger."}]);
-      if(a.zona==="no") issues.push(["red",{es:"Si el uso del suelo de su zona no permite el alojamiento turístico, el alquiler por días puede no estar autorizado aunque tenga RNT.",en:"If local zoning doesn’t allow tourist accommodation, short-term renting may not be authorised even with an RNT.",fr:"Si le zonage ne permet pas l’hébergement touristique, la location courte peut ne pas être autorisée, même avec un RNT."}]);
-      if(a.zona==="nose") issues.push(["orange",{es:"Verifique el uso del suelo de su inmueble con la oficina de planeación de su municipio.",en:"Check your property’s zoning with your municipality’s planning office.",fr:"Vérifiez le zonage de votre bien auprès du service d’urbanisme de votre commune."}]);
-      if(a.rnt==="no") issues.push(["red",{es:"El RNT es obligatorio para alquilar por días: sin él, el anuncio puede ser retirado y hay sanciones. Se renueva cada año antes del 31 de marzo.",en:"The RNT is mandatory for short-term rentals: without it, listings can be removed and fines apply. It must be renewed every year before 31 March.",fr:"Le RNT est obligatoire pour la location courte : sans lui, l’annonce peut être retirée et des sanctions s’appliquent. Il se renouvelle chaque année avant le 31 mars."}]);
-      if(a.rnt==="nose") issues.push(["orange",{es:"Confirme que el número de RNT esté vigente y visible en el anuncio.",en:"Confirm your RNT number is valid and shown on the listing.",fr:"Vérifiez que votre numéro RNT est valide et affiché dans l’annonce."}]);
-      if(a.ph==="no") issues.push(["red",{es:"Si el reglamento no permite el uso turístico, la copropiedad puede imponer multas.",en:"If the building rules don’t allow tourist use, the condominium can impose fines.",fr:"Si le règlement n’autorise pas l’usage touristique, la copropriété peut infliger des amendes."}]);
-      if(a.ph==="nose") issues.push(["orange",{es:"Pida el reglamento registrado o una certificación del administrador.",en:"Ask for the registered building rules or a letter from the administrator.",fr:"Demandez le règlement enregistré ou une attestation du syndic."}]);
-      if(a.sire==="no") issues.push(["red",{es:"El reporte de huéspedes extranjeros a Migración Colombia es obligatorio y su omisión se sanciona con multa.",en:"Reporting foreign guests to Migración Colombia is mandatory and failing to do so is fined.",fr:"La déclaration des voyageurs étrangers à Migración Colombia est obligatoire et son absence est sanctionnée par une amende."}]);
-      if(a.sire==="nose") issues.push(["orange",{es:"Revise si cada huésped extranjero quedó reportado en SIRE.",en:"Check that each foreign guest was reported in SIRE.",fr:"Vérifiez que chaque voyageur étranger a été déclaré dans SIRE."}]);
+      if(a.perfil==="inversionista") issues.push(["orange",{es:"Antes de firmar: uso del suelo de la zona, reglamento del edificio y registro de la inversión extranjera.",en:"Before signing: zoning of the area, building rules and registration of the foreign investment.",fr:"Avant de signer : zonage du quartier, règlement de l’immeuble et enregistrement de l’investissement étranger.",pt:"Antes de assinar: uso do solo da região, regulamento do prédio e registro do investimento estrangeiro."}]);
+      if(a.zona==="no") issues.push(["red",{es:"Si el uso del suelo de su zona no permite el alojamiento turístico, el alquiler por días puede no estar autorizado aunque tenga RNT.",en:"If local zoning doesn’t allow tourist accommodation, short-term renting may not be authorised even with an RNT.",fr:"Si le zonage ne permet pas l’hébergement touristique, la location courte peut ne pas être autorisée, même avec un RNT.",pt:"Se o uso do solo da sua região não permite a hospedagem turística, o aluguel por temporada pode não estar autorizado mesmo com RNT."}]);
+      if(a.zona==="nose") issues.push(["orange",{es:"Verifique el uso del suelo de su inmueble con la oficina de planeación de su municipio.",en:"Check your property’s zoning with your municipality’s planning office.",fr:"Vérifiez le zonage de votre bien auprès du service d’urbanisme de votre commune.",pt:"Verifique o uso do solo do seu imóvel no órgão de planejamento do seu município."}]);
+      if(a.rnt==="no") issues.push(["red",{es:"El RNT es obligatorio para alquilar por días: sin él, el anuncio puede ser retirado y hay sanciones. Se renueva cada año antes del 31 de marzo.",en:"The RNT is mandatory for short-term rentals: without it, listings can be removed and fines apply. It must be renewed every year before 31 March.",fr:"Le RNT est obligatoire pour la location courte : sans lui, l’annonce peut être retirée et des sanctions s’appliquent. Il se renouvelle chaque année avant le 31 mars.",pt:"O RNT é obrigatório para alugar por temporada: sem ele, o anúncio pode ser retirado e há sanções. É renovado todo ano antes de 31 de março."}]);
+      if(a.rnt==="nose") issues.push(["orange",{es:"Confirme que el número de RNT esté vigente y visible en el anuncio.",en:"Confirm your RNT number is valid and shown on the listing.",fr:"Vérifiez que votre numéro RNT est valide et affiché dans l’annonce.",pt:"Confirme que o número do RNT está vigente e visível no anúncio."}]);
+      if(a.ph==="no") issues.push(["red",{es:"Si el reglamento no permite el uso turístico, la copropiedad puede imponer multas.",en:"If the building rules don’t allow tourist use, the condominium can impose fines.",fr:"Si le règlement n’autorise pas l’usage touristique, la copropriété peut infliger des amendes.",pt:"Se o regulamento não permite o uso turístico, o condomínio pode aplicar multas."}]);
+      if(a.ph==="nose") issues.push(["orange",{es:"Pida el reglamento registrado o una certificación del administrador.",en:"Ask for the registered building rules or a letter from the administrator.",fr:"Demandez le règlement enregistré ou une attestation du syndic.",pt:"Peça o regulamento registrado ou uma certidão do administrador do condomínio."}]);
+      if(a.sire==="no") issues.push(["red",{es:"El reporte de huéspedes extranjeros a Migración Colombia es obligatorio y su omisión se sanciona con multa.",en:"Reporting foreign guests to Migración Colombia is mandatory and failing to do so is fined.",fr:"La déclaration des voyageurs étrangers à Migración Colombia est obligatoire et son absence est sanctionnée par une amende.",pt:"O reporte de hóspedes estrangeiros à Migración Colombia é obrigatório e a omissão é punida com multa."}]);
+      if(a.sire==="nose") issues.push(["orange",{es:"Revise si cada huésped extranjero quedó reportado en SIRE.",en:"Check that each foreign guest was reported in SIRE.",fr:"Vérifiez que chaque voyageur étranger a été déclaré dans SIRE.",pt:"Confira se cada hóspede estrangeiro foi reportado no SIRE."}]);
       const color = issues.some(i=>i[0]==="red")?"red":issues.length?"orange":"green";
-      if(!issues.length) issues.push(["green",{es:"Lo esencial parece en orden. El riesgo ahora es no enterarse de los cambios de normas.",en:"The essentials look in order. The risk now is missing rule changes.",fr:"L’essentiel semble en ordre. Le risque maintenant est de rater les changements de règles."}]);
+      if(!issues.length) issues.push(["green",{es:"Lo esencial parece en orden. El riesgo ahora es no enterarse de los cambios de normas.",en:"The essentials look in order. The risk now is missing rule changes.",fr:"L’essentiel semble en ordre. Le risque maintenant est de rater les changements de règles.",pt:"O essencial parece em ordem. O risco agora é não ficar sabendo das mudanças nas normas."}]);
       let svc;
-      if(a.perfil==="inversionista") svc={n:{es:"Auditoría previa a la compra",en:"Pre-purchase legal audit",fr:"Audit juridique avant achat"},d:{es:"Uso del suelo, reglamento, estructura (persona natural o sociedad), registro de la inversión y contratos. Puede empezar con un diagnóstico.",en:"Zoning, building rules, structure (individual or company), investment registration and contracts. You can start with a diagnosis.",fr:"Zonage, règlement, structure (personne physique ou société), enregistrement de l’investissement et contrats. Vous pouvez commencer par un diagnostic."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer"}};
-      else if(a.rnt==="no") svc={n:{es:"Formalización de su vivienda turística",en:"Formalising your short-term rental",fr:"Mise en conformité de votre location"},d:{es:"RNT, RUT, contribución parafiscal, TRA, SIRE y reglas de la casa.",en:"RNT, tax ID (RUT), tourism levy, guest records (TRA), SIRE and house rules.",fr:"RNT, numéro fiscal (RUT), contribution parafiscale, registre des voyageurs (TRA), SIRE et règlement intérieur."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer"}};
-      else if(color!=="green") svc={n:{es:"Diagnóstico de cumplimiento",en:"Compliance diagnosis",fr:"Diagnostic de conformité"},d:{es:"Revisión de su situación e informe en verde, naranja o rojo, con su zona y su reglamento verificados.",en:"Review of your situation and a green, orange or red report, with your zoning and building rules checked.",fr:"Examen de votre situation et rapport vert, orange ou rouge, avec votre zone et votre règlement vérifiés."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer"}};
-      else if(a.n==="1") svc={n:{es:"Suscripción Esencial",en:"Essential subscription",fr:"Abonnement Essentiel"},d:{es:"Le avisamos cada cambio legal que afecte su inmueble, con fecha límite, y le damos su calendario de obligaciones.",en:"We alert you to every legal change affecting your property, with a deadline, and give you your obligations calendar.",fr:"Nous vous prévenons de chaque changement légal qui touche votre bien, avec une date limite, et vous donnons votre calendrier des obligations."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer"}};
-      else if(a.n==="2-5") svc={n:{es:"Suscripción Operador",en:"Operator subscription",fr:"Abonnement Opérateur"},d:{es:"Para varios inmuebles: alertas, revisión de anuncios, TRA y SIRE, y contrato tipo de administración.",en:"For several properties: alerts, listing review, TRA and SIRE, and a model management contract.",fr:"Pour plusieurs biens : alertes, revue des annonces, TRA et SIRE, et contrat de gestion type."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer"}};
-      else svc={n:{es:"Plan a medida para operadores",en:"Custom plan for operators",fr:"Formule sur mesure pour opérateurs"},d:{es:"Muchos inmuebles: definimos juntos el alcance después de un diagnóstico.",en:"Many properties: we set the scope together after a diagnosis.",fr:"Nombreux biens : nous définissons ensemble le périmètre après un diagnostic."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer"}};
+      if(a.perfil==="inversionista") svc={n:{es:"Auditoría previa a la compra",en:"Pre-purchase legal audit",fr:"Audit juridique avant achat",pt:"Auditoria prévia à compra"},d:{es:"Uso del suelo, reglamento, estructura (persona natural o sociedad), registro de la inversión y contratos. Puede empezar con un diagnóstico.",en:"Zoning, building rules, structure (individual or company), investment registration and contracts. You can start with a diagnosis.",fr:"Zonage, règlement, structure (personne physique ou société), enregistrement de l’investissement et contrats. Vous pouvez commencer par un diagnostic.",pt:"Uso do solo, regulamento, estrutura (pessoa física ou empresa), registro do investimento e contratos. Você pode começar com um diagnóstico."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer",pt:"Informamos antes de começar"}};
+      else if(a.rnt==="no") svc={n:{es:"Formalización de su vivienda turística",en:"Formalising your short-term rental",fr:"Mise en conformité de votre location",pt:"Formalização da sua moradia turística"},d:{es:"RNT, RUT, contribución parafiscal, TRA, SIRE y reglas de la casa.",en:"RNT, tax ID (RUT), tourism levy, guest records (TRA), SIRE and house rules.",fr:"RNT, numéro fiscal (RUT), contribution parafiscale, registre des voyageurs (TRA), SIRE et règlement intérieur.",pt:"RNT, RUT, contribuição parafiscal, TRA, SIRE e regras da casa."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer",pt:"Informamos antes de começar"}};
+      else if(color!=="green") svc={n:{es:"Diagnóstico de cumplimiento",en:"Compliance diagnosis",fr:"Diagnostic de conformité",pt:"Diagnóstico de conformidade"},d:{es:"Revisión de su situación e informe en verde, naranja o rojo, con su zona y su reglamento verificados.",en:"Review of your situation and a green, orange or red report, with your zoning and building rules checked.",fr:"Examen de votre situation et rapport vert, orange ou rouge, avec votre zone et votre règlement vérifiés.",pt:"Revisão da sua situação e relatório em verde, laranja ou vermelho, com a sua zona e o seu regulamento verificados."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer",pt:"Informamos antes de começar"}};
+      else if(a.n==="1") svc={n:{es:"Suscripción Esencial",en:"Essential subscription",fr:"Abonnement Essentiel",pt:"Assinatura Essencial"},d:{es:"Le avisamos cada cambio legal que afecte su inmueble, con fecha límite, y le damos su calendario de obligaciones.",en:"We alert you to every legal change affecting your property, with a deadline, and give you your obligations calendar.",fr:"Nous vous prévenons de chaque changement légal qui touche votre bien, avec une date limite, et vous donnons votre calendrier des obligations.",pt:"Avisamos cada mudança legal que afete o seu imóvel, com prazo, e entregamos o seu calendário de obrigações."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer",pt:"Informamos antes de começar"}};
+      else if(a.n==="2-5") svc={n:{es:"Suscripción Operador",en:"Operator subscription",fr:"Abonnement Opérateur",pt:"Assinatura Operador"},d:{es:"Para varios inmuebles: alertas, revisión de anuncios, TRA y SIRE, y contrato tipo de administración.",en:"For several properties: alerts, listing review, TRA and SIRE, and a model management contract.",fr:"Pour plusieurs biens : alertes, revue des annonces, TRA et SIRE, et contrat de gestion type.",pt:"Para vários imóveis: alertas, revisão de anúncios, TRA e SIRE, e contrato-modelo de administração."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer",pt:"Informamos antes de começar"}};
+      else svc={n:{es:"Plan a medida para operadores",en:"Custom plan for operators",fr:"Formule sur mesure pour opérateurs",pt:"Plano sob medida para operadores"},d:{es:"Muchos inmuebles: definimos juntos el alcance después de un diagnóstico.",en:"Many properties: we set the scope together after a diagnosis.",fr:"Nombreux biens : nous définissons ensemble le périmètre après un diagnostic.",pt:"Muitos imóveis: definimos juntos o escopo depois de um diagnóstico."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer",pt:"Informamos antes de começar"}};
       const now = a.perfil==="inversionista" ? [
-        {es:"No firme promesa de compraventa ni pague arras antes de verificar la zona y el reglamento.",en:"Don’t sign a purchase agreement or pay a deposit before checking zoning and building rules.",fr:"Ne signez pas de compromis et ne versez pas d’acompte avant d’avoir vérifié le zonage et le règlement."},
-        {es:"Pida el certificado de tradición y libertad y el reglamento de propiedad horizontal.",en:"Ask for the title certificate (certificado de tradición) and the building rules.",fr:"Demandez le certificat de propriété (certificado de tradición) et le règlement de copropriété."},
-        {es:"Planee cómo traerá el dinero: la inversión extranjera se registra para conservar sus derechos.",en:"Plan how you will bring in the money: foreign investment must be registered to keep your rights.",fr:"Prévoyez comment faire venir les fonds : l’investissement étranger doit être enregistré pour garder vos droits."}
+        {es:"No firme promesa de compraventa ni pague arras antes de verificar la zona y el reglamento.",en:"Don’t sign a purchase agreement or pay a deposit before checking zoning and building rules.",fr:"Ne signez pas de compromis et ne versez pas d’acompte avant d’avoir vérifié le zonage et le règlement.",pt:"Não assine promessa de compra e venda nem pague sinal antes de verificar a zona e o regulamento."},
+        {es:"Pida el certificado de tradición y libertad y el reglamento de propiedad horizontal.",en:"Ask for the title certificate (certificado de tradición) and the building rules.",fr:"Demandez le certificat de propriété (certificado de tradición) et le règlement de copropriété.",pt:"Peça a certidão de tradição e liberdade e o regulamento de propriedade horizontal."},
+        {es:"Planee cómo traerá el dinero: la inversión extranjera se registra para conservar sus derechos.",en:"Plan how you will bring in the money: foreign investment must be registered to keep your rights.",fr:"Prévoyez comment faire venir les fonds : l’investissement étranger doit être enregistré pour garder vos droits.",pt:"Planeje como vai trazer o dinheiro: o investimento estrangeiro é registrado para preservar os seus direitos."}
       ] : [
-        {es:"Reúna en una carpeta: escritura o contrato, reglamento, RNT y comprobantes de pago.",en:"Gather in one folder: deed or lease, building rules, RNT and payment receipts.",fr:"Rassemblez dans un dossier : acte ou bail, règlement, RNT et justificatifs de paiement."},
-        {es:"No cancele reservas confirmadas para revender más caro: es una infracción.",en:"Don’t cancel confirmed bookings to resell at a higher price: it’s an infringement.",fr:"N’annulez pas des réservations confirmées pour relouer plus cher : c’est une infraction."},
-        {es:"Anote las fechas: renovación del RNT antes del 31 de marzo y declaraciones de impuestos.",en:"Note the dates: RNT renewal before 31 March and tax filings.",fr:"Notez les dates : renouvellement du RNT avant le 31 mars et déclarations fiscales."}
+        {es:"Reúna en una carpeta: escritura o contrato, reglamento, RNT y comprobantes de pago.",en:"Gather in one folder: deed or lease, building rules, RNT and payment receipts.",fr:"Rassemblez dans un dossier : acte ou bail, règlement, RNT et justificatifs de paiement.",pt:"Reúna em uma pasta: escritura ou contrato, regulamento, RNT e comprovantes de pagamento."},
+        {es:"No cancele reservas confirmadas para revender más caro: es una infracción.",en:"Don’t cancel confirmed bookings to resell at a higher price: it’s an infringement.",fr:"N’annulez pas des réservations confirmées pour relouer plus cher : c’est une infraction.",pt:"Não cancele reservas confirmadas para revender mais caro: é uma infração."},
+        {es:"Anote las fechas: renovación del RNT antes del 31 de marzo y declaraciones de impuestos.",en:"Note the dates: RNT renewal before 31 March and tax filings.",fr:"Notez les dates : renouvellement du RNT avant le 31 mars et déclarations fiscales.",pt:"Anote as datas: renovação do RNT antes de 31 de março e declarações de impostos."}
       ];
       return {color,issues,svc,now,route:null};
     }
   },
   consumidor:{
-    door:{es:"Tuve un problema como consumidor",en:"I had a problem as a consumer",fr:"J’ai eu un problème en tant que consommateur"},
-    doorSub:{es:"Alojamiento, transporte y otros consumos: compras, bancos, telefonía, servicios públicos…",en:"Accommodation, transport and more: shopping, banks, phone, utilities…",fr:"Hébergement, transport et autres : achats, banques, télécoms, eau-électricité…"},
-    topic:{es:"Protección al consumidor",en:"Consumer protection",fr:"Protection du consommateur"},
+    door:{es:"Tuve un problema como consumidor",en:"I had a problem as a consumer",fr:"J’ai eu un problème en tant que consommateur",pt:"Tive um problema como consumidor"},
+    doorSub:{es:"Alojamiento, transporte y otros consumos: compras, bancos, telefonía, servicios públicos…",en:"Accommodation, transport and more: shopping, banks, phone, utilities…",fr:"Hébergement, transport et autres : achats, banques, télécoms, eau-électricité…",pt:"Hospedagem, transporte e outros: compras, bancos, telefonia, serviços públicos…"},
+    topic:{es:"Protección al consumidor",en:"Consumer protection",fr:"Protection du consommateur",pt:"Defesa do consumidor"},
     qs:[
-      {id:"sector",q:{es:"¿En qué tipo de consumo fue el problema?",en:"What kind of purchase or service was it?",fr:"De quel type d’achat ou de service s’agit-il ?"},opts:SECTORS.map(x=>({v:x.v,l:x.l,s:x.s}))},
-      {id:"situacion",q:{es:"¿Qué pasó exactamente?",en:"What exactly happened?",fr:"Que s’est-il passé exactement ?"},opts:a=>SITS.filter(x=>x.sector===a.sector).map(x=>({v:x.id,l:x.t}))},
-      {id:"cuando",q:{es:"¿Cuándo ocurrió?",en:"When did it happen?",fr:"Quand est-ce arrivé ?"},opts:[
-        {v:"5d",l:{es:"Hace menos de 5 días hábiles",en:"Less than 5 business days ago",fr:"Il y a moins de 5 jours ouvrés"}},
-        {v:"1m",l:{es:"Hace menos de un mes",en:"Less than a month ago",fr:"Il y a moins d’un mois"}},
-        {v:"mas",l:{es:"Hace más de un mes",en:"More than a month ago",fr:"Il y a plus d’un mois"}}]},
-      {id:"reclamo",q:{es:"¿Ya reclamó por escrito a la empresa?",en:"Have you already complained in writing to the company?",fr:"Avez-vous déjà réclamé par écrit auprès de l’entreprise ?"},opts:[
-        {v:"no",l:{es:"Todavía no",en:"Not yet",fr:"Pas encore"}},
-        {v:"sinresp",l:{es:"Sí, y no me responden",en:"Yes, and they don’t reply",fr:"Oui, et ils ne répondent pas"}},
-        {v:"negado",l:{es:"Sí, y me lo negaron",en:"Yes, and they refused",fr:"Oui, et ils ont refusé"}}]},
-      {id:"monto",q:{es:"¿Cuánto dinero está en juego, más o menos?",en:"Roughly how much money is at stake?",fr:"Quel montant est en jeu, à peu près ?"},opts:AMOUNT},
-      {id:"reside",q:{es:"¿Dónde vive usted?",en:"Where do you live?",fr:"Où vivez-vous ?"},opts:RESIDE}
+      {id:"sector",q:{es:"¿En qué tipo de consumo fue el problema?",en:"What kind of purchase or service was it?",fr:"De quel type d’achat ou de service s’agit-il ?",pt:"Em que tipo de consumo foi o problema?"},opts:SECTORS.map(x=>({v:x.v,l:x.l,s:x.s}))},
+      {id:"situacion",q:{es:"¿Qué pasó exactamente?",en:"What exactly happened?",fr:"Que s’est-il passé exactement ?",pt:"O que aconteceu exatamente?"},opts:a=>SITS.filter(x=>x.sector===a.sector).map(x=>({v:x.id,l:x.t}))},
+      {id:"cuando",q:{es:"¿Cuándo ocurrió?",en:"When did it happen?",fr:"Quand est-ce arrivé ?",pt:"Quando aconteceu?"},opts:[
+        {v:"5d",l:{es:"Hace menos de 5 días hábiles",en:"Less than 5 business days ago",fr:"Il y a moins de 5 jours ouvrés",pt:"Há menos de 5 dias úteis"}},
+        {v:"1m",l:{es:"Hace menos de un mes",en:"Less than a month ago",fr:"Il y a moins d’un mois",pt:"Há menos de um mês"}},
+        {v:"mas",l:{es:"Hace más de un mes",en:"More than a month ago",fr:"Il y a plus d’un mois",pt:"Há mais de um mês"}}]},
+      {id:"reclamo",q:{es:"¿Ya reclamó por escrito a la empresa?",en:"Have you already complained in writing to the company?",fr:"Avez-vous déjà réclamé par écrit auprès de l’entreprise ?",pt:"Você já reclamou por escrito à empresa?"},opts:[
+        {v:"no",l:{es:"Todavía no",en:"Not yet",fr:"Pas encore",pt:"Ainda não"}},
+        {v:"sinresp",l:{es:"Sí, y no me responden",en:"Yes, and they don’t reply",fr:"Oui, et ils ne répondent pas",pt:"Sim, e não respondem"}},
+        {v:"negado",l:{es:"Sí, y me lo negaron",en:"Yes, and they refused",fr:"Oui, et ils ont refusé",pt:"Sim, e recusaram"}}]},
+      {id:"monto",q:{es:"¿Cuánto dinero está en juego, más o menos?",en:"Roughly how much money is at stake?",fr:"Quel montant est en jeu, à peu près ?",pt:"Quanto dinheiro está em jogo, mais ou menos?"},opts:AMOUNT},
+      {id:"reside",q:{es:"¿Dónde vive usted?",en:"Where do you live?",fr:"Où vivez-vous ?",pt:"Onde você mora?"},opts:RESIDE}
     ],
     result(a){
       const sit = SITS.find(x=>x.id===a.situacion) || SITS[0];
       const issues=[];
       const urgent = sit.urgent && a.cuando==="5d";
-      if(sit.level==="red") issues.push(["red",{es:"Su seguridad y su salud van primero: si hay peligro, llame al 123.",en:"Your safety and health come first: if you are in danger, call 123.",fr:"Votre sécurité et votre santé d’abord : en cas de danger, appelez le 123."}]);
-      if(urgent) issues.push(["red",{es:sit.urgentMsg,en:"A short legal deadline may be running in your case: act today.",fr:"Un délai légal court court peut-être dans votre cas : agissez aujourd’hui."}]);
-      else if(sit.urgent && a.cuando!=="5d") issues.push(["orange",{es:sit.urgentMsg+" Verifique si ese plazo ya pasó; aún puede quedar la vía del reclamo y la SIC.",en:"Some short deadlines may already have passed; the complaint route may still be open.",fr:"Certains délais courts sont peut-être dépassés ; la voie de la réclamation peut rester ouverte."}]);
-      if(a.reclamo==="no") issues.push(["orange",{es:"El primer paso casi siempre es un reclamo escrito: la empresa tiene 15 días hábiles para responder y la constancia le sirve para la SIC.",en:"The first step is almost always a written complaint: the company has 15 business days to reply, and the proof is needed for the authorities.",fr:"La première étape est presque toujours une réclamation écrite : l’entreprise a 15 jours ouvrés pour répondre, et la preuve sert devant les autorités."}]);
-      if(a.reclamo==="negado"||a.reclamo==="sinresp") issues.push(["orange",{es:"Con su reclamo escrito ya hecho, el paso siguiente es la autoridad competente, con un expediente ordenado.",en:"With your written complaint already sent, the next step is the competent authority, with an orderly file.",fr:"Votre réclamation écrite étant faite, l’étape suivante est l’autorité compétente, avec un dossier ordonné."}]);
-      if(a.cuando==="mas") issues.push(["orange",{es:"Pasó más de un mes: conviene verificar qué plazos siguen abiertos en su caso.",en:"More than a month has passed: check which deadlines are still open.",fr:"Plus d’un mois s’est écoulé : vérifiez quels délais restent ouverts."}]);
-      if(a.reside==="ext") issues.push(["green",{es:"Vive fuera de Colombia: un problema ocurrido aquí suele tratarse aquí, y su país puede ofrecer otra vía. Le orientamos en su idioma.",en:"You live outside Colombia: a problem that happened here is usually handled here, and your country may offer another route. We’ll guide you in your language.",fr:"Vous vivez hors de Colombie : un problème survenu ici se traite en général ici, et votre pays peut offrir une autre voie. Nous vous orientons dans votre langue."}]);
+      if(sit.level==="red") issues.push(["red",{es:"Su seguridad y su salud van primero: si hay peligro, llame al 123.",en:"Your safety and health come first: if you are in danger, call 123.",fr:"Votre sécurité et votre santé d’abord : en cas de danger, appelez le 123.",pt:"A sua segurança e a sua saúde vêm primeiro: se houver perigo, ligue para o 123."}]);
+      if(urgent) issues.push(["red",{es:sit.urgentMsg,en:"A short legal deadline may be running in your case: act today.",fr:"Un délai légal court court peut-être dans votre cas : agissez aujourd’hui.",pt:"Um prazo legal curto pode estar correndo no seu caso: aja hoje."}]);
+      else if(sit.urgent && a.cuando!=="5d") issues.push(["orange",{es:sit.urgentMsg+" Verifique si ese plazo ya pasó; aún puede quedar la vía del reclamo y la SIC.",en:"Some short deadlines may already have passed; the complaint route may still be open.",fr:"Certains délais courts sont peut-être dépassés ; la voie de la réclamation peut rester ouverte.",pt:"Alguns prazos curtos podem já ter passado; o caminho da reclamação ainda pode estar aberto."}]);
+      if(a.reclamo==="no") issues.push(["orange",{es:"El primer paso casi siempre es un reclamo escrito: la empresa tiene 15 días hábiles para responder y la constancia le sirve para la SIC.",en:"The first step is almost always a written complaint: the company has 15 business days to reply, and the proof is needed for the authorities.",fr:"La première étape est presque toujours une réclamation écrite : l’entreprise a 15 jours ouvrés pour répondre, et la preuve sert devant les autorités.",pt:"O primeiro passo quase sempre é uma reclamação por escrito: a empresa tem 15 dias úteis para responder e o comprovante serve para a SIC."}]);
+      if(a.reclamo==="negado"||a.reclamo==="sinresp") issues.push(["orange",{es:"Con su reclamo escrito ya hecho, el paso siguiente es la autoridad competente, con un expediente ordenado.",en:"With your written complaint already sent, the next step is the competent authority, with an orderly file.",fr:"Votre réclamation écrite étant faite, l’étape suivante est l’autorité compétente, avec un dossier ordonné.",pt:"Com a sua reclamação por escrito já feita, o passo seguinte é a autoridade competente, com um dossiê organizado."}]);
+      if(a.cuando==="mas") issues.push(["orange",{es:"Pasó más de un mes: conviene verificar qué plazos siguen abiertos en su caso.",en:"More than a month has passed: check which deadlines are still open.",fr:"Plus d’un mois s’est écoulé : vérifiez quels délais restent ouverts.",pt:"Passou mais de um mês: convém verificar quais prazos continuam abertos no seu caso."}]);
+      if(a.reside==="ext") issues.push(["green",{es:"Vive fuera de Colombia: un problema ocurrido aquí suele tratarse aquí, y su país puede ofrecer otra vía. Le orientamos en su idioma.",en:"You live outside Colombia: a problem that happened here is usually handled here, and your country may offer another route. We’ll guide you in your language.",fr:"Vous vivez hors de Colombie : un problème survenu ici se traite en général ici, et votre pays peut offrir une autre voie. Nous vous orientons dans votre langue.",pt:"Você mora fora da Colômbia: um problema ocorrido aqui costuma ser tratado aqui, e o seu país pode oferecer outro caminho. Orientamos você no seu idioma."}]);
       const color = (urgent||sit.level==="red")?"red":(a.reclamo==="no"||a.cuando==="mas"||sit.urgent)?"orange":"green";
       let svc;
-      if(a.monto==="bajo") svc={n:{es:"Kit de autonomía",en:"Self-help kit",fr:"Kit d’autonomie"},d:{es:"Modelos de reclamo, guía paso a paso ante la autoridad que corresponde y lista de documentos, para que lo haga usted mismo.",en:"Complaint templates, a step-by-step guide for the right authority and a document checklist, so you can do it yourself.",fr:"Modèles de réclamation, guide pas à pas auprès de la bonne autorité et liste de documents, pour le faire vous-même."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer"}};
-      else if(a.monto==="medio") svc={n:{es:"Revisión de expediente",en:"Case file review",fr:"Revue du dossier"},d:{es:"Lectura de sus documentos, ruta recomendada por la abogada, calendario de plazos y reclamo adaptado.",en:"Review of your documents, a route recommended by the lawyer, a deadline calendar and a tailored complaint.",fr:"Lecture de vos documents, voie recommandée par l’avocate, calendrier des délais et réclamation adaptée."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer"}};
-      else svc={n:{es:"Paquete de reclamación",en:"Claim package",fr:"Forfait réclamation"},d:{es:"Expediente de pruebas, reclamo redactado y traducido, solicitud ante la autoridad revisada y seguimiento. Si hace falta, acompañamiento de la abogada.",en:"Evidence file, complaint drafted and translated, filing with the authority reviewed, and follow-up. If needed, representation by the lawyer.",fr:"Dossier de preuves, réclamation rédigée et traduite, demande auprès de l’autorité vérifiée et suivi. Si nécessaire, accompagnement par l’avocate."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer"}};
+      if(a.monto==="bajo") svc={n:{es:"Kit de autonomía",en:"Self-help kit",fr:"Kit d’autonomie",pt:"Kit de autonomia"},d:{es:"Modelos de reclamo, guía paso a paso ante la autoridad que corresponde y lista de documentos, para que lo haga usted mismo.",en:"Complaint templates, a step-by-step guide for the right authority and a document checklist, so you can do it yourself.",fr:"Modèles de réclamation, guide pas à pas auprès de la bonne autorité et liste de documents, pour le faire vous-même.",pt:"Modelos de reclamação, guia passo a passo para a autoridade correta e lista de documentos, para você mesmo fazer."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer",pt:"Informamos antes de começar"}};
+      else if(a.monto==="medio") svc={n:{es:"Revisión de expediente",en:"Case file review",fr:"Revue du dossier",pt:"Revisão de dossiê"},d:{es:"Lectura de sus documentos, ruta recomendada por la abogada, calendario de plazos y reclamo adaptado.",en:"Review of your documents, a route recommended by the lawyer, a deadline calendar and a tailored complaint.",fr:"Lecture de vos documents, voie recommandée par l’avocate, calendrier des délais et réclamation adaptée.",pt:"Leitura dos seus documentos, caminho recomendado pela advogada, calendário de prazos e reclamação adaptada."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer",pt:"Informamos antes de começar"}};
+      else svc={n:{es:"Paquete de reclamación",en:"Claim package",fr:"Forfait réclamation",pt:"Pacote de reclamação"},d:{es:"Expediente de pruebas, reclamo redactado y traducido, solicitud ante la autoridad revisada y seguimiento. Si hace falta, acompañamiento de la abogada.",en:"Evidence file, complaint drafted and translated, filing with the authority reviewed, and follow-up. If needed, representation by the lawyer.",fr:"Dossier de preuves, réclamation rédigée et traduite, demande auprès de l’autorité vérifiée et suivi. Si nécessaire, accompagnement par l’avocate.",pt:"Dossiê de provas, reclamação redigida e traduzida, pedido à autoridade revisado e acompanhamento. Se necessário, atuação da advogada."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer",pt:"Informamos antes de começar"}};
       const now=[
-        {es:"No borre nada: mensajes, correos, anuncio, recibos, cuenta.",en:"Delete nothing: messages, emails, listing, receipts, account.",fr:"Ne supprimez rien : messages, e-mails, annonce, reçus, compte."},
-        {es:"Haga capturas de pantalla con la fecha visible y guarde una copia fuera del teléfono.",en:"Take screenshots with the date visible and keep a copy off your phone.",fr:"Faites des captures d’écran avec la date visible et gardez une copie hors du téléphone."},
-        {es:"No acepte una oferta parcial para cerrar el asunto antes de leer las condiciones.",en:"Don’t accept a partial offer to close the matter before reading the terms.",fr:"N’acceptez pas une offre partielle pour clore l’affaire avant d’en lire les conditions."}
+        {es:"No borre nada: mensajes, correos, anuncio, recibos, cuenta.",en:"Delete nothing: messages, emails, listing, receipts, account.",fr:"Ne supprimez rien : messages, e-mails, annonce, reçus, compte.",pt:"Não apague nada: mensagens, e-mails, anúncio, recibos, conta."},
+        {es:"Haga capturas de pantalla con la fecha visible y guarde una copia fuera del teléfono.",en:"Take screenshots with the date visible and keep a copy off your phone.",fr:"Faites des captures d’écran avec la date visible et gardez une copie hors du téléphone.",pt:"Tire capturas de tela com a data visível e guarde uma cópia fora do celular."},
+        {es:"No acepte una oferta parcial para cerrar el asunto antes de leer las condiciones.",en:"Don’t accept a partial offer to close the matter before reading the terms.",fr:"N’acceptez pas une offre partielle pour clore l’affaire avant d’en lire les conditions.",pt:"Não aceite uma oferta parcial para encerrar o assunto antes de ler as condições."}
       ];
       return {color,issues,svc,now,route:null,sit};
     }
   },
   plataforma:{
-    door:{es:"Tengo un conflicto con una plataforma digital",en:"I have a dispute with a digital platform",fr:"J’ai un litige avec une plateforme numérique"},
-    doorSub:{es:"Cuenta suspendida, pagos retenidos, anuncio retirado, reembolso negado.",en:"Suspended account, withheld payouts, removed listing, refused refund.",fr:"Compte suspendu, paiements bloqués, annonce retirée, remboursement refusé."},
-    topic:{es:"Conflicto con plataforma",en:"Platform dispute",fr:"Litige avec une plateforme"},
+    door:{es:"Tengo un conflicto con una plataforma digital",en:"I have a dispute with a digital platform",fr:"J’ai un litige avec une plateforme numérique",pt:"Tenho um conflito com uma plataforma digital"},
+    doorSub:{es:"Cuenta suspendida, pagos retenidos, anuncio retirado, reembolso negado.",en:"Suspended account, withheld payouts, removed listing, refused refund.",fr:"Compte suspendu, paiements bloqués, annonce retirée, remboursement refusé.",pt:"Conta suspensa, pagamentos retidos, anúncio removido, reembolso negado."},
+    topic:{es:"Conflicto con plataforma",en:"Platform dispute",fr:"Litige avec une plateforme",pt:"Conflito com plataforma"},
     qs:[
-      {id:"rol",q:{es:"¿Cuál es su relación con la plataforma?",en:"What is your relationship with the platform?",fr:"Quelle est votre relation avec la plateforme ?"},opts:[
-        {v:"anfitrion",l:{es:"Ofrezco en ella: anfitrión o vendedor",en:"I sell or host on it",fr:"J’y propose une offre : hôte ou vendeur"}},
-        {v:"usuario",l:{es:"La uso como cliente",en:"I use it as a customer",fr:"Je l’utilise comme client"}},
-        {v:"conductor",l:{es:"Trabajo en ella: conductor o repartidor",en:"I work through it: driver or courier",fr:"J’y travaille : chauffeur ou livreur"}}]},
-      {id:"problema",q:{es:"¿Cuál es el problema?",en:"What is the problem?",fr:"Quel est le problème ?"},opts:[
-        {v:"cuenta",l:{es:"Mi cuenta fue suspendida o bloqueada",en:"My account was suspended or blocked",fr:"Mon compte a été suspendu ou bloqué"}},
-        {v:"pagos",l:{es:"Me retienen pagos",en:"My payouts are withheld",fr:"Mes paiements sont bloqués"}},
-        {v:"anuncio",l:{es:"Retiraron mi anuncio",en:"My listing was removed",fr:"Mon annonce a été retirée"}},
-        {v:"reembolso",l:{es:"Me negaron un reembolso o una compensación",en:"I was refused a refund or compensation",fr:"On m’a refusé un remboursement ou une compensation"}},
-        {v:"sancion",l:{es:"Una sanción o reseña que considero injusta",en:"A penalty or review I consider unfair",fr:"Une sanction ou un avis que j’estime injuste"}}]},
-      {id:"explicacion",q:{es:"¿La plataforma le dio una explicación por escrito?",en:"Did the platform explain in writing?",fr:"La plateforme vous a-t-elle donné une explication écrite ?"},opts:[
-        {v:"si",l:{es:"Sí",en:"Yes",fr:"Oui"}},{v:"no",l:{es:"No, o solo un mensaje automático",en:"No, or only an automated message",fr:"Non, ou seulement un message automatique"}}]},
-      {id:"monto",q:{es:"¿Cuánto dinero está en juego, más o menos?",en:"Roughly how much money is at stake?",fr:"Quel montant est en jeu, à peu près ?"},opts:AMOUNT},
-      {id:"reside",q:{es:"¿Dónde vive usted?",en:"Where do you live?",fr:"Où vivez-vous ?"},opts:RESIDE}
+      {id:"rol",q:{es:"¿Cuál es su relación con la plataforma?",en:"What is your relationship with the platform?",fr:"Quelle est votre relation avec la plateforme ?",pt:"Qual é a sua relação com a plataforma?"},opts:[
+        {v:"anfitrion",l:{es:"Ofrezco en ella: anfitrión o vendedor",en:"I sell or host on it",fr:"J’y propose une offre : hôte ou vendeur",pt:"Ofereço nela: anfitrião ou vendedor"}},
+        {v:"usuario",l:{es:"La uso como cliente",en:"I use it as a customer",fr:"Je l’utilise comme client",pt:"Uso como cliente"}},
+        {v:"conductor",l:{es:"Trabajo en ella: conductor o repartidor",en:"I work through it: driver or courier",fr:"J’y travaille : chauffeur ou livreur",pt:"Trabalho por ela: motorista ou entregador"}}]},
+      {id:"problema",q:{es:"¿Cuál es el problema?",en:"What is the problem?",fr:"Quel est le problème ?",pt:"Qual é o problema?"},opts:[
+        {v:"cuenta",l:{es:"Mi cuenta fue suspendida o bloqueada",en:"My account was suspended or blocked",fr:"Mon compte a été suspendu ou bloqué",pt:"Minha conta foi suspensa ou bloqueada"}},
+        {v:"pagos",l:{es:"Me retienen pagos",en:"My payouts are withheld",fr:"Mes paiements sont bloqués",pt:"Estão retendo os meus pagamentos"}},
+        {v:"anuncio",l:{es:"Retiraron mi anuncio",en:"My listing was removed",fr:"Mon annonce a été retirée",pt:"Removeram o meu anúncio"}},
+        {v:"reembolso",l:{es:"Me negaron un reembolso o una compensación",en:"I was refused a refund or compensation",fr:"On m’a refusé un remboursement ou une compensation",pt:"Negaram um reembolso ou uma compensação"}},
+        {v:"sancion",l:{es:"Una sanción o reseña que considero injusta",en:"A penalty or review I consider unfair",fr:"Une sanction ou un avis que j’estime injuste",pt:"Uma sanção ou avaliação que considero injusta"}}]},
+      {id:"explicacion",q:{es:"¿La plataforma le dio una explicación por escrito?",en:"Did the platform explain in writing?",fr:"La plateforme vous a-t-elle donné une explication écrite ?",pt:"A plataforma deu uma explicação por escrito?"},opts:[
+        {v:"si",l:{es:"Sí",en:"Yes",fr:"Oui",pt:"Sim"}},{v:"no",l:{es:"No, o solo un mensaje automático",en:"No, or only an automated message",fr:"Non, ou seulement un message automatique",pt:"Não, ou só uma mensagem automática"}}]},
+      {id:"monto",q:{es:"¿Cuánto dinero está en juego, más o menos?",en:"Roughly how much money is at stake?",fr:"Quel montant est en jeu, à peu près ?",pt:"Quanto dinheiro está em jogo, mais ou menos?"},opts:AMOUNT},
+      {id:"reside",q:{es:"¿Dónde vive usted?",en:"Where do you live?",fr:"Où vivez-vous ?",pt:"Onde você mora?"},opts:RESIDE}
     ],
     result(a){
       const issues=[];
-      if(a.problema==="pagos"||a.problema==="cuenta") issues.push(["red",{es:"Mientras la cuenta o los pagos estén bloqueados, pierde ingresos cada día: conviene actuar con orden y rápido.",en:"While the account or payouts are blocked, you lose income every day: act quickly and in an orderly way.",fr:"Tant que le compte ou les paiements sont bloqués, vous perdez des revenus chaque jour : agissez vite et avec méthode."}]);
-      if(a.explicacion==="no") issues.push(["orange",{es:"Pida por escrito el motivo concreto y la norma de la plataforma que aplicaron; guarde la constancia.",en:"Ask in writing for the specific reason and the platform rule applied; keep proof.",fr:"Demandez par écrit le motif précis et la règle de la plateforme appliquée ; gardez une preuve."}]);
-      issues.push(["orange",{es:"Los términos de la plataforma fijan reglas y a veces un arbitraje en el exterior. Si el servicio se ofrece en Colombia, la SIC también puede ser una vía.",en:"The platform’s terms set rules and sometimes arbitration abroad. If the service is offered in Colombia, the SIC may also be an option.",fr:"Les conditions de la plateforme fixent des règles et parfois un arbitrage à l’étranger. Si le service est proposé en Colombie, la SIC peut aussi être une voie."}]);
-      if(a.rol==="conductor") issues.push(["orange",{es:"La relación laboral de conductores y repartidores está fuera de nuestro alcance: le orientamos sobre la cuenta y los pagos, y le indicamos a quién acudir para lo laboral.",en:"Employment matters for drivers and couriers are outside our scope: we guide you on the account and payouts and tell you who handles employment issues.",fr:"Le droit du travail des chauffeurs et livreurs ne relève pas de nos services : nous vous orientons sur le compte et les paiements, et vous indiquons à qui vous adresser pour le reste."}]);
-      if(a.reside==="ext") issues.push(["green",{es:"Vive fuera de Colombia: trabajamos en su idioma y a distancia.",en:"You live outside Colombia: we work in your language and remotely.",fr:"Vous vivez hors de Colombie : nous travaillons dans votre langue et à distance."}]);
+      if(a.problema==="pagos"||a.problema==="cuenta") issues.push(["red",{es:"Mientras la cuenta o los pagos estén bloqueados, pierde ingresos cada día: conviene actuar con orden y rápido.",en:"While the account or payouts are blocked, you lose income every day: act quickly and in an orderly way.",fr:"Tant que le compte ou les paiements sont bloqués, vous perdez des revenus chaque jour : agissez vite et avec méthode.",pt:"Enquanto a conta ou os pagamentos estiverem bloqueados, você perde renda todos os dias: convém agir com ordem e rapidez."}]);
+      if(a.explicacion==="no") issues.push(["orange",{es:"Pida por escrito el motivo concreto y la norma de la plataforma que aplicaron; guarde la constancia.",en:"Ask in writing for the specific reason and the platform rule applied; keep proof.",fr:"Demandez par écrit le motif précis et la règle de la plateforme appliquée ; gardez une preuve.",pt:"Peça por escrito o motivo concreto e a norma da plataforma aplicada; guarde o comprovante."}]);
+      issues.push(["orange",{es:"Los términos de la plataforma fijan reglas y a veces un arbitraje en el exterior. Si el servicio se ofrece en Colombia, la SIC también puede ser una vía.",en:"The platform’s terms set rules and sometimes arbitration abroad. If the service is offered in Colombia, the SIC may also be an option.",fr:"Les conditions de la plateforme fixent des règles et parfois un arbitrage à l’étranger. Si le service est proposé en Colombie, la SIC peut aussi être une voie.",pt:"Os termos da plataforma fixam regras e, às vezes, uma arbitragem no exterior. Se o serviço é oferecido na Colômbia, a SIC também pode ser um caminho."}]);
+      if(a.rol==="conductor") issues.push(["orange",{es:"La relación laboral de conductores y repartidores está fuera de nuestro alcance: le orientamos sobre la cuenta y los pagos, y le indicamos a quién acudir para lo laboral.",en:"Employment matters for drivers and couriers are outside our scope: we guide you on the account and payouts and tell you who handles employment issues.",fr:"Le droit du travail des chauffeurs et livreurs ne relève pas de nos services : nous vous orientons sur le compte et les paiements, et vous indiquons à qui vous adresser pour le reste.",pt:"A relação trabalhista de motoristas e entregadores está fora do nosso alcance: orientamos sobre a conta e os pagamentos e indicamos a quem recorrer em questões trabalhistas."}]);
+      if(a.reside==="ext") issues.push(["green",{es:"Vive fuera de Colombia: trabajamos en su idioma y a distancia.",en:"You live outside Colombia: we work in your language and remotely.",fr:"Vous vivez hors de Colombie : nous travaillons dans votre langue et à distance.",pt:"Você mora fora da Colômbia: trabalhamos no seu idioma e à distância."}]);
       const color = (a.problema==="pagos"||a.problema==="cuenta")?"red":"orange";
       let svc;
-      if(a.monto==="alto") svc={n:{es:"Paquete de reclamación",en:"Claim package",fr:"Forfait réclamation"},d:{es:"Expediente de pruebas, apelación y reclamo redactados y traducidos, ruta ante la autoridad o el mecanismo que fijan los términos, y seguimiento. Si hace falta, acompañamiento de la abogada.",en:"Evidence file, appeal and complaint drafted and translated, route before the authority or the mechanism set by the terms, and follow-up. If needed, representation by the lawyer.",fr:"Dossier de preuves, recours et réclamation rédigés et traduits, voie devant l’autorité ou le mécanisme prévu par les conditions, et suivi. Si nécessaire, accompagnement par l’avocate."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer"}};
-      else svc={n:{es:"Revisión de expediente",en:"Case file review",fr:"Revue du dossier"},d:{es:"Lectura de los términos que aplican y de sus pruebas, apelación escrita lista para enviar y ruta recomendada por la abogada.",en:"Review of the applicable terms and your evidence, a written appeal ready to send and a route recommended by the lawyer.",fr:"Lecture des conditions applicables et de vos preuves, recours écrit prêt à envoyer et voie recommandée par l’avocate."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer"}};
+      if(a.monto==="alto") svc={n:{es:"Paquete de reclamación",en:"Claim package",fr:"Forfait réclamation",pt:"Pacote de reclamação"},d:{es:"Expediente de pruebas, apelación y reclamo redactados y traducidos, ruta ante la autoridad o el mecanismo que fijan los términos, y seguimiento. Si hace falta, acompañamiento de la abogada.",en:"Evidence file, appeal and complaint drafted and translated, route before the authority or the mechanism set by the terms, and follow-up. If needed, representation by the lawyer.",fr:"Dossier de preuves, recours et réclamation rédigés et traduits, voie devant l’autorité ou le mécanisme prévu par les conditions, et suivi. Si nécessaire, accompagnement par l’avocate.",pt:"Dossiê de provas, recurso e reclamação redigidos e traduzidos, caminho perante a autoridade ou o mecanismo fixado pelos termos, e acompanhamento. Se necessário, atuação da advogada."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer",pt:"Informamos antes de começar"}};
+      else svc={n:{es:"Revisión de expediente",en:"Case file review",fr:"Revue du dossier",pt:"Revisão de dossiê"},d:{es:"Lectura de los términos que aplican y de sus pruebas, apelación escrita lista para enviar y ruta recomendada por la abogada.",en:"Review of the applicable terms and your evidence, a written appeal ready to send and a route recommended by the lawyer.",fr:"Lecture des conditions applicables et de vos preuves, recours écrit prêt à envoyer et voie recommandée par l’avocate.",pt:"Leitura dos termos aplicáveis e das suas provas, recurso escrito pronto para enviar e caminho recomendado pela advogada."},p:{es:"Se lo informamos antes de empezar",en:"Quoted before we start",fr:"Communiqué avant de commencer",pt:"Informamos antes de começar"}};
       const now=[
-        {es:"Descargue o capture hoy todo: mensajes, anuncio, historial de pagos y avisos de la plataforma, con fecha visible.",en:"Download or screenshot everything today: messages, listing, payout history and platform notices, with dates visible.",fr:"Téléchargez ou capturez tout aujourd’hui : messages, annonce, historique des paiements et avis de la plateforme, dates visibles."},
-        {es:"Use la apelación interna por escrito y guarde la constancia de envío.",en:"Use the internal appeal in writing and keep proof of sending.",fr:"Utilisez le recours interne par écrit et gardez la preuve d’envoi."},
-        {es:"No publique acusaciones en redes: puede debilitar su caso.",en:"Don’t post accusations on social media: it can weaken your case.",fr:"Ne publiez pas d’accusations sur les réseaux : cela peut affaiblir votre dossier."}
+        {es:"Descargue o capture hoy todo: mensajes, anuncio, historial de pagos y avisos de la plataforma, con fecha visible.",en:"Download or screenshot everything today: messages, listing, payout history and platform notices, with dates visible.",fr:"Téléchargez ou capturez tout aujourd’hui : messages, annonce, historique des paiements et avis de la plateforme, dates visibles.",pt:"Baixe ou capture hoje tudo: mensagens, anúncio, histórico de pagamentos e avisos da plataforma, com a data visível."},
+        {es:"Use la apelación interna por escrito y guarde la constancia de envío.",en:"Use the internal appeal in writing and keep proof of sending.",fr:"Utilisez le recours interne par écrit et gardez la preuve d’envoi.",pt:"Use o recurso interno por escrito e guarde o comprovante de envio."},
+        {es:"No publique acusaciones en redes: puede debilitar su caso.",en:"Don’t post accusations on social media: it can weaken your case.",fr:"Ne publiez pas d’accusations sur les réseaux : cela peut affaiblir votre dossier.",pt:"Não publique acusações nas redes sociais: isso pode enfraquecer o seu caso."}
       ];
       return {color,issues,svc,now,route:null};
     }
   }
 };
 const LIGHT = {
-  green:{es:"Verde: puede avanzar con calma",en:"Green: you can proceed calmly",fr:"Vert : vous pouvez avancer sereinement"},
-  orange:{es:"Naranja: hay puntos por revisar pronto",en:"Orange: some points to check soon",fr:"Orange : des points à vérifier bientôt"},
-  red:{es:"Rojo: conviene actuar ya",en:"Red: act now",fr:"Rouge : il faut agir maintenant"}
+  green:{es:"Verde: puede avanzar con calma",en:"Green: you can proceed calmly",fr:"Vert : vous pouvez avancer sereinement",pt:"Verde: pode avançar com calma"},
+  orange:{es:"Naranja: hay puntos por revisar pronto",en:"Orange: some points to check soon",fr:"Orange : des points à vérifier bientôt",pt:"Laranja: há pontos a revisar em breve"},
+  red:{es:"Rojo: conviene actuar ya",en:"Red: act now",fr:"Rouge : il faut agir maintenant",pt:"Vermelho: convém agir já"}
 };
 
 /* ===== Arte: ilustraciones decorativas generadas en SVG (aria-hidden, sin texto) ===== */
@@ -1484,6 +1557,8 @@ const IC = {
   book:'<path d="M5 4h10a3 3 0 013 3v13H8a3 3 0 01-3-3V4z"/><path d="M5 17a3 3 0 013-3h10"/>',
   file:'<path d="M7 3h7l5 5v13H7V3z"/><path d="M14 3v5h5M10 13h6M10 17h6"/>',
   chain:'<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6L7 7M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/>',
+  moon:'<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/>',
   refresh:'<path d="M20 11a8 8 0 00-14.5-4M4 4v4h4M4 13a8 8 0 0014.5 4M20 20v-4h-4"/>',
   award:'<circle cx="12" cy="9" r="5.5"/><path d="M8.7 13.6L7.5 21l4.5-2.5 4.5 2.5-1.2-7.4"/>'
 };
@@ -1500,6 +1575,7 @@ const CLAIM_LETTER_ENABLED = false;
 // Situaciones donde el reclamo directo se basa en la Ley 1480 (las demás tienen otro régimen).
 const CLAIM_SITS = ["a-cancelacion","a-anuncio","a-cobros","a-paquete","t-app","o-entrega","o-garantia","o-evento","o-parqueadero","o-vehiculo","o-vivienda","o-publicidad"];
 
+const LANGS = ["es","en","fr","pt"], LOCALES = {es:"es-CO",en:"en-GB",fr:"fr-FR",pt:"pt-BR"};
 let lang = "es", flowId = null, idx = 0, answers = {}, folio = "", view = "home", gSector = "all", gQuery = "", caseId = null, draftSit = CLAIM_SITS[0];
 // Datos del reclamo: solo en memoria, nunca se envían ni se guardan.
 const claim = {nombre:"", doc:"", ciudad:"", empresa:"", ref:"", fecha:"", valor:"", hechos:"", pide:"devolucion", otra:"", contacto:"", anexos:{}, touched:false};
@@ -1512,7 +1588,7 @@ function parseHash(){
 }
 const ENTRY = parseHash();
 const originText = () => (ENTRY.route || "inicio") + (ENTRY.code ? " · " + ENTRY.code : "");
-try { const saved = localStorage.getItem("iha-lang"); if (saved) lang = saved; else { const n = (navigator.language||"es").slice(0,2); if (n==="en"||n==="fr") lang = n; } } catch {}
+try { const saved = localStorage.getItem("iha-lang"); if (LANGS.includes(saved)) lang = saved; else { const n = (navigator.language||"es").slice(0,2); if (LANGS.includes(n)) lang = n; } } catch {}
 const L = o => (o && (o[lang] || o.es)) || "";
 const app = document.getElementById("app");
 const el = (t, attrs={}, txt) => { const e = document.createElement(t); for (const [k,v] of Object.entries(attrs)) { if (k==="class") e.className=v; else if (k==="html") e.innerHTML=v; else e.setAttribute(k,v); } if (txt!=null) e.textContent = txt; return e; };
@@ -1558,7 +1634,8 @@ function artBand(head, rest, key, narrow){
 
 function visibleQs(){ return FLOWS[flowId].qs.filter(q => !q.when || q.when(answers)); }
 function paintStatic(){
-  document.documentElement.lang = lang;
+  document.documentElement.lang = lang==="pt" ? "pt-BR" : lang;
+  paintChrome();
   document.querySelectorAll("[data-t]").forEach(n => n.textContent = L(UI[n.dataset.t]));
   document.querySelectorAll("[data-aria]").forEach(n => n.setAttribute("aria-label", L(UI[n.dataset.aria])));
   document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang===lang ? "true":"false"));
@@ -1606,7 +1683,8 @@ function renderHome(){
   lift.append(doors);
 
   const sosW = wrapIn("sp"); const sos = el("div",{class:"sos"});
-  const st = el("p"); st.append(el("b",{},L(UI.sosB)+" "), document.createTextNode(L(UI.sos)));
+  const st = el("div",{class:"sos-body"}); const sp = el("p"); sp.append(el("b",{},L(UI.sosB)+" "), document.createTextNode(L(UI.sos)));
+  const more = el("button",{type:"button",class:"linkbtn"},L(UI.sosAll)); more.addEventListener("click", openSos); st.append(sp, more);
   sos.append(icon("phone"), st); sosW.append(sos);
 
   const howW = wrapIn("sp"); const hh = el("div",{class:"sec-h"}); hh.append(el("p",{class:"eyebrow"},L(UI.howH)));
@@ -1730,7 +1808,7 @@ function renderResult(){
   const hart = el("div",{class:"band-art","aria-hidden":"true"}); hart.append(sceneEl(flowScene(res.sit)));
   const hl = el("div"); hl.append(el("p",{class:"eyebrow"},L(UI.sheet)), el("h1",{id:"view-title",class:"sh-title"},res.sit ? L(res.sit.t) : L(f.topic)));
   if (res.sit) hl.append(el("p",{class:"sh-meta"}, L(f.topic)+" · "+sectorName(res.sit.sector)));
-  const fol = el("p",{class:"folio"}); fol.append(document.createTextNode(L(UI.folio)+" "+folio), el("br"), document.createTextNode(new Date().toLocaleDateString(lang==="en"?"en-GB":lang==="fr"?"fr-FR":"es-CO")));
+  const fol = el("p",{class:"folio"}); fol.append(document.createTextNode(L(UI.folio)+" "+folio), el("br"), document.createTextNode(new Date().toLocaleDateString(LOCALES[lang]||"es-CO")));
   head.append(hl, hart, fol, el("div",{class:"horizon","aria-hidden":"true",html:ART.horizon()}));
   const body = el("div",{class:"sheet-body"});
 
@@ -2009,7 +2087,77 @@ function renderDraft(){
   app.append(band, body);
 }
 
-document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => { lang = b.dataset.lang; try { localStorage.setItem("iha-lang", lang); } catch {} render(); }));
+
+/* ---------- cromo: tema claro/oscuro, menú de idioma y líneas de emergencia ---------- */
+const $ = id => document.getElementById(id);
+const rootEl = document.documentElement;
+try { const t = localStorage.getItem("iha-theme"); if (t === "dark" || t === "light") rootEl.dataset.theme = t; } catch {}
+const isDark = () => rootEl.dataset.theme ? rootEl.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+function paintTheme(){
+  const b = $("themebtn"); if (!b) return; const d = isDark();
+  b.setAttribute("aria-pressed", d ? "true" : "false"); b.replaceChildren(icon(d ? "sun" : "moon"));
+}
+$("themebtn").addEventListener("click", () => {
+  const n = isDark() ? "light" : "dark"; rootEl.dataset.theme = n;
+  try { localStorage.setItem("iha-theme", n); } catch {}
+  paintTheme();
+});
+try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paintTheme); } catch {}
+new MutationObserver(paintTheme).observe(rootEl, {attributes:true, attributeFilter:["data-theme"]});
+
+const lm = $("lm"), lbtn = $("lbtn"), lpop = $("lpop");
+lbtn.append(icon("chevD")); lpop.querySelectorAll("button").forEach(b => b.append(icon("check")));
+$("sosbtn").prepend(icon("phone"));
+function closeLang(focus){ lpop.hidden = true; lbtn.setAttribute("aria-expanded","false"); if (focus) lbtn.focus(); }
+lbtn.addEventListener("click", () => {
+  const open = lpop.hidden; lpop.hidden = !open; lbtn.setAttribute("aria-expanded", String(open));
+  if (open) (lpop.querySelector('[aria-pressed="true"]') || lpop.querySelector("button")).focus();
+});
+document.addEventListener("click", ev => { if (!lm.contains(ev.target)) closeLang(false); });
+lm.addEventListener("focusout", ev => { if (ev.relatedTarget && !lm.contains(ev.relatedTarget)) closeLang(false); });
+lm.addEventListener("keydown", ev => {
+  if (ev.key === "Escape" && !lpop.hidden) { ev.stopPropagation(); closeLang(true); return; }
+  if ((ev.key === "ArrowDown" || ev.key === "ArrowUp") && !lpop.hidden) {
+    ev.preventDefault(); const bs = [...lpop.querySelectorAll("button")]; const i = bs.indexOf(document.activeElement);
+    bs[(i + (ev.key === "ArrowDown" ? 1 : bs.length - 1)) % bs.length].focus();
+  }
+});
+
+const SOS_LINES = [["123","sos123",true],["155","sos155"],["165","sos165"],["141","sos141"]];
+let sosOpener = null;
+function buildSos(){
+  const dlg = $("sosdlg"); dlg.setAttribute("aria-labelledby","sosdlg-t");
+  const inn = el("div",{class:"dlg-in"}); const h = el("div",{class:"dlg-h"});
+  const x = el("button",{type:"button",class:"dlg-x","aria-label":L(UI.sosClose)}); x.append(icon("x")); x.addEventListener("click", closeSos);
+  h.append(el("h2",{id:"sosdlg-t"},L(UI.sosTitle)), x);
+  const ul = el("ul",{class:"nums"});
+  SOS_LINES.forEach(([n,k,first]) => {
+    const li = el("li"); const a = el("a",{class:"num"+(first?" num-first":""),href:"tel:"+n,"aria-label":L(UI.sosCall)+" "+n+". "+L(UI[k])});
+    if (first) a.setAttribute("autofocus","");
+    const d = el("span",{class:"d"},L(UI[k])); if (first) d.append(el("em",{},L(UI.sosFree)));
+    const call = el("span",{class:"call"}); call.append(icon("phone"), el("span",{},L(UI.sosCall)));
+    a.append(el("span",{class:"n"},n), d, call); li.append(a); ul.append(li);
+  });
+  inn.append(h, el("p",{class:"dlg-lead"},L(UI.sosLead)), ul, el("p",{class:"dlg-foot"},L(UI.sosFoot)));
+  dlg.replaceChildren(inn);
+}
+function openSos(){
+  const dlg = $("sosdlg"); buildSos(); sosOpener = document.activeElement;
+  if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
+  rootEl.classList.add("noscroll");
+}
+function closeSos(){ const dlg = $("sosdlg"); if (dlg.close) dlg.close(); else { dlg.removeAttribute("open"); rootEl.classList.remove("noscroll"); } }
+$("sosdlg").addEventListener("close", () => { rootEl.classList.remove("noscroll"); if (sosOpener && sosOpener.focus) { try { sosOpener.focus(); } catch {} } });
+$("sosdlg").addEventListener("click", ev => { if (ev.target === $("sosdlg")) closeSos(); });
+$("sosbtn").addEventListener("click", openSos);
+function paintChrome(){
+  $("lcur").textContent = lang.toUpperCase();
+  lbtn.setAttribute("aria-label", L(UI.langAria) + ": " + lang.toUpperCase());
+  $("sosbtn").setAttribute("aria-label", L(UI.sosAria) + ": 123");
+  paintTheme();
+}
+
+document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => { lang = b.dataset.lang; try { localStorage.setItem("iha-lang", lang); } catch {} closeLang(true); render(); }));
 document.querySelectorAll("[data-nav]").forEach(b => b.addEventListener("click", () => { if (b.dataset.nav==="guide") openGuide("all"); else goHome(); }));
 document.getElementById("brand").addEventListener("click", goHome);
 function fromHash(first){
