@@ -1,6 +1,6 @@
 # Orientación legal IHA
 
-Plataforma de orientación legal gratuita (anfitriones, consumidores y conflictos con plataformas digitales en Colombia).
+Asesoría legal especializada en plataformas digitales. Plataforma de orientación legal gratuita (anfitriones, consumidores y conflictos con plataformas digitales en Colombia).
 
 Editada por IHA SOLUCIONES LEGALES Y TECNICAS S.A.S. · NIT 900.365.039-8 · Medellín, Colombia.
 

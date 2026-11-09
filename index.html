@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Orientación legal gratuita en 2 minutos: anfitriones, consumidores y conflictos con plataformas digitales en Colombia. Español, English, Français, Português.">
+<meta name="description" content="Asesoría legal especializada en plataformas digitales en Colombia: orientación gratuita en 2 minutos para anfitriones, consumidores y usuarios de plataformas. Español, English, Français, Português.">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
 <title>Orientación legal IHA</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -83,7 +83,8 @@ h3{font-size:17px;font-weight:700;line-height:1.3}
 .tab[aria-current="page"]{color:var(--ink)}
 .tab[aria-current="page"]::after{content:"";position:absolute;left:12px;right:12px;bottom:3px;height:2px;border-radius:2px;background:var(--teal)}
 @media (min-width:420px){.brand-t{display:flex}.brand-t span{display:none}}
-@media (min-width:820px){.brand-t span{display:block}.tab{padding:10px 16px}}
+@media (min-width:820px){.tab{padding:10px 16px}}
+@media (min-width:900px){.brand-t span{display:block;white-space:nowrap}}
 
 /* bandeau: cielo del tema + ilustración */
 .band{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--ta),var(--tb));color:var(--band-ink);padding-block:30px 40px}
@@ -443,6 +444,9 @@ html.noscroll{overflow:hidden}
 .dlg-foot{font-size:13px;color:var(--muted)}
 .linkbtn{display:inline-flex;align-items:center;margin-top:4px;padding:8px 0;min-height:36px;border:0;background:none;color:var(--teal);font:700 14px var(--body);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .sos .sos-body{display:flex;flex-direction:column;align-items:flex-start}
+.hero-tag{display:flex;align-items:flex-start;gap:10px;margin:0 0 10px;font-size:15px;font-weight:700;line-height:1.35;color:var(--th);max-width:34ch}
+.hero-tag::before{content:"";flex:none;margin-top:.66em;width:22px;height:2px;border-radius:2px;background:currentColor}
+@media (min-width:760px){.hero-tag{font-size:16px;max-width:none}}
 .foot-co{display:flex;flex-direction:column;line-height:1.25;min-width:0}
 .foot-co b{font-size:13px;overflow-wrap:anywhere}
 .foot-co small{font-weight:600;font-size:12px;color:var(--muted)}
@@ -591,7 +595,7 @@ body[data-th="otros"]{--ta:#E2D5F1;--tb:#FDEEF2;--th:#6A4F86;--th-soft:#EDE8F3}
 const WA_NUMBER = "";
 
 const UI = {
-  brandSub:{es:"Orientación legal en plataformas digitales · Colombia",en:"Legal guidance on digital platforms · Colombia",fr:"Orientation juridique et plateformes numériques · Colombie",pt:"Orientação jurídica em plataformas digitais · Colômbia"},
+  brandSub:{es:"Asesoría legal especializada en plataformas digitales · Colombia",en:"Legal advice specialising in digital platforms · Colombia",fr:"Conseil juridique spécialisé dans les plateformes numériques · Colombie",pt:"Assessoria jurídica especializada em plataformas digitais · Colômbia"},
   heroEye:{es:"Orientación gratuita en 2 minutos",en:"Free guidance in 2 minutes",fr:"Orientation gratuite en 2 minutes",pt:"Orientação gratuita em 2 minutos"},
   heroH:{es:"¿Qué necesita resolver?",en:"What do you need to sort out?",fr:"Que devez-vous régler ?",pt:"O que você precisa resolver?"},
   heroP:{es:"Responda unas preguntas y reciba su ficha de orientación: qué revisar, qué hacer ahora y qué servicio le conviene. Usted decide si nos escribe.",en:"Answer a few questions and get your guidance sheet: what to check, what to do now and which service fits. You decide whether to contact us.",fr:"Répondez à quelques questions et recevez votre fiche d’orientation : quoi vérifier, quoi faire maintenant et quel service vous convient. Vous décidez si vous nous écrivez.",pt:"Responda a algumas perguntas e receba a sua ficha de orientação: o que revisar, o que fazer agora e qual serviço combina com você. Você decide se quer falar com a gente."},
@@ -713,6 +717,7 @@ Object.assign(UI, {
 
 // ===== v8: tema, emergencias =====
 Object.assign(UI, {
+  heroTag:{es:"Asesoría legal especializada en plataformas digitales en Colombia",en:"Legal advice specialising in digital platforms in Colombia",fr:"Conseil juridique spécialisé dans les plateformes numériques, en Colombie",pt:"Assessoria jurídica especializada em plataformas digitais na Colômbia"},
   themeLbl:{es:"Modo oscuro",en:"Dark mode",fr:"Mode sombre",pt:"Modo escuro"},
   sosAria:{es:"Líneas de emergencia en Colombia",en:"Emergency numbers in Colombia",fr:"Numéros d’urgence en Colombie",pt:"Números de emergência na Colômbia"},
   sosTitle:{es:"Emergencias en Colombia",en:"Emergencies in Colombia",fr:"Urgences en Colombie",pt:"Emergências na Colômbia"},
@@ -1665,7 +1670,7 @@ function renderHome(){
   band.append(el("div",{class:"band-art-hero","aria-hidden":"true",html:ART.hero(!reduceMotion)}));
   const badges = el("ul",{class:"badges"});
   ["badge1","badge2","badge3"].forEach(k => { const li = el("li"); li.append(icon("check"), document.createTextNode(L(UI[k]))); badges.append(li); });
-  bi.append(badges, el("h1",{id:"view-title"},L(UI.heroH)), el("p",{class:"lead"},L(UI.heroP)));
+  bi.append(badges, el("p",{class:"hero-tag"},L(UI.heroTag)), el("h1",{id:"view-title"},L(UI.heroH)), el("p",{class:"lead"},L(UI.heroP)));
   band.append(bi);
 
   const lift = wrapIn("lift"); const doors = el("div",{class:"doors"});
