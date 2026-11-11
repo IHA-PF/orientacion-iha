@@ -21,6 +21,19 @@
 <link rel="alternate" hreflang="en" href="https://iha-pf.github.io/orientacion-iha/en/">
 <link rel="alternate" hreflang="fr" href="https://iha-pf.github.io/orientacion-iha/fr/">
 <link rel="alternate" hreflang="pt-BR" href="https://iha-pf.github.io/orientacion-iha/pt/">
+<script>
+window.goatcounter = {no_onload: true};
+(function(){
+  var code = (location.hash.split("--")[1] || "").replace(/[^A-Za-z0-9-]/g, "").slice(0, 24);
+  var view = function(){ var h = (location.hash || "#inicio").split("--")[0]; return location.pathname + h; };
+  var send = function(){ if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({path: view()}); };
+  window.addEventListener("hashchange", send);
+  var s = document.createElement("script"); s.async = true; s.src = "https://gc.zgo.at/count.js";
+  s.setAttribute("data-goatcounter", "https://iha-orientacion.goatcounter.com/count");
+  s.onload = function(){ send(); if (code) window.goatcounter.count({path: "origen/" + code, title: "origen/" + code, event: true}); };
+  document.head.appendChild(s);
+})();
+</script>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
 <title>Abogados para problemas con plataformas, reservas y compras en línea | IHA Colombia</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -2045,6 +2058,8 @@ function parseHash(){
   return { route: i < 0 ? raw : raw.slice(0, i), code: i < 0 ? "" : raw.slice(i + 2).replace(/[^A-Za-z0-9-]/g, "").slice(0, 24) };
 }
 const ENTRY = parseHash();
+// conteo anónimo de visitas (solo en el sitio público; sin cookies ni respuestas)
+const track = (path, ev) => { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({path, title: path, event: !!ev}); } catch {} };
 const originText = () => (ENTRY.route || L(UI.originHome)) + (ENTRY.code ? " · " + ENTRY.code : "");
 try { const saved = localStorage.getItem("iha-lang"); if (LANGS.includes(saved)) lang = saved; else { const n = (navigator.language||"es").slice(0,2); if (LANGS.includes(n)) lang = n; } } catch {}
 const L = o => (o && (o[lang] || o.es)) || "";
@@ -2284,6 +2299,7 @@ function accItem(i, title, content, open){
 }
 function renderResult(){
   const f = FLOWS[flowId]; const res = f.result(answers);
+  track("ficha/" + flowId + (res.sit ? "/" + res.sit.id : ""), true);
   if (!folio) { const d = new Date(); folio = "IHA-" + String(d.getFullYear()).slice(2) + String(d.getMonth()+1).padStart(2,"0") + String(d.getDate()).padStart(2,"0") + "-" + Math.floor(1000+Math.random()*9000); }
   const w = wrapIn("narrow");
   w.append(topRow(() => { idx = visibleQs().length-1; show(); }));
@@ -2393,7 +2409,7 @@ function renderResult(){
   mail.append(icon("mail"), el("span",{},L(UI.sendMail))); btns.append(mail); links.push(mail);
   const hint = el("p",{class:"hint",id:"send-hint","aria-live":"polite"},L(UI.consentNeed));
   const gate = () => { links.forEach(a => a.setAttribute("aria-disabled", cb.checked ? "false" : "true")); hint.hidden = cb.checked; };
-  links.forEach(a => a.addEventListener("click", ev => { if (!cb.checked) { ev.preventDefault(); hint.hidden = false; cb.focus(); } }));
+  links.forEach(a => a.addEventListener("click", ev => { if (!cb.checked) { ev.preventDefault(); hint.hidden = false; cb.focus(); return; } track("envio/" + (a.classList.contains("wa") ? "whatsapp" : "correo") + "/" + flowId + (ENTRY.code ? "/" + ENTRY.code : ""), true); }));
   cb.addEventListener("change", gate); gate(); refresh();
   send.append(more, cl, btns, hint);
   const go = el("button",{type:"button",class:"btn primary"}); go.append(icon(WA_NUMBER ? "chat" : "mail"), el("span",{},L(UI.ctaSend)));
