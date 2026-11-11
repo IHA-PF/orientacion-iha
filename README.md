@@ -17,4 +17,4 @@ Publicada con GitHub Pages: https://iha-pf.github.io/orientacion-iha/
 - La página no usa cookies y no guarda las respuestas de los visitantes: la ficha se arma en el navegador y solo sale si la persona la envía por WhatsApp o correo.
 - Las visitas se cuentan de forma anónima con GoatCounter (sin cookies, sin guardar la dirección IP).
 - Cada página declara una política de seguridad del contenido: solo se ejecutan los scripts del propio sitio y solo se contacta al contador de visitas.
-- Los términos y la política de datos están en borrador hasta su validación por la abogada.
+- Los términos y la política de datos se publicarán próximamente.
