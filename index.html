@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-hj21rjbmPPSiSqLb2EJmqX02yd+3OTbTLI/0kg2/olA='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-K1Abdf/3Urm+ItlSBhzD54pI+fm3OmKVyyghGOETous='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Orientación gratuita en 2 minutos sobre alojamiento, vuelos, compras en línea y plataformas digitales en Colombia, con abogados colombianos. Español, English, Français, Português.">
@@ -922,6 +922,10 @@ details.case:hover,details.case[open]{border-color:var(--line-strong)}
 .chip{border-radius:6px}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bar .mark{background:#E7ECF2;color:#0F2338}}
 :root[data-theme="dark"] .bar .mark{background:#E7ECF2;color:#0F2338}
+/* portada más ligera; la ficha de ejemplo también en el teléfono, debajo de las tres entradas */
+.hc-mw{display:block}
+.hero-card.hc-m{display:flex;box-shadow:var(--shadow);border-color:var(--line)}
+@media (min-width:980px){.hc-mw{display:none}}
 
 </style>
 </head>
@@ -3027,10 +3031,8 @@ function renderHome(){
   const pc = el("a",{class:"novcard prfcard",href:"#pruebas"});
   const pt0 = el("span",{class:"nc-t"}); pt0.append(el("b",{},L(UI.homePrfT)), el("span",{},L(UI.homePrfP)));
   const pgo = el("span",{class:"nc-go"}); pgo.append(document.createTextNode(L(UI.read)), icon("right"));
-  pc.append(spotEl("sheet","t2"), pt0, pgo); nW.append(pc);
+  pc.append(spotEl("sheet","t2"), pt0, pgo);
   const mkCard = (cls, href, t, p0, spot, tone) => { const c = el("a",{class:"novcard "+cls,href}); const t0 = el("span",{class:"nc-t"}); t0.append(el("b",{},L(t)), el("span",{},L(p0))); const g0 = el("span",{class:"nc-go"}); g0.append(document.createTextNode(L(UI.read)), icon("right")); c.append(spotEl(spot,tone), t0, g0); return c; };
-  nW.append(mkCard("abcard", "#anfitrion-en-regla", UI.homeAbT, UI.homeAbP, "price", "t3"));
-  nW.append(mkCard("svcard", "#servicios", UI.homeSvT, UI.homeSvP, "price", "t2"));
   nW.append(mkCard("frcard", "#caso-o-transferencia", UI.homeFrT, UI.homeFrP, "shield", "t1"));
   if (CLAIM_LETTER_ENABLED) nW.append(mkCard("clcard", "#carta-de-reclamo", UI.homeClT, UI.homeClP, "sheet", "t2"));
 
@@ -3056,7 +3058,8 @@ function renderHome(){
   const tW = wrapIn("sp"); const tr = el("ul",{class:"trust"});
   [["shield","t2b","t2","t1"],["price","t1b","t1","t3"],["globe","t3b","t3","t2"]].forEach(([k,b,t,tn]) => { const li = el("li"); const d = el("div"); d.append(el("b",{},L(UI[b])), el("span",{},L(UI[t]))); li.append(spotEl(k,tn), d); tr.append(li); });
   tW.append(tr);
-  app.append(band, lift, sosW, nW, tW, howW, gW);
+  const mW = wrapIn("sp hc-mw"); { const hc = heroCard(); hc.classList.add("hc-m"); mW.append(hc); }
+  app.append(band, lift, mW, sosW, nW, howW, gW);
 }
 
 /* ---------- parcours ---------- */
