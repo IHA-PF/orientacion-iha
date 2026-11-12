@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-tvSlWL5Y3gvk3TxNqdk3sfk1gI1LaClc83U1c5G79jI='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-HNo6MxhdOYyno5kSqwOhanpyILodt6bzvEfv7IKYwq4='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Orientación gratuita en 2 minutos sobre alojamiento, vuelos, compras en línea y plataformas digitales en Colombia, con abogados colombianos. Español, English, Français, Português.">
@@ -10,7 +10,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F2A43'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='24' fill='%23fff'%3EIHA%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="IHA">
-<meta property="og:title" content="Abogados para problemas con plataformas, reservas y compras en línea | IHA Colombia">
+<meta property="og:title" content="Sus derechos vienen incluidos en cada clic | IHA Colombia">
 <meta property="og:description" content="Orientación gratuita en 2 minutos sobre alojamiento, vuelos, compras en línea y plataformas digitales en Colombia, con abogados colombianos. Español, English, Français, Português.">
 <meta property="og:url" content="https://iha-pf.github.io/orientacion-iha/">
 <meta property="og:image" content="https://iha-pf.github.io/orientacion-iha/og.png">
@@ -2115,6 +2115,14 @@ UI.hcSee = {es:"Ver la ficha completa, con la ley aplicable",en:"See the full sh
       go:S("Ver la guía para anfitriones","See the guide for hosts","Voir le guide pour les hôtes","Ver o guia para anfitriões")}
   };
 })();
+
+// ===== v18: nuevo título de la portada (confianza y orientación) =====
+// Derechos del consumidor irrenunciables: Ley 1480 de 2011, art. 4.
+Object.assign(UI.heroH, {es:"Sus derechos vienen incluidos en cada clic.",en:"Your rights come with every click.",fr:"Vos droits sont inclus dans chaque clic.",pt:"Seus direitos vêm incluídos em cada clique."});
+Object.assign(UI.heroH2, {es:"Con IHA sabe cuáles son, qué hacer y hasta cuándo.",en:"With IHA you know which ones, what to do and by when.",fr:"Avec IHA, vous savez lesquels, quoi faire et jusqu’à quand.",pt:"Com a IHA, você sabe quais são, o que fazer e até quando."});
+// v18b: subtítulo más corto, a pedido; el párrafo ya no repite "gratis" ni "2 minutos"
+Object.assign(UI.heroH2, {es:"Con IHA sabe cuáles son. Gratis y en dos minutos.",en:"With IHA you know which ones. Free, in two minutes.",fr:"Avec IHA, vous savez lesquels. Gratuitement, en deux minutes.",pt:"Com a IHA, você sabe quais são. Grátis e em dois minutos."});
+Object.assign(UI.heroP, {es:"Reserva cancelada, cuenta bloqueada, compra que no llegó, RNT por renovar: elija su situación y sepa qué hacer y hasta cuándo. Usted decide si nos escribe.",en:"Cancelled booking, blocked account, order that never arrived, RNT to renew: choose your situation and know what to do and by when. You decide whether to contact us.",fr:"Réservation annulée, compte bloqué, achat jamais reçu, RNT à renouveler : choisissez votre situation et sachez quoi faire et jusqu’à quand. Vous décidez si vous nous écrivez.",pt:"Reserva cancelada, conta bloqueada, compra que não chegou, RNT para renovar: escolha sua situação e saiba o que fazer e até quando. Você decide se nos escreve."});
 
 // ===== v14: enlaces de pago y de agenda =====
 // Pegue cada enlace entre las comillas. Vacío = el botón no aparece en el sitio.
