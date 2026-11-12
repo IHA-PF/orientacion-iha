@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-Iqo/PUT/9JRasr/1e6RCP4kSbZquXzNjKnGdqSZtsXc='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-anTvCFIeRx0NC5MP1upnTIhRcEzksFXVS6F9xuMRDFI='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Orientación gratuita en 2 minutos sobre alojamiento, vuelos, compras en línea y plataformas digitales en Colombia, con abogados colombianos. Español, English, Français, Português.">
@@ -1790,7 +1790,7 @@ UI.abTerms = {
       exc:S(["Redactar y radicar el reclamo y el seguimiento después de su viaje."],["Drafting and filing the complaint, and follow-up after your trip."],["Rédiger et déposer la réclamation, et le suivi après votre départ."],["Redigir e protocolar a reclamação e o acompanhamento depois da viagem."]),
       t:S("Llamada en 1 día hábil.","Call within 1 business day.","Appel sous 1 jour ouvrable.","Ligação em 1 dia útil.")},
     {id:"viaje",g:"tur",v:749000,usd:1,n:S("Reclamo después del viaje","Claim handled after you leave","Réclamation après votre départ","Reclamação depois da viagem"),
-      inc:S(["Poder especial firmado a distancia.","Reclamo formal en español: alojamiento, vuelo, agencia o compra.","Radicación ante la empresa o SIC Facilita.","Carta de apoyo en su idioma para su banco.","60 días de seguimiento, con un informe cada 15 días."],["A special power of attorney signed remotely.","A formal complaint in Spanish: accommodation, flight, agency or purchase.","Filing with the company or SIC Facilita.","A support letter in your language for your bank.","60 days of follow-up, with a report every 15 days."],["Pouvoir spécial signé à distance.","Réclamation formelle en espagnol : hébergement, vol, agence ou achat.","Dépôt auprès de l’entreprise ou de SIC Facilita.","Lettre d’appui dans votre langue pour votre banque.","60 jours de suivi, avec un point tous les 15 jours."],["Procuração especial assinada a distância.","Reclamação formal em espanhol: hospedagem, voo, agência ou compra.","Protocolo na empresa ou no SIC Facilita.","Carta de apoio no seu idioma para o seu banco.","60 dias de acompanhamento, com um relatório a cada 15 dias."]),
+      inc:S(["Un poder especial que usted envía desde su propio correo electrónico: sin notaría ni firma a mano.","Reclamo formal en español: alojamiento, vuelo, agencia o compra.","Radicación ante la empresa o SIC Facilita.","Carta de apoyo en su idioma para su banco.","60 días de seguimiento, con un informe cada 15 días."],["A special power of attorney you send from your own email address: no notary and no handwritten signature.","A formal complaint in Spanish: accommodation, flight, agency or purchase.","Filing with the company or SIC Facilita.","A support letter in your language for your bank.","60 days of follow-up, with a report every 15 days."],["Un pouvoir spécial que vous envoyez depuis votre propre adresse e-mail : sans notaire ni signature manuscrite.","Réclamation formelle en espagnol : hébergement, vol, agence ou achat.","Dépôt auprès de l’entreprise ou de SIC Facilita.","Lettre d’appui dans votre langue pour votre banque.","60 jours de suivi, avec un point tous les 15 jours."],["Uma procuração especial que você envia do seu próprio e-mail: sem cartório nem assinatura à mão.","Reclamação formal em espanhol: hospedagem, voo, agência ou compra.","Protocolo na empresa ou no SIC Facilita.","Carta de apoio no seu idioma para o seu banco.","60 dias de acompanhamento, com um relatório a cada 15 dias."]),
       exc:S(["Demanda judicial, traducción oficial, apostilla y gastos de envío."],["Lawsuits, certified translation, apostille and postage."],["Action en justice, traduction officielle, apostille et frais d’envoi."],["Ação judicial, tradução oficial, apostila e custos de envio."]),
       t:S("Radicación en 2 días hábiles después de firmar el poder.","Filed within 2 business days of signing the power of attorney.","Dépôt sous 2 jours ouvrables après la signature du pouvoir.","Protocolo em 2 dias úteis depois de assinar a procuração.")},
     {id:"plan",g:"anf",plan:1,n:S("Plan Anfitrión en regla","Anfitrión en regla plan","Abonnement Anfitrión en regla","Plano Anfitrión en regla")},
@@ -3631,7 +3631,6 @@ function exResult(s, tp){
   if (CLAIM_LETTER_ENABLED && CLAIM_SITS.includes(s.id)) { const cg = el("button",{type:"button",class:"btn"}); cg.append(icon("file"), el("span",{},L(UI.clGo))); cg.addEventListener("click", () => { draftSit = s.id; claim.touched = false; openDraft(); }); row.append(cg); }
   const full = el("a",{class:"btn",href:"#caso-" + s.id}); full.append(icon("book"), el("span",{},L(UI.exFull))); row.append(full);
   box.append(row, el("p",{class:"upd"},L(UI.exWaNote)));
-  box.append(svTeaser(svForSit(s.id, tp && tp.k)));
   // base legal: consumidor, contrato y vía penal
   const lm0 = UI.exLawMap[s.id];
   const tl = (tp && tp.law) || {};
@@ -3650,6 +3649,8 @@ function exResult(s, tp){
     det.addEventListener("toggle", () => { if (det.open) track("express/ley/" + s.id, true); });
     box.append(det);
   }
+  // el servicio de pago va al final, después de los pasos gratuitos y la base legal (Ley 1123 de 2007, art. 30, num. 7)
+  box.append(svTeaser(svForSit(s.id, tp && tp.k)));
   paint();
   return box;
 }
