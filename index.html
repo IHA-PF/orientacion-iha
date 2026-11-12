@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-iWKD0xQoGPKonqULYnwudOjTTDFmc+qs+Gzjd4V2feo='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com https://judbxagshsrgwkewvtkp.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-7JbZpREdrVPwpsqI6H2Jap6Vk6Bj3/yOvljqTvIOnEU='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com https://judbxagshsrgwkewvtkp.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Orientación gratuita en 2 minutos sobre alojamiento, vuelos, compras en línea y plataformas digitales en Colombia, con abogados colombianos. Español, English, Français, Português.">
@@ -1011,6 +1011,20 @@ details.case:hover,details.case[open]{border-color:var(--line-strong)}
 .al-status.ok{color:var(--green);font-weight:600}
 .al-status.bad{color:var(--red);font-weight:600}
 .alertbox .field .fine{margin-top:2px}
+
+/* v21: gratis visible y separado de lo pagado */
+.free-list{list-style:none;margin:4px 0 0;padding:0!important;display:flex;flex-direction:column;gap:0!important;border-top:1px solid var(--line)}
+.free-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.free-list h3{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:16px;margin:0}
+.free-list p{margin:2px 0 0;color:var(--muted);font-size:14.5px}
+.pill-free{font-size:12px;font-weight:700;color:var(--teal);background:var(--teal-soft);border-radius:999px;padding:2px 9px}
+.fo-go{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14.5px;color:var(--teal);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.fo-go .ic{width:16px;height:16px}
+@media (max-width:560px){.free-list li{grid-template-columns:1fr}.fo-go{white-space:normal}}
+.sv-split{border-top:2px solid var(--line-strong);padding-top:28px;margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.sv-split h2{font-family:var(--display);font-size:clamp(23px,4.6vw,30px);color:var(--ink)}
+.sv-split p{color:var(--muted);max-width:62ch}
+.pill-paid{display:inline-block;align-self:flex-start;font-size:12px;font-weight:700;color:var(--ink);background:var(--surface-2);border:1px solid var(--line-strong);border-radius:999px;padding:2px 9px;margin-bottom:4px}
 
 </style>
 </head>
@@ -2174,6 +2188,26 @@ UI.tick = {
     pt:["Novo POT de Medellín: prepare seu imóvel de temporada antes de entrar em vigor","Auditoria de transição do POT: entre grátis na lista de espera","Só paga quando começarmos: {p} por imóvel, IVA incluído","COP 620.000 com o plano Anfitrión en regla","Relatório em 7 dias úteis depois de receber seus documentos"]}
 };
 
+// ===== v21: lo gratuito, visible y separado de lo pagado =====
+(function(){
+  const S = (es,en,fr,pt) => ({es,en,fr,pt});
+  Object.assign(UI, {
+    frH:S("Gratis, sin registro","Free, no sign-up","Gratuit, sans inscription","Grátis, sem cadastro"),
+    frLead:S("Esto lo hace usted mismo en el sitio, sin pagar y sin crear una cuenta.","You do this yourself on the site, without paying or creating an account.","Vous le faites vous-même sur le site, sans payer ni créer de compte.","Você faz isto no próprio site, sem pagar e sem criar conta."),
+    frTag:S("Gratis","Free","Gratuit","Grátis"),
+    frItems:[
+      {href:"#guia", n:S("Ficha de su situación","Guide to your situation","Fiche de votre situation","Ficha da sua situação"), d:S("Sus derechos, los pasos, los plazos y la norma exacta, para 47 situaciones.","Your rights, the steps, the deadlines and the exact rule, for 47 situations.","Vos droits, les démarches, les délais et la règle exacte, pour 47 situations.","Seus direitos, os passos, os prazos e a norma exata, para 47 situações."), go:S("Abrir la guía","Open the guide","Ouvrir le guide","Abrir o guia")},
+      {href:"#express", n:S("Vía express","Express track","Voie express","Via expressa"), d:S("Para lo urgente: su fecha límite calculada y los 3 primeros pasos.","For urgent cases: your deadline worked out and the first 3 steps.","Pour l’urgence : votre date limite calculée et les 3 premières démarches.","Para o urgente: seu prazo calculado e os 3 primeiros passos."), go:S("Abrir la vía express","Open the express track","Ouvrir la voie express","Abrir a via expressa")},
+      {href:"#carta-de-reclamo", n:S("Carta de reclamo","Complaint letter","Lettre de réclamation","Carta de reclamação"), d:S("Un modelo de reclamo directo a la empresa, con base en la Ley 1480.","A model direct complaint to the company, based on Law 1480.","Un modèle de réclamation directe à l’entreprise, fondé sur la loi 1480.","Um modelo de reclamação direta à empresa, com base na Lei 1480."), go:S("Hacer la carta","Write the letter","Rédiger la lettre","Fazer a carta")},
+      {href:"#pruebas", n:S("Guía de pruebas","Evidence guide","Guide des preuves","Guia de provas"), d:S("Qué guardar, cómo conservarlo y cómo pedir sus datos a una empresa.","What to keep, how to preserve it and how to request your data from a company.","Quoi garder, comment le conserver et comment demander vos données à une entreprise.","O que guardar, como conservar e como pedir seus dados a uma empresa."), go:S("Ver la guía de pruebas","See the evidence guide","Voir le guide des preuves","Ver o guia de provas")},
+      {href:"#novedades", n:S("Alertas para anfitriones","Alerts for hosts","Alertes pour les hôtes","Alertas para anfitriões"), d:S("Un aviso por WhatsApp cuando cambien las normas de vivienda turística.","A WhatsApp notice when short-term rental rules change.","Un avis sur WhatsApp quand les règles de la location touristique changent.","Um aviso pelo WhatsApp quando mudarem as normas de aluguel por temporada."), go:S("Inscribirme","Sign me up","M’inscrire","Inscrever-me")}
+    ],
+    paidH:S("Con una abogada: de pago","With a lawyer: paid","Avec une avocate : payant","Com uma advogada: pago"),
+    paidLead:S("Solo si usted lo decide. Cada servicio tiene un precio fijo, publicado e IVA incluido, y dice qué incluye y qué no.","Only if you decide so. Each service has a fixed, published price including VAT, and says what it includes and what it doesn’t.","Seulement si vous le décidez. Chaque service a un prix fixe, publié, TVA incluse, et dit ce qu’il comprend et ce qu’il ne comprend pas.","Só se você decidir. Cada serviço tem um preço fixo, publicado e com IVA, e diz o que inclui e o que não inclui."),
+    paidTag:S("Opcional, de pago","Optional, paid","Facultatif, payant","Opcional, pago")
+  });
+})();
+
 // ===== v14: enlaces de pago y de agenda =====
 // Pegue cada enlace entre las comillas. Vacío = el botón no aparece en el sitio.
 // Pago: un "link de pago" de Wompi (https://checkout.wompi.co/l/...) o de Mercado Pago, con el monto fijo del servicio y de uso múltiple.
@@ -3171,7 +3205,9 @@ const track = (path, ev) => { try { if (window.goatcounter && window.goatcounter
 // Solo se muestra una ruta conocida del sitio: un enlace manipulado no puede escribir texto en el mensaje.
 const originText = () => (routeKnown(ENTRY.route) ? ENTRY.route : L(UI.originHome)) + (ENTRY.code ? " · " + ENTRY.code : "");
 try { const saved = localStorage.getItem("iha-lang"); if (LANGS.includes(saved)) lang = saved; else { const n = (navigator.language||"es").slice(0,2); if (LANGS.includes(n)) lang = n; } } catch {}
-const L = o => (o && (o[lang] || o.es)) || "";
+// v21: en francés, espacio fino no separable antes de ; : ! ? » y después de «, para que no queden solos al inicio de una línea
+const frNb = v => typeof v === "string" ? v.replace(/ ([;:!?\u00bb])/g, "\u00a0$1").replace(/\u00ab /g, "\u00ab\u00a0") : Array.isArray(v) ? v.map(frNb) : v;
+const L = o => { const v = (o && (o[lang] || o.es)) || ""; return lang === "fr" ? frNb(v) : v; };
 try { const qp = new URLSearchParams(location.search).get("lang"); if (LANGS.includes(qp)) { lang = qp; try { localStorage.setItem("iha-lang", qp); } catch {} } } catch {}
 // Traducción de referencia del detalle jurídico (el texto en español prevalece).
 const TL = (lg, s) => (lg !== "es" && LEGAL_TR[lg] && LEGAL_TR[lg][s]) || s;
@@ -4192,7 +4228,7 @@ const anyPay = () => Object.keys(UI.payLinks || {}).some(k => linkFor("pay", k))
 function extBtn(href, cls, ic, label, ev){ const a = el("a",{class:cls,href,target:"_blank",rel:"noopener noreferrer"}); a.append(icon(ic), el("span",{},label)); a.addEventListener("click", () => track(ev, true)); return a; }
 function svTeaser(id){
   const o = UI.offerById(id); const c = el("a",{class:"novcard svcard svteaser",href:"#servicios-" + id});
-  const t0 = el("span",{class:"nc-t"}); t0.append(el("b",{},L(UI.svTeaserT)), el("span",{},L(o.n) + ": " + offerPrice(o) + ", " + L(UI.svIva) + "."));
+  const t0 = el("span",{class:"nc-t"}); t0.append(el("span",{class:"pill-paid"},L(UI.paidTag)), el("b",{},L(UI.svTeaserT)), el("span",{},L(o.n) + ": " + offerPrice(o) + ", " + L(UI.svIva) + "."));
   const g0 = el("span",{class:"nc-go"}); g0.append(document.createTextNode(L(UI.svSee)), icon("right"));
   c.append(spotEl("price","t2"), t0, g0); return c;
 }
@@ -4201,8 +4237,16 @@ function openServicios(id){ view = "servicios"; flowId = null; svFocus = id || n
 function renderServicios(){
   const {band} = artBand([el("p",{class:"eyebrow",style:"margin-bottom:10px"},L(UI.svEye)), el("h1",{id:"view-title"},L(UI.svT))], [el("p",{class:"lead"},L(UI.svLead))], "desk", true);
   const body = wrapIn("narrow sp stack");
+  // v21: lo gratuito primero, como tarjetas con "Gratis"; luego, separado, lo pagado
+  const fl = el("ul",{class:"free-list"});
+  UI.frItems.forEach(it => { const li = el("li"); const tx = el("div",{class:"fo-t"}); const hh = el("h3",{}); hh.append(el("span",{},L(it.n)), el("span",{class:"pill-free"},L(UI.frTag)));
+    tx.append(hh, el("p",{},L(it.d)));
+    const a = el("a",{class:"fo-go",href:it.href}); a.append(el("span",{},L(it.go)), icon("right"));
+    li.append(tx, a); fl.append(li); });
   const free = el("div",{class:"note-box"}); free.append(icon("info"), el("p",{style:"margin:0"}, L(UI.svFree)));
-  body.append(pageSec("checkC", L(UI.svFreeH), free));
+  const fsec = pageSec("checkC", L(UI.frH), el("p",{},L(UI.frLead)), fl, free); fsec.classList.add("sv-free");
+  const split = el("div",{class:"sv-split"}); split.append(el("h2",{},L(UI.paidH)), el("p",{},L(UI.paidLead)));
+  body.append(fsec, split);
   // formulario
   const box = el("section",{class:"alertbox abform svform",id:"sv-form"});
   const h = el("h2",{}); h.append(icon("chat"), el("span",{},L(UI.svFormH)));
