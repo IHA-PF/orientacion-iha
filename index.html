@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-2KivpUBp+590JZmHYVH0X6mgLb/SBiowHIc8TM0PjCQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-tvSlWL5Y3gvk3TxNqdk3sfk1gI1LaClc83U1c5G79jI='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Orientación gratuita en 2 minutos sobre alojamiento, vuelos, compras en línea y plataformas digitales en Colombia, con abogados colombianos. Español, English, Français, Português.">
@@ -941,6 +941,41 @@ details.case:hover,details.case[open]{border-color:var(--line-strong)}
 .hc-go .ic{width:16px;height:16px}
 .hc-go span{color:inherit}
 .hc-dl span,.hc-dl b,.hc-q{text-wrap:balance}
+
+/* v17: seis situaciones con dibujo propio */
+.hc-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.hc-tab{display:flex;align-items:center;gap:8px;min-height:44px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--ink);font:600 13.5px/1.2 var(--body);text-align:left;cursor:pointer;min-width:0}
+.hc-tab span:last-child{min-width:0;overflow-wrap:anywhere}
+.hc-tab:hover{border-color:var(--teal)}
+.hc-tab[aria-pressed="true"]{border-color:var(--teal);background:var(--teal-soft);box-shadow:inset 0 0 0 1px var(--teal)}
+.hc-ic{display:inline-grid;place-items:center;flex:none;color:var(--teal)}
+.hc-ic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hc-ic .hc-fill{fill:var(--surface)}
+.hc-ic .hc-31{fill:currentColor;stroke:none;font:700 13px var(--body)}
+.hc-ic.sm{width:22px;height:22px}
+.hc-ic.lg{width:64px;height:64px;padding:8px;border-radius:10px;background:var(--teal-soft)}
+.hc-ic.lg .hc-fill{fill:var(--teal-soft)}
+.hc-panels{display:grid}
+.hc-p{grid-area:1 / 1;display:flex;flex-direction:column;gap:14px;visibility:hidden}
+.hc-p.on{visibility:visible}
+.hc-top{display:grid;grid-template-columns:minmax(0,1fr) 64px;gap:14px;align-items:start}
+.hc-dl b.txt{font-size:18px;line-height:1.3}
+.hc-p ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;counter-reset:hc}
+.hc-p ol li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;font-size:15px;line-height:1.45;counter-increment:hc}
+.hc-p ol li::before{content:counter(hc);width:22px;height:22px;border-radius:50%;background:var(--teal-soft);color:var(--teal);font:600 12px/22px var(--body);text-align:center}
+.hc-go{margin-top:auto}
+@media (prefers-reduced-motion:no-preference){.hc-p.on{animation:hcIn .2s ease-out}@keyframes hcIn{from{opacity:0}to{opacity:1}}}
+@media (max-width:360px){.hc-tab{padding:6px 7px;gap:6px;font-size:13px}.hc-ic.sm{width:20px;height:20px}}
+@media (max-width:560px){
+  .hc-tab{flex-direction:column;justify-content:center;gap:4px;padding:7px 2px;text-align:center;font-size:12.5px;min-height:56px}
+  .hc-tab span:last-child{overflow-wrap:normal;hyphens:none;white-space:nowrap}
+  .hc-ic.lg{width:52px;height:52px;padding:7px}
+  .hc-top{grid-template-columns:minmax(0,1fr) 52px}
+}
+@media (max-width:360px){.hc-tab{font-size:12px;padding:6px 1px}.hc-tabs{gap:5px}}
+.hc-go{display:block}
+.hc-go>span{display:inline}
+.hc-go .ic{display:inline-block;vertical-align:-3px;margin-left:4px}
 
 </style>
 </head>
@@ -2025,6 +2060,61 @@ UI.hcDlH = {es:"Su fecha límite para pedir al banco que anule el pago",en:"Your
 UI.hcStepsH = {es:"Lo que debe hacer ahora",en:"What to do now",fr:"Ce qu’il faut faire maintenant",pt:"O que fazer agora"};
 UI.hcSteps = {es:["Llame a su banco y bloquee la tarjeta.","Pida por escrito al banco que anule el pago.","Denuncie el fraude ante la Fiscalía."],en:["Call your bank and block the card.","Ask the bank in writing to reverse the payment.","Report the fraud to the Colombian prosecutor (Fiscalía)."],fr:["Appelez votre banque et faites bloquer la carte.","Demandez par écrit à la banque d’annuler le paiement.","Portez plainte auprès du parquet colombien (Fiscalía)."],pt:["Ligue para o banco e bloqueie o cartão.","Peça por escrito ao banco que anule o pagamento.","Denuncie a fraude na Promotoria colombiana (Fiscalía)."]};
 UI.hcSee = {es:"Ver la ficha completa, con la ley aplicable",en:"See the full sheet, with the law that applies",fr:"Voir la fiche complète, avec la loi applicable",pt:"Ver a ficha completa, com a lei aplicável"};
+
+// ===== v17: seis situaciones frecuentes en la tarjeta de la portada =====
+// Fuentes de cada ficha: a-cancelacion, o-fraude, p-cuenta, o-entrega, t-cancelacion (vía express).
+// RNT: renovación 100 % en línea por Confecámaras del 1 de enero al 31 de marzo; si no, suspensión automática el 1 de abril (Decreto 1836 de 2021; MinCIT, 11/02/2026).
+(function(){
+  const S = (es,en,fr,pt) => ({es,en,fr,pt});
+  UI.hcEye = S("Elija una situación y vea cómo responde el sitio","Pick a situation and see how the site answers","Choisissez une situation et voyez comment le site répond","Escolha uma situação e veja como o site responde");
+  UI.hcCases = {
+    reserva:{tab:S("Reserva","Booking","Réservation","Reserva"), href:"#express-a-cancelacion",
+      q:S("«Me cancelaron la reserva a última hora.»","“My booking was cancelled at the last minute.”","« On m’a annulé ma réservation au dernier moment. »","“Cancelaram minha reserva em cima da hora.”"),
+      h:S("Plazo para que le respondan si reclama hoy por escrito","Their deadline to reply if you complain in writing today","Délai de réponse si vous réclamez par écrit aujourd’hui","Prazo para responderem se reclamar por escrito hoje"),
+      s:S(["Pida por escrito a la plataforma y al anfitrión un alojamiento equivalente o el reembolso.","Si paga otro alojamiento más caro, guarde las facturas.","Si no resuelven, presente una queja ante la SIC."],
+          ["Ask the platform and the host in writing for equivalent accommodation or a refund.","If you pay for a more expensive place, keep the receipts.","If they don’t fix it, complain to the SIC, Colombia’s consumer authority."],
+          ["Demandez par écrit à la plateforme et à l’hôte un logement équivalent ou le remboursement.","Si vous payez un logement plus cher, gardez les factures.","Sans solution, portez réclamation auprès de la SIC, l’autorité colombienne de la consommation."],
+          ["Peça por escrito à plataforma e ao anfitrião uma hospedagem equivalente ou o reembolso.","Se pagar outra hospedagem mais cara, guarde as notas.","Se não resolverem, reclame na SIC, a autoridade colombiana do consumidor."])},
+    cobro:{tab:S("Cobro","Charge","Paiement","Cobrança"), href:"#express-o-fraude",
+      q:S("«Me cobraron en la tarjeta un pago que no reconozco.»","“There’s a charge on my card that I don’t recognise.”","« Un paiement que je ne reconnais pas apparaît sur ma carte. »","“Apareceu no meu cartão um pagamento que não reconheço.”"),
+      h:S("Su fecha límite para pedir al banco que anule el pago","Your deadline to ask the bank to reverse the payment","Votre date limite pour demander à la banque d’annuler le paiement","Seu prazo para pedir ao banco que anule o pagamento"),
+      s:S(["Llame a su banco y bloquee la tarjeta.","Pida por escrito al banco que anule el pago.","Denuncie el fraude ante la Fiscalía."],
+          ["Call your bank and block the card.","Ask the bank in writing to reverse the payment.","Report the fraud to the Colombian prosecutor (Fiscalía)."],
+          ["Appelez votre banque et faites bloquer la carte.","Demandez par écrit à la banque d’annuler le paiement.","Portez plainte auprès du parquet colombien (Fiscalía)."],
+          ["Ligue para o banco e bloqueie o cartão.","Peça por escrito ao banco que anule o pagamento.","Denuncie a fraude na Promotoria colombiana (Fiscalía)."])},
+    cuenta:{tab:S("Cuenta","Account","Compte","Conta"), href:"#express-p-cuenta",
+      q:S("«La plataforma me bloqueó la cuenta sin explicación.»","“The platform blocked my account without explanation.”","« La plateforme a bloqué mon compte sans explication. »","“A plataforma bloqueou minha conta sem explicação.”"),
+      h:S("Lo primero, hoy mismo","First thing, today","D’abord, dès aujourd’hui","Primeiro, hoje mesmo"),
+      v:S("Descargue una copia de sus datos y haga capturas de su perfil.","Download a copy of your data and screenshot your profile.","Téléchargez une copie de vos données et faites des captures de votre profil.","Baixe uma cópia dos seus dados e faça capturas do seu perfil."),
+      s:S(["Pida por escrito el motivo concreto y la regla que aplicaron.","Apele por el canal interno y guarde la constancia.","Si no resuelven, presente una queja ante la SIC."],
+          ["Ask in writing for the exact reason and the rule they applied.","Appeal through the platform’s own channel and keep the receipt.","If they don’t fix it, complain to the SIC, Colombia’s consumer authority."],
+          ["Demandez par écrit le motif précis et la règle appliquée.","Faites appel par le canal interne et gardez la preuve.","Sans solution, portez réclamation auprès de la SIC, l’autorité colombienne de la consommation."],
+          ["Peça por escrito o motivo exato e a regra aplicada.","Recorra pelo canal interno e guarde o comprovante.","Se não resolverem, reclame na SIC, a autoridade colombiana do consumidor."])},
+    compra:{tab:S("Compra","Order","Achat","Compra"), href:"#express-o-entrega",
+      q:S("«Pagué una compra en línea y nunca llegó.»","“I paid for an online order and it never arrived.”","« J’ai payé un achat en ligne et il n’est jamais arrivé. »","“Paguei uma compra on-line e ela nunca chegou.”"),
+      h:S("Si debía llegar hoy: fecha límite para pedir que anulen el pago con tarjeta","If it was due today: deadline to ask for the card payment to be reversed","Si elle devait arriver aujourd’hui : date limite pour faire annuler le paiement par carte","Se devia chegar hoje: prazo para pedir o estorno do pagamento com cartão"),
+      s:S(["Reclame por el canal de la tienda y pida el número de radicado.","Pida la anulación del pago al vendedor y a su banco.","Si no resuelven, presente una queja ante la SIC."],
+          ["Complain through the shop’s channel and ask for a reference number.","Ask the seller and your bank to reverse the payment.","If they don’t fix it, complain to the SIC, Colombia’s consumer authority."],
+          ["Réclamez par le canal de la boutique et demandez un numéro de dossier.","Demandez l’annulation du paiement au vendeur et à votre banque.","Sans solution, portez réclamation auprès de la SIC, l’autorité colombienne de la consommation."],
+          ["Reclame pelo canal da loja e peça o número de protocolo.","Peça o estorno do pagamento ao vendedor e ao seu banco.","Se não resolverem, reclame na SIC, a autoridade colombiana do consumidor."])},
+    vuelo:{tab:S("Vuelo","Flight","Vol","Voo"), href:"#express-t-cancelacion",
+      q:S("«La aerolínea me canceló el vuelo.»","“The airline cancelled my flight.”","« La compagnie a annulé mon vol. »","“A companhia aérea cancelou meu voo.”"),
+      h:S("Antes de salir del aeropuerto","Before you leave the airport","Avant de quitter l’aéroport","Antes de sair do aeroporto"),
+      v:S("Pida por escrito la causa de la cancelación.","Ask for the reason for the cancellation in writing.","Demandez par écrit la cause de l’annulation.","Peça por escrito a causa do cancelamento."),
+      s:S(["Reclame por escrito a la aerolínea o a la agencia.","Guarde el tiquete y los recibos de sus gastos.","Si no resuelven, presente una queja ante la Superintendencia de Transporte."],
+          ["Complain in writing to the airline or the agency.","Keep your ticket and the receipts for your expenses.","If they don’t fix it, complain to the Colombian transport authority (Superintendencia de Transporte)."],
+          ["Réclamez par écrit auprès de la compagnie ou de l’agence.","Gardez le billet et les reçus de vos dépenses.","Sans solution, portez réclamation auprès de l’autorité colombienne des transports (Superintendencia de Transporte)."],
+          ["Reclame por escrito à companhia aérea ou à agência.","Guarde a passagem e os recibos das suas despesas.","Se não resolverem, reclame na autoridade colombiana de transportes (Superintendencia de Transporte)."])},
+    rnt:{tab:S("RNT","RNT","RNT","RNT"), href:"#anfitrion",
+      q:S("«Alquilo un apartamento a turistas. ¿Hasta cuándo puedo renovar el RNT?»","“I rent an apartment to tourists. When must I renew my RNT?”","« Je loue un appartement à des touristes. Jusqu’à quand puis-je renouveler mon RNT ? »","“Alugo um apartamento para turistas. Até quando posso renovar o RNT?”"),
+      h:S("Su fecha límite para renovar el Registro Nacional de Turismo","Your deadline to renew the National Tourism Registry (RNT)","Votre date limite pour renouveler le Registre national du tourisme (RNT)","Seu prazo para renovar o Registro Nacional de Turismo (RNT)"),
+      s:S(["Renueve en línea, en el portal de Confecámaras, desde el 1 de enero.","Si no renueva a tiempo, el registro se suspende el 1 de abril y no puede operar.","Revise que cada anuncio muestre su número de RNT vigente."],
+          ["Renew online on the Confecámaras portal, from 1 January.","If you miss the deadline, the registration is suspended on 1 April and you can’t operate.","Check that every listing shows your valid RNT number."],
+          ["Renouvelez en ligne sur le portail de Confecámaras, à partir du 1er janvier.","Sans renouvellement à temps, le registre est suspendu le 1er avril et vous ne pouvez plus louer.","Vérifiez que chaque annonce affiche votre numéro de RNT valide."],
+          ["Renove on-line no portal da Confecámaras, a partir de 1º de janeiro.","Se não renovar a tempo, o registro é suspenso em 1º de abril e você não pode operar.","Confira se cada anúncio mostra seu número de RNT vigente."]),
+      go:S("Ver la guía para anfitriones","See the guide for hosts","Voir le guide pour les hôtes","Ver o guia para anfitriões")}
+  };
+})();
 
 // ===== v14: enlaces de pago y de agenda =====
 // Pegue cada enlace entre las comillas. Vacío = el botón no aparece en el sitio.
@@ -4038,13 +4128,53 @@ function renderServicios(){
   paint();
   if (svFocus) { const t = document.getElementById("sv-" + svFocus); if (t) setTimeout(() => { t.scrollIntoView({block:"start"}); t.classList.add("hl"); }, 0); }
 }
+// v17: tarjeta de la portada con 6 situaciones frecuentes; el visitante elige (sin carrusel automático)
+const HC_IC = {
+  reserva:'<path d="M8 22 24 9l16 13"/><path d="M12 19v20h24V19"/><path d="m19 25 10 10M29 25 19 35"/>',
+  cobro:'<rect x="5" y="12" width="30" height="21" rx="3"/><path d="M5 18h30M10 27h8"/><circle cx="34" cy="32" r="9" class="hc-fill"/><path d="M31.2 29.6a2.9 2.9 0 1 1 4 2.7c-.9.4-1.2 1-1.2 2"/><path d="M34 37.4v.1"/>',
+  cuenta:'<rect x="14" y="5" width="20" height="38" rx="4"/><path d="M21.5 38h5"/><rect x="18.5" y="22" width="11" height="9" rx="1.5"/><path d="M20.5 22v-3a3.5 3.5 0 0 1 7 0v3"/>',
+  compra:'<path d="M8 15.5 24 8l16 7.5v17L24 40 8 32.5z"/><path d="M8 15.5 24 23l16-7.5M24 23v17"/><path d="m16 11.8 16 7.4v6"/>',
+  vuelo:'<path d="M35.6 38.4 32 22l7-7c3-3 4-7 3-9-2-1-6 0-9 3l-7 7L9.6 12.4c-1-.2-1.8.2-2.2 1l-.6 1c-.4 1-.2 2 .6 2.6L18 24l-4 6H8l-2 2 6 4 4 6 2-2v-6l6-4 7 10.6c.6.8 1.6 1 2.6.6l1-.4c.8-.6 1.2-1.4 1-2.4z"/>',
+  rnt:'<rect x="8" y="11" width="32" height="29" rx="3"/><path d="M16 7v8M32 7v8M8 19h32"/><text x="24" y="35" text-anchor="middle" class="hc-31">31</text>'
+};
+const HC_ORDER = ["reserva","cobro","cuenta","compra","vuelo","rnt"];
+let hcSel = "reserva";
+function hcIcon(k, cls){
+  const w = document.createElement("span"); w.className = "hc-ic " + (cls || "");
+  w.innerHTML = '<svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">' + HC_IC[k] + '</svg>'; return w;
+}
+function hcValue(k){
+  const today = todayISO();
+  if (k === "reserva") return longDate(addDays(today, 15, 2));
+  if (k === "cobro" || k === "compra") return longDate(addDays(today, 5, 1));
+  if (k === "rnt") { const y = +today.slice(0,4); const d = y + "-03-31"; return longDate(today <= d ? d : (y + 1) + "-03-31"); }
+  return L(UI.hcCases[k].v);
+}
 function heroCard(){
-  // v16: ejemplo leído como una pregunta y su respuesta, para entenderlo de un vistazo
   const c = el("aside",{class:"hero-card","aria-label":L(UI.hcEye)});
-  const dl = el("div",{class:"hc-dl"}); dl.append(el("span",{},L(UI.hcDlH)), el("b",{},longDate(addDays(todayISO(), 5, 1))));
-  const ol = el("ol"); L(UI.hcSteps).forEach(t => ol.append(el("li",{},t)));
-  const go = el("a",{class:"hc-go",href:"#express-o-fraude"}); go.append(el("span",{},L(UI.hcSee)), icon("right"));
-  c.append(el("p",{class:"hc-eye"},L(UI.hcEye)), el("p",{class:"hc-q"},L(UI.hcQ)), dl, el("p",{class:"hc-h"},L(UI.hcStepsH)), ol, go); return c;
+  const tabs = el("div",{class:"hc-tabs",role:"group","aria-label":L(UI.hcEye)});
+  const panels = el("div",{class:"hc-panels"});
+  const btns = {}, pans = {};
+  const pick = (k, focus) => {
+    hcSel = k;
+    HC_ORDER.forEach(x => { const on = x === k; btns[x].setAttribute("aria-pressed", on ? "true" : "false"); pans[x].classList.toggle("on", on); pans[x].setAttribute("aria-hidden", on ? "false" : "true"); pans[x].inert = !on; });
+    if (focus) btns[k].focus();
+  };
+  HC_ORDER.forEach((k, i) => {
+    const cs = UI.hcCases[k];
+    const b = el("button",{type:"button",class:"hc-tab","aria-pressed":"false"}); b.append(hcIcon(k, "sm"), el("span",{},L(cs.tab)));
+    b.addEventListener("click", () => { pick(k); track("portada/caso/" + k, true); });
+    b.addEventListener("keydown", ev => { const d = ev.key === "ArrowRight" ? 1 : ev.key === "ArrowLeft" ? -1 : 0; if (d) { ev.preventDefault(); pick(HC_ORDER[(i + d + HC_ORDER.length) % HC_ORDER.length], true); } });
+    btns[k] = b; tabs.append(b);
+    const p = el("div",{class:"hc-p"});
+    const top = el("div",{class:"hc-top"}); top.append(el("p",{class:"hc-q"},L(cs.q)), hcIcon(k, "lg"));
+    const isDate = k === "reserva" || k === "cobro" || k === "compra" || k === "rnt";
+    const dl = el("div",{class:"hc-dl"}); dl.append(el("span",{},L(cs.h)), el("b",{class: isDate ? "" : "txt"}, hcValue(k)));
+    const ol = el("ol"); L(cs.s).forEach(t => ol.append(el("li",{},t)));
+    const go = el("a",{class:"hc-go",href:cs.href}); go.append(el("span",{},L(cs.go || UI.hcSee)), icon("right"));
+    p.append(top, dl, el("p",{class:"hc-h"},L(UI.hcStepsH)), ol, go); pans[k] = p; panels.append(p);
+  });
+  c.append(el("p",{class:"hc-eye"},L(UI.hcEye)), tabs, panels); pick(hcSel); return c;
 }
 function prfLink(){
   const a = el("a",{class:"prf-link",href:"#pruebas"}); a.append(icon("folder"), el("span",{},L(UI.docsHow)), icon("right")); return a;
