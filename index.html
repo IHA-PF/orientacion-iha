@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-ghnSOSdGUsbGqbxtj3PYfVU+rdV4+vwfNlQ778AC0mU='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-2KivpUBp+590JZmHYVH0X6mgLb/SBiowHIc8TM0PjCQ='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Orientación gratuita en 2 minutos sobre alojamiento, vuelos, compras en línea y plataformas digitales en Colombia, con abogados colombianos. Español, English, Français, Português.">
@@ -928,6 +928,18 @@ details.case:hover,details.case[open]{border-color:var(--line-strong)}
 @media (min-width:980px){.hc-mw{display:none}}
 .of-act{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
 .offer .of-act .btn{margin-top:0}
+
+/* v16: tarjeta de ejemplo en forma de pregunta y respuesta */
+.hc-eye{display:block;font-size:13px;font-weight:600;color:var(--muted)}
+.hc-q{font-family:var(--display);font-size:20px;font-weight:600;line-height:1.3;color:var(--ink);border-left:3px solid var(--teal);padding:2px 0 2px 14px}
+.hc-dl{gap:4px}
+.hc-dl span{font-size:13.5px;line-height:1.35}
+.hc-dl b{font-family:var(--display);font-size:22px;font-weight:600;line-height:1.2;color:var(--ink)}
+.hc-dl b::first-letter{text-transform:uppercase}
+.hc-h{font-size:14px;font-weight:600;color:var(--ink)}
+.hc-go{display:inline-flex;align-items:center;gap:6px;justify-content:flex-start;border-top:1px solid var(--line);padding-top:14px;font-size:14.5px;font-weight:600;color:var(--teal);text-decoration:underline;text-underline-offset:3px}
+.hc-go .ic{width:16px;height:16px}
+.hc-go span{color:inherit}
 
 </style>
 </head>
@@ -2004,6 +2016,14 @@ UI.hcSee = {es:"Ver la ficha completa",en:"See the full sheet",fr:"Voir la fiche
     "Oui. L’abonnement Anfitrión en regla coûte 979 000 COP par an et par logement, ou 759 000 COP par logement à partir de 2 logements, TVA incluse : 12 mois pour le prix de 11. Vous pouvez aussi payer au mois (89 000 ou 69 000 COP). Il comprend votre calendrier des obligations avec rappels, les alertes sur les règles, une question écrite par mois et une revue annuelle. Vous pouvez résilier quand vous voulez ; si vous avez payé l’année et résiliez avant, nous remboursons ce que vous avez payé, moins les mois commencés au prix mensuel.",
     "Sim. O plano Anfitrión en regla custa COP 979.000 por ano por imóvel, ou COP 759.000 por imóvel a partir de 2 imóveis, IVA incluído: 12 meses pelo preço de 11. Também pode pagar mês a mês (COP 89.000 ou 69.000). Inclui seu calendário de obrigações com avisos, alertas de normas, uma consulta escrita por mês e uma revisão anual. Você pode cancelar quando quiser; se pagou o ano e cancelar antes, devolvemos o que pagou menos os meses iniciados, pelo preço mensal."));
 })();
+
+// ===== v16: tarjeta de ejemplo de la portada, en forma de pregunta y respuesta =====
+UI.hcEye = {es:"Así responde el sitio, gratis y en 2 minutos",en:"How the site answers, free and in 2 minutes",fr:"Voici comment le site répond, gratuitement et en 2 minutes",pt:"Assim o site responde, grátis e em 2 minutos"};
+UI.hcQ = {es:"«Me cobraron en la tarjeta un pago que no reconozco.»",en:"“There’s a charge on my card that I don’t recognise.”",fr:"« Un paiement que je ne reconnais pas apparaît sur ma carte. »",pt:"“Apareceu no meu cartão um pagamento que não reconheço.”"};
+UI.hcDlH = {es:"Su fecha límite para pedir al banco que anule el pago",en:"Your deadline to ask the bank to reverse the payment",fr:"Votre date limite pour demander à la banque d’annuler le paiement",pt:"Seu prazo para pedir ao banco que anule o pagamento"};
+UI.hcStepsH = {es:"Lo que debe hacer ahora",en:"What to do now",fr:"Ce qu’il faut faire maintenant",pt:"O que fazer agora"};
+UI.hcSteps = {es:["Llame a su banco y bloquee la tarjeta.","Pida por escrito al banco que anule el pago.","Denuncie el fraude ante la Fiscalía."],en:["Call your bank and block the card.","Ask the bank in writing to reverse the payment.","Report the fraud to the Colombian prosecutor (Fiscalía)."],fr:["Appelez votre banque et faites bloquer la carte.","Demandez par écrit à la banque d’annuler le paiement.","Portez plainte auprès du parquet colombien (Fiscalía)."],pt:["Ligue para o banco e bloqueie o cartão.","Peça por escrito ao banco que anule o pagamento.","Denuncie a fraude na Promotoria colombiana (Fiscalía)."]};
+UI.hcSee = {es:"Ver la ficha completa, con la ley aplicable",en:"See the full sheet, with the law that applies",fr:"Voir la fiche complète, avec la loi applicable",pt:"Ver a ficha completa, com a lei aplicável"};
 
 // ===== v14: enlaces de pago y de agenda =====
 // Pegue cada enlace entre las comillas. Vacío = el botón no aparece en el sitio.
@@ -4018,13 +4038,12 @@ function renderServicios(){
   if (svFocus) { const t = document.getElementById("sv-" + svFocus); if (t) setTimeout(() => { t.scrollIntoView({block:"start"}); t.classList.add("hl"); }, 0); }
 }
 function heroCard(){
-  const c = el("aside",{class:"hero-card","aria-label":L(UI.hcEye)}); const s = SITS.find(x => x.id === "o-fraude"); if (!s) return c;
-  const tp = UI.exTypes.find(t => t.k === "pagos");
-  const eye = el("p",{class:"hc-eye"}); eye.append(el("span",{},L(UI.hcEye)), el("span",{},tp ? L(tp.n) : ""));
-  const dl = el("div",{class:"hc-dl"}); dl.append(el("span",{},L(UI.hcIf)), el("b",{},L(UI.exRes.rev).replace("{d}", longDate(addDays(todayISO(), 5, 1)))));
-  const ol = el("ol"); s.r.slice(0,3).forEach(t => ol.append(el("li",{},T(t))));
-  const go = el("p",{class:"hc-go"}); go.append(el("span",{},L(UI.hcFoot)), el("a",{href:"#express-o-fraude"},L(UI.hcSee)));
-  c.append(eye, el("p",{class:"hc-t"},L(s.t)), dl, el("p",{class:"hc-h"},L(UI.exNow)), ol, go); return c;
+  // v16: ejemplo leído como una pregunta y su respuesta, para entenderlo de un vistazo
+  const c = el("aside",{class:"hero-card","aria-label":L(UI.hcEye)});
+  const dl = el("div",{class:"hc-dl"}); dl.append(el("span",{},L(UI.hcDlH)), el("b",{},longDate(addDays(todayISO(), 5, 1))));
+  const ol = el("ol"); L(UI.hcSteps).forEach(t => ol.append(el("li",{},t)));
+  const go = el("a",{class:"hc-go",href:"#express-o-fraude"}); go.append(el("span",{},L(UI.hcSee)), icon("right"));
+  c.append(el("p",{class:"hc-eye"},L(UI.hcEye)), el("p",{class:"hc-q"},L(UI.hcQ)), dl, el("p",{class:"hc-h"},L(UI.hcStepsH)), ol, go); return c;
 }
 function prfLink(){
   const a = el("a",{class:"prf-link",href:"#pruebas"}); a.append(icon("folder"), el("span",{},L(UI.docsHow)), icon("right")); return a;
