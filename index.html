@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-kFcfVisZKKDdO5sgUyEtmyuFiPI6FQaGWlKXHl2lR/M='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-ux032cc/Gy6kPZHClaWY8/+dqkV+VSCvS0y2rCafwv4=' 'sha256-4uoWG9lF8Mg19ivF7oVEpBqO+6nvEcVqye0oL5dFiQw='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://iha-orientacion.goatcounter.com; font-src 'self'; connect-src https://iha-orientacion.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Orientación gratuita en 2 minutos sobre alojamiento, vuelos, compras en línea y plataformas digitales en Colombia, con abogados colombianos. Español, English, Français, Português.">
@@ -976,6 +976,33 @@ details.case:hover,details.case[open]{border-color:var(--line-strong)}
 .hc-go{display:block}
 .hc-go>span{display:inline}
 .hc-go .ic{display:inline-block;vertical-align:-3px;margin-left:4px}
+
+/* v19: aviso desplazable (lista de espera del POT) en lo alto de la portada */
+.band.hero.has-tick{padding-top:0}
+.tick{position:relative;z-index:1;background:rgba(0,0,0,.2);border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:clamp(32px,6vw,72px)}
+.tick-in{display:flex;align-items:center;gap:12px;min-height:48px}
+.tick-lab{flex:none;display:inline-flex;align-items:center;gap:7px;font:700 12.5px/1 var(--body);color:#0F2338;background:var(--on-navy-accent);border-radius:999px;padding:6px 11px 6px 9px;white-space:nowrap}
+.tick-dot{width:7px;height:7px;border-radius:50%;background:#0F2338}
+.tick-run{flex:1;min-width:0;overflow:hidden;color:var(--on-navy);text-decoration:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 28px),transparent)}
+.tick-track{display:inline-flex;white-space:nowrap;will-change:transform}
+.tick-seq{display:inline-flex;align-items:center;flex:none}
+.tick-it{font:600 14.5px/48px var(--body);padding:0 20px;letter-spacing:.01em}
+.tick-sep{flex:none;width:6px;height:6px;transform:rotate(45deg);background:var(--on-navy-accent)}
+.tick-run:hover .tick-it,.tick-run:focus-visible .tick-it{text-decoration:underline;text-underline-offset:4px}
+.tick-run:focus-visible{outline:3px solid var(--on-navy-accent);outline-offset:-3px;border-radius:6px}
+.tick-btn{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:transparent;border:1px solid rgba(255,255,255,.28);color:var(--on-navy);cursor:pointer;padding:0}
+.tick-btn:hover{background:rgba(255,255,255,.08)}
+.tick-btn .ic{width:16px;height:16px}
+@media (prefers-reduced-motion:no-preference){
+  .tick-track{animation:tickMove 48s linear infinite}
+  .tick.paused .tick-track,.tick:hover .tick-track,.tick:focus-within .tick-track{animation-play-state:paused}
+  .tick-dot{animation:tickBlink 1.6s ease-in-out infinite}
+  .tick.paused .tick-dot{animation:none}
+}
+@keyframes tickMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes tickBlink{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.tick-run{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.tick-btn{display:none}.tick-seq[aria-hidden]{display:none}}
+@media (max-width:480px){.tick-in{gap:8px}.tick-lab{font-size:12px;padding:5px 9px 5px 8px}.tick-it{font-size:14px;padding:0 16px}.tick-btn{width:32px;height:32px}}
 
 </style>
 </head>
@@ -2125,6 +2152,20 @@ Object.assign(UI.heroH2, {es:"Con IHA sabe cuáles son. Gratis y en dos minutos.
 Object.assign(UI.heroP, {es:"Reserva cancelada, cuenta bloqueada, compra que no llegó, RNT por renovar: elija su situación y sepa qué hacer y hasta cuándo. Usted decide si nos escribe.",en:"Cancelled booking, blocked account, order that never arrived, RNT to renew: choose your situation and know what to do and by when. You decide whether to contact us.",fr:"Réservation annulée, compte bloqué, achat jamais reçu, RNT à renouveler : choisissez votre situation et sachez quoi faire et jusqu’à quand. Vous décidez si vous nous écrivez.",pt:"Reserva cancelada, conta bloqueada, compra que não chegou, RNT para renovar: escolha sua situação e saiba o que fazer e até quando. Você decide se nos escreve."});
 // v18c (revertido a pedido): la línea sobre el título conserva el nombre completo de la firma.
 
+// ===== v19: aviso desplazable de la portada: lista de espera de la Auditoría de transición POT =====
+// Mismos datos que la oferta "pot" publicada (precio, plazo, inscripción sin pago). Publicidad informativa, sin promesas de resultado (Ley 1123 de 2007).
+UI.tick = {
+  label:{es:"Lista de espera",en:"Waiting list",fr:"Liste d’attente",pt:"Lista de espera"},
+  aria:{es:"Aviso: Auditoría de transición POT",en:"Notice: POT transition audit",fr:"Annonce : audit de transition POT",pt:"Aviso: auditoria de transição do POT"},
+  pause:{es:"Pausar el aviso",en:"Pause the notice",fr:"Mettre l’annonce en pause",pt:"Pausar o aviso"},
+  play:{es:"Reanudar el aviso",en:"Resume the notice",fr:"Reprendre l’annonce",pt:"Retomar o aviso"},
+  items:{
+    es:["Nuevo POT de Medellín: prepare su vivienda turística antes de que entre en vigor","Auditoría de transición POT: inscríbase gratis en la lista de espera","Solo paga cuando empecemos: {p} por vivienda, IVA incluido","$620.000 con el plan Anfitrión en regla","Informe en 7 días hábiles después de recibir sus documentos"],
+    en:["Medellín’s new zoning plan (POT): get your short-term rental ready before it takes effect","POT transition audit: join the waiting list for free","You only pay when we start: {p} per property, VAT included","COP 620,000 with the Anfitrión en regla plan","Report within 7 business days of receiving your documents"],
+    fr:["Nouveau POT de Medellín : préparez votre logement touristique avant son entrée en vigueur","Audit de transition POT : inscription gratuite sur la liste d’attente","Vous ne payez que lorsque nous commençons : {p} par logement, TVA incluse","620 000 COP avec l’abonnement Anfitrión en regla","Rapport sous 7 jours ouvrables après réception de vos documents"],
+    pt:["Novo POT de Medellín: prepare seu imóvel de temporada antes de entrar em vigor","Auditoria de transição do POT: entre grátis na lista de espera","Só paga quando começarmos: {p} por imóvel, IVA incluído","COP 620.000 com o plano Anfitrión en regla","Relatório em 7 dias úteis depois de receber seus documentos"]}
+};
+
 // ===== v14: enlaces de pago y de agenda =====
 // Pegue cada enlace entre las comillas. Vacío = el botón no aparece en el sitio.
 // Pago: un "link de pago" de Wompi (https://checkout.wompi.co/l/...) o de Mercado Pago, con el monto fijo del servicio y de uso múltiple.
@@ -3189,6 +3230,7 @@ function renderHome(){
   ["badge1","badge2","badge3"].forEach(k => { const li = el("li"); li.append(icon("check"), document.createTextNode(L(UI[k]))); badges.append(li); });
   bi.append(badges, el("p",{class:"hero-tag"},L(UI.heroTag)), (() => { const h = el("h1",{id:"view-title"},L(UI.heroH)); if (UI.heroH2) h.append(" ", el("span",{class:"h1-sub"},L(UI.heroH2))); return h; })(), el("p",{class:"lead"},L(UI.heroP)), (() => { const a = el("a",{class:"btn express-cta",href:"#express"}); a.append(icon("clock"), el("span",{},L(UI.heroEx)), icon("right")); return a; })(), (() => { const a = el("a",{class:"hero-sv",href:"#servicios"}); a.append(icon("tag"), el("span",{},L(UI.svSee)), icon("right")); return a; })());
   { const left = el("div",{class:"hero-l"}); left.append(...Array.from(bi.childNodes)); const hg = el("div",{class:"hero-grid"}); hg.append(left, heroCard()); bi.append(hg); }
+  band.prepend(potTicker()); band.classList.add("has-tick");
   band.append(bi);
 
   const lift = wrapIn("lift"); const doors = el("div",{class:"doors"});
@@ -4158,6 +4200,26 @@ function hcValue(k){
   if (k === "cobro" || k === "compra") return longDate(addDays(today, 5, 1));
   if (k === "rnt") { const y = +today.slice(0,4); const d = y + "-03-31"; return longDate(today <= d ? d : (y + 1) + "-03-31"); }
   return L(UI.hcCases[k].v);
+}
+// v19: aviso desplazable (lista de espera del POT). Se detiene al pasar el ratón o el foco, tiene botón de pausa
+// (WCAG 2.2.2) y queda inmóvil si el sistema pide reducir el movimiento.
+let tickPaused = false;
+IC.pause = IC.pause || '<path d="M9 5v14M15 5v14"/>';
+IC.play = IC.play || '<path d="M8 5.5v13l10.5-6.5z"/>';
+function potTicker(){
+  const o = UI.offerById("pot"); const price = o ? UI.ofFmt(o.v, lang) : "";
+  const items = L(UI.tick.items).map(t => t.replace("{p}", price));
+  const wrap = el("div",{class:"tick",role:"region","aria-label":L(UI.tick.aria)});
+  const inn = el("div",{class:"tick-in in"});
+  const lab = el("span",{class:"tick-lab"}); lab.append(el("span",{class:"tick-dot","aria-hidden":"true"}), document.createTextNode(L(UI.tick.label)));
+  const run = el("a",{class:"tick-run",href:"#servicios-pot"});
+  const seq = hide => { const g = el("span",{class:"tick-seq"}); if (hide) g.setAttribute("aria-hidden","true"); items.forEach(t => g.append(el("span",{class:"tick-it"},t), el("span",{class:"tick-sep","aria-hidden":"true"}))); return g; };
+  const belt = el("span",{class:"tick-track"}); belt.append(seq(false), seq(true));
+  run.append(belt); run.addEventListener("click", () => track("portada/aviso-pot", true));
+  const btn = el("button",{type:"button",class:"tick-btn"});
+  const paint = () => { btn.replaceChildren(icon(tickPaused ? "play" : "pause")); btn.setAttribute("aria-pressed", tickPaused ? "true" : "false"); btn.setAttribute("aria-label", L(tickPaused ? UI.tick.play : UI.tick.pause)); wrap.classList.toggle("paused", tickPaused); };
+  btn.addEventListener("click", () => { tickPaused = !tickPaused; paint(); });
+  paint(); inn.append(lab, run, btn); wrap.append(inn); return wrap;
 }
 function heroCard(){
   const c = el("aside",{class:"hero-card","aria-label":L(UI.hcEye)});
