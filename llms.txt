@@ -7,6 +7,8 @@
 - [Sus derechos y obligaciones en Colombia](https://iha-pf.github.io/orientacion-iha/es/): Busque su situación y vea qué dice la ley, qué plazos corren y a quién reclamar. Información general, con fuentes.
 - [Preguntas frecuentes](https://iha-pf.github.io/orientacion-iha/es/preguntas-frecuentes/)
 - [Lo que podría cambiar para la vivienda turística](https://iha-pf.github.io/orientacion-iha/es/novedades-vivienda-turistica/)
+- [¿Cuánto le debe la aerolínea por la demora?](https://iha-pf.github.io/orientacion-iha/es/compensacion-por-demora-de-vuelo/)
+- [Prepare su caso](https://iha-pf.github.io/orientacion-iha/es/prepare-su-caso/)
 - [Lo gratuito primero; si lo necesita, una abogada lo hace por usted](https://iha-pf.github.io/orientacion-iha/es/servicios-y-precios/)
 - [¿Alquila por días? Mantenga su vivienda en regla](https://iha-pf.github.io/orientacion-iha/es/plan-anfitrion-en-regla/)
 
@@ -15,6 +17,8 @@
 - [Your rights and obligations in Colombia](https://iha-pf.github.io/orientacion-iha/en/): Find your situation and see what the law says, which deadlines apply and where to complain. General information, with sources.
 - [Frequently asked questions](https://iha-pf.github.io/orientacion-iha/en/faq/)
 - [What could change for short-term rentals](https://iha-pf.github.io/orientacion-iha/en/short-term-rental-updates/)
+- [How much does the airline owe you for the delay?](https://iha-pf.github.io/orientacion-iha/en/flight-delay-compensation-colombia/)
+- [Prepare your case](https://iha-pf.github.io/orientacion-iha/en/prepare-your-case/)
 - [Free help first; if you need it, a lawyer does it for you](https://iha-pf.github.io/orientacion-iha/en/services-and-prices/)
 - [Renting short-term? Keep your property compliant](https://iha-pf.github.io/orientacion-iha/en/host-compliance-plan/)
 
@@ -23,6 +27,8 @@
 - [Vos droits et obligations en Colombie](https://iha-pf.github.io/orientacion-iha/fr/): Trouvez votre situation : ce que dit la loi, les délais et où réclamer. Information générale, avec sources.
 - [Questions fréquentes](https://iha-pf.github.io/orientacion-iha/fr/questions-frequentes/)
 - [Ce qui pourrait changer pour la location touristique](https://iha-pf.github.io/orientacion-iha/fr/actualites-location-touristique/)
+- [Combien la compagnie vous doit-elle pour le retard ?](https://iha-pf.github.io/orientacion-iha/fr/indemnisation-retard-vol-colombie/)
+- [Préparez votre dossier](https://iha-pf.github.io/orientacion-iha/fr/preparez-votre-dossier/)
 - [D’abord le gratuit ; si besoin, une avocate s’en charge](https://iha-pf.github.io/orientacion-iha/fr/services-et-prix/)
 - [Vous louez à la nuitée ? Gardez votre logement en règle](https://iha-pf.github.io/orientacion-iha/fr/abonnement-hote-en-regle/)
 
@@ -31,6 +37,8 @@
 - [Seus direitos e obrigações na Colômbia](https://iha-pf.github.io/orientacion-iha/pt/): Busque a sua situação e veja o que diz a lei, quais prazos correm e a quem reclamar. Informação geral, com fontes.
 - [Perguntas frequentes](https://iha-pf.github.io/orientacion-iha/pt/perguntas-frequentes/)
 - [O que pode mudar para o aluguel por temporada](https://iha-pf.github.io/orientacion-iha/pt/novidades-moradia-turistica/)
+- [Quanto a companhia aérea lhe deve pelo atraso?](https://iha-pf.github.io/orientacion-iha/pt/compensacao-atraso-voo-colombia/)
+- [Prepare o seu caso](https://iha-pf.github.io/orientacion-iha/pt/prepare-o-seu-caso/)
 - [Primeiro o gratuito; se precisar, uma advogada faz por você](https://iha-pf.github.io/orientacion-iha/pt/servicos-e-precos/)
 - [Aluga por temporada? Mantenha seu imóvel em dia](https://iha-pf.github.io/orientacion-iha/pt/plano-anfitriao-em-dia/)
 
