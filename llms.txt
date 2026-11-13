@@ -1,0 +1,86 @@
+# IHA Soluciones Legales y Técnicas S.A.S.: orientación legal gratuita en Colombia
+
+> Orientación legal gratuita en español, inglés, francés y portugués sobre derechos del consumidor, plataformas digitales, arriendos y vivienda turística en Colombia. Cada ficha cita la norma colombiana que aplica. Es información general, no una consulta jurídica; los servicios con abogada tienen precio fijo publicado, IVA incluido. Empresa con sede en Medellín, NIT 900.365.039-8.
+
+## Español
+
+- [Sus derechos y obligaciones en Colombia](https://iha-pf.github.io/orientacion-iha/es/): Busque su situación y vea qué dice la ley, qué plazos corren y a quién reclamar. Información general, con fuentes.
+- [Preguntas frecuentes](https://iha-pf.github.io/orientacion-iha/es/preguntas-frecuentes/)
+- [Lo que podría cambiar para la vivienda turística](https://iha-pf.github.io/orientacion-iha/es/novedades-vivienda-turistica/)
+- [Lo gratuito primero; si lo necesita, una abogada lo hace por usted](https://iha-pf.github.io/orientacion-iha/es/servicios-y-precios/)
+- [¿Alquila por días? Mantenga su vivienda en regla](https://iha-pf.github.io/orientacion-iha/es/plan-anfitrion-en-regla/)
+
+## English
+
+- [Your rights and obligations in Colombia](https://iha-pf.github.io/orientacion-iha/en/): Find your situation and see what the law says, which deadlines apply and where to complain. General information, with sources.
+- [Frequently asked questions](https://iha-pf.github.io/orientacion-iha/en/faq/)
+- [What could change for short-term rentals](https://iha-pf.github.io/orientacion-iha/en/short-term-rental-updates/)
+- [Free help first; if you need it, a lawyer does it for you](https://iha-pf.github.io/orientacion-iha/en/services-and-prices/)
+- [Renting short-term? Keep your property compliant](https://iha-pf.github.io/orientacion-iha/en/host-compliance-plan/)
+
+## Français
+
+- [Vos droits et obligations en Colombie](https://iha-pf.github.io/orientacion-iha/fr/): Trouvez votre situation : ce que dit la loi, les délais et où réclamer. Information générale, avec sources.
+- [Questions fréquentes](https://iha-pf.github.io/orientacion-iha/fr/questions-frequentes/)
+- [Ce qui pourrait changer pour la location touristique](https://iha-pf.github.io/orientacion-iha/fr/actualites-location-touristique/)
+- [D’abord le gratuit ; si besoin, une avocate s’en charge](https://iha-pf.github.io/orientacion-iha/fr/services-et-prix/)
+- [Vous louez à la nuitée ? Gardez votre logement en règle](https://iha-pf.github.io/orientacion-iha/fr/abonnement-hote-en-regle/)
+
+## Português
+
+- [Seus direitos e obrigações na Colômbia](https://iha-pf.github.io/orientacion-iha/pt/): Busque a sua situação e veja o que diz a lei, quais prazos correm e a quem reclamar. Informação geral, com fontes.
+- [Perguntas frequentes](https://iha-pf.github.io/orientacion-iha/pt/perguntas-frequentes/)
+- [O que pode mudar para o aluguel por temporada](https://iha-pf.github.io/orientacion-iha/pt/novidades-moradia-turistica/)
+- [Primeiro o gratuito; se precisar, uma advogada faz por você](https://iha-pf.github.io/orientacion-iha/pt/servicos-e-precos/)
+- [Aluga por temporada? Mantenha seu imóvel em dia](https://iha-pf.github.io/orientacion-iha/pt/plano-anfitriao-em-dia/)
+
+## Fichas (español)
+
+- [Me cancelaron la reserva](https://iha-pf.github.io/orientacion-iha/es/me-cancelaron-la-reserva/)
+- [Llegué al hotel y no tenían mi habitación (sobreventa)](https://iha-pf.github.io/orientacion-iha/es/llegue-al-hotel-y-no-tenian-mi-habitacion-sobreventa/)
+- [El anfitrión me canceló durante la estadía o llamó a la policía para sacarme](https://iha-pf.github.io/orientacion-iha/es/el-anfitrion-me-cancelo-durante-la-estadia-o-llamo-a-la-policia-para-sac/)
+- [El alojamiento no era el anunciado](https://iha-pf.github.io/orientacion-iha/es/el-alojamiento-no-era-el-anunciado/)
+- [Cobros de más o depósito no devuelto](https://iha-pf.github.io/orientacion-iha/es/cobros-de-mas-o-deposito-no-devuelto/)
+- [Daño, accidente o robo en el alojamiento](https://iha-pf.github.io/orientacion-iha/es/dano-accidente-o-robo-en-el-alojamiento/)
+- [La agencia o el paquete turístico no cumplió](https://iha-pf.github.io/orientacion-iha/es/la-agencia-o-el-paquete-turistico-no-cumplio/)
+- [Quiero cancelar mi reserva](https://iha-pf.github.io/orientacion-iha/es/quiero-cancelar-mi-reserva/)
+- [Mi vuelo se retrasó](https://iha-pf.github.io/orientacion-iha/es/mi-vuelo-se-retraso/)
+- [Vuelo cancelado o no me dejaron abordar (sobreventa)](https://iha-pf.github.io/orientacion-iha/es/vuelo-cancelado-o-no-me-dejaron-abordar-sobreventa/)
+- [Equipaje perdido, demorado o dañado](https://iha-pf.github.io/orientacion-iha/es/equipaje-perdido-demorado-o-danado/)
+- [Quiero devolver o cambiar un tiquete aéreo](https://iha-pf.github.io/orientacion-iha/es/quiero-devolver-o-cambiar-un-tiquete-aereo/)
+- [Bus intermunicipal: tiquete, servicio o equipaje](https://iha-pf.github.io/orientacion-iha/es/bus-intermunicipal-tiquete-servicio-o-equipaje/)
+- [App de transporte o taxi: cobro, trato o incidente](https://iha-pf.github.io/orientacion-iha/es/app-de-transporte-o-taxi-cobro-trato-o-incidente/)
+- [Accidente de tránsito (SOAT)](https://iha-pf.github.io/orientacion-iha/es/accidente-de-transito-soat/)
+- [Compra en línea que no llegó o llegó tarde](https://iha-pf.github.io/orientacion-iha/es/compra-en-linea-que-no-llego-o-llego-tarde/)
+- [Quiero devolver una compra en línea (retracto)](https://iha-pf.github.io/orientacion-iha/es/quiero-devolver-una-compra-en-linea-retracto/)
+- [Producto defectuoso (garantía)](https://iha-pf.github.io/orientacion-iha/es/producto-defectuoso-garantia/)
+- [Cobro no reconocido o fraude con mi tarjeta o cuenta](https://iha-pf.github.io/orientacion-iha/es/cobro-no-reconocido-o-fraude-con-mi-tarjeta-o-cuenta/)
+- [Me estafaron por transferencia (Bre-B, llaves o transferencia inmediata)](https://iha-pf.github.io/orientacion-iha/es/me-estafaron-por-transferencia-bre-b-llaves-o-transferencia-inmediata/)
+- [Banco, crédito o seguro](https://iha-pf.github.io/orientacion-iha/es/banco-credito-o-seguro/)
+- [Cobranza abusiva o reporte en centrales de riesgo](https://iha-pf.github.io/orientacion-iha/es/cobranza-abusiva-o-reporte-en-centrales-de-riesgo/)
+- [Internet, celular o TV](https://iha-pf.github.io/orientacion-iha/es/internet-celular-o-tv/)
+- [Agua, luz o gas: factura o servicio](https://iha-pf.github.io/orientacion-iha/es/agua-luz-o-gas-factura-o-servicio/)
+- [Concierto o evento cancelado o aplazado](https://iha-pf.github.io/orientacion-iha/es/concierto-o-evento-cancelado-o-aplazado/)
+- [Restaurante: propina u otros cobros](https://iha-pf.github.io/orientacion-iha/es/restaurante-propina-u-otros-cobros/)
+- [Parqueadero: daño o robo del vehículo](https://iha-pf.github.io/orientacion-iha/es/parqueadero-dano-o-robo-del-vehiculo/)
+- [Vehículo nuevo con fallas](https://iha-pf.github.io/orientacion-iha/es/vehiculo-nuevo-con-fallas/)
+- [Vivienda nueva con defectos](https://iha-pf.github.io/orientacion-iha/es/vivienda-nueva-con-defectos/)
+- [Salud: EPS o medicina prepagada](https://iha-pf.github.io/orientacion-iha/es/salud-eps-o-medicina-prepagada/)
+- [Mis datos personales o mensajes no autorizados](https://iha-pf.github.io/orientacion-iha/es/mis-datos-personales-o-mensajes-no-autorizados/)
+- [No me dejan cancelar un contrato o suscripción](https://iha-pf.github.io/orientacion-iha/es/no-me-dejan-cancelar-un-contrato-o-suscripcion/)
+- [Publicidad engañosa o precio distinto al anunciado](https://iha-pf.github.io/orientacion-iha/es/publicidad-enganosa-o-precio-distinto-al-anunciado/)
+- [Un asistente de IA me informó mal o me negó algo](https://iha-pf.github.io/orientacion-iha/es/un-asistente-de-ia-me-informo-mal-o-me-nego-algo/)
+- [Vivienda turística en regla: la lista completa](https://iha-pf.github.io/orientacion-iha/es/vivienda-turistica-en-regla-la-lista-completa/)
+- [Alquilo por días sin RNT o con el RNT vencido](https://iha-pf.github.io/orientacion-iha/es/alquilo-por-dias-sin-rnt-o-con-el-rnt-vencido/)
+- [El edificio no permite el alquiler por días o me multaron](https://iha-pf.github.io/orientacion-iha/es/el-edificio-no-permite-el-alquiler-por-dias-o-me-multaron/)
+- [Registro de huéspedes: TRA y reporte de extranjeros (SIRE)](https://iha-pf.github.io/orientacion-iha/es/registro-de-huespedes-tra-y-reporte-de-extranjeros-sire/)
+- [Un huésped no se quiere ir o incumple las reglas: ¿puedo llamar a la policía?](https://iha-pf.github.io/orientacion-iha/es/un-huesped-no-se-quiere-ir-o-incumple-las-reglas-puedo-llamar-a-la-polic/)
+- [¿Mi zona permite la vivienda turística? (Medellín)](https://iha-pf.github.io/orientacion-iha/es/mi-zona-permite-la-vivienda-turistica-medellin/)
+- [Me suspendieron o bloquearon la cuenta](https://iha-pf.github.io/orientacion-iha/es/me-suspendieron-o-bloquearon-la-cuenta/)
+- [La plataforma me retiene los pagos](https://iha-pf.github.io/orientacion-iha/es/la-plataforma-me-retiene-los-pagos/)
+- [Me retiraron un anuncio](https://iha-pf.github.io/orientacion-iha/es/me-retiraron-un-anuncio/)
+- [Compré en una plataforma y el vendedor desapareció](https://iha-pf.github.io/orientacion-iha/es/compre-en-una-plataforma-y-el-vendedor-desaparecio/)
+- [Arriendo por meses: depósito, aumento o reparaciones](https://iha-pf.github.io/orientacion-iha/es/arriendo-por-meses-deposito-aumento-o-reparaciones/)
+- [El arrendador me quiere sacar, cambió la cerradura o me cortó los servicios](https://iha-pf.github.io/orientacion-iha/es/el-arrendador-me-quiere-sacar-cambio-la-cerradura-o-me-corto-los-servici/)
+- [La inmobiliaria no me responde, no me devuelve dinero o cobra lo que no debe](https://iha-pf.github.io/orientacion-iha/es/la-inmobiliaria-no-me-responde-no-me-devuelve-dinero-o-cobra-lo-que-no-d/)
+- [Reservé por una app por un mes o más: ¿qué reglas aplican?](https://iha-pf.github.io/orientacion-iha/es/reserve-por-una-app-por-un-mes-o-mas-que-reglas-aplican/)
