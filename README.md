@@ -2,7 +2,7 @@
 
 Plataforma de orientación legal gratuita para consumidores, anfitriones y conflictos con plataformas digitales en Colombia.
 
-Editada por IHA SOLUCIONES LEGALES Y TECNICAS S.A.S. · NIT 900.365.039-8 · Medellín, Colombia.
+Editada por IHA GROUP S.A.S. (nombre comercial: IHA Soluciones Legales) · NIT 900.365.039-8 · Medellín, Colombia.
 
 - `index.html`: la herramienta de orientación (4 idiomas, modo claro y oscuro, líneas de emergencia 123, 155, 165, 141).
 - `es/`, `en/`, `fr/`, `pt/`: las fichas de derechos en páginas indexables, la guía de pruebas, las preguntas frecuentes y el plan para anfitriones, con un índice por idioma.
