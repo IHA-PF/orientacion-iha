@@ -26,8 +26,8 @@
 @font-face{font-family:'Public Sans';font-weight:400;font-display:swap;src:url(../fonts/public-sans-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:'Public Sans';font-weight:600;font-display:swap;src:url(../fonts/public-sans-latin-600-normal.woff2) format('woff2')}
 @font-face{font-family:'Public Sans';font-weight:700;font-display:swap;src:url(../fonts/public-sans-latin-700-normal.woff2) format('woff2')}
-:root{--bg:#F4F6F1;--surface:#fff;--ink:#13241F;--muted:#485A53;--line:#D9E0D6;--teal:#8E1F63;--teal-soft:#F6E4EE;--navy:#10362E;--on-navy:#F1F6F2;--red:#B42318;--gold-soft:#EAEFE7;color-scheme:light}
-@media (prefers-color-scheme:dark){:root{--bg:#0B1613;--surface:#12211D;--ink:#E6EFEA;--muted:#A3B7AE;--line:#213630;--teal:#F29CCB;--teal-soft:#3A1A2E;--navy:#163A32;--on-navy:#F1F6F2;--red:#F29488;--gold-soft:#17271F;color-scheme:dark}}
+:root{--bg:#F4F6F1;--surface:#fff;--ink:#13241F;--muted:#485A53;--line:#D9E0D6;--teal:#0F5C46;--teal-soft:#FFF3C4;--navy:#10362E;--on-navy:#F1F6F2;--red:#B42318;--gold-soft:#EAEFE7;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0B1613;--surface:#12211D;--ink:#E6EFEA;--muted:#A3B7AE;--line:#213630;--teal:#F6D55C;--teal-soft:#3A3212;--navy:#163A32;--on-navy:#F1F6F2;--red:#F29488;--gold-soft:#17271F;color-scheme:dark}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'Public Sans','Segoe UI',Arial,sans-serif}
 a{color:var(--teal)}a:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:6px}
 .w{max-width:760px;margin:0 auto;padding:0 16px}
@@ -38,7 +38,7 @@ header{background:var(--surface);border-bottom:1px solid var(--line);position:re
 .mark{width:36px;height:36px;border-radius:4px;background:var(--navy);color:var(--on-navy);display:grid;place-items:center;font:700 13px 'Source Serif 4',Georgia,serif}
 .brand small{display:block;color:var(--muted);font-size:12px;line-height:1.2}
 .go{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--navy);color:var(--on-navy);text-decoration:none;font-weight:700;border-radius:6px;padding:10px 16px}
-@media (prefers-color-scheme:dark){.go{background:#B8327E;color:#FFFFFF}}
+@media (prefers-color-scheme:dark){.go{background:#F6D55C;color:#0B1613}}
 main{padding-block:28px 40px}
 .crumb{font-size:14px;color:var(--muted)}
 h1{font:700 clamp(28px,6vw,42px)/1.12 'Source Serif 4',Georgia,serif;margin:8px 0 12px;text-wrap:balance}
