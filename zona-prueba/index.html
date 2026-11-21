@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Orientador por zona · prueba</title>
+<style>
+@font-face{font-family:PS;font-weight:400;src:url(../fonts/public-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:PS;font-weight:600;src:url(../fonts/public-sans-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:PS;font-weight:700;src:url(../fonts/public-sans-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:SS;font-weight:700;src:url(../fonts/source-serif-4-latin-700-normal.woff2) format("woff2")}
+:root{--pine:#10362E;--yel:#F6D55C;--beige:#F3EEE3;--sand:#E9E2D3;--ink:#13241F;--muted:#4B5A53;--line:#D9D1BF;--link:#0F5C46;--red:#A61B12;--redbg:#FDE4E1}
+*{box-sizing:border-box;margin:0}
+body{font-family:PS,system-ui,sans-serif;background:var(--beige);color:var(--ink);line-height:1.45}
+.wrap{max-width:560px;margin:0 auto;min-height:100vh;background:var(--beige)}
+.test{background:var(--yel);color:var(--pine);font:700 13px PS;padding:8px 16px;text-align:center}
+.bar{background:var(--pine);height:60px;display:flex;align-items:center;padding:0 16px;gap:10px}
+.bar img{width:46px;height:34px}.bar .sp{flex:1}
+.pill{height:38px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;font:700 14px PS;text-decoration:none}
+.sos{background:var(--redbg);color:var(--red)}
+.hero{background:var(--pine);color:#fff;padding:20px 16px 26px}
+.eye{font:600 13px PS;color:var(--yel);margin-bottom:8px}
+h1{font:700 30px/1.12 SS,Georgia,serif;letter-spacing:-.01em}
+.lead{font-size:16px;line-height:1.5;color:#D3E2DB;margin-top:10px}
+button{font:inherit;cursor:pointer}
+.btn{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;min-height:54px;border-radius:999px;background:var(--yel);color:var(--pine);font:700 17px PS;margin-top:18px;border:0}
+.btn:focus-visible,.chip:focus-visible,.act:focus-visible,.tab:focus-visible,.back:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
+.priv{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;line-height:1.45;color:#B7CDC3;margin-top:12px}
+.msg{margin-top:12px;font-size:14.5px;background:rgba(255,255,255,.1);border-radius:12px;padding:10px 12px;color:#fff}
+.sec{padding:18px 16px}
+.h2{font:700 19px SS,Georgia,serif;margin-bottom:12px}
+.sub{font-size:14px;color:#56655E;margin:-6px 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:42px;border-radius:999px;background:#fff;border:1.5px solid var(--line);display:inline-flex;align-items:center;gap:8px;padding:0 14px;font:600 15px PS;color:var(--ink)}
+.chip[disabled]{opacity:.55;cursor:default}
+.chip small{font-size:11.5px;color:#7A5B00}
+.zone{background:var(--pine);color:#fff;padding:14px 16px 18px}
+.where{display:flex;align-items:center;gap:8px;font:600 13.5px PS;color:#B7CDC3}
+.zone h1{font-size:26px;margin-top:6px}
+.zone .note{font-size:13.5px;color:#D3E2DB;margin-top:8px}
+.chg{font:600 13.5px PS;color:var(--yel);text-decoration:underline;margin-top:8px;display:inline-block;background:none;border:0;padding:0}
+.tabs{display:flex;gap:8px;padding:12px 16px 0}
+.tab{flex:1;min-height:42px;border-radius:999px;font:700 14px PS;background:var(--sand);color:var(--ink);border:0}
+.tab[aria-selected="true"]{background:var(--pine);color:#fff}
+.card{background:#fff;border-radius:16px;padding:14px;display:flex;gap:12px;margin-bottom:10px}
+.card .i,.act .i{flex:none;width:40px;height:40px;border-radius:12px;background:#FFF3CC;color:var(--pine);display:grid;place-items:center}
+.card b{display:block;font-size:15.5px;line-height:1.3}
+.card p{font-size:14.5px;line-height:1.5;color:var(--muted);margin-top:4px}
+.src{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:8px}
+.src a{font:600 13px PS;color:var(--link);text-underline-offset:3px}
+.meta{display:flex;gap:6px;align-items:center;margin-top:8px}
+.id{font:700 11px PS;color:#56655E;background:var(--sand);border-radius:6px;padding:2px 6px}
+.pend{font:700 11px PS;background:#FFF3CC;color:#7A5B00;border-radius:999px;padding:2px 8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.act{background:#fff;border-radius:16px;padding:14px;min-height:100px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;font:700 15px/1.3 PS;text-align:left;border:0;color:var(--ink)}
+.act .i{background:#E9F1ED}
+.emer{background:var(--redbg)}.emer .i{background:#fff;color:var(--red)}
+.top{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--pine);color:#fff}
+.top b{font:700 20px SS,Georgia,serif}
+.back{background:none;border:0;color:#fff;display:grid;place-items:center;width:36px;height:36px;border-radius:50%}
+.blk{border-radius:16px;padding:14px;margin-bottom:10px}
+.blk h3{font:700 15.5px PS;display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.blk ul{padding-left:18px}.blk li{font-size:15px;line-height:1.5;margin-bottom:6px}
+.prev{background:#fff}.prev h3{color:var(--link)}
+.sos2{background:var(--redbg)}.sos2 h3{color:var(--red)}
+.law{background:var(--sand)}
+.cta{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:var(--pine);color:#fff;font:700 16px PS;margin-top:6px;text-decoration:none}
+.disc{font-size:13px;color:#56655E;text-align:center;margin:14px 0 6px;line-height:1.45}
+.ic{width:22px;height:22px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="test" role="note">Versión de prueba · contenido pendiente de validación jurídica · no está publicada</div>
+  <header class="bar"><a href="/" aria-label="IHA Soluciones Legales, inicio"><img src="../monograma-iha-144.webp" width="46" height="34" alt=""></a><span class="sp"></span><a class="pill sos" href="tel:123" aria-label="Emergencias: llamar al 123"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg>123</a></header>
+  <main id="app"></main>
+</div>
+<script>
+"use strict";
+const IC={pin:'<path d="M12 21s-7-6.2-7-11.5A7 7 0 0119 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',glass:'<path d="M7 3h10l-1.5 8a3.5 3.5 0 01-7 0zM12 14.5V20M8.5 20h7"/>',car:'<path d="M5 16V11l2-5h10l2 5v5M5 16h14M5 16v2M19 16v2"/><circle cx="8" cy="13" r="1"/><circle cx="16" cy="13" r="1"/>',vol:'<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 010 7"/>',phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',moto:'<circle cx="6" cy="16" r="3"/><circle cx="18" cy="16" r="3"/><path d="M6 16l4-6h5l3 6M13 10l1-3h3"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z"/>',taxi:'<path d="M5 17V12l2-5h10l2 5v5M9 7V5h6v2M5 17h14"/>',moon:'<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/>',ticket:'<path d="M4 8a2 2 0 002-2h12a2 2 0 002 2v2a2 2 0 000 4v2a2 2 0 00-2 2H6a2 2 0 00-2-2v-2a2 2 0 000-4z"/>',back:'<path d="M15 6l-6 6 6 6"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',alert:'<path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.5"/>',file:'<path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5"/>',key:'<circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2"/>'};
+const ic=(n,s=22)=>`<svg class="ic" style="width:${s}px;height:${s}px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const F="https://ihasolucioneslegales.com.co/es/";
+const src=a=>a.map(([t,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`).join("");
+
+/* Contenido de prueba: cada bloque tiene un código para que la abogada lo cite al validar. */
+const ZONA={
+ medellin:{name:"Medellín",note:"Si está en otro municipio del área metropolitana (Envigado, Itagüí, Bello, Sabaneta…), algunas normas locales pueden ser distintas.",
+ rules:[
+  {id:"Z1",i:"home",t:"Vivienda turística y uso del suelo",p:"El POT define en qué sectores se permite el alquiler por días. Antes de alquilar o comprar para renta corta, consulte el uso del suelo del predio. El nuevo POT fue aprobado por el Concejo el 5 de noviembre de 2026; mientras se sanciona, rige el Acuerdo 48 de 2014.",s:[["Consulta de uso del suelo (MapGIS)","https://www.medellin.gov.co/mapgis9/tools/UsoSuelos.html"],["Consulta POT","https://www.medellin.gov.co/statements/herramientas/consulta-pot"],["Ficha: ¿mi zona lo permite?",F+"mi-zona-permite-la-vivienda-turistica-medellin/"]]},
+  {id:"Z2",i:"glass",t:"Venta y consumo de alcohol",p:"Los horarios de bares, discotecas y venta de licor los fija la Alcaldía por decreto y pueden cambiar en fechas especiales, como elecciones (ley seca) o grandes eventos.",s:[["Gaceta Oficial de Medellín","https://www.medellin.gov.co/statements/innovaciondigital/gacetas/consulta-publica/5977"]]},
+  {id:"Z3",i:"vol",t:"Ruido y espacio público",p:"El Código Nacional de Seguridad y Convivencia Ciudadana regula el ruido que afecta la tranquilidad de los vecinos y el uso del espacio público. Su incumplimiento puede dar lugar a multas.",s:[["Ley 1801 de 2016","http://www.secretariasenado.gov.co/senado/basedoc/ley_1801_2016.html"]]},
+  {id:"Z4",i:"car",t:"Movilidad",p:"Medellín aplica pico y placa para carros y motos, con horarios y dígitos que cambian por periodos. Verifique la medida vigente antes de conducir.",s:[["Alcaldía de Medellín","https://www.medellin.gov.co/es/"]]}
+ ]}
+};
+const ACTS=[
+ {k:"moto",i:"moto",t:"Alquilar una moto o un carro",
+  prev:["Exija la licencia de tránsito del vehículo, el SOAT vigente y, si aplica, la revisión técnico-mecánica.","En moto, el casco es obligatorio para el conductor y el acompañante.","Si es extranjero y está como turista, puede conducir con la licencia vigente de su país mientras su permanencia no supere 6 meses. Si no está en español, lleve una traducción oficial."],
+  sos:["En caso de accidente con heridos, llame al 123.","El SOAT cubre la atención médica de las víctimas.","No firme acuerdos de pago en el lugar sin entender lo que firma."],
+  law:["Código Nacional de Tránsito (Ley 769 de 2002)."],
+  s:[["Bogotá: licencia extranjera (requisitos)","https://bogota.gov.co/mi-ciudad/movilidad/que-documentos-requiere-un-extranjero-para-conducir-en-bogota"],["Resolución 1244 de 2019 (MinTransporte)","https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/resolucion_mintransporte_1244_2019.pdf"]]},
+ {k:"cita",i:"heart",t:"Cita por aplicación",
+  prev:["Encuéntrese en un lugar público y concurrido, y llegue por su cuenta.","No deje su bebida sola ni acepte bebidas o comida abiertas.","Comparta su ubicación con alguien de confianza.","La Embajada de EE. UU. emitió una alerta por muertes posiblemente relacionadas con aplicaciones de citas en Medellín, y las autoridades advierten sobre robos con escopolamina («burundanga»)."],
+  sos:["Llame al 123.","Bloquee sus tarjetas y su celular; reporte de inmediato al banco los cobros que no reconoce.","Denuncie ante la Fiscalía; si es extranjero, avise a su consulado."],
+  law:["El banco debe atender su reclamo por cobros no reconocidos; puede acudir al Defensor del Consumidor Financiero."],
+  s:[["Ficha: cobro no reconocido o fraude",F+"cobro-no-reconocido-o-fraude-con-mi-tarjeta-o-cuenta/"],["Alerta de la Embajada de EE. UU. (ASIS)","https://www.asisonline.org/security-management-magazine/latest-news/today-in-security/2024/january/dating-attacks-colombia/"]]},
+ {k:"taxi",i:"taxi",t:"Tomar un taxi o una app",
+  prev:["En taxi, pida que se use el taxímetro o acuerde la tarifa antes de subir.","Anote o fotografíe la placa.","Las apps de transporte en vehículos particulares no tienen hoy una regulación específica en Colombia; hay proyectos de ley en discusión. Use los canales de reclamo de la app y guarde las pruebas."],
+  sos:["Ante un riesgo para su seguridad, llame al 123.","Si le cobraron de más o hubo un incidente, reclame por escrito y guarde el recibo o las capturas."],
+  law:["Ficha con los pasos para reclamar por cobro, trato o incidente."],
+  s:[["Ficha: app de transporte o taxi",F+"app-de-transporte-o-taxi-cobro-trato-o-incidente/"]]},
+ {k:"excursion",i:"ticket",t:"Comprar una excursión",
+  prev:["Verifique que la agencia u operador esté inscrito en el Registro Nacional de Turismo (RNT).","Pida por escrito qué incluye, el precio total y las condiciones de cancelación y reembolso.","Pague con medios que dejen registro."],
+  sos:["Si el servicio no se prestó como se ofreció, reclame primero por escrito a la empresa.","Si no responde, puede acudir a la Superintendencia de Industria y Comercio."],
+  law:["El Estatuto del Consumidor (Ley 1480 de 2011) obliga a informar de forma clara y completa."],
+  s:[["¿Qué es el RNT? (MinCIT)","https://www.mincit.gov.co/minturismo/analisis-sectorial-y-promocion/registro-nacional-de-turismo/que-es-el-registro-nacional-de-turismo"],["Ficha: la agencia o el paquete no cumplió",F+"la-agencia-o-el-paquete-turistico-no-cumplio/"]]},
+ {k:"noche",i:"moon",t:"Salir de noche",
+  prev:["Los horarios de los establecimientos los fija la Alcaldía; pueden cambiar en fechas especiales.","No deje su bebida sola.","Use transporte identificable para regresar."],
+  sos:["Llame al 123.","Si ve o sospecha explotación sexual de niños, niñas o adolescentes, denuncie: Línea 141 del ICBF."],
+  law:["La explotación sexual de menores es un delito grave en Colombia, también para extranjeros.","La venta y el tráfico de estupefacientes son delitos."],
+  s:[["Línea 141 (ICBF)","https://www.icbf.gov.co/"]]},
+ {k:"alquiler",i:"key",t:"Alquilar un alojamiento por días",
+  prev:["Verifique que el alojamiento tenga RNT y reserve por canales que dejen registro.","Lea antes de pagar las condiciones de cancelación, depósito y cobros adicionales.","Al llegar, documente con fotos el estado del lugar."],
+  sos:["Si le cancelan la reserva o no le devuelven el depósito, reclame por escrito y guarde las pruebas.","Ante un riesgo para su seguridad, llame al 123."],
+  law:["Ver las fichas de la guía con la norma, los plazos y dónde reclamar."],
+  s:[["Ficha: me cancelaron la reserva",F+"me-cancelaron-la-reserva/"],["Ficha: depósito no devuelto",F+"cobros-de-mas-o-deposito-no-devuelto/"]]}
+];
+
+const app=document.getElementById("app");
+let state={zone:null,tab:"normas",act:null,msg:""};
+function inMetro(lat,lon){return lat>=6.05&&lat<=6.45&&lon>=-75.75&&lon<=-75.45;}
+function locate(){
+  if(!("geolocation" in navigator)){state.msg="Su navegador no permite la ubicación. Elija el lugar abajo.";return render();}
+  state.msg="Buscando su ubicación…";render();
+  navigator.geolocation.getCurrentPosition(p=>{
+    const {latitude:la,longitude:lo}=p.coords;
+    if(inMetro(la,lo)){state.zone="medellin";state.msg="";state.tab="normas";}
+    else state.msg="Su zona aún no está cubierta en esta versión de prueba. Por ahora solo cubrimos Medellín.";
+    render();
+  },()=>{state.msg="No pudimos obtener su ubicación. Elija el lugar abajo.";render();},{enableHighAccuracy:false,timeout:10000,maximumAge:600000});
+}
+function vHome(){
+  return `<section class="hero"><p class="eye">Orientador por zona</p><h1>Las reglas cambian según dónde esté</h1>
+  <p class="lead">Vea qué normas aplican en su zona y qué tener en cuenta para lo que va a hacer.</p>
+  <button class="btn" data-do="loc">${ic("pin")} Usar mi ubicación</button>
+  <p class="priv">${ic("lock",16)}<span>Su ubicación se usa solo en su teléfono para saber en qué municipio está. No la guardamos ni la enviamos.</span></p>
+  ${state.msg?`<p class="msg" role="status">${esc(state.msg)}</p>`:""}</section>
+  <section class="sec"><h2 class="h2">O elija el lugar</h2><div class="chips">
+  <button class="chip" data-zone="medellin">Medellín</button>
+  ${["Envigado","Sabaneta","Guatapé","Santa Fe de Antioquia"].map(n=>`<button class="chip" disabled>${n} <small>Pronto</small></button>`).join("")}</div></section>`;
+}
+function vZone(){
+  const z=ZONA[state.zone];
+  const head=`<section class="zone"><p class="where">${ic("pin",16)} Usted está en</p><h1>${esc(z.name)}</h1><p class="note">${esc(z.note)}</p><button class="chg" data-do="home">Cambiar lugar</button></section>
+  <div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="${state.tab==="normas"}" data-tab="normas">Normas de la zona</button><button class="tab" role="tab" aria-selected="${state.tab==="act"}" data-tab="act">Mi actividad</button></div>`;
+  if(state.tab==="normas") return head+`<section class="sec">${z.rules.map(r=>`<article class="card"><span class="i">${ic(r.i)}</span><div><b>${esc(r.t)}</b><p>${esc(r.p)}</p><div class="src">${src(r.s)}</div><div class="meta"><span class="id">${r.id}</span><span class="pend">Pendiente de validar</span></div></div></article>`).join("")}</section>`;
+  return head+`<section class="sec"><h2 class="h2">¿Qué va a hacer?</h2><p class="sub">Le decimos qué dice la ley y cómo prevenir problemas.</p>
+  <div class="grid">${ACTS.map(a=>`<button class="act" data-act="${a.k}"><span class="i">${ic(a.i)}</span>${esc(a.t)}</button>`).join("")}</div>
+  <article class="card emer" style="margin-top:12px"><span class="i">${ic("phone")}</span><div><b>Emergencias: línea 123</b><p>Policía, ambulancia y bomberos. Desde cualquier celular.</p></div></article></section>`;
+}
+function vAct(){
+  const a=ACTS.find(x=>x.k===state.act), n=ACTS.indexOf(a)+1;
+  const ul=l=>`<ul>${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
+  return `<div class="top"><button class="back" data-do="zone" aria-label="Volver">${ic("back")}</button><b>${esc(a.t)}</b></div><section class="sec">
+  <div class="blk prev"><h3>${ic("shield",18)} Para prevenir</h3>${ul(a.prev)}</div>
+  <div class="blk sos2"><h3>${ic("alert",18)} Si algo pasa</h3>${ul(a.sos)}</div>
+  <div class="blk law"><h3>${ic("file",18)} Lo que dice la ley</h3>${ul(a.law)}<div class="src">${src(a.s)}</div><div class="meta"><span class="id">A${n}</span><span class="pend">Pendiente de validar</span></div></div>
+  <a class="cta" href="/es/servicios/">Hablar con una abogada</a>
+  <p class="disc">Información general con fuentes oficiales; no reemplaza la revisión de su caso.</p></section>`;
+}
+function render(){
+  app.innerHTML = state.act ? vAct() : state.zone ? vZone() : vHome();
+}
+app.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.do==="loc") return locate();
+  if(b.dataset.do==="home"){state={zone:null,tab:"normas",act:null,msg:""};return render();}
+  if(b.dataset.do==="zone"){state.act=null;render();return window.scrollTo(0,0);}
+  if(b.dataset.zone){state.zone=b.dataset.zone;state.tab="normas";state.msg="";return render();}
+  if(b.dataset.tab){state.tab=b.dataset.tab;return render();}
+  if(b.dataset.act){state.act=b.dataset.act;render();window.scrollTo(0,0);}
+});
+render();
+</script>
+</body>
+</html>
