@@ -23,6 +23,7 @@ body{font-family:PS,system-ui,sans-serif;background:var(--beige);color:var(--ink
 .brand:focus-visible{outline:3px solid var(--yel);outline-offset:3px;border-radius:6px}.bar .sp{flex:1}
 .pill{height:38px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;font:700 14px PS;text-decoration:none}
 .sos{background:var(--redbg);color:var(--red)}
+.lsel{height:38px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;font:700 14px PS;padding:0 12px;cursor:pointer}.lsel option{color:#13241F}.lsel:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
 .hero{background:var(--pine);color:#fff;padding:20px 16px 26px}
 .eye{font:600 13px PS;color:var(--yel);margin-bottom:8px}
 h1{font:700 30px/1.12 SS,Georgia,serif;letter-spacing:-.01em}
@@ -77,7 +78,7 @@ button{font:inherit;cursor:pointer}
 </head>
 <body>
 <div class="wrap">
-  <header class="bar"><a class="brand" href="/"><img src="../monograma-iha-144.webp" width="52" height="38" alt="IHA"><b>Soluciones Legales</b></a><span class="sp"></span><a class="pill sos" href="tel:123" aria-label="Emergencias: llamar al 123"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg>123</a></header>
+  <header class="bar"><a class="brand" href="/"><img src="../monograma-iha-144.webp" width="52" height="38" alt="IHA"><b>Soluciones Legales</b></a><span class="sp"></span><select id="lsel" class="lsel" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option><option value="pt">PT</option></select><a class="pill sos" href="tel:123" aria-label="Emergencias: llamar al 123"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg>123</a></header>
   <main id="app"></main>
 </div>
 <script>
@@ -85,126 +86,340 @@ button{font:inherit;cursor:pointer}
 const IC={pin:'<path d="M12 21s-7-6.2-7-11.5A7 7 0 0119 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',glass:'<path d="M7 3h10l-1.5 8a3.5 3.5 0 01-7 0zM12 14.5V20M8.5 20h7"/>',car:'<path d="M5 16V11l2-5h10l2 5v5M5 16h14M5 16v2M19 16v2"/><circle cx="8" cy="13" r="1"/><circle cx="16" cy="13" r="1"/>',vol:'<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 010 7"/>',phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',moto:'<circle cx="6" cy="16" r="3"/><circle cx="18" cy="16" r="3"/><path d="M6 16l4-6h5l3 6M13 10l1-3h3"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z"/>',taxi:'<path d="M5 17V12l2-5h10l2 5v5M9 7V5h6v2M5 17h14"/>',moon:'<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/>',ticket:'<path d="M4 8a2 2 0 002-2h12a2 2 0 002 2v2a2 2 0 000 4v2a2 2 0 00-2 2H6a2 2 0 00-2-2v-2a2 2 0 000-4z"/>',back:'<path d="M15 6l-6 6 6 6"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',alert:'<path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.5"/>',file:'<path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5"/>',key:'<circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2"/>',map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>'};
 const ic=(n,s=22)=>`<svg class="ic" style="width:${s}px;height:${s}px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-const F="https://ihasolucioneslegales.com.co/es/";
-const src=a=>a.map(([t,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`).join("");
+/* Contenido verificado con fuentes oficiales (noviembre de 2026), en 4 idiomas. Códigos para referencias internas. */
+const SITE="https://ihasolucioneslegales.com.co/";
+const FX={
+ zona:{es:"es/mi-zona-permite-la-vivienda-turistica-medellin/",en:"en/does-my-area-allow-short-term-rentals-medellin/",fr:"fr/mon-quartier-autorise-t-il-la-location-touristique-medellin/",pt:"pt/minha-zona-permite-moradia-turistica-medellin/"},
+ rnt:{es:"es/alquilo-por-dias-sin-rnt-o-con-el-rnt-vencido/",en:"en/short-term-renting-without-a-valid-rnt/",fr:"fr/location-courte-duree-sans-rnt-valide/",pt:"pt/aluguel-por-temporada-sem-rnt-vigente/"},
+ fraude:{es:"es/cobro-no-reconocido-o-fraude-con-mi-tarjeta-o-cuenta/",en:"en/unrecognised-charge-or-card-account-fraud/",fr:"fr/prelevement-non-reconnu-ou-fraude-sur-ma-carte-ou-mon-compte/",pt:"pt/cobranca-nao-reconhecida-ou-fraude-no-meu-cartao-ou-conta/"},
+ taxi:{es:"es/app-de-transporte-o-taxi-cobro-trato-o-incidente/",en:"en/ride-app-or-taxi-fare-treatment-or-incident/",fr:"fr/vtc-ou-taxi-tarif-comportement-ou-incident/",pt:"pt/app-de-transporte-ou-taxi-cobranca-tratamento-ou-incidente/"},
+ agencia:{es:"es/la-agencia-o-el-paquete-turistico-no-cumplio/",en:"en/the-travel-agency-or-package-didn-t-deliver/",fr:"fr/l-agence-ou-le-voyage-organise-n-a-pas-tenu-ses-engagements/",pt:"pt/a-agencia-ou-o-pacote-turistico-nao-cumpriu/"},
+ reserva:{es:"es/me-cancelaron-la-reserva/",en:"en/my-booking-was-cancelled/",fr:"fr/ma-reservation-a-ete-annulee/",pt:"pt/cancelaram-a-minha-reserva/"},
+ deposito:{es:"es/cobros-de-mas-o-deposito-no-devuelto/",en:"en/extra-charges-or-deposit-not-returned/",fr:"fr/frais-en-trop-ou-caution-non-rendue/",pt:"pt/cobrancas-a-mais-ou-caucao-nao-devolvida/"},
+ servicios:{es:"es/servicios/",en:"en/services/",fr:"fr/services/",pt:"pt/servicos/"}
+};
+const fx=k=>SITE+(FX[k][lang]||FX[k].es);
+const NOTE_LANG={es:"",en:" (in Spanish)",fr:" (en espagnol)",pt:" (em espanhol)"};
+/* Fuente: [etiqueta, url]; si la url es un código de ficha, se abre en el idioma elegido. */
+const S_=(lab,url,es)=>[lab,url,es];
 
-/* Contenido verificado con fuentes oficiales (noviembre de 2026). Códigos para referencias internas. */
-/* Normas nacionales: aplican en toda Colombia (códigos N). */
 const NAC=[
- {id:"N1",i:"home",t:"Vivienda turística en cualquier municipio",p:"Quien alquila por días debe estar inscrito en el Registro Nacional de Turismo (RNT) y renovarlo cada año entre el 1 de enero y el 31 de marzo. Además, el POT o EOT de cada municipio define dónde se permite ese uso.",s:[["¿Qué es el RNT? (MinCIT)","https://www.mincit.gov.co/minturismo/analisis-sectorial-y-promocion/registro-nacional-de-turismo/que-es-el-registro-nacional-de-turismo"],["Ficha: alquilo por días sin RNT",F+"alquilo-por-dias-sin-rnt-o-con-el-rnt-vencido/"]]},
- {id:"N2",i:"vol",t:"Ruido y espacio público",p:"El Código Nacional de Seguridad y Convivencia Ciudadana sanciona los ruidos que afectan la tranquilidad del vecindario (art. 33) y los comportamientos contrarios al cuidado del espacio público (art. 140). Pueden dar lugar a multas y otras medidas.",s:[["Ley 1801 de 2016","http://www.secretariasenado.gov.co/senado/basedoc/ley_1801_2016.html"]]},
- {id:"N3",i:"glass",t:"Alcohol y horarios",p:"Cada alcaldía fija por decreto los horarios de bares, discotecas y venta de licor. En elecciones rige la ley seca que fija el Gobierno nacional.",s:[]},
- {id:"N4",i:"car",t:"Tránsito",p:"Para conducir: licencia vigente, SOAT y, si aplica, revisión técnico-mecánica. Cada ciudad decide si aplica pico y placa y en qué horario.",s:[["Ver «Alquilar una moto o un carro»","#act-moto"]]}
+ {id:"N1",i:"home",
+  t:{es:"Vivienda turística en cualquier municipio",en:"Short-term rentals in any municipality",fr:"Location touristique dans toute commune",pt:"Aluguel por temporada em qualquer município"},
+  p:{es:"Quien alquila por días debe estar inscrito en el Registro Nacional de Turismo (RNT) y renovarlo cada año entre el 1 de enero y el 31 de marzo. Además, el POT o EOT de cada municipio define dónde se permite ese uso.",
+     en:"Anyone renting by the night must be registered in the National Tourism Registry (RNT) and renew it every year between January 1 and March 31. In addition, each municipality's land-use plan (POT or EOT) defines where this use is allowed.",
+     fr:"Quiconque loue à la nuitée doit être inscrit au Registre national du tourisme (RNT) et le renouveler chaque année entre le 1er janvier et le 31 mars. En outre, le plan d'urbanisme de chaque commune (POT ou EOT) définit où cet usage est permis.",
+     pt:"Quem aluga por diária deve estar inscrito no Registro Nacional de Turismo (RNT) e renová-lo todos os anos entre 1º de janeiro e 31 de março. Além disso, o plano de ordenamento de cada município (POT ou EOT) define onde esse uso é permitido."},
+  s:[[{es:"¿Qué es el RNT? (MinCIT)",en:"What is the RNT? (MinCIT)",fr:"Qu'est-ce que le RNT ? (MinCIT)",pt:"O que é o RNT? (MinCIT)"},"https://www.mincit.gov.co/minturismo/analisis-sectorial-y-promocion/registro-nacional-de-turismo/que-es-el-registro-nacional-de-turismo",1],
+     [{es:"Ficha: alquilo por días sin RNT",en:"Guide: renting without a valid RNT",fr:"Fiche : location sans RNT valide",pt:"Ficha: aluguel sem RNT vigente"},"@rnt"]]},
+ {id:"N2",i:"vol",
+  t:{es:"Ruido y espacio público",en:"Noise and public space",fr:"Bruit et espace public",pt:"Ruído e espaço público"},
+  p:{es:"El Código Nacional de Seguridad y Convivencia Ciudadana sanciona los ruidos que afectan la tranquilidad del vecindario (art. 33) y los comportamientos contrarios al cuidado del espacio público (art. 140). Pueden dar lugar a multas y otras medidas.",
+     en:"The National Code of Security and Coexistence penalises noise that disturbs the neighbourhood (art. 33) and behaviour that damages public space (art. 140). Fines and other measures may apply.",
+     fr:"Le Code national de sécurité et de cohabitation citoyenne sanctionne les bruits qui troublent la tranquillité du voisinage (art. 33) et les comportements contraires au respect de l'espace public (art. 140). Des amendes et d'autres mesures peuvent s'appliquer.",
+     pt:"O Código Nacional de Segurança e Convivência Cidadã sanciona os ruídos que afetam a tranquilidade da vizinhança (art. 33) e os comportamentos contrários ao cuidado do espaço público (art. 140). Podem ser aplicadas multas e outras medidas."},
+  s:[[{es:"Ley 1801 de 2016",en:"Law 1801 of 2016",fr:"Loi 1801 de 2016",pt:"Lei 1801 de 2016"},"http://www.secretariasenado.gov.co/senado/basedoc/ley_1801_2016.html",1]]},
+ {id:"N3",i:"glass",
+  t:{es:"Alcohol y horarios",en:"Alcohol and opening hours",fr:"Alcool et horaires",pt:"Álcool e horários"},
+  p:{es:"Cada alcaldía fija por decreto los horarios de bares, discotecas y venta de licor. En elecciones rige la ley seca que fija el Gobierno nacional.",
+     en:"Each city hall sets by decree the opening hours of bars and clubs and the hours for selling alcohol. During elections, a nationwide alcohol ban («ley seca») set by the national government applies.",
+     fr:"Chaque mairie fixe par décret les horaires des bars, des discothèques et de la vente d'alcool. Pendant les élections s'applique la « ley seca » (interdiction de vente d'alcool) fixée par le gouvernement national.",
+     pt:"Cada prefeitura fixa por decreto os horários de bares, casas noturnas e venda de bebidas alcoólicas. Nas eleições vale a «ley seca» (proibição de venda de álcool) fixada pelo governo nacional."},s:[]},
+ {id:"N4",i:"car",
+  t:{es:"Tránsito",en:"Driving",fr:"Circulation",pt:"Trânsito"},
+  p:{es:"Para conducir: licencia vigente, SOAT y, si aplica, revisión técnico-mecánica. Cada ciudad decide si aplica pico y placa y en qué horario.",
+     en:"To drive: a valid licence, SOAT (mandatory insurance) and, where applicable, the technical inspection. Each city decides whether «pico y placa» (driving restrictions by plate number) applies and at what times.",
+     fr:"Pour conduire : permis valide, SOAT (assurance obligatoire) et, le cas échéant, contrôle technique. Chaque ville décide si le « pico y placa » (restriction selon la plaque) s'applique et à quelles heures.",
+     pt:"Para dirigir: carteira válida, SOAT (seguro obrigatório) e, se aplicável, a vistoria técnica. Cada cidade decide se aplica o «pico y placa» (rodízio por placa) e em que horário."},
+  s:[[{es:"Ver «Alquilar una moto o un carro»",en:"See «Renting a motorbike or a car»",fr:"Voir « Louer une moto ou une voiture »",pt:"Ver «Alugar uma moto ou um carro»"},"#act-moto"]]}
 ];
-const VA_NOTE="Medellín y los demás municipios del Valle de Aburrá aplican la misma rotación metropolitana de pico y placa.";
-const PYP_VA={i:"car",t:"Pico y placa (Valle de Aburrá)",p:"De lunes a viernes, de 5:00 a. m. a 8:00 p. m., en Medellín, Envigado, Itagüí, Sabaneta, Bello y los demás municipios del Valle de Aburrá: carros según el último número de la placa y motos según el primero. La rotación cambia cada semestre. En Itagüí, la Autopista Sur está exenta.",s:[["Alcaldía de Medellín: rotación vigente","https://www.medellin.gov.co/es/sala-de-prensa/noticias/la-nueva-rotacion-del-pico-y-placa-en-medellin-comenzara-a-regir-a-partir-del-lunes-3-de-agosto/"],["Telemedellín: municipios del Valle de Aburrá","https://telemedellin.tv/?p=188377"]]};
-const usoMun=(n,url)=>({i:"home",t:"Vivienda turística y uso del suelo",p:`El POT de ${n} define en qué sectores se permite el alquiler por días. Antes de alquilar o comprar para renta corta, consulte el uso del suelo del predio ante la Secretaría de Planeación del municipio.`,s:[[`Alcaldía de ${n}`,url]]});
+
+const PYP_VA={i:"car",
+ t:{es:"Pico y placa (Valle de Aburrá)",en:"Pico y placa (Aburrá Valley)",fr:"Pico y placa (Valle de Aburrá)",pt:"Pico y placa (Vale de Aburrá)"},
+ p:{es:"De lunes a viernes, de 5:00 a. m. a 8:00 p. m., en Medellín, Envigado, Itagüí, Sabaneta, Bello y los demás municipios del Valle de Aburrá: carros según el último número de la placa y motos según el primero. La rotación cambia cada semestre. En Itagüí, la Autopista Sur está exenta.",
+    en:"Monday to Friday, 5:00 a.m. to 8:00 p.m., in Medellín, Envigado, Itagüí, Sabaneta, Bello and the other municipalities of the Aburrá Valley: cars according to the last digit of the plate and motorbikes according to the first. The rotation changes every six months. In Itagüí, the Autopista Sur is exempt.",
+    fr:"Du lundi au vendredi, de 5 h à 20 h, à Medellín, Envigado, Itagüí, Sabaneta, Bello et dans les autres communes du Valle de Aburrá : les voitures selon le dernier chiffre de la plaque et les motos selon le premier. La rotation change chaque semestre. À Itagüí, l'Autopista Sur est exemptée.",
+    pt:"De segunda a sexta, das 5h às 20h, em Medellín, Envigado, Itagüí, Sabaneta, Bello e nos demais municípios do Vale de Aburrá: carros pelo último número da placa e motos pelo primeiro. O rodízio muda a cada semestre. Em Itagüí, a Autopista Sur está isenta."},
+ s:[[{es:"Alcaldía de Medellín: rotación vigente",en:"Medellín city hall: current rotation",fr:"Mairie de Medellín : rotation en vigueur",pt:"Prefeitura de Medellín: rodízio vigente"},"https://www.medellin.gov.co/es/sala-de-prensa/noticias/la-nueva-rotacion-del-pico-y-placa-en-medellin-comenzara-a-regir-a-partir-del-lunes-3-de-agosto/",1],
+    [{es:"Telemedellín: municipios del Valle de Aburrá",en:"Telemedellín: Aburrá Valley municipalities",fr:"Telemedellín : communes du Valle de Aburrá",pt:"Telemedellín: municípios do Vale de Aburrá"},"https://telemedellin.tv/?p=188377",1]]};
+const USO_T={es:"Vivienda turística y uso del suelo",en:"Short-term rentals and land use",fr:"Location touristique et usage du sol",pt:"Aluguel por temporada e uso do solo"};
+const usoMun=(n,url)=>({i:"home",t:USO_T,
+ p:{es:`El POT de ${n} define en qué sectores se permite el alquiler por días. Antes de alquilar o comprar para renta corta, consulte el uso del suelo del predio ante la Secretaría de Planeación del municipio.`,
+    en:`${n}'s land-use plan (POT) defines in which areas renting by the night is allowed. Before renting out or buying for short-term rental, check the property's land use with the municipal Planning Office.`,
+    fr:`Le POT de ${n} définit dans quels secteurs la location à la nuitée est permise. Avant de louer ou d'acheter pour la location courte, vérifiez l'usage du sol du bien auprès du service d'urbanisme (Secretaría de Planeación) de la commune.`,
+    pt:`O POT de ${n} define em quais setores o aluguel por diária é permitido. Antes de alugar ou comprar para aluguel de curta duração, consulte o uso do solo do imóvel na Secretaria de Planejamento do município.`},
+ s:[[{es:`Alcaldía de ${n}`,en:`${n} city hall`,fr:`Mairie de ${n}`,pt:`Prefeitura de ${n}`},url,1]]});
+const NOTE=n=>({es:`Normas de ${n}. Más abajo, las normas que aplican en toda Colombia.`,en:`Rules for ${n}. Further down, the rules that apply throughout Colombia.`,fr:`Règles de ${n}. Plus bas, les règles qui s'appliquent dans toute la Colombie.`,pt:`Regras de ${n}. Mais abaixo, as regras que valem em toda a Colômbia.`});
+const PYP_T={es:"Pico y placa",en:"Pico y placa (driving restrictions)",fr:"Pico y placa (restriction de circulation)",pt:"Pico y placa (rodízio)"};
+
 const CITIES={
- medellin:{name:"Medellín",group:"va",note:"Normas de Medellín. Más abajo, las normas que aplican en toda Colombia.",rules:[
-  {id:"MED1",i:"home",t:"Vivienda turística y uso del suelo",p:"El POT define en qué sectores se permite el alquiler por días. Antes de alquilar o comprar para renta corta, consulte el uso del suelo del predio. El Concejo aprobó la revisión del POT el 5 de noviembre de 2026; hasta que sea sancionada y entre en vigencia, rige el Acuerdo 48 de 2014.",s:[["Consulta de uso del suelo (MapGIS)","https://www.medellin.gov.co/mapgis9/tools/UsoSuelos.html"],["Alcaldía: aprobación del POT","https://www.medellin.gov.co/es/sala-de-prensa/noticias/el-concejo-de-medellin-aprobo-el-proyecto-de-acuerdo-para-la-revision-del-pot/"],["Ficha: ¿mi zona lo permite?",F+"mi-zona-permite-la-vivienda-turistica-medellin/"]]},
+ medellin:{name:"Medellín",group:"va",note:NOTE("Medellín"),rules:[
+  {id:"MED1",i:"home",t:USO_T,
+   p:{es:"El POT define en qué sectores se permite el alquiler por días. Antes de alquilar o comprar para renta corta, consulte el uso del suelo del predio. El Concejo aprobó la revisión del POT el 5 de noviembre de 2026; hasta que sea sancionada y entre en vigencia, rige el Acuerdo 48 de 2014.",
+      en:"The land-use plan (POT) defines in which areas renting by the night is allowed. Before renting out or buying for short-term rental, check the property's land use. The City Council approved the revised POT on November 5, 2026; until it is signed and takes effect, Acuerdo 48 of 2014 applies.",
+      fr:"Le POT (plan d'urbanisme) définit dans quels secteurs la location à la nuitée est permise. Avant de louer ou d'acheter pour la location courte, vérifiez l'usage du sol du bien. Le Concejo a approuvé la révision du POT le 5 novembre 2026 ; tant qu'elle n'est pas signée et en vigueur, l'Acuerdo 48 de 2014 s'applique.",
+      pt:"O POT (plano de ordenamento) define em quais setores o aluguel por diária é permitido. Antes de alugar ou comprar para aluguel de curta duração, consulte o uso do solo do imóvel. O Concejo aprovou a revisão do POT em 5 de novembro de 2026; até que seja sancionada e entre em vigor, vale o Acuerdo 48 de 2014."},
+   s:[[{es:"Consulta de uso del suelo (MapGIS)",en:"Land-use lookup (MapGIS)",fr:"Consultation de l'usage du sol (MapGIS)",pt:"Consulta de uso do solo (MapGIS)"},"https://www.medellin.gov.co/mapgis9/tools/UsoSuelos.html",1],
+      [{es:"Alcaldía: aprobación del POT",en:"City hall: POT approval",fr:"Mairie : approbation du POT",pt:"Prefeitura: aprovação do POT"},"https://www.medellin.gov.co/es/sala-de-prensa/noticias/el-concejo-de-medellin-aprobo-el-proyecto-de-acuerdo-para-la-revision-del-pot/",1],
+      [{es:"Ficha: ¿mi zona lo permite?",en:"Guide: does my area allow it?",fr:"Fiche : mon quartier l'autorise-t-il ?",pt:"Ficha: minha zona permite?"},"@zona"]]},
   {id:"MED2",...PYP_VA}]},
- envigado:{name:"Envigado",group:"va",note:"Normas de Envigado. Más abajo, las normas que aplican en toda Colombia.",rules:[{id:"ENV1",...usoMun("Envigado","https://www.envigado.gov.co/")},{id:"ENV2",...PYP_VA}]},
- sabaneta:{name:"Sabaneta",group:"va",note:"Normas de Sabaneta. Más abajo, las normas que aplican en toda Colombia.",rules:[{id:"SAB1",...usoMun("Sabaneta","https://www.sabaneta.gov.co/")},{id:"SAB2",...PYP_VA}]},
- itagui:{name:"Itagüí",group:"va",note:"Normas de Itagüí. Más abajo, las normas que aplican en toda Colombia.",rules:[{id:"ITA1",...usoMun("Itagüí","https://www.itagui.gov.co/")},{id:"ITA2",...PYP_VA}]},
- bello:{name:"Bello",group:"va",note:"Normas de Bello. Más abajo, las normas que aplican en toda Colombia.",rules:[{id:"BEL1",...usoMun("Bello","https://www.bello.gov.co/")},{id:"BEL2",...PYP_VA}]},
- bogota:{name:"Bogotá",note:"Normas de Bogotá. Más abajo, las normas que aplican en toda Colombia.",rules:[
-  {id:"BOG1",i:"home",t:"Vivienda turística y uso del suelo",p:"El POT de Bogotá (Decreto 555 de 2021) define los usos permitidos en cada sector. Antes de alquilar o comprar para renta corta, consulte la norma urbana del predio.",s:[["Mapas Bogotá","https://mapas.bogota.gov.co/"]]},
-  {id:"BOG2",i:"car",t:"Pico y placa",p:"Para carros particulares, de lunes a viernes, de 6:00 a. m. a 9:00 p. m.: los días pares no circulan las placas terminadas en 1, 2, 3, 4 y 5, y los días impares las terminadas en 6, 7, 8, 9 y 0. Existe el «pico y placa solidario», un pago voluntario que permite circular.",s:[["Bogotá: pico y placa","https://bogota.gov.co/mi-ciudad/movilidad/pico-y-placa-en-bogota-para-la-semana-del-20-al-26-de-julio-de-2026"],["Canal Trece: reglas de 2026","https://canaltrece.com.co/noticias/atencion-conductores-alcaldia-de-bogota-anuncia-nuevas-restricciones-de-movilidad-para-el-segundo-semestre-de-2026/"]]},
-  {id:"BOG3",i:"glass",t:"Rumba hasta las 5:00 a. m.",p:"Los bares y discotecas de 19 «zonas focalizadas» pueden operar hasta las 5:00 a. m. (Decreto 644 de 2025, art. 98, y Resolución Conjunta 001 de 2025). Fuera de esas zonas aplican los horarios generales. Las zonas se revisan cada seis meses.",s:[["Alcaldía de Bogotá: ABC de la medida","https://bogota.gov.co/mi-ciudad/gobierno/abc-ampliacion-de-horarios-de-rumba-en-19-zonas-de-bogota-2026"]]}]},
- cartagena:{name:"Cartagena",note:"Normas de Cartagena. Más abajo, las normas que aplican en toda Colombia.",rules:[
-  {id:"CTG1",i:"home",t:"Vivienda turística y uso del suelo",p:"El POT define los usos permitidos en cada sector. En el Centro Histórico, además, rige el Plan Especial de Manejo y Protección (PEMP), que regula los usos de los inmuebles. Consulte el uso del suelo antes de alquilar o comprar para renta corta.",s:[["Cartagena: opciones de usos en el Centro Histórico (PDF)","https://seguimientopot.cartagena.gov.co/sites/default/files/2024-10/3.%20Opciones%20de%20Usos-%20Centro%20Historico.pdf"]]},
-  {id:"CTG2",i:"car",t:"Pico y placa",p:"Para carros particulares, de 7:00 a 9:00 a. m. y de 6:00 a 8:00 p. m., con dígitos que rotan cada día. Para motos, de 5:00 a. m. a 11:00 p. m., salvo las que tienen permiso. La sanción es una multa de 15 salarios mínimos diarios y, en algunos casos, la inmovilización del vehículo. Verifique los dígitos del día antes de conducir.",s:[["El Universal: pico y placa (octubre de 2026)","https://www.eluniversal.com.co/cartagena/2026/10/28/pico-y-placa-en-cartagena-digitos-y-horarios-del-jueves-29-de-octubre-de-2026/"]]}]},
- santamarta:{name:"Santa Marta",note:"Normas de Santa Marta. Más abajo, las normas que aplican en toda Colombia.",rules:[
-  {id:"SMR1",i:"car",t:"Pico y placa",p:"Desde mayo de 2025 (Decreto 160), para carros particulares de lunes a viernes, de 7:00 a 9:00 a. m., de 11:30 a. m. a 2:00 p. m. y de 5:00 a 8:00 p. m., dentro del anillo vial: lunes 1 y 2, martes 3 y 4, miércoles 5 y 6, jueves 7 y 8, viernes 9 y 0. La Alcaldía puede modificar la medida; verifique antes de conducir.",s:[["Noticias Caracol: decreto de 2025","https://www.noticiascaracol.com/colombia/santa-marta-implementa-nuevo-pico-y-placa-asi-seran-las-restricciones-desde-mayo-de-2025-so35"]]},
-  {id:"SMR2",i:"map",t:"Parque Tayrona",p:"Parques Nacionales cierra el Parque Tayrona en algunas épocas del año para su recuperación ambiental, y en 2026 también lo cerró temporalmente por razones de seguridad. Antes de ir, verifique que esté abierto y compre la entrada solo por los canales oficiales.",s:[["Parques Nacionales: resolución de apertura (2026)","https://www.parquesnacionales.gov.co/wp-content/uploads/2026/03/Resolucion-No.-112-Por-medio-de-la-cual-se-ordena-la-apertura-del-Parque-Nacional-Natural-Tayrona.pdf"]]},
+ envigado:{name:"Envigado",group:"va",note:NOTE("Envigado"),rules:[{id:"ENV1",...usoMun("Envigado","https://www.envigado.gov.co/")},{id:"ENV2",...PYP_VA}]},
+ sabaneta:{name:"Sabaneta",group:"va",note:NOTE("Sabaneta"),rules:[{id:"SAB1",...usoMun("Sabaneta","https://www.sabaneta.gov.co/")},{id:"SAB2",...PYP_VA}]},
+ itagui:{name:"Itagüí",group:"va",note:NOTE("Itagüí"),rules:[{id:"ITA1",...usoMun("Itagüí","https://www.itagui.gov.co/")},{id:"ITA2",...PYP_VA}]},
+ bello:{name:"Bello",group:"va",note:NOTE("Bello"),rules:[{id:"BEL1",...usoMun("Bello","https://www.bello.gov.co/")},{id:"BEL2",...PYP_VA}]},
+ bogota:{name:"Bogotá",note:NOTE("Bogotá"),rules:[
+  {id:"BOG1",i:"home",t:USO_T,
+   p:{es:"El POT de Bogotá (Decreto 555 de 2021) define los usos permitidos en cada sector. Antes de alquilar o comprar para renta corta, consulte la norma urbana del predio.",
+      en:"Bogotá's land-use plan (Decreto 555 of 2021) defines the uses allowed in each area. Before renting out or buying for short-term rental, check the zoning rules for the property.",
+      fr:"Le POT de Bogotá (Decreto 555 de 2021) définit les usages permis dans chaque secteur. Avant de louer ou d'acheter pour la location courte, vérifiez la règle d'urbanisme applicable au bien.",
+      pt:"O POT de Bogotá (Decreto 555 de 2021) define os usos permitidos em cada setor. Antes de alugar ou comprar para aluguel de curta duração, consulte a norma urbanística do imóvel."},
+   s:[[{es:"Mapas Bogotá",en:"Mapas Bogotá",fr:"Mapas Bogotá",pt:"Mapas Bogotá"},"https://mapas.bogota.gov.co/",1]]},
+  {id:"BOG2",i:"car",t:PYP_T,
+   p:{es:"Para carros particulares, de lunes a viernes, de 6:00 a. m. a 9:00 p. m.: los días pares no circulan las placas terminadas en 1, 2, 3, 4 y 5, y los días impares las terminadas en 6, 7, 8, 9 y 0. Existe el «pico y placa solidario», un pago voluntario que permite circular.",
+      en:"For private cars, Monday to Friday, 6:00 a.m. to 9:00 p.m.: on even-numbered days, plates ending in 1, 2, 3, 4 and 5 may not circulate, and on odd-numbered days those ending in 6, 7, 8, 9 and 0. A voluntary payment («pico y placa solidario») allows you to drive anyway.",
+      fr:"Pour les voitures particulières, du lundi au vendredi, de 6 h à 21 h : les jours pairs, les plaques finissant par 1, 2, 3, 4 et 5 ne peuvent pas circuler ; les jours impairs, celles finissant par 6, 7, 8, 9 et 0. Un paiement volontaire (« pico y placa solidario ») permet de circuler malgré tout.",
+      pt:"Para carros particulares, de segunda a sexta, das 6h às 21h: nos dias pares não circulam as placas terminadas em 1, 2, 3, 4 e 5, e nos dias ímpares as terminadas em 6, 7, 8, 9 e 0. Existe o «pico y placa solidario», um pagamento voluntário que permite circular."},
+   s:[[{es:"Bogotá: pico y placa",en:"Bogotá: pico y placa",fr:"Bogotá : pico y placa",pt:"Bogotá: pico y placa"},"https://bogota.gov.co/mi-ciudad/movilidad/pico-y-placa-en-bogota-para-la-semana-del-20-al-26-de-julio-de-2026",1],
+      [{es:"Canal Trece: reglas de 2026",en:"Canal Trece: 2026 rules",fr:"Canal Trece : règles de 2026",pt:"Canal Trece: regras de 2026"},"https://canaltrece.com.co/noticias/atencion-conductores-alcaldia-de-bogota-anuncia-nuevas-restricciones-de-movilidad-para-el-segundo-semestre-de-2026/",1]]},
+  {id:"BOG3",i:"glass",
+   t:{es:"Rumba hasta las 5:00 a. m.",en:"Nightlife until 5:00 a.m.",fr:"Sorties jusqu'à 5 h du matin",pt:"Balada até as 5h"},
+   p:{es:"Los bares y discotecas de 19 «zonas focalizadas» pueden operar hasta las 5:00 a. m. (Decreto 644 de 2025, art. 98, y Resolución Conjunta 001 de 2025). Fuera de esas zonas aplican los horarios generales. Las zonas se revisan cada seis meses.",
+      en:"Bars and clubs in 19 designated zones may stay open until 5:00 a.m. (Decreto 644 of 2025, art. 98, and Resolución Conjunta 001 of 2025). Outside those zones, the general opening hours apply. The zones are reviewed every six months.",
+      fr:"Les bars et discothèques de 19 « zones focalisées » peuvent ouvrir jusqu'à 5 h (Decreto 644 de 2025, art. 98, et Resolución Conjunta 001 de 2025). En dehors de ces zones, les horaires généraux s'appliquent. Les zones sont réexaminées tous les six mois.",
+      pt:"Bares e casas noturnas de 19 «zonas focalizadas» podem funcionar até as 5h (Decreto 644 de 2025, art. 98, e Resolución Conjunta 001 de 2025). Fora dessas zonas valem os horários gerais. As zonas são revisadas a cada seis meses."},
+   s:[[{es:"Alcaldía de Bogotá: ABC de la medida",en:"Bogotá city hall: about the measure",fr:"Mairie de Bogotá : la mesure en bref",pt:"Prefeitura de Bogotá: entenda a medida"},"https://bogota.gov.co/mi-ciudad/gobierno/abc-ampliacion-de-horarios-de-rumba-en-19-zonas-de-bogota-2026",1]]}]},
+ cartagena:{name:"Cartagena",note:NOTE("Cartagena"),rules:[
+  {id:"CTG1",i:"home",t:USO_T,
+   p:{es:"El POT define los usos permitidos en cada sector. En el Centro Histórico, además, rige el Plan Especial de Manejo y Protección (PEMP), que regula los usos de los inmuebles. Consulte el uso del suelo antes de alquilar o comprar para renta corta.",
+      en:"The land-use plan (POT) defines the uses allowed in each area. In the Historic Centre, the Special Management and Protection Plan (PEMP) also regulates how buildings may be used. Check the land use before renting out or buying for short-term rental.",
+      fr:"Le POT définit les usages permis dans chaque secteur. Dans le Centre historique s'applique en plus le Plan spécial de gestion et de protection (PEMP), qui encadre l'usage des immeubles. Vérifiez l'usage du sol avant de louer ou d'acheter pour la location courte.",
+      pt:"O POT define os usos permitidos em cada setor. No Centro Histórico vale, além disso, o Plano Especial de Manejo e Proteção (PEMP), que regula o uso dos imóveis. Consulte o uso do solo antes de alugar ou comprar para aluguel de curta duração."},
+   s:[[{es:"Cartagena: opciones de usos en el Centro Histórico (PDF)",en:"Cartagena: permitted uses in the Historic Centre (PDF, Spanish)",fr:"Cartagena : usages possibles dans le Centre historique (PDF, espagnol)",pt:"Cartagena: usos no Centro Histórico (PDF, espanhol)"},"https://seguimientopot.cartagena.gov.co/sites/default/files/2024-10/3.%20Opciones%20de%20Usos-%20Centro%20Historico.pdf"]]},
+  {id:"CTG2",i:"car",t:PYP_T,
+   p:{es:"Para carros particulares, de 7:00 a 9:00 a. m. y de 6:00 a 8:00 p. m., con dígitos que rotan cada día. Para motos, de 5:00 a. m. a 11:00 p. m., salvo las que tienen permiso. La sanción es una multa de 15 salarios mínimos diarios y, en algunos casos, la inmovilización del vehículo. Verifique los dígitos del día antes de conducir.",
+      en:"For private cars, 7:00 to 9:00 a.m. and 6:00 to 8:00 p.m., with digits that rotate every day. For motorbikes, 5:00 a.m. to 11:00 p.m., except those with a permit. The penalty is a fine of 15 daily minimum wages and, in some cases, impoundment of the vehicle. Check the day's digits before driving.",
+      fr:"Pour les voitures particulières, de 7 h à 9 h et de 18 h à 20 h, avec des chiffres qui changent chaque jour. Pour les motos, de 5 h à 23 h, sauf celles qui ont une autorisation. La sanction est une amende de 15 salaires minimums journaliers et, dans certains cas, l'immobilisation du véhicule. Vérifiez les chiffres du jour avant de conduire.",
+      pt:"Para carros particulares, das 7h às 9h e das 18h às 20h, com dígitos que mudam a cada dia. Para motos, das 5h às 23h, exceto as que têm autorização. A sanção é uma multa de 15 salários mínimos diários e, em alguns casos, a imobilização do veículo. Verifique os dígitos do dia antes de dirigir."},
+   s:[[{es:"El Universal: pico y placa (octubre de 2026)",en:"El Universal: pico y placa (October 2026)",fr:"El Universal : pico y placa (octobre 2026)",pt:"El Universal: pico y placa (outubro de 2026)"},"https://www.eluniversal.com.co/cartagena/2026/10/28/pico-y-placa-en-cartagena-digitos-y-horarios-del-jueves-29-de-octubre-de-2026/",1]]}]},
+ santamarta:{name:"Santa Marta",note:NOTE("Santa Marta"),rules:[
+  {id:"SMR1",i:"car",t:PYP_T,
+   p:{es:"Desde mayo de 2025 (Decreto 160), para carros particulares de lunes a viernes, de 7:00 a 9:00 a. m., de 11:30 a. m. a 2:00 p. m. y de 5:00 a 8:00 p. m., dentro del anillo vial: lunes 1 y 2, martes 3 y 4, miércoles 5 y 6, jueves 7 y 8, viernes 9 y 0. La Alcaldía puede modificar la medida; verifique antes de conducir.",
+      en:"Since May 2025 (Decreto 160), for private cars Monday to Friday, 7:00–9:00 a.m., 11:30 a.m.–2:00 p.m. and 5:00–8:00 p.m., inside the ring road: Monday 1 and 2, Tuesday 3 and 4, Wednesday 5 and 6, Thursday 7 and 8, Friday 9 and 0. The city hall may change the measure; check before driving.",
+      fr:"Depuis mai 2025 (Decreto 160), pour les voitures particulières du lundi au vendredi, de 7 h à 9 h, de 11 h 30 à 14 h et de 17 h à 20 h, à l'intérieur de l'anneau routier : lundi 1 et 2, mardi 3 et 4, mercredi 5 et 6, jeudi 7 et 8, vendredi 9 et 0. La mairie peut modifier la mesure ; vérifiez avant de conduire.",
+      pt:"Desde maio de 2025 (Decreto 160), para carros particulares de segunda a sexta, das 7h às 9h, das 11h30 às 14h e das 17h às 20h, dentro do anel viário: segunda 1 e 2, terça 3 e 4, quarta 5 e 6, quinta 7 e 8, sexta 9 e 0. A prefeitura pode alterar a medida; verifique antes de dirigir."},
+   s:[[{es:"Noticias Caracol: decreto de 2025",en:"Noticias Caracol: 2025 decree",fr:"Noticias Caracol : décret de 2025",pt:"Noticias Caracol: decreto de 2025"},"https://www.noticiascaracol.com/colombia/santa-marta-implementa-nuevo-pico-y-placa-asi-seran-las-restricciones-desde-mayo-de-2025-so35",1]]},
+  {id:"SMR2",i:"map",
+   t:{es:"Parque Tayrona",en:"Tayrona National Park",fr:"Parc Tayrona",pt:"Parque Tayrona"},
+   p:{es:"Parques Nacionales cierra el Parque Tayrona en algunas épocas del año para su recuperación ambiental, y en 2026 también lo cerró temporalmente por razones de seguridad. Antes de ir, verifique que esté abierto y compre la entrada solo por los canales oficiales.",
+      en:"National Parks closes Tayrona at certain times of the year so nature can recover, and in 2026 it also closed it temporarily for security reasons. Before you go, check that it is open and buy your ticket only through official channels.",
+      fr:"Parques Nacionales ferme le parc Tayrona à certaines périodes de l'année pour sa régénération, et en 2026 l'a aussi fermé temporairement pour des raisons de sécurité. Avant d'y aller, vérifiez qu'il est ouvert et achetez votre billet uniquement par les canaux officiels.",
+      pt:"Parques Nacionais fecha o Parque Tayrona em algumas épocas do ano para a recuperação ambiental e, em 2026, também o fechou temporariamente por razões de segurança. Antes de ir, verifique se está aberto e compre a entrada só pelos canais oficiais."},
+   s:[[{es:"Parques Nacionales: resolución de apertura (2026)",en:"National Parks: reopening resolution (2026, Spanish)",fr:"Parques Nacionales : résolution de réouverture (2026, espagnol)",pt:"Parques Nacionais: resolução de reabertura (2026, espanhol)"},"https://www.parquesnacionales.gov.co/wp-content/uploads/2026/03/Resolucion-No.-112-Por-medio-de-la-cual-se-ordena-la-apertura-del-Parque-Nacional-Natural-Tayrona.pdf"]]},
   {id:"SMR3",...usoMun("Santa Marta","https://www.santamarta.gov.co/")}]}
 };
+
+const ACTS=[
+ {k:"moto",i:"moto",
+  t:{es:"Alquilar una moto o un carro",en:"Renting a motorbike or a car",fr:"Louer une moto ou une voiture",pt:"Alugar uma moto ou um carro"},
+  prev:{es:["Exija la licencia de tránsito del vehículo y el SOAT vigente: ningún vehículo puede circular sin seguro obligatorio.","En moto, el casco es obligatorio para el conductor y para el acompañante.","Si es extranjero y está como turista, puede conducir con la licencia vigente de su país durante su permanencia autorizada. Si no está en español, lleve una traducción."],
+        en:["Ask for the vehicle's registration (licencia de tránsito) and a valid SOAT: no vehicle may circulate without mandatory insurance.","On a motorbike, a helmet is mandatory for the rider and the passenger.","If you are a foreign tourist, you may drive with your valid home-country licence during your authorised stay. If it is not in Spanish, carry a translation."],
+        fr:["Exigez la carte grise du véhicule (licencia de tránsito) et un SOAT en cours de validité : aucun véhicule ne peut circuler sans assurance obligatoire.","À moto, le casque est obligatoire pour le conducteur et pour le passager.","Si vous êtes un touriste étranger, vous pouvez conduire avec le permis valide de votre pays pendant votre séjour autorisé. S'il n'est pas en espagnol, ayez une traduction."],
+        pt:["Exija o documento do veículo (licencia de tránsito) e o SOAT vigente: nenhum veículo pode circular sem seguro obrigatório.","Na moto, o capacete é obrigatório para o condutor e para o passageiro.","Se você é estrangeiro e está como turista, pode dirigir com a carteira válida do seu país durante a permanência autorizada. Se não estiver em espanhol, leve uma tradução."]},
+  sos:{es:["En caso de accidente con heridos, llame al 123.","El SOAT cubre la atención médica de las víctimas de accidentes de tránsito.","No firme acuerdos de pago en el lugar sin entender lo que firma."],
+       en:["If there is an accident with injuries, call 123.","SOAT covers medical care for road-accident victims.","Do not sign payment agreements on the spot without understanding what you are signing."],
+       fr:["En cas d'accident avec blessés, appelez le 123.","Le SOAT couvre les soins médicaux des victimes d'accidents de la route.","Ne signez pas d'accord de paiement sur place sans comprendre ce que vous signez."],
+       pt:["Em caso de acidente com feridos, ligue para o 123.","O SOAT cobre o atendimento médico das vítimas de acidentes de trânsito.","Não assine acordos de pagamento no local sem entender o que está assinando."]},
+  law:{es:["Código Nacional de Tránsito (Ley 769 de 2002): licencias extranjeras de turistas (art. 25), seguro obligatorio (art. 42) y casco en motocicletas (art. 96)."],
+       en:["National Traffic Code (Law 769 of 2002): foreign licences of tourists (art. 25), mandatory insurance (art. 42) and helmets on motorbikes (art. 96)."],
+       fr:["Code national de la route (Loi 769 de 2002) : permis étrangers des touristes (art. 25), assurance obligatoire (art. 42) et casque à moto (art. 96)."],
+       pt:["Código Nacional de Trânsito (Lei 769 de 2002): carteiras estrangeiras de turistas (art. 25), seguro obrigatório (art. 42) e capacete em motos (art. 96)."]},
+  s:[[{es:"Bogotá: conducir con licencia extranjera",en:"Bogotá: driving with a foreign licence (Spanish)",fr:"Bogotá : conduire avec un permis étranger (espagnol)",pt:"Bogotá: dirigir com carteira estrangeira (espanhol)"},"https://bogota.gov.co/mi-ciudad/movilidad/que-documentos-requiere-un-extranjero-para-conducir-en-bogota"],
+     [{es:"Resolución 1244 de 2019 (MinTransporte)",en:"Resolution 1244 of 2019 (MinTransporte, Spanish)",fr:"Résolution 1244 de 2019 (MinTransporte, espagnol)",pt:"Resolução 1244 de 2019 (MinTransporte, espanhol)"},"https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/resolucion_mintransporte_1244_2019.pdf"]]},
+ {k:"cita",i:"heart",
+  t:{es:"Cita por aplicación",en:"Dating-app meetups",fr:"Rendez-vous par application",pt:"Encontro por aplicativo"},
+  prev:{es:["Encuéntrese en un lugar público y concurrido, y llegue por su cuenta.","No deje su bebida sola ni acepte bebidas o comida abiertas.","Cuente a alguien de confianza dónde y con quién va a estar.","La Embajada de EE. UU. advirtió en 2024 que delincuentes usan aplicaciones de citas para drogar y robar a sus víctimas; reportó ocho muertes de ciudadanos estadounidenses en circunstancias sospechosas en Medellín a finales de 2023."],
+        en:["Meet in a busy public place and get there on your own.","Do not leave your drink unattended or accept opened drinks or food.","Tell someone you trust where you will be and with whom.","In 2024 the U.S. Embassy warned that criminals use dating apps to drug and rob their victims; it reported eight deaths of U.S. citizens in suspicious circumstances in Medellín in late 2023."],
+        fr:["Retrouvez-vous dans un lieu public et fréquenté, et venez par vos propres moyens.","Ne laissez pas votre verre sans surveillance et n'acceptez ni boisson ni nourriture déjà ouvertes.","Dites à une personne de confiance où et avec qui vous serez.","En 2024, l'ambassade des États-Unis a averti que des délinquants utilisent les applications de rencontre pour droguer et voler leurs victimes ; elle a signalé huit décès de citoyens américains dans des circonstances suspectes à Medellín fin 2023."],
+        pt:["Encontre-se em um lugar público e movimentado, e chegue por conta própria.","Não deixe sua bebida sozinha nem aceite bebidas ou comida abertas.","Conte a alguém de confiança onde e com quem você vai estar.","Em 2024, a Embaixada dos EUA alertou que criminosos usam aplicativos de encontro para drogar e roubar suas vítimas; informou oito mortes de cidadãos americanos em circunstâncias suspeitas em Medellín no fim de 2023."]},
+  sos:{es:["Llame al 123.","Bloquee sus tarjetas y su celular; reporte de inmediato al banco los cobros que no reconoce.","Denuncie ante la Fiscalía; si es extranjero, avise a su consulado."],
+       en:["Call 123.","Block your cards and phone; report any charges you do not recognise to your bank immediately.","File a report with the Fiscalía (prosecutor's office); if you are a foreigner, notify your consulate."],
+       fr:["Appelez le 123.","Faites bloquer vos cartes et votre téléphone ; signalez immédiatement à votre banque les débits que vous ne reconnaissez pas.","Portez plainte auprès de la Fiscalía (parquet) ; si vous êtes étranger, prévenez votre consulat."],
+       pt:["Ligue para o 123.","Bloqueie seus cartões e seu celular; informe imediatamente ao banco as cobranças que você não reconhece.","Registre denúncia na Fiscalía (Ministério Público); se for estrangeiro, avise o seu consulado."]},
+  law:{es:["El banco debe atender su reclamo por cobros no reconocidos; si no responde, puede acudir al Defensor del Consumidor Financiero (Ley 1328 de 2009)."],
+       en:["Your bank must handle your claim for unrecognised charges; if it does not respond, you can go to the Financial Consumer Ombudsman (Law 1328 of 2009)."],
+       fr:["La banque doit traiter votre réclamation pour les débits non reconnus ; sinon, vous pouvez saisir le médiateur du consommateur financier (Loi 1328 de 2009)."],
+       pt:["O banco deve atender sua reclamação por cobranças não reconhecidas; se não responder, você pode recorrer ao Defensor do Consumidor Financeiro (Lei 1328 de 2009)."]},
+  s:[[{es:"Ficha: cobro no reconocido o fraude",en:"Guide: unrecognised charge or fraud",fr:"Fiche : débit non reconnu ou fraude",pt:"Ficha: cobrança não reconhecida ou fraude"},"@fraude"],
+     [{es:"Alerta de la Embajada de EE. UU. (ASIS)",en:"U.S. Embassy alert (ASIS)",fr:"Alerte de l'ambassade des États-Unis (ASIS)",pt:"Alerta da Embaixada dos EUA (ASIS)"},"https://www.asisonline.org/security-management-magazine/latest-news/today-in-security/2024/january/dating-attacks-colombia/"]]},
+ {k:"taxi",i:"taxi",
+  t:{es:"Tomar un taxi o una app",en:"Taking a taxi or a ride app",fr:"Prendre un taxi ou un VTC",pt:"Pegar um táxi ou um app"},
+  prev:{es:["En taxi, pida que se use el taxímetro o acuerde la tarifa antes de subir.","Anote o fotografíe la placa.","El transporte en carros particulares por aplicación no tiene hoy una regulación específica en Colombia. El proyecto de ley 430 de 2026 de la Cámara («Por allá sí voy») busca regularlo y está en trámite. Use los canales de reclamo de la app y guarde las pruebas."],
+        en:["In a taxi, ask for the meter to be used or agree on the fare before getting in.","Note down or photograph the plate number.","Rides in private cars through apps have no specific regulation in Colombia today. Bill 430 of 2026 in the House of Representatives («Por allá sí voy») seeks to regulate them and is under discussion. Use the app's complaint channels and keep the evidence."],
+        fr:["En taxi, demandez que le compteur soit utilisé ou convenez du prix avant de monter.","Notez ou photographiez la plaque.","Le transport en voiture particulière par application n'a pas aujourd'hui de réglementation spécifique en Colombie. Le projet de loi 430 de 2026 de la Chambre (« Por allá sí voy ») vise à l'encadrer et est en cours d'examen. Utilisez les canaux de réclamation de l'application et gardez les preuves."],
+        pt:["No táxi, peça que use o taxímetro ou combine o preço antes de entrar.","Anote ou fotografe a placa.","O transporte em carros particulares por aplicativo não tem hoje regulamentação específica na Colômbia. O projeto de lei 430 de 2026 da Câmara («Por allá sí voy») busca regulamentá-lo e está em tramitação. Use os canais de reclamação do app e guarde as provas."]},
+  sos:{es:["Ante un riesgo para su seguridad, llame al 123.","Si le cobraron de más o hubo un incidente, reclame por escrito y guarde el recibo o las capturas."],
+       en:["If your safety is at risk, call 123.","If you were overcharged or something happened, complain in writing and keep the receipt or screenshots."],
+       fr:["Si votre sécurité est menacée, appelez le 123.","Si l'on vous a trop facturé ou en cas d'incident, réclamez par écrit et gardez le reçu ou les captures d'écran."],
+       pt:["Diante de um risco para sua segurança, ligue para o 123.","Se cobraram a mais ou houve um incidente, reclame por escrito e guarde o recibo ou as capturas de tela."]},
+  law:{es:["La ficha de la guía explica cómo reclamar por cobro, trato o incidente, y ante quién."],en:["The guide explains how and where to complain about a fare, treatment or incident."],fr:["La fiche du guide explique comment et auprès de qui réclamer pour un tarif, un comportement ou un incident."],pt:["A ficha do guia explica como e onde reclamar por cobrança, tratamento ou incidente."]},
+  s:[[{es:"Ficha: app de transporte o taxi",en:"Guide: ride app or taxi",fr:"Fiche : VTC ou taxi",pt:"Ficha: app de transporte ou táxi"},"@taxi"],
+     [{es:"Cámara: proyecto «Por allá sí voy»",en:"House of Representatives: «Por allá sí voy» bill (Spanish)",fr:"Chambre : projet « Por allá sí voy » (espagnol)",pt:"Câmara: projeto «Por allá sí voy» (espanhol)"},"https://www.camara.gov.co/ley-por-alla-si-voy/"]]},
+ {k:"excursion",i:"ticket",
+  t:{es:"Comprar una excursión",en:"Buying a tour",fr:"Acheter une excursion",pt:"Comprar um passeio"},
+  prev:{es:["Verifique que la agencia u operador esté inscrito en el Registro Nacional de Turismo (RNT): es obligatorio para los prestadores de servicios turísticos.","Pida por escrito qué incluye, el precio total y las condiciones de cancelación y reembolso.","Pague con medios que dejen registro."],
+        en:["Check that the agency or operator is registered in the National Tourism Registry (RNT): it is mandatory for tourism service providers.","Ask in writing what is included, the total price and the cancellation and refund terms.","Pay with methods that leave a record."],
+        fr:["Vérifiez que l'agence ou l'opérateur est inscrit au Registre national du tourisme (RNT) : c'est obligatoire pour les prestataires touristiques.","Demandez par écrit ce qui est inclus, le prix total et les conditions d'annulation et de remboursement.","Payez avec des moyens qui laissent une trace."],
+        pt:["Verifique se a agência ou operadora está inscrita no Registro Nacional de Turismo (RNT): é obrigatório para prestadores de serviços turísticos.","Peça por escrito o que está incluído, o preço total e as condições de cancelamento e reembolso.","Pague com meios que deixem registro."]},
+  sos:{es:["Si el servicio no se prestó como se ofreció, reclame primero por escrito a la empresa.","Si no responde, puede acudir a la Superintendencia de Industria y Comercio."],
+       en:["If the service was not provided as offered, first complain in writing to the company.","If it does not respond, you can go to the Superintendence of Industry and Commerce (SIC)."],
+       fr:["Si le service n'a pas été fourni comme promis, réclamez d'abord par écrit à l'entreprise.","Si elle ne répond pas, vous pouvez saisir la Superintendencia de Industria y Comercio (SIC)."],
+       pt:["Se o serviço não foi prestado como oferecido, reclame primeiro por escrito à empresa.","Se não responder, você pode recorrer à Superintendência de Indústria e Comércio (SIC)."]},
+  law:{es:["El Estatuto del Consumidor (Ley 1480 de 2011, art. 23) obliga a dar información clara, veraz y suficiente sobre el servicio."],en:["The Consumer Protection Statute (Law 1480 of 2011, art. 23) requires clear, truthful and sufficient information about the service."],fr:["Le Statut du consommateur (Loi 1480 de 2011, art. 23) impose une information claire, véridique et suffisante sur le service."],pt:["O Estatuto do Consumidor (Lei 1480 de 2011, art. 23) obriga a dar informação clara, verdadeira e suficiente sobre o serviço."]},
+  s:[[{es:"¿Qué es el RNT? (MinCIT)",en:"What is the RNT? (MinCIT, Spanish)",fr:"Qu'est-ce que le RNT ? (MinCIT, espagnol)",pt:"O que é o RNT? (MinCIT, espanhol)"},"https://www.mincit.gov.co/minturismo/analisis-sectorial-y-promocion/registro-nacional-de-turismo/que-es-el-registro-nacional-de-turismo"],
+     [{es:"Ficha: la agencia o el paquete no cumplió",en:"Guide: the agency or package didn't deliver",fr:"Fiche : l'agence n'a pas tenu ses engagements",pt:"Ficha: a agência ou o pacote não cumpriu"},"@agencia"]]},
+ {k:"noche",i:"moon",
+  t:{es:"Salir de noche",en:"Going out at night",fr:"Sortir le soir",pt:"Sair à noite"},
+  prev:{es:["Los horarios de los establecimientos los fija la Alcaldía y pueden cambiar en fechas especiales.","No deje su bebida sola.","Use transporte identificable para regresar."],
+        en:["Opening hours are set by each city hall and may change on special dates.","Do not leave your drink unattended.","Use identifiable transport to get back."],
+        fr:["Les horaires des établissements sont fixés par la mairie et peuvent changer à certaines dates.","Ne laissez pas votre verre sans surveillance.","Rentrez avec un transport identifiable."],
+        pt:["Os horários dos estabelecimentos são fixados pela prefeitura e podem mudar em datas especiais.","Não deixe sua bebida sozinha.","Volte com um transporte identificável."]},
+  sos:{es:["Llame al 123.","Si ve o sospecha explotación sexual de niños, niñas o adolescentes, denuncie en la Línea 141 del ICBF."],
+       en:["Call 123.","If you see or suspect the sexual exploitation of children or teenagers, report it to ICBF Line 141."],
+       fr:["Appelez le 123.","Si vous voyez ou soupçonnez l'exploitation sexuelle d'enfants ou d'adolescents, signalez-le à la ligne 141 de l'ICBF."],
+       pt:["Ligue para o 123.","Se você vir ou suspeitar de exploração sexual de crianças ou adolescentes, denuncie na Linha 141 do ICBF."]},
+  law:{es:["La explotación sexual de menores de edad es un delito grave en Colombia, también cuando lo comete un extranjero (Código Penal, arts. 213 a 219B; Ley 1336 de 2009).","El tráfico de estupefacientes es delito (Código Penal, art. 376)."],
+       en:["The sexual exploitation of minors is a serious crime in Colombia, including when committed by a foreigner (Criminal Code, arts. 213 to 219B; Law 1336 of 2009).","Drug trafficking is a crime (Criminal Code, art. 376)."],
+       fr:["L'exploitation sexuelle de mineurs est un crime grave en Colombie, y compris lorsqu'elle est commise par un étranger (Code pénal, art. 213 à 219B ; Loi 1336 de 2009).","Le trafic de stupéfiants est un délit (Code pénal, art. 376)."],
+       pt:["A exploração sexual de menores é um crime grave na Colômbia, inclusive quando cometida por um estrangeiro (Código Penal, arts. 213 a 219B; Lei 1336 de 2009).","O tráfico de entorpecentes é crime (Código Penal, art. 376)."]},
+  s:[[{es:"ICBF: Línea 141",en:"ICBF: Line 141",fr:"ICBF : ligne 141",pt:"ICBF: Linha 141"},"https://www.icbf.gov.co/"]]},
+ {k:"alquiler",i:"key",
+  t:{es:"Alquilar un alojamiento por días",en:"Renting a place by the night",fr:"Louer un logement à la nuitée",pt:"Alugar uma hospedagem por diária"},
+  prev:{es:["Verifique que el alojamiento tenga RNT y reserve por canales que dejen registro.","Antes de pagar, lea las condiciones de cancelación, depósito y cobros adicionales.","Al llegar, documente con fotos el estado del lugar."],
+        en:["Check that the place has an RNT and book through channels that leave a record.","Before paying, read the cancellation, deposit and extra-charge terms.","When you arrive, take photos of the condition of the place."],
+        fr:["Vérifiez que le logement a un RNT et réservez par des canaux qui laissent une trace.","Avant de payer, lisez les conditions d'annulation, de caution et de frais supplémentaires.","À l'arrivée, photographiez l'état du logement."],
+        pt:["Verifique se a hospedagem tem RNT e reserve por canais que deixem registro.","Antes de pagar, leia as condições de cancelamento, caução e cobranças adicionais.","Ao chegar, documente com fotos o estado do lugar."]},
+  sos:{es:["Si le cancelan la reserva o no le devuelven el depósito, reclame por escrito y guarde las pruebas.","Ante un riesgo para su seguridad, llame al 123."],
+       en:["If your booking is cancelled or your deposit is not returned, complain in writing and keep the evidence.","If your safety is at risk, call 123."],
+       fr:["Si votre réservation est annulée ou si la caution ne vous est pas rendue, réclamez par écrit et gardez les preuves.","Si votre sécurité est menacée, appelez le 123."],
+       pt:["Se cancelarem sua reserva ou não devolverem o caução, reclame por escrito e guarde as provas.","Diante de um risco para sua segurança, ligue para o 123."]},
+  law:{es:["Las fichas de la guía explican la norma aplicable, los plazos y dónde reclamar."],en:["The guide explains the applicable rule, the deadlines and where to complain."],fr:["Les fiches du guide expliquent la règle applicable, les délais et où réclamer."],pt:["As fichas do guia explicam a norma aplicável, os prazos e onde reclamar."]},
+  s:[[{es:"Ficha: me cancelaron la reserva",en:"Guide: my booking was cancelled",fr:"Fiche : ma réservation a été annulée",pt:"Ficha: cancelaram a minha reserva"},"@reserva"],
+     [{es:"Ficha: depósito no devuelto",en:"Guide: deposit not returned",fr:"Fiche : caution non rendue",pt:"Ficha: caução não devolvida"},"@deposito"]]}
+];
+
+/* Textos de la interfaz */
+const UI={
+ eye:{es:"Orientador por zona",en:"Legal guide by area",fr:"Orientation juridique par zone",pt:"Orientador por zona"},
+ h1:{es:"Las reglas cambian según dónde esté",en:"The rules change depending on where you are",fr:"Les règles changent selon l'endroit où vous êtes",pt:"As regras mudam conforme onde você está"},
+ lead:{es:"Vea qué normas aplican en su zona y qué tener en cuenta para lo que va a hacer, en toda Colombia.",en:"See which rules apply where you are and what to keep in mind for what you plan to do, anywhere in Colombia.",fr:"Voyez quelles règles s'appliquent là où vous êtes et ce qu'il faut savoir pour ce que vous allez faire, partout en Colombie.",pt:"Veja quais normas valem na sua região e o que considerar para o que vai fazer, em toda a Colômbia."},
+ loc:{es:"Usar mi ubicación",en:"Use my location",fr:"Utiliser ma position",pt:"Usar minha localização"},
+ priv:{es:"Su ubicación se usa solo en su teléfono para saber en qué ciudad está. No la guardamos ni la enviamos.",en:"Your location is used only on your phone to find out which city you are in. We do not store or send it.",fr:"Votre position est utilisée uniquement sur votre téléphone pour savoir dans quelle ville vous êtes. Nous ne la conservons pas et ne l'envoyons pas.",pt:"Sua localização é usada só no seu telefone para saber em que cidade você está. Não a guardamos nem a enviamos."},
+ searching:{es:"Buscando su ubicación…",en:"Finding your location…",fr:"Recherche de votre position…",pt:"Buscando sua localização…"},
+ noGeo:{es:"Su navegador no permite la ubicación. Elija el lugar abajo.",en:"Your browser does not allow location. Choose the place below.",fr:"Votre navigateur ne permet pas la localisation. Choisissez le lieu ci-dessous.",pt:"Seu navegador não permite a localização. Escolha o lugar abaixo."},
+ geoFail:{es:"No pudimos obtener su ubicación. Elija el lugar abajo.",en:"We could not get your location. Choose the place below.",fr:"Nous n'avons pas pu obtenir votre position. Choisissez le lieu ci-dessous.",pt:"Não conseguimos obter sua localização. Escolha o lugar abaixo."},
+ which:{es:"¿En qué municipio está?",en:"Which municipality are you in?",fr:"Dans quelle commune êtes-vous ?",pt:"Em que município você está?"},
+ inVA:{es:"Usted está en el Valle de Aburrá.",en:"You are in the Aburrá Valley.",fr:"Vous êtes dans le Valle de Aburrá.",pt:"Você está no Vale de Aburrá."},
+ other:{es:"Otro municipio",en:"Another municipality",fr:"Autre commune",pt:"Outro município"},
+ choose:{es:"O elija el lugar",en:"Or choose the place",fr:"Ou choisissez le lieu",pt:"Ou escolha o lugar"},
+ va:{es:"Valle de Aburrá",en:"Aburrá Valley (Medellín area)",fr:"Valle de Aburrá (agglomération de Medellín)",pt:"Vale de Aburrá (região de Medellín)"},
+ others:{es:"Otras ciudades",en:"Other cities",fr:"Autres villes",pt:"Outras cidades"},
+ otherCo:{es:"Otro lugar de Colombia",en:"Elsewhere in Colombia",fr:"Ailleurs en Colombie",pt:"Outro lugar da Colômbia"},
+ youAre:{es:"Usted está en",en:"You are in",fr:"Vous êtes à",pt:"Você está em"},
+ colombia:{es:"Colombia",en:"Colombia",fr:"Colombie",pt:"Colômbia"},
+ outside:{es:"Fuera de Colombia",en:"Outside Colombia",fr:"Hors de Colombie",pt:"Fora da Colômbia"},
+ noteCo:{es:"Estas normas aplican en todo el país. Las normas locales (horarios, uso del suelo, pico y placa) dependen de cada municipio.",en:"These rules apply nationwide. Local rules (opening hours, land use, pico y placa) depend on each municipality.",fr:"Ces règles s'appliquent dans tout le pays. Les règles locales (horaires, usage du sol, pico y placa) dépendent de chaque commune.",pt:"Estas normas valem em todo o país. As normas locais (horários, uso do solo, pico y placa) dependem de cada município."},
+ noteOut:{es:"Esta guía cubre Colombia. Estas son las normas nacionales que le aplicarán cuando esté en el país.",en:"This guide covers Colombia. These are the national rules that will apply to you once you are in the country.",fr:"Ce guide couvre la Colombie. Voici les règles nationales qui s'appliqueront à vous une fois dans le pays.",pt:"Este guia cobre a Colômbia. Estas são as normas nacionais que valerão para você quando estiver no país."},
+ change:{es:"Cambiar lugar",en:"Change place",fr:"Changer de lieu",pt:"Mudar de lugar"},
+ tabZone:{es:"Normas de la zona",en:"Local rules",fr:"Règles de la zone",pt:"Normas da região"},
+ tabAct:{es:"Mi actividad",en:"My activity",fr:"Mon activité",pt:"Minha atividade"},
+ allCo:{es:"En toda Colombia",en:"Throughout Colombia",fr:"Dans toute la Colombie",pt:"Em toda a Colômbia"},
+ what:{es:"¿Qué va a hacer?",en:"What are you going to do?",fr:"Qu'allez-vous faire ?",pt:"O que você vai fazer?"},
+ whatSub:{es:"Le decimos qué dice la ley y cómo prevenir problemas, en cualquier lugar de Colombia.",en:"We tell you what the law says and how to avoid problems, anywhere in Colombia.",fr:"Nous vous disons ce que dit la loi et comment éviter les problèmes, partout en Colombie.",pt:"Dizemos o que diz a lei e como evitar problemas, em qualquer lugar da Colômbia."},
+ emerT:{es:"Emergencias: línea 123",en:"Emergencies: line 123",fr:"Urgences : ligne 123",pt:"Emergências: linha 123"},
+ emerP:{es:"Policía, ambulancia y bomberos. Desde cualquier celular.",en:"Police, ambulance and fire service. From any mobile phone.",fr:"Police, ambulance et pompiers. Depuis n'importe quel portable.",pt:"Polícia, ambulância e bombeiros. De qualquer celular."},
+ prevH:{es:"Para prevenir",en:"To prevent problems",fr:"Pour prévenir",pt:"Para prevenir"},
+ sosH:{es:"Si algo pasa",en:"If something happens",fr:"Si quelque chose arrive",pt:"Se algo acontecer"},
+ lawH:{es:"Lo que dice la ley",en:"What the law says",fr:"Ce que dit la loi",pt:"O que diz a lei"},
+ cta:{es:"Hablar con una abogada",en:"Talk to a lawyer",fr:"Parler à une avocate",pt:"Falar com uma advogada"},
+ disc:{es:"Información general con fuentes oficiales, actualizada en noviembre de 2026; no reemplaza la revisión de su caso.",en:"General information from official sources, updated November 2026; it does not replace a review of your case.",fr:"Information générale issue de sources officielles, mise à jour en novembre 2026 ; elle ne remplace pas l'examen de votre cas.",pt:"Informação geral com fontes oficiais, atualizada em novembro de 2026; não substitui a análise do seu caso."},
+ back:{es:"Volver",en:"Back",fr:"Retour",pt:"Voltar"},
+ sos123:{es:"Emergencias: llamar al 123",en:"Emergencies: call 123",fr:"Urgences : appeler le 123",pt:"Emergências: ligar para o 123"},
+ home:{es:"IHA Soluciones Legales, inicio",en:"IHA Soluciones Legales, home",fr:"IHA Soluciones Legales, accueil",pt:"IHA Soluciones Legales, início"},
+ langLbl:{es:"Idioma",en:"Language",fr:"Langue",pt:"Idioma"},
+ title:{es:"Orientador legal por zona · Colombia | IHA Soluciones Legales",en:"Legal guide by area · Colombia | IHA Soluciones Legales",fr:"Orientation juridique par zone · Colombie | IHA Soluciones Legales",pt:"Orientador jurídico por região · Colômbia | IHA Soluciones Legales"},
+ srcEs:{es:"",en:"Source in Spanish",fr:"Source en espagnol",pt:"Fonte em espanhol"}
+};
+
 /* Cajas aproximadas para reconocer la ciudad (la ubicación no sale del teléfono). */
 const BOX={va:[6.00,6.48,-75.75,-75.40],bogota:[4.45,4.85,-74.25,-73.98],cartagena:[10.28,10.52,-75.62,-75.40],santamarta:[11.08,11.36,-74.25,-73.85],colombia:[-4.3,13.6,-82.0,-66.8]};
 const inBox=(b,la,lo)=>la>=b[0]&&la<=b[1]&&lo>=b[2]&&lo<=b[3];
 
-const ACTS=[
- {k:"moto",i:"moto",t:"Alquilar una moto o un carro",
-  prev:["Exija la licencia de tránsito del vehículo y el SOAT vigente: ningún vehículo puede circular sin seguro obligatorio.","En moto, el casco es obligatorio para el conductor y para el acompañante.","Si es extranjero y está como turista, puede conducir con la licencia vigente de su país durante su permanencia autorizada. Si no está en español, lleve una traducción."],
-  sos:["En caso de accidente con heridos, llame al 123.","El SOAT cubre la atención médica de las víctimas de accidentes de tránsito.","No firme acuerdos de pago en el lugar sin entender lo que firma."],
-  law:["Código Nacional de Tránsito (Ley 769 de 2002): licencias extranjeras de turistas (art. 25), seguro obligatorio (art. 42) y casco en motocicletas (art. 96)."],
-  s:[["Bogotá: conducir con licencia extranjera","https://bogota.gov.co/mi-ciudad/movilidad/que-documentos-requiere-un-extranjero-para-conducir-en-bogota"],["Resolución 1244 de 2019 (MinTransporte)","https://www.cancilleria.gov.co/sites/default/files/Normograma/docs/pdf/resolucion_mintransporte_1244_2019.pdf"]]},
- {k:"cita",i:"heart",t:"Cita por aplicación",
-  prev:["Encuéntrese en un lugar público y concurrido, y llegue por su cuenta.","No deje su bebida sola ni acepte bebidas o comida abiertas.","Cuente a alguien de confianza dónde y con quién va a estar.","La Embajada de EE. UU. advirtió en 2024 que delincuentes usan aplicaciones de citas para drogar y robar a sus víctimas; reportó ocho muertes de ciudadanos estadounidenses en circunstancias sospechosas en Medellín a finales de 2023."],
-  sos:["Llame al 123.","Bloquee sus tarjetas y su celular; reporte de inmediato al banco los cobros que no reconoce.","Denuncie ante la Fiscalía; si es extranjero, avise a su consulado."],
-  law:["El banco debe atender su reclamo por cobros no reconocidos; si no responde, puede acudir al Defensor del Consumidor Financiero (Ley 1328 de 2009)."],
-  s:[["Ficha: cobro no reconocido o fraude",F+"cobro-no-reconocido-o-fraude-con-mi-tarjeta-o-cuenta/"],["Alerta de la Embajada de EE. UU. (ASIS)","https://www.asisonline.org/security-management-magazine/latest-news/today-in-security/2024/january/dating-attacks-colombia/"]]},
- {k:"taxi",i:"taxi",t:"Tomar un taxi o una app",
-  prev:["En taxi, pida que se use el taxímetro o acuerde la tarifa antes de subir.","Anote o fotografíe la placa.","El transporte en carros particulares por aplicación no tiene hoy una regulación específica en Colombia. El proyecto de ley 430 de 2026 de la Cámara («Por allá sí voy») busca regularlo y está en trámite. Use los canales de reclamo de la app y guarde las pruebas."],
-  sos:["Ante un riesgo para su seguridad, llame al 123.","Si le cobraron de más o hubo un incidente, reclame por escrito y guarde el recibo o las capturas."],
-  law:["La ficha de la guía explica cómo reclamar por cobro, trato o incidente, y ante quién."],
-  s:[["Ficha: app de transporte o taxi",F+"app-de-transporte-o-taxi-cobro-trato-o-incidente/"],["Cámara: proyecto «Por allá sí voy»","https://www.camara.gov.co/ley-por-alla-si-voy/"]]},
- {k:"excursion",i:"ticket",t:"Comprar una excursión",
-  prev:["Verifique que la agencia u operador esté inscrito en el Registro Nacional de Turismo (RNT): es obligatorio para los prestadores de servicios turísticos.","Pida por escrito qué incluye, el precio total y las condiciones de cancelación y reembolso.","Pague con medios que dejen registro."],
-  sos:["Si el servicio no se prestó como se ofreció, reclame primero por escrito a la empresa.","Si no responde, puede acudir a la Superintendencia de Industria y Comercio."],
-  law:["El Estatuto del Consumidor (Ley 1480 de 2011, art. 23) obliga a dar información clara, veraz y suficiente sobre el servicio."],
-  s:[["¿Qué es el RNT? (MinCIT)","https://www.mincit.gov.co/minturismo/analisis-sectorial-y-promocion/registro-nacional-de-turismo/que-es-el-registro-nacional-de-turismo"],["Ficha: la agencia o el paquete no cumplió",F+"la-agencia-o-el-paquete-turistico-no-cumplio/"]]},
- {k:"noche",i:"moon",t:"Salir de noche",
-  prev:["Los horarios de los establecimientos los fija la Alcaldía y pueden cambiar en fechas especiales.","No deje su bebida sola.","Use transporte identificable para regresar."],
-  sos:["Llame al 123.","Si ve o sospecha explotación sexual de niños, niñas o adolescentes, denuncie en la Línea 141 del ICBF."],
-  law:["La explotación sexual de menores de edad es un delito grave en Colombia, también cuando lo comete un extranjero (Código Penal, arts. 213 a 219B; Ley 1336 de 2009).","El tráfico de estupefacientes es delito (Código Penal, art. 376)."],
-  s:[["ICBF: Línea 141","https://www.icbf.gov.co/"]]},
- {k:"alquiler",i:"key",t:"Alquilar un alojamiento por días",
-  prev:["Verifique que el alojamiento tenga RNT y reserve por canales que dejen registro.","Antes de pagar, lea las condiciones de cancelación, depósito y cobros adicionales.","Al llegar, documente con fotos el estado del lugar."],
-  sos:["Si le cancelan la reserva o no le devuelven el depósito, reclame por escrito y guarde las pruebas.","Ante un riesgo para su seguridad, llame al 123."],
-  law:["Las fichas de la guía explican la norma aplicable, los plazos y dónde reclamar."],
-  s:[["Ficha: me cancelaron la reserva",F+"me-cancelaron-la-reserva/"],["Ficha: depósito no devuelto",F+"cobros-de-mas-o-deposito-no-devuelto/"]]}
-];
 
+const LANGS=["es","en","fr","pt"];
+let lang=(()=>{try{const q=new URLSearchParams(location.search).get("lang");if(LANGS.includes(q))return q;}catch(e){}
+ const n=(navigator.language||"es").slice(0,2).toLowerCase();return LANGS.includes(n)?n:"es";})();
+const L=o=>o==null?"":typeof o==="string"?o:(o[lang]||o.es);
+const src=a=>a.map(([lab,url,esOnly])=>{
+  const ext=!url.startsWith("@")&&!url.startsWith("#");
+  const href=url.startsWith("@")?fx(url.slice(1)):url;
+  const txt=L(lab)+(ext&&esOnly&&lang!=="es"?NOTE_LANG[lang]:"");
+  return `<a href="${esc(href)}"${ext?' target="_blank" rel="noopener"':""}${url.startsWith("#")?"":""}>${esc(txt)}</a>`;}).join("");
 const app=document.getElementById("app");
 let state={zone:null,tab:"normas",act:null,msg:"",ask:false};
 function pick(z){state={zone:z,tab:"normas",act:null,msg:"",ask:false};render();window.scrollTo(0,0);}
 function locate(){
-  if(!("geolocation" in navigator)){state.msg="Su navegador no permite la ubicación. Elija el lugar abajo.";return render();}
-  state.msg="Buscando su ubicación…";render();
+  if(!("geolocation" in navigator)){state.msg="noGeo";return render();}
+  state.msg="searching";render();
   navigator.geolocation.getCurrentPosition(p=>{
     const la=p.coords.latitude, lo=p.coords.longitude;
     if(inBox(BOX.va,la,lo)){state.msg="";state.ask=true;return render();}
     for(const k of ["bogota","cartagena","santamarta"]) if(inBox(BOX[k],la,lo)) return pick(k);
     if(inBox(BOX.colombia,la,lo)) return pick("colombia");
     pick("fuera");
-  },()=>{state.msg="No pudimos obtener su ubicación. Elija el lugar abajo.";render();},{enableHighAccuracy:false,timeout:10000,maximumAge:600000});
+  },()=>{state.msg="geoFail";render();},{enableHighAccuracy:false,timeout:10000,maximumAge:600000});
 }
+const VA=["medellin","envigado","sabaneta","itagui","bello"];
 const chip=(k,n)=>`<button class="chip" data-zone="${k}">${esc(n)}</button>`;
 function vHome(){
-  const ask=state.ask?`<section class="sec"><h2 class="h2">¿En qué municipio está?</h2><p class="sub">Usted está en el Valle de Aburrá.</p><div class="chips">${["medellin","envigado","sabaneta","itagui","bello"].map(k=>chip(k,CITIES[k].name)).join("")}${chip("colombia","Otro municipio")}</div></section>`:"";
-  return `<section class="hero"><p class="eye">Orientador por zona</p><h1>Las reglas cambian según dónde esté</h1>
-  <p class="lead">Vea qué normas aplican en su zona y qué tener en cuenta para lo que va a hacer, en toda Colombia.</p>
-  <button class="btn" data-do="loc">${ic("pin")} Usar mi ubicación</button>
-  <p class="priv">${ic("lock",16)}<span>Su ubicación se usa solo en su teléfono para saber en qué ciudad está. No la guardamos ni la enviamos.</span></p>
-  ${state.msg?`<p class="msg" role="status">${esc(state.msg)}</p>`:""}</section>${ask}
-  <section class="sec"><h2 class="h2">O elija el lugar</h2>
-  <p class="sub">Valle de Aburrá</p><div class="chips">${["medellin","envigado","sabaneta","itagui","bello"].map(k=>chip(k,CITIES[k].name)).join("")}</div>
-  <p class="sub" style="margin-top:14px">Otras ciudades</p><div class="chips">${["bogota","cartagena","santamarta"].map(k=>chip(k,CITIES[k].name)).join("")}${chip("colombia","Otro lugar de Colombia")}</div></section>`;
+  const ask=state.ask?`<section class="sec"><h2 class="h2">${esc(L(UI.which))}</h2><p class="sub">${esc(L(UI.inVA))}</p><div class="chips">${VA.map(k=>chip(k,CITIES[k].name)).join("")}${chip("colombia",L(UI.other))}</div></section>`:"";
+  return `<section class="hero"><p class="eye">${esc(L(UI.eye))}</p><h1>${esc(L(UI.h1))}</h1>
+  <p class="lead">${esc(L(UI.lead))}</p>
+  <button class="btn" data-do="loc">${ic("pin")} ${esc(L(UI.loc))}</button>
+  <p class="priv">${ic("lock",16)}<span>${esc(L(UI.priv))}</span></p>
+  ${state.msg?`<p class="msg" role="status">${esc(L(UI[state.msg]))}</p>`:""}</section>${ask}
+  <section class="sec"><h2 class="h2">${esc(L(UI.choose))}</h2>
+  <p class="sub">${esc(L(UI.va))}</p><div class="chips">${VA.map(k=>chip(k,CITIES[k].name)).join("")}</div>
+  <p class="sub" style="margin-top:14px">${esc(L(UI.others))}</p><div class="chips">${["bogota","cartagena","santamarta"].map(k=>chip(k,CITIES[k].name)).join("")}${chip("colombia",L(UI.otherCo))}</div></section>`;
 }
-const card=r=>`<article class="card"><span class="i">${ic(r.i)}</span><div><b>${esc(r.t)}</b><p>${esc(r.p)}</p>${r.s&&r.s.length?`<div class="src">${src(r.s)}</div>`:""}</div></article>`;
+const card=r=>`<article class="card"><span class="i">${ic(r.i)}</span><div><b>${esc(L(r.t))}</b><p>${esc(L(r.p))}</p>${r.s&&r.s.length?`<div class="src">${src(r.s)}</div>`:""}</div></article>`;
 function vZone(){
   const c=CITIES[state.zone];
-  const name=c?c.name:state.zone==="fuera"?"Fuera de Colombia":"Colombia";
-  const note=c?c.note:state.zone==="fuera"?"Esta guía cubre Colombia. Estas son las normas nacionales que le aplicarán cuando esté en el país.":"Estas normas aplican en todo el país. Las normas locales (horarios, uso del suelo, pico y placa) dependen de cada municipio.";
-  const head=`<section class="zone"><p class="where">${ic("pin",16)} Usted está en</p><h1>${esc(name)}</h1><p class="note">${esc(note)}</p><button class="chg" data-do="home">Cambiar lugar</button></section>
-  <div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="${state.tab==="normas"}" data-tab="normas">Normas de la zona</button><button class="tab" role="tab" aria-selected="${state.tab==="act"}" data-tab="act">Mi actividad</button></div>`;
-  if(state.tab==="normas") return head+`<section class="sec">${c?`<h2 class="h2">${esc(c.name)}</h2>${c.rules.map(card).join("")}<h2 class="h2" style="margin-top:18px">En toda Colombia</h2>`:""}${NAC.map(card).join("")}</section>`;
-  return head+`<section class="sec"><h2 class="h2">¿Qué va a hacer?</h2><p class="sub">Le decimos qué dice la ley y cómo prevenir problemas, en cualquier lugar de Colombia.</p>
-  <div class="grid">${ACTS.map(a=>`<button class="act" data-act="${a.k}"><span class="i">${ic(a.i)}</span>${esc(a.t)}</button>`).join("")}</div>
-  <article class="card emer" style="margin-top:12px"><span class="i">${ic("phone")}</span><div><b>Emergencias: línea 123</b><p>Policía, ambulancia y bomberos. Desde cualquier celular.</p></div></article></section>`;
+  const name=c?c.name:state.zone==="fuera"?L(UI.outside):L(UI.colombia);
+  const note=c?L(c.note):state.zone==="fuera"?L(UI.noteOut):L(UI.noteCo);
+  const head=`<section class="zone"><p class="where">${ic("pin",16)} ${esc(L(UI.youAre))}</p><h1>${esc(name)}</h1><p class="note">${esc(note)}</p><button class="chg" data-do="home">${esc(L(UI.change))}</button></section>
+  <div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="${state.tab==="normas"}" data-tab="normas">${esc(L(UI.tabZone))}</button><button class="tab" role="tab" aria-selected="${state.tab==="act"}" data-tab="act">${esc(L(UI.tabAct))}</button></div>`;
+  if(state.tab==="normas") return head+`<section class="sec">${c?`<h2 class="h2">${esc(c.name)}</h2>${c.rules.map(card).join("")}<h2 class="h2" style="margin-top:18px">${esc(L(UI.allCo))}</h2>`:""}${NAC.map(card).join("")}</section>`;
+  return head+`<section class="sec"><h2 class="h2">${esc(L(UI.what))}</h2><p class="sub">${esc(L(UI.whatSub))}</p>
+  <div class="grid">${ACTS.map(a=>`<button class="act" data-act="${a.k}"><span class="i">${ic(a.i)}</span>${esc(L(a.t))}</button>`).join("")}</div>
+  <article class="card emer" style="margin-top:12px"><span class="i">${ic("phone")}</span><div><b>${esc(L(UI.emerT))}</b><p>${esc(L(UI.emerP))}</p></div></article></section>`;
 }
 function vAct(){
   const a=ACTS.find(x=>x.k===state.act);
-  const ul=l=>`<ul>${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
-  return `<div class="top"><button class="back" data-do="zone" aria-label="Volver">${ic("back")}</button><b>${esc(a.t)}</b></div><section class="sec">
-  <div class="blk prev"><h3>${ic("shield",18)} Para prevenir</h3>${ul(a.prev)}</div>
-  <div class="blk sos2"><h3>${ic("alert",18)} Si algo pasa</h3>${ul(a.sos)}</div>
-  <div class="blk law"><h3>${ic("file",18)} Lo que dice la ley</h3>${ul(a.law)}<div class="src">${src(a.s)}</div></div>
-  <a class="cta" href="/es/servicios/">Hablar con una abogada</a>
-  <p class="disc">Información general con fuentes oficiales, actualizada en noviembre de 2026; no reemplaza la revisión de su caso.</p></section>`;
+  const ul=l=>`<ul>${L(l).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
+  return `<div class="top"><button class="back" data-do="zone" aria-label="${esc(L(UI.back))}">${ic("back")}</button><b>${esc(L(a.t))}</b></div><section class="sec">
+  <div class="blk prev"><h3>${ic("shield",18)} ${esc(L(UI.prevH))}</h3>${ul(a.prev)}</div>
+  <div class="blk sos2"><h3>${ic("alert",18)} ${esc(L(UI.sosH))}</h3>${ul(a.sos)}</div>
+  <div class="blk law"><h3>${ic("file",18)} ${esc(L(UI.lawH))}</h3>${ul(a.law)}<div class="src">${src(a.s)}</div></div>
+  <a class="cta" href="${esc(fx("servicios"))}">${esc(L(UI.cta))}</a>
+  <p class="disc">${esc(L(UI.disc))}</p></section>`;
 }
-function render(){ app.innerHTML = state.act ? vAct() : state.zone ? vZone() : vHome(); }
+function chrome(){
+  document.documentElement.lang=lang==="pt"?"pt-BR":lang; document.title=L(UI.title);
+  const s=document.getElementById("lsel"); if(s){s.value=lang;s.setAttribute("aria-label",L(UI.langLbl));}
+  const h=document.querySelector(".bar .sos"); if(h) h.setAttribute("aria-label",L(UI.sos123));
+  const b=document.querySelector(".bar .brand"); if(b) b.setAttribute("href",lang==="es"?"/":"/?lang="+lang);
+}
+function render(){ chrome(); app.innerHTML = state.act ? vAct() : state.zone ? vZone() : vHome(); }
 app.addEventListener("click",e=>{
   const l=e.target.closest('a[href^="#act-"]'); if(l){e.preventDefault();state.act=l.getAttribute("href").slice(5);render();return window.scrollTo(0,0);}
   const b=e.target.closest("button");if(!b)return;
@@ -214,6 +429,10 @@ app.addEventListener("click",e=>{
   if(b.dataset.zone) return pick(b.dataset.zone);
   if(b.dataset.tab){state.tab=b.dataset.tab;return render();}
   if(b.dataset.act){state.act=b.dataset.act;render();window.scrollTo(0,0);}
+});
+document.getElementById("lsel").addEventListener("change",e=>{
+  lang=e.target.value; try{const u=new URL(location.href);u.searchParams.set("lang",lang);history.replaceState(null,"",u);}catch(err){}
+  render();
 });
 render();
 </script>
