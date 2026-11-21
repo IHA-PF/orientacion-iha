@@ -1,0 +1,1 @@
+(()=>{"use strict";const allowed=["es","en","fr","pt"];let lang="es";try{const q=new URLSearchParams(location.search).get("lang");const saved=localStorage.getItem("iha-lang");const browser=(navigator.language||"es").slice(0,2);lang=allowed.includes(q)?q:allowed.includes(saved)?saved:allowed.includes(browser)?browser:"es";}catch(e){}location.replace("/"+lang+"/legal-360/");})();
