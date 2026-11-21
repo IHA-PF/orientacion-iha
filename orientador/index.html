@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Orientador legal por zona · Medellín | IHA Soluciones Legales</title>
-<meta name="description" content="Normas que aplican en Medellín según la zona y lo que va a hacer: vivienda turística, alcohol, ruido, pico y placa, alquiler de moto, citas por aplicación, taxis y excursiones. Con fuentes oficiales.">
+<title>Orientador legal por zona · Colombia | IHA Soluciones Legales</title>
+<meta name="description" content="Normas que aplican en Colombia según la ciudad y lo que va a hacer: vivienda turística, ruido, alcohol, pico y placa en Medellín, Bogotá, Cartagena y Santa Marta, alquiler de moto, citas por aplicación, taxis y excursiones. Con fuentes oficiales.">
 <link rel="canonical" href="https://ihasolucioneslegales.com.co/orientador/">
 <link rel="icon" href="../monograma-iha-144.webp">
 <style>
@@ -82,22 +82,47 @@ button{font:inherit;cursor:pointer}
 </div>
 <script>
 "use strict";
-const IC={pin:'<path d="M12 21s-7-6.2-7-11.5A7 7 0 0119 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',glass:'<path d="M7 3h10l-1.5 8a3.5 3.5 0 01-7 0zM12 14.5V20M8.5 20h7"/>',car:'<path d="M5 16V11l2-5h10l2 5v5M5 16h14M5 16v2M19 16v2"/><circle cx="8" cy="13" r="1"/><circle cx="16" cy="13" r="1"/>',vol:'<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 010 7"/>',phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',moto:'<circle cx="6" cy="16" r="3"/><circle cx="18" cy="16" r="3"/><path d="M6 16l4-6h5l3 6M13 10l1-3h3"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z"/>',taxi:'<path d="M5 17V12l2-5h10l2 5v5M9 7V5h6v2M5 17h14"/>',moon:'<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/>',ticket:'<path d="M4 8a2 2 0 002-2h12a2 2 0 002 2v2a2 2 0 000 4v2a2 2 0 00-2 2H6a2 2 0 00-2-2v-2a2 2 0 000-4z"/>',back:'<path d="M15 6l-6 6 6 6"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',alert:'<path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.5"/>',file:'<path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5"/>',key:'<circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2"/>'};
+const IC={pin:'<path d="M12 21s-7-6.2-7-11.5A7 7 0 0119 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',home:'<path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',glass:'<path d="M7 3h10l-1.5 8a3.5 3.5 0 01-7 0zM12 14.5V20M8.5 20h7"/>',car:'<path d="M5 16V11l2-5h10l2 5v5M5 16h14M5 16v2M19 16v2"/><circle cx="8" cy="13" r="1"/><circle cx="16" cy="13" r="1"/>',vol:'<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 010 7"/>',phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',moto:'<circle cx="6" cy="16" r="3"/><circle cx="18" cy="16" r="3"/><path d="M6 16l4-6h5l3 6M13 10l1-3h3"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.5-7 10-7 10z"/>',taxi:'<path d="M5 17V12l2-5h10l2 5v5M9 7V5h6v2M5 17h14"/>',moon:'<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/>',ticket:'<path d="M4 8a2 2 0 002-2h12a2 2 0 002 2v2a2 2 0 000 4v2a2 2 0 00-2 2H6a2 2 0 00-2-2v-2a2 2 0 000-4z"/>',back:'<path d="M15 6l-6 6 6 6"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',alert:'<path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.5"/>',file:'<path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5"/>',key:'<circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2"/>',map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>'};
 const ic=(n,s=22)=>`<svg class="ic" style="width:${s}px;height:${s}px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 const F="https://ihasolucioneslegales.com.co/es/";
 const src=a=>a.map(([t,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a>`).join("");
 
-/* Contenido verificado con fuentes oficiales (noviembre de 2026). Códigos Z/A para referencias internas. */
-const ZONA={
- medellin:{name:"Medellín",note:"Si está en otro municipio del área metropolitana (Envigado, Itagüí, Bello, Sabaneta…), algunas normas locales pueden ser distintas.",
- rules:[
-  {id:"Z1",i:"home",t:"Vivienda turística y uso del suelo",p:"El POT define en qué sectores se permite el alquiler por días. Antes de alquilar o comprar para renta corta, consulte el uso del suelo del predio. El Concejo aprobó la revisión del POT el 5 de noviembre de 2026; hasta que sea sancionada y entre en vigencia, rige el Acuerdo 48 de 2014.",s:[["Consulta de uso del suelo (MapGIS)","https://www.medellin.gov.co/mapgis9/tools/UsoSuelos.html"],["Alcaldía: aprobación del POT","https://www.medellin.gov.co/es/sala-de-prensa/noticias/el-concejo-de-medellin-aprobo-el-proyecto-de-acuerdo-para-la-revision-del-pot/"],["Ficha: ¿mi zona lo permite?",F+"mi-zona-permite-la-vivienda-turistica-medellin/"]]},
-  {id:"Z2",i:"glass",t:"Venta y consumo de alcohol",p:"Los horarios de bares, discotecas y venta de licor los fija la Alcaldía por decreto. En fechas especiales pueden cambiar: por ejemplo, en elecciones rige la ley seca que fija el Gobierno nacional.",s:[["Alcaldía de Medellín","https://www.medellin.gov.co/es/"]]},
-  {id:"Z3",i:"vol",t:"Ruido y espacio público",p:"El Código Nacional de Seguridad y Convivencia Ciudadana sanciona los ruidos que afectan la tranquilidad del vecindario (art. 33) y los comportamientos contrarios al cuidado del espacio público (art. 140). Pueden dar lugar a multas y otras medidas.",s:[["Ley 1801 de 2016","http://www.secretariasenado.gov.co/senado/basedoc/ley_1801_2016.html"]]},
-  {id:"Z4",i:"car",t:"Movilidad: pico y placa",p:"En Medellín, el pico y placa aplica de lunes a viernes, de 5:00 a. m. a 8:00 p. m., para carros (según el último número de la placa) y para motos (según el primer número). La rotación cambia cada semestre.",s:[["Alcaldía: rotación vigente","https://www.medellin.gov.co/es/sala-de-prensa/noticias/la-nueva-rotacion-del-pico-y-placa-en-medellin-comenzara-a-regir-a-partir-del-lunes-3-de-agosto/"]]}
- ]}
+/* Contenido verificado con fuentes oficiales (noviembre de 2026). Códigos para referencias internas. */
+/* Normas nacionales: aplican en toda Colombia (códigos N). */
+const NAC=[
+ {id:"N1",i:"home",t:"Vivienda turística en cualquier municipio",p:"Quien alquila por días debe estar inscrito en el Registro Nacional de Turismo (RNT) y renovarlo cada año entre el 1 de enero y el 31 de marzo. Además, el POT o EOT de cada municipio define dónde se permite ese uso.",s:[["¿Qué es el RNT? (MinCIT)","https://www.mincit.gov.co/minturismo/analisis-sectorial-y-promocion/registro-nacional-de-turismo/que-es-el-registro-nacional-de-turismo"],["Ficha: alquilo por días sin RNT",F+"alquilo-por-dias-sin-rnt-o-con-el-rnt-vencido/"]]},
+ {id:"N2",i:"vol",t:"Ruido y espacio público",p:"El Código Nacional de Seguridad y Convivencia Ciudadana sanciona los ruidos que afectan la tranquilidad del vecindario (art. 33) y los comportamientos contrarios al cuidado del espacio público (art. 140). Pueden dar lugar a multas y otras medidas.",s:[["Ley 1801 de 2016","http://www.secretariasenado.gov.co/senado/basedoc/ley_1801_2016.html"]]},
+ {id:"N3",i:"glass",t:"Alcohol y horarios",p:"Cada alcaldía fija por decreto los horarios de bares, discotecas y venta de licor. En elecciones rige la ley seca que fija el Gobierno nacional.",s:[]},
+ {id:"N4",i:"car",t:"Tránsito",p:"Para conducir: licencia vigente, SOAT y, si aplica, revisión técnico-mecánica. Cada ciudad decide si aplica pico y placa y en qué horario.",s:[["Ver «Alquilar una moto o un carro»","#act-moto"]]}
+];
+const VA_NOTE="Medellín y los demás municipios del Valle de Aburrá aplican la misma rotación metropolitana de pico y placa.";
+const PYP_VA={i:"car",t:"Pico y placa (Valle de Aburrá)",p:"De lunes a viernes, de 5:00 a. m. a 8:00 p. m., en Medellín, Envigado, Itagüí, Sabaneta, Bello y los demás municipios del Valle de Aburrá: carros según el último número de la placa y motos según el primero. La rotación cambia cada semestre. En Itagüí, la Autopista Sur está exenta.",s:[["Alcaldía de Medellín: rotación vigente","https://www.medellin.gov.co/es/sala-de-prensa/noticias/la-nueva-rotacion-del-pico-y-placa-en-medellin-comenzara-a-regir-a-partir-del-lunes-3-de-agosto/"],["Telemedellín: municipios del Valle de Aburrá","https://telemedellin.tv/?p=188377"]]};
+const usoMun=(n,url)=>({i:"home",t:"Vivienda turística y uso del suelo",p:`El POT de ${n} define en qué sectores se permite el alquiler por días. Antes de alquilar o comprar para renta corta, consulte el uso del suelo del predio ante la Secretaría de Planeación del municipio.`,s:[[`Alcaldía de ${n}`,url]]});
+const CITIES={
+ medellin:{name:"Medellín",group:"va",note:"Normas de Medellín. Más abajo, las normas que aplican en toda Colombia.",rules:[
+  {id:"MED1",i:"home",t:"Vivienda turística y uso del suelo",p:"El POT define en qué sectores se permite el alquiler por días. Antes de alquilar o comprar para renta corta, consulte el uso del suelo del predio. El Concejo aprobó la revisión del POT el 5 de noviembre de 2026; hasta que sea sancionada y entre en vigencia, rige el Acuerdo 48 de 2014.",s:[["Consulta de uso del suelo (MapGIS)","https://www.medellin.gov.co/mapgis9/tools/UsoSuelos.html"],["Alcaldía: aprobación del POT","https://www.medellin.gov.co/es/sala-de-prensa/noticias/el-concejo-de-medellin-aprobo-el-proyecto-de-acuerdo-para-la-revision-del-pot/"],["Ficha: ¿mi zona lo permite?",F+"mi-zona-permite-la-vivienda-turistica-medellin/"]]},
+  {id:"MED2",...PYP_VA}]},
+ envigado:{name:"Envigado",group:"va",note:"Normas de Envigado. Más abajo, las normas que aplican en toda Colombia.",rules:[{id:"ENV1",...usoMun("Envigado","https://www.envigado.gov.co/")},{id:"ENV2",...PYP_VA}]},
+ sabaneta:{name:"Sabaneta",group:"va",note:"Normas de Sabaneta. Más abajo, las normas que aplican en toda Colombia.",rules:[{id:"SAB1",...usoMun("Sabaneta","https://www.sabaneta.gov.co/")},{id:"SAB2",...PYP_VA}]},
+ itagui:{name:"Itagüí",group:"va",note:"Normas de Itagüí. Más abajo, las normas que aplican en toda Colombia.",rules:[{id:"ITA1",...usoMun("Itagüí","https://www.itagui.gov.co/")},{id:"ITA2",...PYP_VA}]},
+ bello:{name:"Bello",group:"va",note:"Normas de Bello. Más abajo, las normas que aplican en toda Colombia.",rules:[{id:"BEL1",...usoMun("Bello","https://www.bello.gov.co/")},{id:"BEL2",...PYP_VA}]},
+ bogota:{name:"Bogotá",note:"Normas de Bogotá. Más abajo, las normas que aplican en toda Colombia.",rules:[
+  {id:"BOG1",i:"home",t:"Vivienda turística y uso del suelo",p:"El POT de Bogotá (Decreto 555 de 2021) define los usos permitidos en cada sector. Antes de alquilar o comprar para renta corta, consulte la norma urbana del predio.",s:[["Mapas Bogotá","https://mapas.bogota.gov.co/"]]},
+  {id:"BOG2",i:"car",t:"Pico y placa",p:"Para carros particulares, de lunes a viernes, de 6:00 a. m. a 9:00 p. m.: los días pares no circulan las placas terminadas en 1, 2, 3, 4 y 5, y los días impares las terminadas en 6, 7, 8, 9 y 0. Existe el «pico y placa solidario», un pago voluntario que permite circular.",s:[["Bogotá: pico y placa","https://bogota.gov.co/mi-ciudad/movilidad/pico-y-placa-en-bogota-para-la-semana-del-20-al-26-de-julio-de-2026"],["Canal Trece: reglas de 2026","https://canaltrece.com.co/noticias/atencion-conductores-alcaldia-de-bogota-anuncia-nuevas-restricciones-de-movilidad-para-el-segundo-semestre-de-2026/"]]},
+  {id:"BOG3",i:"glass",t:"Rumba hasta las 5:00 a. m.",p:"Los bares y discotecas de 19 «zonas focalizadas» pueden operar hasta las 5:00 a. m. (Decreto 644 de 2025, art. 98, y Resolución Conjunta 001 de 2025). Fuera de esas zonas aplican los horarios generales. Las zonas se revisan cada seis meses.",s:[["Alcaldía de Bogotá: ABC de la medida","https://bogota.gov.co/mi-ciudad/gobierno/abc-ampliacion-de-horarios-de-rumba-en-19-zonas-de-bogota-2026"]]}]},
+ cartagena:{name:"Cartagena",note:"Normas de Cartagena. Más abajo, las normas que aplican en toda Colombia.",rules:[
+  {id:"CTG1",i:"home",t:"Vivienda turística y uso del suelo",p:"El POT define los usos permitidos en cada sector. En el Centro Histórico, además, rige el Plan Especial de Manejo y Protección (PEMP), que regula los usos de los inmuebles. Consulte el uso del suelo antes de alquilar o comprar para renta corta.",s:[["Cartagena: opciones de usos en el Centro Histórico (PDF)","https://seguimientopot.cartagena.gov.co/sites/default/files/2024-10/3.%20Opciones%20de%20Usos-%20Centro%20Historico.pdf"]]},
+  {id:"CTG2",i:"car",t:"Pico y placa",p:"Para carros particulares, de 7:00 a 9:00 a. m. y de 6:00 a 8:00 p. m., con dígitos que rotan cada día. Para motos, de 5:00 a. m. a 11:00 p. m., salvo las que tienen permiso. La sanción es una multa de 15 salarios mínimos diarios y, en algunos casos, la inmovilización del vehículo. Verifique los dígitos del día antes de conducir.",s:[["El Universal: pico y placa (octubre de 2026)","https://www.eluniversal.com.co/cartagena/2026/10/28/pico-y-placa-en-cartagena-digitos-y-horarios-del-jueves-29-de-octubre-de-2026/"]]}]},
+ santamarta:{name:"Santa Marta",note:"Normas de Santa Marta. Más abajo, las normas que aplican en toda Colombia.",rules:[
+  {id:"SMR1",i:"car",t:"Pico y placa",p:"Desde mayo de 2025 (Decreto 160), para carros particulares de lunes a viernes, de 7:00 a 9:00 a. m., de 11:30 a. m. a 2:00 p. m. y de 5:00 a 8:00 p. m., dentro del anillo vial: lunes 1 y 2, martes 3 y 4, miércoles 5 y 6, jueves 7 y 8, viernes 9 y 0. La Alcaldía puede modificar la medida; verifique antes de conducir.",s:[["Noticias Caracol: decreto de 2025","https://www.noticiascaracol.com/colombia/santa-marta-implementa-nuevo-pico-y-placa-asi-seran-las-restricciones-desde-mayo-de-2025-so35"]]},
+  {id:"SMR2",i:"map",t:"Parque Tayrona",p:"Parques Nacionales cierra el Parque Tayrona en algunas épocas del año para su recuperación ambiental, y en 2026 también lo cerró temporalmente por razones de seguridad. Antes de ir, verifique que esté abierto y compre la entrada solo por los canales oficiales.",s:[["Parques Nacionales: resolución de apertura (2026)","https://www.parquesnacionales.gov.co/wp-content/uploads/2026/03/Resolucion-No.-112-Por-medio-de-la-cual-se-ordena-la-apertura-del-Parque-Nacional-Natural-Tayrona.pdf"]]},
+  {id:"SMR3",...usoMun("Santa Marta","https://www.santamarta.gov.co/")}]}
 };
+/* Cajas aproximadas para reconocer la ciudad (la ubicación no sale del teléfono). */
+const BOX={va:[6.00,6.48,-75.75,-75.40],bogota:[4.45,4.85,-74.25,-73.98],cartagena:[10.28,10.52,-75.62,-75.40],santamarta:[11.08,11.36,-74.25,-73.85],colombia:[-4.3,13.6,-82.0,-66.8]};
+const inBox=(b,la,lo)=>la>=b[0]&&la<=b[1]&&lo>=b[2]&&lo<=b[3];
+
 const ACTS=[
  {k:"moto",i:"moto",t:"Alquilar una moto o un carro",
   prev:["Exija la licencia de tránsito del vehículo y el SOAT vigente: ningún vehículo puede circular sin seguro obligatorio.","En moto, el casco es obligatorio para el conductor y para el acompañante.","Si es extranjero y está como turista, puede conducir con la licencia vigente de su país durante su permanencia autorizada. Si no está en español, lleve una traducción."],
@@ -132,34 +157,40 @@ const ACTS=[
 ];
 
 const app=document.getElementById("app");
-let state={zone:null,tab:"normas",act:null,msg:""};
-function inMetro(lat,lon){return lat>=6.05&&lat<=6.45&&lon>=-75.75&&lon<=-75.45;}
+let state={zone:null,tab:"normas",act:null,msg:"",ask:false};
+function pick(z){state={zone:z,tab:"normas",act:null,msg:"",ask:false};render();window.scrollTo(0,0);}
 function locate(){
   if(!("geolocation" in navigator)){state.msg="Su navegador no permite la ubicación. Elija el lugar abajo.";return render();}
   state.msg="Buscando su ubicación…";render();
   navigator.geolocation.getCurrentPosition(p=>{
-    const {latitude:la,longitude:lo}=p.coords;
-    if(inMetro(la,lo)){state.zone="medellin";state.msg="";state.tab="normas";}
-    else state.msg="Su zona aún no está cubierta. Por ahora cubrimos Medellín; pronto, más municipios.";
-    render();
+    const la=p.coords.latitude, lo=p.coords.longitude;
+    if(inBox(BOX.va,la,lo)){state.msg="";state.ask=true;return render();}
+    for(const k of ["bogota","cartagena","santamarta"]) if(inBox(BOX[k],la,lo)) return pick(k);
+    if(inBox(BOX.colombia,la,lo)) return pick("colombia");
+    pick("fuera");
   },()=>{state.msg="No pudimos obtener su ubicación. Elija el lugar abajo.";render();},{enableHighAccuracy:false,timeout:10000,maximumAge:600000});
 }
+const chip=(k,n)=>`<button class="chip" data-zone="${k}">${esc(n)}</button>`;
 function vHome(){
+  const ask=state.ask?`<section class="sec"><h2 class="h2">¿En qué municipio está?</h2><p class="sub">Usted está en el Valle de Aburrá.</p><div class="chips">${["medellin","envigado","sabaneta","itagui","bello"].map(k=>chip(k,CITIES[k].name)).join("")}${chip("colombia","Otro municipio")}</div></section>`:"";
   return `<section class="hero"><p class="eye">Orientador por zona</p><h1>Las reglas cambian según dónde esté</h1>
-  <p class="lead">Vea qué normas aplican en su zona y qué tener en cuenta para lo que va a hacer.</p>
+  <p class="lead">Vea qué normas aplican en su zona y qué tener en cuenta para lo que va a hacer, en toda Colombia.</p>
   <button class="btn" data-do="loc">${ic("pin")} Usar mi ubicación</button>
-  <p class="priv">${ic("lock",16)}<span>Su ubicación se usa solo en su teléfono para saber en qué municipio está. No la guardamos ni la enviamos.</span></p>
-  ${state.msg?`<p class="msg" role="status">${esc(state.msg)}</p>`:""}</section>
-  <section class="sec"><h2 class="h2">O elija el lugar</h2><div class="chips">
-  <button class="chip" data-zone="medellin">Medellín</button>
-  ${["Envigado","Sabaneta","Guatapé","Santa Fe de Antioquia"].map(n=>`<button class="chip" disabled>${n} <small>Pronto</small></button>`).join("")}</div></section>`;
+  <p class="priv">${ic("lock",16)}<span>Su ubicación se usa solo en su teléfono para saber en qué ciudad está. No la guardamos ni la enviamos.</span></p>
+  ${state.msg?`<p class="msg" role="status">${esc(state.msg)}</p>`:""}</section>${ask}
+  <section class="sec"><h2 class="h2">O elija el lugar</h2>
+  <p class="sub">Valle de Aburrá</p><div class="chips">${["medellin","envigado","sabaneta","itagui","bello"].map(k=>chip(k,CITIES[k].name)).join("")}</div>
+  <p class="sub" style="margin-top:14px">Otras ciudades</p><div class="chips">${["bogota","cartagena","santamarta"].map(k=>chip(k,CITIES[k].name)).join("")}${chip("colombia","Otro lugar de Colombia")}</div></section>`;
 }
+const card=r=>`<article class="card"><span class="i">${ic(r.i)}</span><div><b>${esc(r.t)}</b><p>${esc(r.p)}</p>${r.s&&r.s.length?`<div class="src">${src(r.s)}</div>`:""}</div></article>`;
 function vZone(){
-  const z=ZONA[state.zone];
-  const head=`<section class="zone"><p class="where">${ic("pin",16)} Usted está en</p><h1>${esc(z.name)}</h1><p class="note">${esc(z.note)}</p><button class="chg" data-do="home">Cambiar lugar</button></section>
+  const c=CITIES[state.zone];
+  const name=c?c.name:state.zone==="fuera"?"Fuera de Colombia":"Colombia";
+  const note=c?c.note:state.zone==="fuera"?"Esta guía cubre Colombia. Estas son las normas nacionales que le aplicarán cuando esté en el país.":"Estas normas aplican en todo el país. Las normas locales (horarios, uso del suelo, pico y placa) dependen de cada municipio.";
+  const head=`<section class="zone"><p class="where">${ic("pin",16)} Usted está en</p><h1>${esc(name)}</h1><p class="note">${esc(note)}</p><button class="chg" data-do="home">Cambiar lugar</button></section>
   <div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="${state.tab==="normas"}" data-tab="normas">Normas de la zona</button><button class="tab" role="tab" aria-selected="${state.tab==="act"}" data-tab="act">Mi actividad</button></div>`;
-  if(state.tab==="normas") return head+`<section class="sec">${z.rules.map(r=>`<article class="card"><span class="i">${ic(r.i)}</span><div><b>${esc(r.t)}</b><p>${esc(r.p)}</p><div class="src">${src(r.s)}</div></div></article>`).join("")}</section>`;
-  return head+`<section class="sec"><h2 class="h2">¿Qué va a hacer?</h2><p class="sub">Le decimos qué dice la ley y cómo prevenir problemas.</p>
+  if(state.tab==="normas") return head+`<section class="sec">${c?`<h2 class="h2">${esc(c.name)}</h2>${c.rules.map(card).join("")}<h2 class="h2" style="margin-top:18px">En toda Colombia</h2>`:""}${NAC.map(card).join("")}</section>`;
+  return head+`<section class="sec"><h2 class="h2">¿Qué va a hacer?</h2><p class="sub">Le decimos qué dice la ley y cómo prevenir problemas, en cualquier lugar de Colombia.</p>
   <div class="grid">${ACTS.map(a=>`<button class="act" data-act="${a.k}"><span class="i">${ic(a.i)}</span>${esc(a.t)}</button>`).join("")}</div>
   <article class="card emer" style="margin-top:12px"><span class="i">${ic("phone")}</span><div><b>Emergencias: línea 123</b><p>Policía, ambulancia y bomberos. Desde cualquier celular.</p></div></article></section>`;
 }
@@ -173,15 +204,14 @@ function vAct(){
   <a class="cta" href="/es/servicios/">Hablar con una abogada</a>
   <p class="disc">Información general con fuentes oficiales, actualizada en noviembre de 2026; no reemplaza la revisión de su caso.</p></section>`;
 }
-function render(){
-  app.innerHTML = state.act ? vAct() : state.zone ? vZone() : vHome();
-}
+function render(){ app.innerHTML = state.act ? vAct() : state.zone ? vZone() : vHome(); }
 app.addEventListener("click",e=>{
+  const l=e.target.closest('a[href^="#act-"]'); if(l){e.preventDefault();state.act=l.getAttribute("href").slice(5);render();return window.scrollTo(0,0);}
   const b=e.target.closest("button");if(!b)return;
   if(b.dataset.do==="loc") return locate();
-  if(b.dataset.do==="home"){state={zone:null,tab:"normas",act:null,msg:""};return render();}
+  if(b.dataset.do==="home"){state={zone:null,tab:"normas",act:null,msg:"",ask:false};return render();}
   if(b.dataset.do==="zone"){state.act=null;render();return window.scrollTo(0,0);}
-  if(b.dataset.zone){state.zone=b.dataset.zone;state.tab="normas";state.msg="";return render();}
+  if(b.dataset.zone) return pick(b.dataset.zone);
   if(b.dataset.tab){state.tab=b.dataset.tab;return render();}
   if(b.dataset.act){state.act=b.dataset.act;render();window.scrollTo(0,0);}
 });
