@@ -1,0 +1,10 @@
+{
+  "name": "iha-ai-preview",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "test": "node --test orientation.test.mjs"
+  }
+}

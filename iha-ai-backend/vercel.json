@@ -1,0 +1,10 @@
+{
+  "framework": null,
+  "buildCommand": null,
+  "outputDirectory": "public",
+  "functions": {
+    "api/orientation.mjs": {
+      "maxDuration": 25
+    }
+  }
+}
