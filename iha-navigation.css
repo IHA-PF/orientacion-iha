@@ -327,6 +327,10 @@ html body.iha-nav-ready>header .iha-nav-layout>.brand{
     padding:12px 24px!important;
     align-items:center!important;
   }
+  html body.iha-nav-ready>header .iha-nav-layout>.brand{
+    justify-self:start!important;
+    width:max-content!important;
+  }
   html body.iha-nav-ready>header .iha-nav-groups{
     width:max-content!important;
     max-width:100%!important;
