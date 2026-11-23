@@ -50,6 +50,10 @@ try {
       assert.equal(await page.locator(".os-host-link").getAttribute("href"),"digital-justice-os/","Technology link must use existing page");
       assert.ok((await page.locator("#os-host-title").textContent())?.length>50,"Localized host title missing");
       assert.equal(await page.locator(".os-header-start").textContent(),({es:"Comenzar",en:"Start",fr:"Commencer",pt:"Começar"})[lang],"Header CTA is not localized");
+      const agents = page.getByRole("link", { name: "AI Agents", exact: true });
+      assert.equal(await agents.isVisible(), true, "AI Agents must be reachable on desktop and mobile");
+      assert.match(await agents.getAttribute("href") || "", /^https:\/\/iha-legal-360-portal-[\w-]+\.vercel\.app\/staff\/agents$/, "AI Agents must use the private Vercel portal");
+      assert.notEqual(await agents.evaluate(link => getComputedStyle(link, "::before").clipPath), "none", "AI Agents icon is missing");
       assert.equal(await page.locator(".os-spotlight").count(),0,"The technology promo must not crowd the home");
       assert.equal(await page.locator(".os-simple-cta").isVisible(),true,"Action is not visible");
       if(mobile) assert.equal(await page.locator(".sosbtn").isVisible(),true,"Existing emergency action must remain visible on mobile");
