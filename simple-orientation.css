@@ -128,7 +128,7 @@ body:has(.os-simple-home) .fab-wrap{display:none!important}
 @media(max-width:400px){
   body:has(.os-simple-home) .brand-t{max-width:75px}
   body:has(.os-simple-home) .brand-t b{font-size:11px}
-  body:has(.os-simple-home) .sosbtn{display:none}
+  body:has(.os-simple-home) .sosbtn{display:inline-flex}
   .os-choice{padding:10px 12px;font-size:12px}
   .os-benefits{gap:7px}
   .os-benefit strong{font-size:10.5px}
@@ -155,3 +155,6 @@ body:has(.os-simple-home) footer .foot-co{color:#5c7165}
 body:has(.os-simple-home) footer a,
 body:has(.os-simple-home) footer .foot-links a,
 body:has(.os-simple-home) footer .foot-mail a{color:#17583f}
+
+/* Preserve the emergency 123 action on narrow phone layouts. */
+@media(max-width:350px){body:has(.os-simple-home) .brand-t{display:none!important}body:has(.os-simple-home) .sosbtn{font-size:11px;padding-inline:6px}}
