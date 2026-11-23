@@ -56,7 +56,7 @@ const entries = {
    ],
    [
     "Empresas",
-    "/es/servicios/#hosts"
+    "/pt/legal-360/#business"
    ],
    [
     "Conflictos con plataformas",
@@ -110,7 +110,7 @@ const entries = {
    ],
    [
     "AI Agents",
-    "/ai-agents/"
+    "/en/ai-agents/"
    ],
    [
     "How it works",
@@ -132,7 +132,7 @@ const entries = {
    ],
    [
     "Businesses",
-    "/en/services/#hosts"
+    "/en/legal-360/#business"
    ],
    [
     "Platform disputes",
@@ -186,7 +186,7 @@ const entries = {
    ],
    [
     "Agents IA",
-    "/ai-agents/"
+    "/fr/ai-agents/"
    ],
    [
     "Comment ça marche",
@@ -208,7 +208,7 @@ const entries = {
    ],
    [
     "Entreprises",
-    "/fr/services/#hosts"
+    "/fr/legal-360/#business"
    ],
    [
     "Litiges avec les plateformes",
@@ -262,7 +262,7 @@ const entries = {
    ],
    [
     "Agentes de IA",
-    "/ai-agents/"
+    "/pt/ai-agents/"
    ],
    [
     "Como funciona",
@@ -368,6 +368,7 @@ function init(){
    const panel=create("div","iha-nav-panel");
    const present=document.querySelectorAll('nav.langs a[hreflang],.langs a[hreflang]');
    const targets={};
+   for(const a of document.querySelectorAll('link[rel="alternate"][hreflang]'))targets[a.hreflang.slice(0,2).toLowerCase()]=a.href;
    for(const a of present){const langCode=a.getAttribute("hreflang")?.slice(0,2).toLowerCase();if(langCode)targets[langCode]=a.href}
    for(const code of ["es","en","fr","pt"]){
      const url=code===lang?location.href:(targets[code]||"/?lang="+code+"#inicio");
