@@ -3,10 +3,14 @@
 (()=>{"use strict";
  if(window.__IHA_BRAND_SYSTEM_LOADED)return;
  window.__IHA_BRAND_SYSTEM_LOADED=true;
+ // Keep the legal-tech visual identity consistent even when the browser prefers dark mode.
+ // The older app's automatic dark palette caused near-black cards with black lettering.
+ document.documentElement.dataset.theme="light";
+ try{localStorage.setItem("iha-theme","light")}catch(_){}
  const current=document.currentScript;
  const base=current&&current.src?new URL(".",current.src):new URL("/",location.href);
  const path=(f)=>new URL(f,base).href;
- const css=document.createElement("link");css.rel="stylesheet";css.id="iha-brand-theme";css.href=path("iha-guesty-theme.css?v=20261123-v2");document.head.append(css);
+ const css=document.createElement("link");css.rel="stylesheet";css.id="iha-brand-theme";css.href=path("iha-guesty-theme.css?v=20261123-v3");document.head.append(css);
  function apply(){
    const logo=path("assets/iha-mark.svg");
    const oldFavicon=document.querySelector("link[rel='icon']");
