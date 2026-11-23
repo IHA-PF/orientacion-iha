@@ -26,6 +26,12 @@ on:
       - 'pt/**'
       - 'scripts/premium-smoke.mjs'
       - '.github/workflows/premium-smoke.yml'
+  pull_request:
+    paths:
+      - 'iha-navigation.css'
+      - 'iha-navigation.js'
+      - 'scripts/iha-navigation-smoke.mjs'
+      - '.github/workflows/premium-smoke.yml'
   workflow_dispatch:
 permissions:
   contents: read
