@@ -68,6 +68,7 @@ function init(){
  const aRequest=lnk(t.request,"mailto:contacto@ihasolucioneslegales.com.co?subject="+encodeURIComponent("IHA LEGAL 360 - "+t.request),"iha-nav-entry iha-nav-request");
  accessPanel.append(aTitle,aNote,aRequest);
  access.append(accessTrigger,accessPanel);right.append(access);
+ const mobileAccess=access.cloneNode(true);mobileAccess.classList.add("iha-mobile-access");nav.append(mobileAccess);
  const start=lnk(t.start,paths.guide,"iha-nav-start");
  right.append(start);
  const menuBtn=create("button","iha-nav-mobile-button");
@@ -94,6 +95,33 @@ function init(){
  menuBtn.addEventListener("click",()=>{const open=inner.classList.toggle("iha-nav-mobile-open");menuBtn.setAttribute("aria-expanded",String(open));if(!open)closeAll()});
  nav.addEventListener("click",e=>{if(e.target.closest("a")){inner.classList.remove("iha-nav-mobile-open");menuBtn.setAttribute("aria-expanded","false");closeAll()}});
  right.addEventListener("click",e=>{if(e.target.closest("a"))closeAll()});
+ // The public app switches languages without a full page reload. Keep this nav localized.
+ const syncLanguage=()=>{
+   const code=languageFromPath(),nt=messages[code]||messages.es;
+   const route=(hash)=>"/?lang="+code+"#"+hash;
+   const target={home:route("inicio"),guide:route("guia"),pricing:route("servicios"),guest:route("consumidor"),host:route("anfitrion"),legal:"/"+code+"/legal-360/",digital:"/"+code+"/digital-justice-os/",agents:"/ai-agents/",prepare:"/"+code+"/"+prepSlug[code]+"/"};
+   const setLinks=(parent,names)=>{
+     const links=parent.querySelectorAll(":scope > a.iha-nav-entry");
+     names.forEach(([key,href],i)=>{if(links[i]){links[i].textContent=nt[key];links[i].href=href}});
+   };
+   platform.d.querySelector("summary").firstChild.textContent=nt.platform;
+   solutions.d.querySelector("summary").firstChild.textContent=nt.solutions;
+   setLinks(platform.panel,[["home",target.home],["guide",target.guide],["digital",target.digital],["agents",target.agents]]);
+   setLinks(solutions.panel,[["guest",target.guest],["host",target.host],["legal",target.legal],["prepare",target.prepare]]);
+   const prices=nav.querySelector(".iha-nav-price");prices.textContent=nt.prices;prices.href=target.pricing;
+   start.textContent=nt.start;start.href=target.guide;
+   for(const d of [access,mobileAccess]){
+     d.querySelector("summary").textContent=nt.access;
+     d.querySelector(".iha-nav-access-title").textContent=nt.accessHead;
+     d.querySelector(".iha-nav-access-note").textContent=nt.accessNote;
+     const req=d.querySelector(".iha-nav-request");req.textContent=nt.request;req.href="mailto:contacto@ihasolucioneslegales.com.co?subject="+encodeURIComponent("IHA LEGAL 360 - "+nt.request);
+   }
+   menuBtn.setAttribute("aria-label",nt.menu);
+   const urgent=platform.panel.querySelector(".iha-nav-urgent span");if(urgent)urgent.textContent=nt.emergency;
+ };
+ const langWatcher=new MutationObserver(()=>syncLanguage());
+ langWatcher.observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
+
  header.dataset.ihaNavInstalled="true";
  document.body.classList.add("iha-nav-ready");
 }
