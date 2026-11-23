@@ -249,3 +249,30 @@ body.iha-nav-ready:not(:has(.os-simple-home)):not(.iha-site-surface):not(.iha-gl
 @media(prefers-reduced-motion:reduce){
  body.iha-nav-ready > header .iha-nav-chevron{transition:none!important}
 }
+
+
+/* Above older brand-theme selectors: enforce the light Guesty-like masthead. */
+html body.iha-nav-ready:has(.os-simple-home)>header.bar,
+html body.iha-nav-ready:not(:has(.os-simple-home))>header.bar,
+html body.iha-nav-ready.iha-site-surface>header,
+html body.iha-nav-ready.iha-global-page>header,
+html body.iha-nav-ready>header{
+ background:rgba(255,255,255,.88)!important;color:#101010!important;
+ border-bottom:1px solid rgba(16,16,16,.08)!important;
+ -webkit-backdrop-filter:blur(18px) saturate(120%)!important;
+ backdrop-filter:blur(18px) saturate(120%)!important;
+ box-shadow:0 3px 18px rgba(16,16,16,.035)!important;
+}
+html body.iha-nav-ready.iha-glass-scrolled>header{
+ background:rgba(255,255,255,.97)!important;
+}
+html body.iha-nav-ready>header .iha-nav-groups .iha-mobile-access{display:none!important}
+@media(max-width:800px){
+ html body.iha-nav-ready>header .iha-nav-layout.iha-nav-mobile-open .iha-nav-groups .iha-mobile-access{
+   display:block!important;border-top:1px solid #e5e7eb!important;margin-top:4px!important;padding-top:5px!important;
+ }
+ html body.iha-nav-ready>header .iha-nav-groups .iha-mobile-access .iha-nav-access-panel{
+   position:static!important;width:100%!important;min-width:0!important;max-width:none!important;
+   box-shadow:none!important;margin-top:2px!important;
+ }
+}
