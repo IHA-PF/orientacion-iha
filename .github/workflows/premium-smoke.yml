@@ -55,6 +55,9 @@ jobs:
           node scripts/iha-brand-smoke.mjs
           node scripts/iha-navigation-smoke.mjs
           node scripts/iha-brand-coverage.mjs
+      - name: Record reference geometry and review contact sheet
+        if: github.event_name == 'pull_request' && github.head_ref == 'design/iha-platform-catalog'
+        run: node scripts/review-layout.mjs
       - name: Confirm the published catalogue and public routes
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
@@ -64,6 +67,6 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: iha-premium-page-screenshots
-          path: test-artifacts/*.png
+          path: test-artifacts/
           if-no-files-found: ignore
           retention-days: 7
