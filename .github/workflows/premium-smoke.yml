@@ -4,6 +4,12 @@ on:
     branches: [main]
     paths:
       - 'count.js'
+      - 'iha-brand-system.js'
+      - 'iha-guesty-theme.css'
+      - 'ai-agents/**'
+      - 'orientador/**'
+      - 'scripts/iha-brand-smoke.mjs'
+      - 'scripts/iha-brand-coverage.mjs'
       - 'iha-global-legacy.js'
       - 'iha-global-legacy.css'
       - 'iha-experience.js'
@@ -41,6 +47,8 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           node scripts/premium-smoke.mjs
+          node scripts/iha-brand-smoke.mjs
+          node scripts/iha-brand-coverage.mjs
       - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
