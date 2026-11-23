@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFileSync, existsSync } from "node:fs";
 import { Script } from "node:vm";
 
@@ -18,9 +19,16 @@ assert.ok(!css.includes("14px/1.2 inherit"),"Valid font declarations");
 assert.ok(css.includes("@media(max-width:610px)"),"Mobile layout defined");
 
 const scripts = [...home.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)];
+const csp = home.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)">/)?.[1];
+assert.ok(csp,"Strict Content Security Policy is required");
+const scriptSource = csp.match(/script-src ([^;]+);/)?.[1];
+assert.ok(scriptSource,"CSP must include a script-src directive");
+assert.ok(!scriptSource.includes("'unsafe-inline'"),"Inline scripts must use SHA-256 hashes, not unsafe-inline");
 let executableScripts=0;
 for(const [,attrs,body] of scripts){
   if(attrs.includes("src="))continue;
+  const digest=createHash("sha256").update(body,"utf8").digest("base64");
+  assert.ok(scriptSource.includes("'sha256-"+digest+"'"),"CSP hash missing or stale for inline script");
   if(attrs.includes("application/ld+json")){JSON.parse(body);continue;}
   if(body.trim()){new Script(body,{filename:"index.html:inline-script"});executableScripts++;}
 }
