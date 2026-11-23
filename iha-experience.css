@@ -135,3 +135,88 @@ body.iha-site-surface .hero{
  body.iha-site-surface > header{-webkit-backdrop-filter:blur(13px);backdrop-filter:blur(13px)}
 }
 @media(prefers-reduced-motion:reduce){body.iha-site-surface > header{transition:none!important}}
+
+
+/* IHA GLASS V2 — genuine visual overlay with visible hero artwork behind navbar.
+   Light translucent surface, ink navigation, dark opaque state after scroll. */
+body:has(.os-simple-home) > header.bar,
+body.iha-site-surface:has(> .hero) > header{
+  background:rgba(225,244,235,.14)!important;
+  -webkit-backdrop-filter:blur(13px) saturate(120%)!important;
+  backdrop-filter:blur(13px) saturate(120%)!important;
+  border-bottom:1px solid rgba(22,91,68,.20)!important;
+  box-shadow:0 4px 22px rgba(8,55,40,.035)!important;
+  z-index:200!important;
+}
+body.iha-glass-scrolled:has(.os-simple-home) > header.bar,
+body.iha-site-surface.iha-glass-scrolled:has(> .hero) > header{
+  background:rgba(10,55,43,.92)!important;
+  border-bottom-color:rgba(255,255,255,.16)!important;
+  box-shadow:0 9px 28px rgba(5,33,22,.21)!important;
+}
+/* Restore legible dark ink before scroll on the light glass header. */
+body:not(.iha-glass-scrolled):has(.os-simple-home) > header.bar .brand,
+body:not(.iha-glass-scrolled):has(.os-simple-home) > header.bar .os-wordmark,
+body:not(.iha-glass-scrolled):has(.os-simple-home) > header.bar .brand-t b,
+body:not(.iha-glass-scrolled):has(.os-simple-home) > header.bar .tabs .tab,
+body:not(.iha-glass-scrolled):has(.os-simple-home) > header.bar .lbtn,
+body.iha-site-surface:not(.iha-glass-scrolled):has(> .hero) > header .brand,
+body.iha-site-surface:not(.iha-glass-scrolled):has(> .hero) > header .brand b,
+body.iha-site-surface:not(.iha-glass-scrolled):has(> .hero) > header .brand small,
+body.iha-site-surface:not(.iha-glass-scrolled):has(> .hero) > header nav a{
+  color:#113e30!important;
+}
+body:not(.iha-glass-scrolled):has(.os-simple-home) > header.bar .brand-t{
+  border-left-color:rgba(12,65,45,.32)!important;
+}
+body:not(.iha-glass-scrolled):has(.os-simple-home) > header.bar .tabs .tab:hover,
+body:not(.iha-glass-scrolled):has(.os-simple-home) > header.bar .lbtn:hover{
+  background:rgba(255,255,255,.55)!important;
+}
+body:not(.iha-glass-scrolled):has(.os-simple-home) > header.bar .os-header-start{
+  background:#0d6247!important;color:#fff!important;
+}
+body.iha-glass-scrolled:has(.os-simple-home) > header.bar .os-header-start{
+  background:#e4f5ed!important;color:#0a4734!important;
+}
+/* Subtle IHA artwork sits behind the GLASS, not just below it. */
+body:has(.os-simple-home) .os-simple-home.os-premium{
+  background-color:#faf7f2!important;
+  background-image:
+    linear-gradient(180deg,rgba(223,242,231,.58) 0%,rgba(231,246,237,.79) 210px,#faf7f2 485px),
+    url("/assets/iha-premium-host.svg")!important;
+  background-size:100% 100%,auto 480px!important;
+  background-position:center top,right -60px top -45px!important;
+  background-repeat:no-repeat!important;
+}
+body.iha-site-surface:has(> .hero) > .hero{
+  background-color:#e9f4eb!important;
+  background-image:
+    linear-gradient(90deg,rgba(231,246,238,.98) 0%,rgba(238,247,240,.92) 53%,rgba(238,247,240,.35) 100%),
+    url("/assets/iha-premium-consumer.svg")!important;
+  background-position:center,right center!important;
+  background-size:cover,auto 100%!important;
+  background-repeat:no-repeat!important;
+}
+body.iha-site-surface:has(> .hero) > .hero h1{color:#10382c!important}
+body.iha-site-surface:has(> .hero) > .hero .lead{color:#405d50!important}
+/* Hub pages without a hero keep content flow, instead of an invisible fixed overlay. */
+body.iha-site-surface:not(:has(> .hero)) > header{
+  position:sticky!important;top:0!important;inset:auto!important;
+  z-index:100;background:rgba(236,246,239,.76)!important;
+  -webkit-backdrop-filter:blur(12px)!important;backdrop-filter:blur(12px)!important;
+}
+body.iha-site-surface:not(:has(> .hero)) > header .brand,
+body.iha-site-surface:not(:has(> .hero)) > header .brand b,
+body.iha-site-surface:not(:has(> .hero)) > header .brand small,
+body.iha-site-surface:not(:has(> .hero)) > header nav a{color:#12432f!important}
+@media(max-width:720px){
+ body:has(.os-simple-home) .os-simple-home.os-premium{
+   background-size:100% 100%,auto 300px!important;
+   background-position:center top,right -90px top -5px!important;
+ }
+ body.iha-site-surface:has(> .hero) > .hero{
+   background-size:cover,auto 74%!important;
+   background-position:center,right bottom!important;
+ }
+}
