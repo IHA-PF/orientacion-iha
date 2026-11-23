@@ -40,4 +40,32 @@ try{
    await page.close();
   }
  }
+ // Contrast regression: pale premium heroes must never retain white-on-white text.
+ for(const lang of ["es","en","fr","pt"]){
+  for(const subpage of ["legal-360","digital-justice-os"]){
+   for(const width of [390,1440]){
+    const page=await browser.newPage({viewport:{width,height:900}});
+    const path="/"+lang+"/"+subpage+"/";
+    const result=await page.goto("http://127.0.0.1:8765"+path,{waitUntil:"domcontentloaded"});
+    assert.equal(result?.status(),200,path+" must load");
+    const contrast=await page.locator(".hero").evaluate(hero=>{
+      const textNode=selector=>hero.querySelector(selector);
+      const col=el=>getComputedStyle(el).color;
+      const rgb=s=>s.match(/[\d.]+/g).slice(0,3).map(Number);
+      const luminance=s=>{
+       const channels=rgb(s).map(c=>{c/=255;return c<=0.04045?c/12.92:((c+0.055)/1.055)**2.4});
+       return channels[0]*0.2126+channels[1]*0.7152+channels[2]*0.0722;
+      };
+      const headings=[textNode("h1"),textNode(".lead"),textNode(".eyebrow")].filter(Boolean);
+      const secondary=textNode(".btn.secondary, .btn.outline");
+      return {headingColors:headings.map(col),headingLuminances:headings.map(x=>luminance(col(x))),secondaryColor:secondary?col(secondary):null,secondaryLuminance:secondary?luminance(col(secondary)):null,background:getComputedStyle(hero).backgroundImage};
+    });
+    assert.ok(contrast.headingLuminances.every(x=>x<0.22),path+" light hero must use dark heading, lead and eyebrow text: "+JSON.stringify(contrast));
+    assert.ok(contrast.secondaryLuminance!==null&&contrast.secondaryLuminance<0.22,path+" secondary CTA needs dark, legible text: "+JSON.stringify(contrast));
+    if(lang==="es"&&subpage==="legal-360")await page.screenshot({path:"test-artifacts/legal360-contrast-"+width+".png",fullPage:false});
+    console.log("Hero contrast",path,width,"OK");
+    await page.close();
+   }
+  }
+ }
 }finally{await browser.close();}
