@@ -40,7 +40,7 @@ try{
    assert.ok(state.href.includes("#servicios"),url+" pricing route must work");
    assert.ok(state.scroll<=state.viewport+12,url+" horizontal overflow "+JSON.stringify(state));
    const group=page.locator("header .iha-nav-groups");
-   const platform=group.locator("> details").first();
+   const platform=group.locator(":scope > details").first();
    if(width>800){
     assert.notEqual(state.navDisplay,"none",url+" desktop nav should show");
     assert.equal(state.menuDisplay,"none",url+" desktop menu button should hide");
