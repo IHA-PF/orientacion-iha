@@ -28,7 +28,7 @@ try{
      const h=document.querySelector("body.iha-nav-ready > header");
      if(!h)return false;
      const m=getComputedStyle(h).backgroundColor.match(/rgba?\(([^)]+)\)/);
-     return m&&m[1].split(",").slice(0,3).map(Number).every(x=>x>=250);
+     return m&&m[1].split(",").slice(0,3).map(Number).every(x=>x===255);
    },null,{timeout:4500});
    const state=await page.evaluate(()=>{
     const header=document.querySelector("body > header"),g=header.querySelector(".iha-nav-groups"),n=header.querySelector(".iha-nav-right");
