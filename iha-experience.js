@@ -16,7 +16,7 @@ const directory={
   "business": "Empresas",
   "conflicts": "Conflictos con plataformas",
   "case": "Análisis de expediente",
-  "proof": "Preparar pruebas",
+  "proof": "Organización de pruebas documentales",
   "free": "Orientación gratuita",
   "personal": "Acompañamiento personalizado",
   "quote": "Solicitar cotización",
@@ -25,13 +25,13 @@ const directory={
   "explore": "Ver servicios",
   "compare": "Comparar opciones",
   "faq": "Preguntas frecuentes",
-  "freeQ": "¿Qué puedo hacer gratis?",
+  "freeQ": "¿Qué servicios de orientación son gratuitos?",
   "scopeQ": "¿Cómo se confirma el alcance?",
   "scope": "Antes de contratar, solicite el alcance, el precio y las condiciones por escrito.",
   "view": "Ver ficha",
-  "final": "Empieza con claridad jurídica",
-  "problem": "Tengo un problema con una plataforma",
-  "protect": "Quiero proteger mi actividad",
+  "final": "Inicie su consulta con orientación jurídica",
+  "problem": "Deseo presentar una reclamación frente a una plataforma",
+  "protect": "Deseo verificar el cumplimiento normativo de mi actividad",
   "catalogue": "Catálogo de servicios",
   "about": "Conozca IHA"
  },
@@ -342,16 +342,16 @@ const artLabels={
   "Alojamiento",
   "Documentos",
   "Pruebas",
-  "¿Qué ocurrió?",
-  "Reúne los soportes",
-  "Ordena los hechos",
+  "Descripción de los hechos",
+  "Reúna los documentos de respaldo",
+  "Organice la cronología de los hechos",
   "Revisión del caso"
  ],
  "en": [
   "Property",
   "Documents",
   "Evidence",
-  "What happened?",
+  "Description of the facts",
   "Gather your evidence",
   "Build a timeline",
   "Case review"
@@ -360,7 +360,7 @@ const artLabels={
   "Logement",
   "Documents",
   "Preuves",
-  "Que s’est-il passé ?",
+  "Description des faits",
   "Rassemblez les preuves",
   "Classez les faits",
   "Étude du dossier"
@@ -369,7 +369,7 @@ const artLabels={
   "Imóvel",
   "Documentos",
   "Provas",
-  "O que aconteceu?",
+  "Descrição dos fatos",
   "Reúna os comprovantes",
   "Organize os fatos",
   "Análise do caso"
@@ -379,61 +379,61 @@ const profileCopy={
   "es": [
     "Soluciones para cada situación",
     [
-      "Cuando una reserva sale mal",
-      "Cancelaciones o diferencias con el anuncio. Reúne la confirmación, los mensajes y las fotos para explicar qué pasó y qué solución solicitas."
+      "Controversias relacionadas con reservas y alojamientos",
+      "Ante cancelaciones o discrepancias entre el alojamiento ofrecido y el servicio recibido, conserve la confirmación de la reserva, las comunicaciones y los registros fotográficos. Esta documentación permite exponer los hechos y fundamentar su solicitud."
     ],
     [
-      "De la compra al reclamo",
-      "Si un pedido no llega o un cobro no coincide, una revisión de tus documentos puede ayudarte a decidir el siguiente paso."
+      "Reclamaciones derivadas de compras y pagos",
+      "Ante una entrega incumplida o un cobro no reconocido, el análisis de los documentos disponibles permite identificar las posibles vías de reclamación."
     ],
     [
-      "Tu alojamiento, en regla",
-      "Consulta el plan para anfitriones y revisa qué registros, documentos y obligaciones corresponden a tu actividad en Colombia."
+      "Cumplimiento normativo para anfitriones",
+      "Conozca los requisitos de registro, la documentación y las obligaciones aplicables a su actividad de alojamiento turístico en Colombia."
     ]
   ],
   "fr": [
     "Un parcours pour chaque situation",
     [
-      "Quand une réservation tourne mal",
-      "Annulation ou logement différent de l’annonce ? Rassemblez la confirmation, les échanges et les photos pour expliquer les faits et la solution demandée."
+      "Litiges relatifs aux réservations et aux hébergements",
+      "En cas d’annulation ou de non-conformité de l’hébergement proposé, conservez la confirmation de réservation, les échanges et les photographies afin de documenter les faits et d’étayer votre demande."
     ],
     [
-      "De l’achat à la réclamation",
-      "Commande non livrée ou montant débité différent du prix annoncé ? Découvrez comment une analyse de vos documents peut éclairer votre prochaine démarche."
+      "Réclamations relatives aux achats et aux paiements",
+      "En cas de non-livraison ou de facturation contestée, l’examen des pièces disponibles permet d’identifier les démarches de réclamation envisageables."
     ],
     [
-      "Louer en connaissant ses obligations",
-      "Consultez le programme pour les hôtes et identifiez les registres, documents et obligations à examiner pour votre activité en Colombie."
+      "Conformité réglementaire des hébergements",
+      "Consultez les exigences d’enregistrement, les justificatifs et les obligations applicables à votre activité d’hébergement touristique en Colombie."
     ]
   ],
   "en": [
     "Support for your situation",
     [
-      "When a booking goes wrong",
-      "A cancellation or a stay that looks different from the listing? Gather the confirmation, messages and photos to explain what happened and the outcome you want."
+      "Booking and accommodation disputes",
+      "For cancellations or discrepancies between the advertised accommodation and the service provided, retain the booking confirmation, correspondence and photographs to document the facts and support your claim."
     ],
     [
-      "From purchase to complaint",
-      "If an order never arrives or a charge looks wrong, a review of your documents can help you decide what to do next."
+      "Purchase and payment disputes",
+      "For non-delivery or disputed charges, a review of the available records can help identify the appropriate complaint procedures."
     ],
     [
-      "Know your duties as a host",
-      "Explore the host plan and review the registrations, documents and obligations relevant to your rental activity in Colombia."
+      "Regulatory compliance for accommodation providers",
+      "Review the registration requirements, documentation and obligations applicable to your tourist accommodation activity in Colombia."
     ]
   ],
   "pt": [
     "Um caminho para cada situação",
     [
-      "Quando a reserva dá errado",
-      "Cancelamento ou hospedagem diferente do anúncio? Reúna a confirmação, as mensagens e as fotos para explicar o que aconteceu e a solução desejada."
+      "Controvérsias sobre reservas e hospedagens",
+      "Em caso de cancelamento ou divergência entre a hospedagem anunciada e o serviço prestado, conserve a confirmação da reserva, as comunicações e os registros fotográficos para documentar os fatos e fundamentar sua solicitação."
     ],
     [
-      "Da compra à reclamação",
-      "Se um pedido não chegou ou o valor cobrado está errado, uma análise dos documentos pode ajudar a decidir o próximo passo."
+      "Reclamações relativas a compras e pagamentos",
+      "Em situações de não entrega ou cobrança contestada, a análise dos documentos disponíveis permite identificar as medidas de reclamação cabíveis."
     ],
     [
-      "Sua hospedagem em dia",
-      "Conheça o plano para anfitriões e confira os registros, documentos e obrigações relacionados à sua atividade na Colômbia."
+      "Conformidade regulatória para anfitriões",
+      "Consulte os requisitos de registro, a documentação e as obrigações aplicáveis à sua atividade de hospedagem turística na Colômbia."
     ]
   ]
 };
