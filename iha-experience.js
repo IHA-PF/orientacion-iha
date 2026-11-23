@@ -279,6 +279,64 @@ en:{eyebrow:"TWO PATHS. ONE STANDARD OF PROTECTION.",title:"Greater legal clarit
 fr:{eyebrow:"DEUX PARCOURS. UNE MÊME PROTECTION.",title:"Plus de clarté juridique dans un monde connecté.",description:"Pour les hébergeurs et les utilisateurs de plateformes numériques. Comprenez les obligations, anticipez les risques et explorez les voies de résolution des litiges.",features:["Réglementation","Prévention","Gestion des litiges","Orientation claire"],details:["Exigences applicables","Documenter les incidents","Options et suivi","Voies possibles en Colombie"],heads:["Conformité des hébergeurs","Mieux gérer les litiges","Vos droits sur les plateformes"],copy:["Orientation sur les obligations, enregistrements et bonnes pratiques pour les logements proposés sur les plateformes.","Rassemblez les échanges et pièces utiles et examinez les solutions avant l'aggravation d'un désaccord.","Annulations, frais, remboursements ou publicité trompeuse : décrivez les faits et découvrez vos premières options."],tags:["Exigences et documents","Prévention des litiges","Voies de réclamation"],cta:["Explorer les solutions","Découvrir les services","Commencer"],stepsTitle:"Du problème aux prochaines étapes, simplement.",steps:[["01","Décrivez la situation","Identifiez le problème et les faits importants."],["02","Explorez les options","Consultez les règles et démarches possibles."],["03","Choisissez la suite","Utilisez les ressources ou demandez un avis professionnel."]],alert:"Première orientation informative. Chaque dossier exige l'examen des faits, preuves et règles applicables. Les modules avancés sont en développement.",final:"Votre situation mérite une réponse claire.",button:"Commencer"},
 pt:{eyebrow:"DOIS CAMINHOS. UMA MESMA PROTEÇÃO.",title:"Mais clareza jurídica em um mundo conectado.",description:"Para anfitriões e usuários de plataformas digitais. Entenda obrigações, antecipe riscos e explore caminhos para solucionar conflitos.",features:["Normas digitais","Prevenção","Gestão de conflitos","Orientação clara"],details:["Requisitos por atividade","Documentação preventiva","Alternativas e acompanhamento","Opções na Colômbia"],heads:["Conformidade para anfitriões","Melhor gestão de conflitos","Seus direitos nas plataformas"],copy:["Orientação sobre obrigações, registros e boas práticas para imóveis divulgados em plataformas digitais.","Organize mensagens, documentos e ocorrências, buscando soluções antes que o conflito aumente.","Cancelamentos, cobranças, reembolsos ou publicidade enganosa: descreva seu caso e veja opções iniciais."],tags:["Requisitos e documentos","Prevenção de conflitos","Opções de reclamação"],cta:["Explorar soluções","Conhecer serviços","Iniciar orientação"],stepsTitle:"Do problema aos próximos passos, com clareza.",steps:[["01","Descreva sua situação","Identifique o problema e os fatos principais."],["02","Explore as opções","Consulte regras e alternativas disponíveis."],["03","Escolha o próximo passo","Use recursos ou solicite análise profissional."]],alert:"Orientação inicial informativa. Cada caso exige análise de fatos, provas e legislação aplicável. Módulos avançados seguem em desenvolvimento.",final:"Sua situação merece uma resposta clara.",button:"Começar"}
 };
+const homeCopy={
+ "es": [
+  "Orientación jurídica para quienes usan plataformas digitales",
+  "Revisa tus opciones ante una compra, una reserva o un conflicto con una plataforma en Colombia. Organiza las pruebas y elige tu próximo paso.",
+  "Recursos de IHA",
+  "¿Qué necesitas resolver?",
+  "Una compra",
+  "Una reserva",
+  "Mi actividad",
+  "Ver mis opciones",
+  "Guía jurídica",
+  "Pruebas",
+  "Servicios",
+  "Tarifas"
+ ],
+ "fr": [
+  "Une orientation juridique pour les usagers des plateformes numériques",
+  "Un achat, une réservation ou un litige avec une plateforme en Colombie ? Découvrez vos options, rassemblez les preuves et préparez votre prochaine démarche.",
+  "Ressources IHA",
+  "Quel est votre besoin ?",
+  "Un achat",
+  "Une réservation",
+  "Mon activité",
+  "Voir mes options",
+  "Guide juridique",
+  "Preuves",
+  "Services",
+  "Tarifs"
+ ],
+ "en": [
+  "Legal guidance for people who use digital platforms",
+  "Explore your options after a purchase, a booking or a dispute with a platform in Colombia. Gather your evidence and decide what to do next.",
+  "IHA resources",
+  "What do you need help with?",
+  "A purchase",
+  "A booking",
+  "My business",
+  "Explore my options",
+  "Legal guide",
+  "Evidence",
+  "Services",
+  "Pricing"
+ ],
+ "pt": [
+  "Orientação jurídica para quem usa plataformas digitais",
+  "Conheça suas opções em uma compra, reserva ou disputa com uma plataforma na Colômbia. Organize as provas e prepare seu próximo passo.",
+  "Recursos IHA",
+  "O que você precisa resolver?",
+  "Uma compra",
+  "Uma reserva",
+  "Minha atividade",
+  "Ver minhas opções",
+  "Guia jurídico",
+  "Provas",
+  "Serviços",
+  "Preços"
+ ]
+};
 function render(){
  const app=document.getElementById("app");
  if(!app?.querySelector(".os-simple-home")||document.getElementById("iha-experience"))return;
@@ -294,14 +352,33 @@ function render(){
  const grid=parent=>{const g=make("div","store-grid");parent.append(g);return g};
  const card=(parent,title,copy,action,url)=>{const el=make("article","store-card");el.append(make("h3","",title));if(copy)el.append(make("p","",copy));if(action)el.append(link(action,url));parent.append(el)};
  const hero=app.querySelector(".os-premium-intro");
- if(hero&&!hero.querySelector(".store-link")){
-   const copy=make("div","store-hero-copy");
-   const titles={es:"Tus derechos ante las plataformas digitales",en:"Your rights on digital platforms",fr:"Vos droits sur les plateformes numériques",pt:"Seus direitos nas plataformas digitais"};
-   hero.querySelector("h1").textContent=titles[lang];
-   while(hero.firstChild)copy.append(hero.firstChild);
-   copy.append(link(t.button,base+d.prepare+"/"));
-   const artwork=make("img","store-hero-art");artwork.src="/assets/iha-premium-conflict.svg";artwork.alt="";artwork.width=900;artwork.height=650;artwork.fetchPriority="high";
-   hero.append(copy,artwork);
+ if(hero){
+   const labels=homeCopy[lang]||homeCopy.es;
+   const heading=hero.querySelector("h1"),lead=hero.querySelector(".os-premium-lead");
+   heading.textContent=labels[0];lead.textContent=labels[1];
+   const copy=make("div","home-copy");
+   copy.append(heading,lead);
+   const resources=make("div","home-resources"),links=make("div","home-shortcuts");
+   resources.append(make("p","",labels[2]),links);
+   [base,base+d.evidence+"/",catalog,base+d.price+"/"].forEach((url,i)=>links.append(link(labels[i+8],url)));
+   const preview=make("a","home-preview");
+   preview.href=legal;preview.append(make("strong","","IHA LEGAL 360"));
+   const art=make("img","");art.src="/assets/iha-premium-conflict.svg";art.alt="";art.width=900;art.height=650;
+   preview.append(art);copy.append(resources,preview);
+   const panel=make("form","home-picker"),fieldset=make("fieldset","");
+   const legend=make("legend","",labels[3]),options=make("div","home-options");
+   const names=["consumer","conflict","host"],destinations=["consumers","travel","hosts"];
+   names.forEach((name,i)=>{
+     const option=make("label","home-option"),radio=make("input","");
+     radio.type="radio";radio.name="need";radio.value=destinations[i];radio.required=true;
+     const icon=make("img","");icon.src="/assets/iha-premium-"+name+".svg";icon.alt="";icon.width=58;icon.height=58;
+     option.append(radio,icon,make("span","",labels[4+i]));options.append(option);
+   });
+   fieldset.append(legend,options);
+   const submit=make("button","",labels[7]);submit.type="submit";
+   panel.append(make("p","home-picker-brand","IHA GROUP S.A.S. · Colombia"),fieldset,submit);
+   panel.addEventListener("submit",event=>{event.preventDefault();const selected=panel.querySelector("input:checked");if(selected)location.assign(catalog+"#"+selected.value)});
+   hero.replaceChildren(copy,panel);hero.classList.add("home-masthead");
  }
  const needs=block(d.catalogue), shortcuts=make("nav","store-links");needs.append(shortcuts);
  [[d.problem,catalog+"#platforms"],[d.consumers,catalog+"#consumers"],[d.hosts,catalog+"#hosts"],[d.protect,base+d.host+"/"]].forEach(([label,url])=>shortcuts.append(link(label,url)));

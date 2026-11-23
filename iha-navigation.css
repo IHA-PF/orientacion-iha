@@ -379,3 +379,13 @@ html body.iha-nav-ready>header .iha-nav-layout>.brand{
 }
 @media(max-width:1050px){html body.iha-nav-ready>header .iha-nav-mobile-open .iha-nav-groups{max-height:calc(100dvh - 76px);overflow-y:auto}}
 @media(prefers-reduced-motion:reduce){.iha-nav-layout *{transition:none!important;animation:none!important}}
+
+.home-nav-extra{display:none!important}body:has(.os-simple-home) header .iha-nav-groups .home-nav-extra{display:inline-flex!important;align-items:center;min-height:40px;text-decoration:none;color:#141413;font:400 clamp(15px,1.28vw,19px)/1.2 system-ui,sans-serif;white-space:nowrap}
+.home-nav-agents::before{content:"✦";color:#6864b7;margin-right:8px}
+@media(min-width:1051px) and (max-width:1399px){html body:has(.os-simple-home)>header .iha-nav-groups{gap:14px!important}}
+@media(max-width:1050px){body:has(.os-simple-home) header .home-nav-extra{padding:8px 16px}}
+
+html body.iha-nav-ready:not(.iha-glass-scrolled):has(.home-masthead)>header.bar{
+ background:rgba(250,246,241,.93)!important;border-bottom-color:transparent!important
+}
+html body:has(.home-masthead)>header #lbtn::before,html body:has(.home-masthead)>header #lcur::after{display:none!important;content:none!important}

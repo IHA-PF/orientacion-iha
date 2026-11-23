@@ -344,7 +344,10 @@ function init(){
  const solutions=group(t.solutions,entries[lang][1]);
  const pricing=group(t.prices,entries[lang][2]);
  pricing.d.querySelector("summary").classList.add("iha-nav-price");
- nav.append(platform.d,solutions.d,pricing.d);
+ const resourceLabels={es:"Recursos",en:"Resources",fr:"Ressources",pt:"Recursos"};
+ const resources=lnk(resourceLabels[lang],"/"+lang+"/","home-nav-extra");
+ const agents=lnk(t.agents,entries[lang][0][4][1],"home-nav-extra home-nav-agents");
+ nav.append(platform.d,solutions.d,resources,pricing.d,agents);
  const right=create("div","iha-nav-right");
  const oldTools=inner.querySelector(":scope > .tools");
  const oldLang=oldTools?.querySelector("#lm");
@@ -417,6 +420,7 @@ function init(){
  // The public app switches languages without a full page reload. Keep this nav localized.
  const syncLanguage=()=>{
    const code=languageFromPath(),nt=messages[code]||messages.es;
+   resources.textContent=resourceLabels[code];resources.href="/"+code+"/";agents.textContent=nt.agents;agents.href=entries[code][0][4][1];
    const route=(hash)=>"/?lang="+code+"#"+hash;
    const target={home:route("inicio"),guide:route("guia"),pricing:route("servicios"),guest:route("consumidor"),host:route("anfitrion"),legal:"/"+code+"/legal-360/",digital:"/"+code+"/digital-justice-os/",agents:"/ai-agents/",prepare:"/"+code+"/"+prepSlug[code]+"/"};
    [platform,solutions,pricing].forEach(({d,panel},index)=>{
