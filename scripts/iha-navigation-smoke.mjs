@@ -47,6 +47,22 @@ try{
    assert.equal(state.cta,"rgb(216, 242, 242)",url+" light turquoise CTA");
    assert.ok(state.href.includes("#servicios"),url+" pricing route must work");
    assert.ok(state.scroll<=state.viewport+12,url+" horizontal overflow "+JSON.stringify(state));
+   if(width===1440 && url==="/?lang=es#servicios"){
+    const geometry=await page.evaluate(()=>{
+      const header=document.querySelector("body.iha-nav-ready > header");
+      const brand=header.querySelector(".brand").getBoundingClientRect();
+      const first=header.querySelector(".iha-nav-groups > details > summary").getBoundingClientRect();
+      const nav=header.querySelector(".iha-nav-groups");
+      return {logoToMenu:first.left-brand.right,firstX:first.left,
+        headerHeight:header.getBoundingClientRect().height,
+        visibleWordmark:getComputedStyle(header.querySelector(".brand .brand-t")).display,
+        navGap:getComputedStyle(nav).columnGap};
+    });
+    assert.ok(geometry.firstX>=340&&geometry.firstX<=390,"Guesty-inspired first menu position "+JSON.stringify(geometry));
+    assert.ok(geometry.logoToMenu>=170&&geometry.logoToMenu<=310,"Generous logo-to-menu whitespace "+JSON.stringify(geometry));
+    assert.ok(geometry.headerHeight>=84&&geometry.headerHeight<=100,"Reference-style header height "+JSON.stringify(geometry));
+    assert.equal(geometry.visibleWordmark,"none","Compact IHA header wordmark");
+   }
    const group=page.locator("header .iha-nav-groups");
    const platform=group.locator(":scope > details").first();
    if(width>1050){
