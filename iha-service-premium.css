@@ -52,6 +52,7 @@ body.iha-service-premium .iha-service-details section.iha-service-scope li{posit
 body.iha-service-premium .iha-service-details section.iha-service-scope li:before{content:"✓";position:absolute;left:0;top:1px;display:grid;place-items:center;color:#0b765f;background:#e0f3e8;width:21px;height:21px;border-radius:50%;font-weight:800;font-size:13px;}
 body.iha-service-premium .iha-service-details section.iha-service-exclusions{background:#f6f9f7;}
 .iha-service-aside{position:sticky;top:24px;min-width:0;display:grid;gap:15px;}
+body.iha-service-plan .iha-service-aside{position:static;}
 body.iha-service-premium .iha-service-aside section{margin:0;padding:clamp(20px,2.5vw,30px);border:1px solid #d6e7df;border-radius:22px;background:#fff;box-shadow:0 12px 30px #0e493d10;overflow-wrap:anywhere;}
 body.iha-service-premium .iha-service-aside section:first-child{background:#f5fbf8;}
 body.iha-service-premium .iha-service-aside section:first-child b{color:#0d564a;font-size:clamp(17px,1.6vw,22px);}
