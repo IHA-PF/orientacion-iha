@@ -114,6 +114,14 @@ try{
   assert.ok(top&&top.y>=-3&&top.y<50,path+" must extend beneath the header: "+JSON.stringify(top));
   await page.evaluate(()=>window.scrollTo(0,550));
   await page.waitForFunction(()=>document.body.classList.contains("iha-glass-scrolled"),{timeout:3000});
+  // Scroll causes a CSS background transition. Assert its settled state.
+  await page.waitForFunction(selector=>{
+    const el=document.querySelector(selector);if(!el)return false;
+    const c=getComputedStyle(el).backgroundColor;
+    const m=c.match(/rgba?\(([^)]+)\)/);if(!m)return false;
+    const alpha=m[1].split(",")[3];
+    return alpha===undefined||Number(alpha)>=0.85;
+  },headerSel,{timeout:3500});
   const scrollColor=await page.locator(headerSel).evaluate(el=>getComputedStyle(el).backgroundColor);
   assert.ok(alpha(scrollColor)>=0.85,path+" nav should become opaque when scrolled: "+scrollColor);
   await page.evaluate(()=>window.scrollTo(0,0));
