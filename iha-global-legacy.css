@@ -108,3 +108,36 @@ body.iha-global-page .iha-global-hero{
  body.iha-global-page > header{-webkit-backdrop-filter:blur(13px);backdrop-filter:blur(13px)}
 }
 @media(prefers-reduced-motion:reduce){body.iha-global-page > header{transition:none!important}}
+
+
+/* IHA GLASS V2: legal service pages show their full-bleed hero through a light nav. */
+body.iha-global-page > header{
+  background:rgba(225,244,235,.14)!important;
+  -webkit-backdrop-filter:blur(13px) saturate(120%)!important;
+  backdrop-filter:blur(13px) saturate(120%)!important;
+  border-bottom:1px solid rgba(22,91,68,.20)!important;
+  box-shadow:0 4px 22px rgba(8,55,40,.035)!important;
+  z-index:200!important;
+}
+body.iha-global-page.iha-glass-scrolled > header{
+  background:rgba(10,55,43,.92)!important;
+  border-bottom-color:rgba(255,255,255,.16)!important;
+  box-shadow:0 9px 28px rgba(5,33,22,.21)!important;
+}
+body.iha-global-page:not(.iha-glass-scrolled) > header .brand,
+body.iha-global-page:not(.iha-glass-scrolled) > header .brand b,
+body.iha-global-page:not(.iha-glass-scrolled) > header .brand small,
+body.iha-global-page:not(.iha-glass-scrolled) > header .iha-global-nav > a{
+  color:#103e2e!important;
+}
+body.iha-global-page.iha-glass-scrolled > header .brand,
+body.iha-global-page.iha-glass-scrolled > header .brand b,
+body.iha-global-page.iha-glass-scrolled > header .brand small,
+body.iha-global-page.iha-glass-scrolled > header .iha-global-nav > a{
+  color:#f7fcf8!important;
+}
+body.iha-global-page .iha-global-hero{
+  background:
+    linear-gradient(105deg,rgba(222,241,230,.91) 0%,rgba(227,243,233,.65) 47%,rgba(231,243,232,.08) 100%)!important;
+}
+body.iha-global-page .iha-global-visual{background:#bbdbc6}
