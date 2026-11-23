@@ -1,0 +1,51 @@
+name: IHA Premium — verify pages and languages
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'count.js'
+      - 'iha-global-legacy.js'
+      - 'iha-global-legacy.css'
+      - 'iha-experience.js'
+      - 'iha-experience.css'
+      - 'iha-subpage-experience.js'
+      - 'iha-subpage-experience.css'
+      - 'assets/**'
+      - 'es/**'
+      - 'en/**'
+      - 'fr/**'
+      - 'pt/**'
+      - 'scripts/premium-smoke.mjs'
+      - '.github/workflows/premium-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-premium-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Setup Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund playwright@1.58.2
+      - name: Validate IHA premium desktop/mobile pages
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/iha-premium.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          node scripts/premium-smoke.mjs
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: iha-premium-page-screenshots
+          path: test-artifacts/*.png
+          if-no-files-found: ignore
+          retention-days: 7
