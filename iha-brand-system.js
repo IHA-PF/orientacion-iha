@@ -14,6 +14,9 @@
  const existing=document.getElementById("iha-brand-theme")||document.querySelector('link[href*="iha-guesty-theme.css"]');
  if(existing){existing.id="iha-brand-theme";if(existing.href!==cssUrl)existing.href=cssUrl;}
  else {const css=document.createElement("link");css.rel="stylesheet";css.id="iha-brand-theme";css.href=cssUrl;document.head.append(css);}
+ if (!document.querySelector('link[href*="iha-store.css"]')) {
+   const storeStyles=document.createElement("link");storeStyles.rel="stylesheet";storeStyles.href=path("iha-store.css");document.head.append(storeStyles);
+ }
  function apply(){
    const logo=path("assets/iha-mark.svg");
    const oldFavicon=document.querySelector("link[rel='icon']");

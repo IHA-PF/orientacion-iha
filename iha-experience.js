@@ -1,9 +1,278 @@
 (()=>{"use strict";
-const photos=[
- "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1050&q=75",
- "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1050&q=75",
- "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1050&q=75"
-];
+const directory={
+ "es": {
+  "catalog": "servicios",
+  "price": "servicios-y-precios",
+  "evidence": "guia-de-pruebas",
+  "analysis": "analisis-de-su-caso",
+  "host": "plan-anfitrion-en-regla",
+  "prepare": "prepare-su-caso",
+  "services": "Servicios jurídicos",
+  "intro": "Elija el servicio que corresponde a su situación. Cada ficha explica qué recibe, cuánto cuesta y cuáles son sus límites.",
+  "how": "Cómo funciona",
+  "consumers": "Consumidores",
+  "travel": "Viajeros",
+  "hosts": "Anfitriones",
+  "business": "Empresas",
+  "conflicts": "Conflictos con plataformas",
+  "case": "Análisis de expediente",
+  "proof": "Preparar pruebas",
+  "free": "Orientación gratuita",
+  "personal": "Acompañamiento personalizado",
+  "quote": "Solicitar cotización",
+  "single": "Servicios puntuales",
+  "pro": "Soluciones profesionales",
+  "explore": "Ver servicios",
+  "compare": "Comparar opciones",
+  "faq": "Preguntas frecuentes",
+  "freeQ": "¿Qué puedo hacer gratis?",
+  "scopeQ": "¿Cómo se confirma el alcance?",
+  "scope": "Antes de contratar, solicite el alcance, el precio y las condiciones por escrito.",
+  "view": "Ver ficha",
+  "final": "Empieza con claridad jurídica",
+  "problem": "Tengo un problema con una plataforma",
+  "protect": "Quiero proteger mi actividad",
+  "catalogue": "Catálogo de servicios",
+  "about": "Conozca IHA"
+ },
+ "en": {
+  "catalog": "services",
+  "price": "services-and-prices",
+  "evidence": "evidence-guide",
+  "analysis": "case-analysis",
+  "host": "host-compliance-plan",
+  "prepare": "prepare-your-case",
+  "services": "Legal services",
+  "intro": "Find a service for your situation. Each page explains what you receive, its price and the limits of the engagement.",
+  "how": "How it works",
+  "consumers": "Consumers",
+  "travel": "Travellers",
+  "hosts": "Hosts",
+  "business": "Businesses",
+  "conflicts": "Platform disputes",
+  "case": "Case analysis",
+  "proof": "Prepare evidence",
+  "free": "Free guidance",
+  "personal": "Personalised support",
+  "quote": "Request a quote",
+  "single": "One-off services",
+  "pro": "Professional solutions",
+  "explore": "Explore services",
+  "compare": "Compare options",
+  "faq": "Frequently asked questions",
+  "freeQ": "What can I do for free?",
+  "scopeQ": "How is the scope confirmed?",
+  "scope": "Before engaging a service, ask for the scope, price and terms in writing.",
+  "view": "View service",
+  "final": "Start with legal clarity",
+  "problem": "I have a problem with a platform",
+  "protect": "I want to protect my business",
+  "catalogue": "Service catalogue",
+  "about": "About IHA"
+ },
+ "fr": {
+  "catalog": "services",
+  "price": "services-et-prix",
+  "evidence": "guide-des-preuves",
+  "analysis": "analyse-de-votre-dossier",
+  "host": "abonnement-hote-en-regle",
+  "prepare": "preparez-votre-dossier",
+  "services": "Services juridiques",
+  "intro": "Trouvez le service adapté à votre situation. Chaque fiche précise les livrables, le prix et les limites de la prestation.",
+  "how": "Comment ça marche",
+  "consumers": "Consommateurs",
+  "travel": "Voyageurs",
+  "hosts": "Hôtes",
+  "business": "Entreprises",
+  "conflicts": "Litiges avec les plateformes",
+  "case": "Analyse de dossier",
+  "proof": "Préparer les preuves",
+  "free": "Orientation gratuite",
+  "personal": "Accompagnement personnalisé",
+  "quote": "Demander un devis",
+  "single": "Prestations ponctuelles",
+  "pro": "Solutions professionnelles",
+  "explore": "Explorer les services",
+  "compare": "Comparer les options",
+  "faq": "Questions fréquentes",
+  "freeQ": "Que puis-je faire gratuitement ?",
+  "scopeQ": "Comment le périmètre est-il confirmé ?",
+  "scope": "Avant de vous engager, demandez le périmètre, le prix et les conditions par écrit.",
+  "view": "Voir la fiche",
+  "final": "Faites le premier pas en connaissance de vos droits",
+  "problem": "J’ai un problème avec une plateforme",
+  "protect": "Je souhaite protéger mon activité",
+  "catalogue": "Catalogue des services",
+  "about": "Découvrir IHA"
+ },
+ "pt": {
+  "catalog": "servicos",
+  "price": "servicos-e-precos",
+  "evidence": "guia-de-provas",
+  "analysis": "analise-do-seu-caso",
+  "host": "plano-anfitriao-em-dia",
+  "prepare": "prepare-o-seu-caso",
+  "services": "Serviços jurídicos",
+  "intro": "Encontre o serviço adequado à sua situação. Cada ficha explica o que você recebe, o preço e os limites da contratação.",
+  "how": "Como funciona",
+  "consumers": "Consumidores",
+  "travel": "Viajantes",
+  "hosts": "Anfitriões",
+  "business": "Empresas",
+  "conflicts": "Conflitos com plataformas",
+  "case": "Análise do caso",
+  "proof": "Preparar provas",
+  "free": "Orientação gratuita",
+  "personal": "Acompanhamento personalizado",
+  "quote": "Solicitar orçamento",
+  "single": "Serviços pontuais",
+  "pro": "Soluções profissionais",
+  "explore": "Explorar serviços",
+  "compare": "Comparar opções",
+  "faq": "Perguntas frequentes",
+  "freeQ": "O que posso fazer gratuitamente?",
+  "scopeQ": "Como é confirmado o escopo?",
+  "scope": "Antes de contratar, solicite o escopo, o preço e as condições por escrito.",
+  "view": "Ver serviço",
+  "final": "Comece com clareza jurídica",
+  "problem": "Tenho um problema com uma plataforma",
+  "protect": "Quero proteger minha atividade",
+  "catalogue": "Catálogo de serviços",
+  "about": "Conheça a IHA"
+ }
+};
+const modules={
+ "es": [
+  [
+   "IHA PREVENT",
+   "Identificar riesgos antes de que se conviertan en conflictos."
+  ],
+  [
+   "IHA EVIDENCE",
+   "Organizar los hechos y conservar sus soportes."
+  ],
+  [
+   "IHA ANALYZE",
+   "Entender el problema desde el derecho colombiano."
+  ],
+  [
+   "IHA RESOLVE",
+   "Gestionar la solución jurídica adecuada."
+  ],
+  [
+   "IHA MONITOR",
+   "No perder de vista compromisos y fechas importantes."
+  ],
+  [
+   "IHA LEGAL CARE",
+   "Mantener un acompañamiento jurídico a lo largo del tiempo."
+  ]
+ ],
+ "en": [
+  [
+   "IHA PREVENT",
+   "Identify risks before they become disputes."
+  ],
+  [
+   "IHA EVIDENCE",
+   "Organise the facts and preserve supporting records."
+  ],
+  [
+   "IHA ANALYZE",
+   "Understand the issue under Colombian law."
+  ],
+  [
+   "IHA RESOLVE",
+   "Manage an appropriate legal response."
+  ],
+  [
+   "IHA MONITOR",
+   "Keep track of commitments and important dates."
+  ],
+  [
+   "IHA LEGAL CARE",
+   "Maintain legal support over time."
+  ]
+ ],
+ "fr": [
+  [
+   "IHA PREVENT",
+   "Identifier les risques avant qu'ils ne deviennent des litiges."
+  ],
+  [
+   "IHA EVIDENCE",
+   "Organiser les faits et conserver les pièces utiles."
+  ],
+  [
+   "IHA ANALYZE",
+   "Comprendre le problème au regard du droit colombien."
+  ],
+  [
+   "IHA RESOLVE",
+   "Mettre en œuvre la réponse juridique adaptée."
+  ],
+  [
+   "IHA MONITOR",
+   "Suivre les engagements et les échéances importantes."
+  ],
+  [
+   "IHA LEGAL CARE",
+   "Maintenir un accompagnement juridique dans la durée."
+  ]
+ ],
+ "pt": [
+  [
+   "IHA PREVENT",
+   "Identificar riscos antes que se transformem em conflitos."
+  ],
+  [
+   "IHA EVIDENCE",
+   "Organizar os fatos e preservar os documentos de apoio."
+  ],
+  [
+   "IHA ANALYZE",
+   "Compreender o problema conforme o direito colombiano."
+  ],
+  [
+   "IHA RESOLVE",
+   "Gerenciar a solução jurídica adequada."
+  ],
+  [
+   "IHA MONITOR",
+   "Acompanhar compromissos e datas importantes."
+  ],
+  [
+   "IHA LEGAL CARE",
+   "Manter acompanhamento jurídico ao longo do tempo."
+  ]
+ ]
+};
+const statusText={
+ "es": [
+  "Disponible hoy",
+  "Guías públicas, preparación de pruebas y orientación inicial.",
+  "En desarrollo",
+  "Los motores de análisis y las funciones de automatización forman parte del proyecto Digital Justice OS."
+ ],
+ "en": [
+  "Available today",
+  "Public guides, evidence preparation and initial legal guidance.",
+  "In development",
+  "The analysis engines and automation features are part of the Digital Justice OS project."
+ ],
+ "fr": [
+  "Disponible aujourd’hui",
+  "Guides publics, préparation des preuves et première orientation juridique.",
+  "En développement",
+  "Les moteurs d’analyse et les fonctions d’automatisation font partie du projet Digital Justice OS."
+ ],
+ "pt": [
+  "Disponível hoje",
+  "Guias públicos, preparação de provas e orientação inicial.",
+  "Em desenvolvimento",
+  "Os motores de análise e as funções de automação fazem parte do projeto Digital Justice OS."
+ ]
+};
 const tr={
 es:{eyebrow:"DOS CAMINOS. UNA MISMA PROTECCIÓN.",title:"Más claridad jurídica para un mundo conectado.",description:"Para quienes ofrecen alojamiento y para quienes utilizan plataformas digitales. Entiende las obligaciones, prevén riesgos y descubre posibles vías de solución ante los conflictos.",features:["Normativa digital","Prevención de riesgos","Gestión de conflictos","Orientación clara"],details:["Requisitos según tu actividad","Documentar antes de escalar","Alternativas y seguimiento","Opciones disponibles en Colombia"],heads:["Cumplimiento para anfitriones","Conflictos mejor gestionados","Tus derechos ante las plataformas"],copy:["Orientación sobre obligaciones, registros y buenas prácticas en viviendas vinculadas a plataformas digitales.","Organiza comunicaciones, documentación e incidencias, y examina posibles soluciones antes de que el problema escale.","Cancelaciones, cobros, reembolsos o publicidad engañosa: describe tu situación y conoce tus opciones iniciales."],tags:["Requisitos y documentos","Prevención de conflictos","Opciones de reclamación"],cta:["Explorar soluciones","Conocer los servicios","Comenzar orientación"],stepsTitle:"Del problema a los siguientes pasos, de forma clara.",steps:[["01","Describe tu situación","Identifica el problema y reúne los datos principales."],["02","Explora las opciones","Consulta la información normativa y las vías disponibles."],["03","Decide cómo avanzar","Revisa recursos útiles o solicita una evaluación profesional."]],alert:"Orientación informativa inicial. Cada caso exige revisar los hechos, pruebas y normas aplicables. Los módulos avanzados de automatización se encuentran en desarrollo.",final:"Tu situación merece una respuesta comprensible.",button:"Comenzar ahora"},
 en:{eyebrow:"TWO PATHS. ONE STANDARD OF PROTECTION.",title:"Greater legal clarity for a connected world.",description:"For accommodation providers and people using digital platforms. Understand obligations, anticipate risks and explore ways to address disputes.",features:["Digital regulation","Risk prevention","Dispute management","Clear guidance"],details:["Requirements for your activity","Document matters early","Options and follow-up","Available channels in Colombia"],heads:["Compliance for hosts","Better dispute management","Your rights on digital platforms"],copy:["Guidance on obligations, registration and best practice for accommodation listed on platforms.","Organize documents, messages and incidents, and explore ways to resolve issues early.","Cancellations, charges, refunds or misleading advertising: describe your issue and explore initial options."],tags:["Requirements and records","Dispute prevention","Complaint options"],cta:["Explore solutions","Discover services","Start guidance"],stepsTitle:"From the problem to next steps, clearly.",steps:[["01","Describe your situation","Identify the issue and key facts."],["02","Review the options","Explore regulations and available channels."],["03","Choose the next step","Use resources or request professional review."]],alert:"Initial informational guidance only. Each case requires a review of facts, evidence and applicable law. Advanced automation modules remain in development.",final:"Your situation deserves a clear response.",button:"Get started"},
@@ -12,20 +281,41 @@ pt:{eyebrow:"DOIS CAMINHOS. UMA MESMA PROTEÇÃO.",title:"Mais clareza jurídica
 };
 function render(){
  const app=document.getElementById("app");
- if(!app||!app.querySelector(".os-simple-home")||document.getElementById("iha-experience"))return;
- const t=tr[(document.documentElement.lang||"es").slice(0,2).toLowerCase()]||tr.es;
- const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
- const section=document.createElement("section");section.id="iha-experience";section.className="iha-experience";
- let html='<div class="iha-trust">';
- t.features.forEach((v,i)=>{html+='<div class="iha-trust-item"><i aria-hidden="true">'+["§","◇","✓","◎"][i]+'</i><div><strong>'+esc(v)+'</strong><small>'+esc(t.details[i])+'</small></div></div>'});
- html+='</div><div class="iha-intro"><div><span class="iha-kicker">'+esc(t.eyebrow)+'</span><h2>'+esc(t.title)+'</h2><p>'+esc(t.description)+'</p></div><a class="iha-main-cta" href="#inicio">'+esc(t.button)+' <b aria-hidden="true">→</b></a></div>';
- html+='<div class="iha-photo-grid">';
- t.heads.forEach((h,i)=>{html+='<article class="iha-photo-card"><div class="iha-photo"><img loading="lazy" decoding="async" src="'+photos[i]+'" width="1000" height="700" alt=""><span class="iha-photo-chip">✓ '+esc(t.tags[i])+'</span></div><div class="iha-card-body"><span class="iha-card-overline">IHA SOLUCIONES LEGALES</span><h3>'+esc(h)+'</h3><p>'+esc(t.copy[i])+'</p><a href="'+["#servicios","#servicios","#inicio"][i]+'">'+esc(t.cta[i])+' <b aria-hidden="true">↗</b></a></div></article>'});
- html+='</div><section class="iha-process"><span class="iha-kicker">IHA · LEGAL 360</span><h2>'+esc(t.stepsTitle)+'</h2><div class="iha-step-grid">';
- t.steps.forEach(x=>{html+='<article class="iha-step"><strong>'+esc(x[0])+'</strong><h3>'+esc(x[1])+'</h3><p>'+esc(x[2])+'</p></article>'});
- html+='</div><p class="iha-disclaimer">'+esc(t.alert)+'</p></section>';
- html+='<div class="iha-final"><h2>'+esc(t.final)+'</h2><a href="#inicio">'+esc(t.button)+' <b aria-hidden="true">→</b></a></div><p class="iha-credits">Fotografías: Unsplash · IHA diseño original</p>';
- section.innerHTML=html;app.append(section);
+ if(!app?.querySelector(".os-simple-home")||document.getElementById("iha-experience"))return;
+ const lang=document.documentElement.lang.slice(0,2);
+ const d=directory[lang]||directory.es, t=tr[lang]||tr.es;
+ const base="/"+lang+"/",catalog=base+d.catalog+"/",legal=base+"legal-360/";
+ const section=document.createElement("div");
+ section.className="iha-store";section.id="iha-experience";
+ const wrap=document.createElement("div");wrap.className="store-wrap";section.append(wrap);
+ const make=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt)e.textContent=txt;return e};
+ const link=(title,url)=>{const a=make("a","store-link",title);a.href=url;return a};
+ const block=title=>{const el=make("section","store-section");el.append(make("h2","",title));wrap.append(el);return el};
+ const grid=parent=>{const g=make("div","store-grid");parent.append(g);return g};
+ const card=(parent,title,copy,action,url)=>{const el=make("article","store-card");el.append(make("h3","",title));if(copy)el.append(make("p","",copy));if(action)el.append(link(action,url));parent.append(el)};
+ const hero=app.querySelector(".os-premium-intro");
+ if(hero&&!hero.querySelector(".store-link"))hero.append(link(t.button,"/"+lang+"/"+d.prepare+"/"));
+ const needs=block(d.catalogue), shortcuts=make("nav","store-links");needs.append(shortcuts);
+ [[d.problem,"platforms"],[d.consumers,"consumers"],[d.hosts,"hosts"],[d.protect,"hosts"]].forEach(([label,id])=>shortcuts.append(link(label,catalog+"#"+id)));
+ const steps=grid(block(d.how));t.steps.forEach(([,title,copy])=>card(steps,title,copy));
+ const services=block(d.services),tabs=make("div","store-tabs");tabs.setAttribute("role","tablist");tabs.setAttribute("aria-label",d.services);services.append(tabs);
+ const buttons=[],panels=[];
+ const select=i=>{buttons.forEach((b,j)=>{b.setAttribute("aria-selected",String(i===j));b.tabIndex=i===j?0:-1;panels[j].hidden=i!==j})};
+ [d.hosts,d.conflicts,d.consumers].forEach((name,i)=>{
+   const tab=make("button","",name);tab.type="button";tab.id="family-tab-"+i;tab.setAttribute("role","tab");
+   const panel=make("div","store-panel");panel.id="family-panel-"+i;panel.setAttribute("role","tabpanel");panel.setAttribute("aria-labelledby",tab.id);tab.setAttribute("aria-controls",panel.id);
+   const img=make("img","store-art");img.src="/assets/iha-premium-"+["host","conflict","consumer"][i]+".svg";img.alt="";img.loading="lazy";img.width=780;img.height=520;
+   const copy=make("div");copy.append(make("h3","",t.heads[i]),make("p","store-copy",t.copy[i]),link(t.cta[i],catalog+"#"+["hosts","platforms","consumers"][i]));
+   panel.append(img,copy);services.append(panel);tabs.append(tab);buttons.push(tab);panels.push(panel);
+   tab.addEventListener("click",()=>select(i));tab.addEventListener("keydown",e=>{const next={ArrowRight:(i+1)%3,ArrowLeft:(i+2)%3,Home:0,End:2}[e.key];if(next!==undefined){e.preventDefault();select(next);buttons[next].focus()}});
+ });select(0);
+ const profiles=grid(block(d.pro));[[d.travel,d.proof,base+d.evidence+"/"],[d.consumers,d.case,catalog+d.analysis+"/"],[d.hosts,d.protect,base+d.host+"/"]].forEach(([title,action,url])=>card(profiles,title,"",action,url));
+ const mod=grid(block("IHA LEGAL 360"));modules[lang].forEach(([name,copy],i)=>card(mod,name,copy,d.view,legal+"#module-"+String(i+1).padStart(2,"0")));
+ const tech=block("Digital Justice OS"),states=grid(tech),[live,available,planned,roadmap]=statusText[lang];
+ card(states,live,available,d.free,base);card(states,planned,roadmap,"Digital Justice OS",base+"digital-justice-os/");
+ const trust=block("IHA GROUP S.A.S.");trust.append(make("p","","NIT 900.365.039-8 · Medellín, Colombia"),make("p","store-copy",t.alert),link("contacto@ihasolucioneslegales.com.co","mailto:contacto@ihasolucioneslegales.com.co"));
+ const close=block(d.final);close.classList.add("store-closing");close.append(link(t.button,base+d.prepare+"/"));
+ app.append(section);
 }
 const app=document.getElementById("app");if(!app)return;new MutationObserver(render).observe(app,{childList:true});render();
 })();

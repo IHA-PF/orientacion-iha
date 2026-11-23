@@ -220,3 +220,10 @@ body.iha-site-surface:not(:has(> .hero)) > header nav a{color:#12432f!important}
    background-position:center,right bottom!important;
  }
 }
+
+.os-premium-intro>.store-link,.store-closing>.store-link{display:inline-flex;padding:13px 24px;border-radius:99px;background:#096858;color:#fff!important;text-decoration:none;font-weight:650}
+.os-premium-intro>.store-link{margin:14px 0}
+#iha-experience{background:white;color:#142821}
+#iha-experience .store-section+.store-section{border-top:1px solid #d4e4df}
+#iha-experience .store-panel h3{font-size:clamp(1.65rem,3vw,2.75rem);letter-spacing:-.03em;line-height:1.12}
+#iha-experience .store-closing{padding:clamp(30px,5vw,72px);margin-bottom:56px;background:#ddf1eb;border-radius:24px}
