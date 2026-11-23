@@ -1,0 +1,26 @@
+/* IHA Premium — legal guidance by location, keeps existing interactions. */
+:root{--pine:#103f32;--yel:#f6d55c;--beige:#f8f8f3;--sand:#e8f1e9;--ink:#123c2e;--muted:#52685b;--line:#dce7dc;--link:#0d6648}
+body{background:linear-gradient(155deg,#fff,#eef5ed)!important;color:#123c30!important;font-family:PS,system-ui,sans-serif}
+.wrap{max-width:1380px!important;min-height:100vh;background:transparent!important;padding:0 clamp(12px,2.6vw,34px)}
+.bar{background:#fcfaf5!important;border-bottom:1px solid #dce6db;border-radius:0 0 22px 22px;min-height:74px!important;height:auto!important;padding:12px clamp(12px,2vw,30px)!important;box-shadow:0 5px 25px #153a280a}
+.brand{color:#0a5037!important}.brand b{font-size:20px!important}.lsel{color:#194c38!important;border:1px solid #b2c9b8!important;background:#fff!important}.sos{border:1px solid #f0d3c9}
+#app{margin:20px auto 55px;max-width:1230px}
+#app>.hero{position:relative;border-radius:26px;overflow:hidden;min-height:345px;background-color:#e7f2e8!important;background-image:linear-gradient(90deg,rgba(234,246,237,.99) 0%,rgba(234,246,237,.97) 53%,rgba(234,246,237,.12) 100%),url('../assets/iha-premium-host.svg')!important;background-repeat:no-repeat!important;background-size:cover,auto 100%!important;background-position:center,right center!important;color:#103d30!important;padding:clamp(26px,4vw,56px)!important;box-shadow:0 15px 42px #103c2e13}
+#app>.hero h1{font:700 clamp(34px,4vw,61px)/1.08 SS,Georgia,serif!important;max-width:700px;color:#103c30!important}
+#app>.hero .eye{color:#087050!important;font-size:12px;letter-spacing:.14em}
+#app>.hero .lead{color:#416957!important;max-width:630px;font-size:clamp(15px,1.6vw,20px);line-height:1.6}
+#app>.hero .btn{background:#0c6a4c!important;color:white!important;max-width:390px}
+#app>.hero .priv{color:#517563!important;max-width:530px}
+#app>.hero .msg{color:#174e39!important;background:#ffffffbd!important;max-width:620px}
+.sec{padding:28px 18px!important}.h2{font-size:clamp(24px,2.5vw,34px)!important;color:#103b2e;margin-bottom:18px}
+.chips{gap:12px}.chip{border-radius:15px;min-height:50px;background:#fff;border-color:#dde9de;box-shadow:0 5px 17px #103a2b0b}
+.zone,.top{border-radius:19px;background:#0b6247!important;margin:12px 0}
+.card,.act,.blk{border-radius:19px!important;border:1px solid #dfe9df;box-shadow:0 9px 27px #0c3c2b0b;padding:23px!important}
+.card b{color:#123c30;font-size:17px!important}.card p{color:#526c5d!important}
+.grid{gap:16px!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.act{min-height:125px!important;background:#fff}.tabs{padding:15px 0 0!important}
+.tab{background:#e3eee4!important;min-height:50px!important}.tab[aria-selected=true]{background:#0b6247!important}
+.cta{background:#0b6348!important}.blk h3{font-size:17px!important}
+@media(max-width:820px){#app>.hero{background-image:linear-gradient(90deg,rgba(234,246,237,.98),rgba(234,246,237,.82)),url('../assets/iha-premium-host.svg')!important;background-size:cover,auto 100%!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:550px){.wrap{padding:0 12px!important}.bar{gap:6px;min-height:65px!important}.bar .brand b{font-size:15px!important}#app>.hero{min-height:0;padding:27px 20px!important;border-radius:19px}#app>.hero h1{font-size:36px!important}#app>.hero .btn{width:100%}.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}.card,.act,.blk{padding:15px!important;border-radius:15px!important}.sec{padding:19px 5px!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
