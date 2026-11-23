@@ -27,7 +27,21 @@ try {
       const response=await page.goto(BASE+"/?lang="+lang,{waitUntil:"domcontentloaded",timeout:35000});
       assert.equal(response?.status(),200,"Home request returned HTTP error");
       const headline=page.locator("#app .os-simple-home h1");
-      await headline.waitFor({state:"visible",timeout:20000});
+      try {
+        await headline.waitFor({state:"visible",timeout:7000});
+      } catch(error){
+        const diagnostics=await page.evaluate(()=>({
+          readyState:document.readyState,
+          language:document.documentElement.lang,
+          location:location.href,
+          appHTML:(document.querySelector("#app")?.innerHTML||"").slice(0,1000),
+          bodyPreview:document.body.innerText.slice(0,1000),
+          scripts:document.querySelectorAll("script").length
+        }));
+        await page.screenshot({path:"test-artifacts/diagnostic-"+lang+"-"+(mobile?"mobile":"desktop")+".png",fullPage:true});
+        console.error("BROWSER DEBUG",JSON.stringify({lang,mobile,diagnostics,errors},null,2));
+        throw error;
+      }
       assert.equal((await headline.textContent())?.trim(),expectedTitle,"Wrong localized headline");
       assert.equal(await page.locator(".os-simple-choices button").count(),3,"Exactly three choices should be visible");
       assert.equal(await page.locator(".os-spotlight").count(),0,"The technology promo must not crowd the home");
