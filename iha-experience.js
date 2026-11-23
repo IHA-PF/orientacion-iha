@@ -375,6 +375,68 @@ const artLabels={
   "Análise do caso"
  ]
 };
+const profileCopy={
+  "es": [
+    "Soluciones para cada situación",
+    [
+      "Cuando una reserva sale mal",
+      "Cancelaciones o diferencias con el anuncio. Reúne la confirmación, los mensajes y las fotos para explicar qué pasó y qué solución solicitas."
+    ],
+    [
+      "De la compra al reclamo",
+      "Si un pedido no llega o un cobro no coincide, una revisión de tus documentos puede ayudarte a decidir el siguiente paso."
+    ],
+    [
+      "Tu alojamiento, en regla",
+      "Consulta el plan para anfitriones y revisa qué registros, documentos y obligaciones corresponden a tu actividad en Colombia."
+    ]
+  ],
+  "fr": [
+    "Un parcours pour chaque situation",
+    [
+      "Quand une réservation tourne mal",
+      "Annulation ou logement différent de l’annonce ? Rassemblez la confirmation, les échanges et les photos pour expliquer les faits et la solution demandée."
+    ],
+    [
+      "De l’achat à la réclamation",
+      "Commande non livrée ou montant débité différent du prix annoncé ? Découvrez comment une analyse de vos documents peut éclairer votre prochaine démarche."
+    ],
+    [
+      "Louer en connaissant ses obligations",
+      "Consultez le programme pour les hôtes et identifiez les registres, documents et obligations à examiner pour votre activité en Colombie."
+    ]
+  ],
+  "en": [
+    "Support for your situation",
+    [
+      "When a booking goes wrong",
+      "A cancellation or a stay that looks different from the listing? Gather the confirmation, messages and photos to explain what happened and the outcome you want."
+    ],
+    [
+      "From purchase to complaint",
+      "If an order never arrives or a charge looks wrong, a review of your documents can help you decide what to do next."
+    ],
+    [
+      "Know your duties as a host",
+      "Explore the host plan and review the registrations, documents and obligations relevant to your rental activity in Colombia."
+    ]
+  ],
+  "pt": [
+    "Um caminho para cada situação",
+    [
+      "Quando a reserva dá errado",
+      "Cancelamento ou hospedagem diferente do anúncio? Reúna a confirmação, as mensagens e as fotos para explicar o que aconteceu e a solução desejada."
+    ],
+    [
+      "Da compra à reclamação",
+      "Se um pedido não chegou ou o valor cobrado está errado, uma análise dos documentos pode ajudar a decidir o próximo passo."
+    ],
+    [
+      "Sua hospedagem em dia",
+      "Conheça o plano para anfitriões e confira os registros, documentos e obrigações relacionados à sua atividade na Colômbia."
+    ]
+  ]
+};
 function render(){
  const app=document.getElementById("app");
  if(!app?.querySelector(".os-simple-home")||document.getElementById("iha-experience"))return;
@@ -452,7 +514,16 @@ function render(){
    panel.append(copy);services.append(panel);tabs.append(tab);buttons.push(tab);panels.push(panel);
    tab.addEventListener("click",()=>{select(i);if(matchMedia("(max-width:700px)").matches)panel.scrollIntoView({block:"center"})});tab.addEventListener("keydown",e=>{const next={ArrowRight:(i+1)%3,ArrowLeft:(i+2)%3,Home:0,End:2}[e.key];if(next!==undefined){e.preventDefault();select(next);buttons[next].focus()}});
  });select(0);
- const profiles=grid(block(d.pro));[[d.travel,d.proof,base+d.evidence+"/"],[d.consumers,d.case,catalog+d.analysis+"/"],[d.hosts,d.protect,base+d.host+"/"]].forEach(([title,action,url])=>card(profiles,title,"",action,url));
+ const [profileTitle,...stories]=profileCopy[lang]||profileCopy.es;
+ const profiles=block(profileTitle);profiles.classList.add("profile-banners");
+ const stack=make("div","profile-stack");profiles.append(stack);
+ [[d.travel,d.proof,base+d.evidence+"/","traveller"],[d.consumers,d.case,catalog+d.analysis+"/","buyer"],[d.hosts,d.protect,base+d.host+"/","host"]].forEach(([audience,action,url,scene],i)=>{
+   const banner=make("article","profile-banner");
+   const photo=make("img","profile-photo");photo.src="/assets/profile-"+scene+".jpg";photo.alt="";photo.loading="lazy";photo.decoding="async";
+   const title=make("div","profile-title");title.append(make("h3","",stories[i][0]),make("span","profile-label",audience));
+   const detail=make("div","profile-detail");detail.append(make("p","",stories[i][1]),link(action,url));
+   banner.append(photo,title,detail);stack.append(banner);
+ });
  const mod=grid(block("IHA LEGAL 360"));modules[lang].forEach(([name,copy],i)=>card(mod,name,copy,d.view,legal+"#module-"+String(i+1).padStart(2,"0")));
  const tech=block("Digital Justice OS"),states=grid(tech),[live,available,planned,roadmap]=statusText[lang];
  card(states,live,available,d.free,base);card(states,planned,roadmap,"Digital Justice OS",base+"digital-justice-os/");
