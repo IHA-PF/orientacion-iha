@@ -24,3 +24,10 @@
 .os-simple-note{font-size:12px;color:#bcd0c4;margin:17px 0 0;max-width:620px}
 @media(max-width:610px){.os-simple-inner{padding-top:36px;padding-bottom:42px}.os-simple-controls{grid-template-columns:1fr}.os-simple-form{padding:14px}.os-simple-cta{min-height:46px}.os-simple-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.os-choice{padding:12px 7px;font-size:12px}.os-simple-extras{gap:12px}}
 @media(max-width:390px){.os-simple-choices{grid-template-columns:1fr}.os-choice{font-size:14px}}
+
+/* Progressive disclosure of legacy footer only on the simplified homepage. */
+.os-footer-simple{display:none}
+body:has(.os-simple-home) .foot-cols{display:none!important}
+body:has(.os-simple-home) .os-footer-simple{display:flex;gap:14px 22px;flex-wrap:wrap;align-items:center;margin:14px 0 16px}
+.os-footer-simple a{font-size:13px;font-weight:700;color:var(--on-navy, #f1f6f2);text-decoration:underline;text-underline-offset:3px}
+body:has(.os-simple-home) #fab{display:none!important}
