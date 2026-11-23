@@ -67,7 +67,7 @@ const entries = {
     "/es/servicios/analisis-de-su-caso/"
    ],
    [
-    "Organización de pruebas documentales",
+    "Preparar pruebas",
     "/es/guia-de-pruebas/"
    ]
   ],
