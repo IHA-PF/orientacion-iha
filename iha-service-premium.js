@@ -77,11 +77,35 @@
      else{
        const t=(s.querySelector("h2")?.textContent||"").trim().toLowerCase();
        if(/^(incluye|includes|comprend|inclui|qué incluye|what.s included|ce qui est inclus|o que está incluído)/i.test(t))s.classList.add("iha-service-scope");
-       if(/^(no incluye|not included|ne comprend pas|ce qui n|não inclui|o que não)/i.test(t))s.classList.add("iha-service-exclusions");
+       if(/^(no incluye|qué no incluye|not included|what.s not included|ne comprend pas|ce qui n|não inclui|o que não)/i.test(t))s.classList.add("iha-service-exclusions");
        details.append(s);
      }
    }
    layout.append(details,sidebar);
+   // FAQ answers are taken from the exact current page's contractual text.
+   // No new prices, guarantees or services are asserted.
+   const faqLabels={
+    es:["Preguntas frecuentes","¿Cómo se solicita el servicio?","¿Qué no está incluido?","¿Qué condiciones se confirman antes de empezar?"],
+    en:["Frequently asked questions","How do I request this service?","What is excluded?","Which terms are confirmed before work starts?"],
+    fr:["Questions fréquentes","Comment demander cette prestation ?","Qu'est-ce qui est exclu ?","Quelles conditions sont confirmées avant de commencer ?"],
+    pt:["Perguntas frequentes","Como solicitar este serviço?","O que não está incluído?","Quais condições são confirmadas antes de começar?"]
+   }[lang]||["Preguntas frecuentes","¿Cómo se solicita el servicio?","¿Qué no está incluido?","¿Qué condiciones se confirman antes de empezar?"];
+   const faq=node("section","iha-service-faq");
+   faq.append(node("h2","",faqLabels[0]));
+   const addQuestion=(question,answer)=>{
+     if(!answer)return;
+     const d=node("details","iha-service-question");
+     d.append(node("summary","",question),node("p","",answer.trim()));
+     faq.append(d);
+   };
+   addQuestion(faqLabels[1],cta.querySelector("p")?.textContent);
+   const exclusions=details.querySelector(".iha-service-exclusions");
+   addQuestion(faqLabels[2],exclusions?.querySelector("ul")?.textContent?.replace(/\s+/g," "));
+   const terms=sections.find(el=>/^(condiciones|terms|conditions|condições)/i.test(el.querySelector("h2")?.textContent||""));
+   const termsCopy=terms?.querySelector("li:nth-child(2)")?.textContent;
+   if(termsCopy)addQuestion(faqLabels[3],termsCopy);
+   details.append(faq);
+
  }
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",enhance,{once:true});
  else enhance();
