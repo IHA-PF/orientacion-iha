@@ -11,6 +11,10 @@ try{
   await page.locator("body.iha-nav-ready .home-picker").waitFor();
   const box=selector=>page.locator(selector).first().boundingBox();
   const title=await box(".home-copy h1"),panel=await box(".home-picker"),lead=await box(".home-copy .os-premium-lead");
+  const photo=page.locator(".home-preview img");await photo.evaluate(img=>img.decode());
+  const dimensions=await photo.evaluate(img=>({width:img.clientWidth,height:img.clientHeight,ratio:img.naturalWidth/img.naturalHeight,fit:getComputedStyle(img).objectFit}));
+  assert.ok(dimensions.width>0 && Math.abs(dimensions.height-dimensions.width/dimensions.ratio)<1.1,"Entire LEGAL 360 photograph is visible at "+width);
+  assert.equal(dimensions.fit,"contain");
   console.log("First screen",width,JSON.stringify({title,panel,lead}));
   if(width===1887){
    assert.ok(title.x>90 && title.x<145 && title.y>115 && title.y<180,"title origin");

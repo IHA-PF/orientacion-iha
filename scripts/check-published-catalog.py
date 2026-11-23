@@ -37,5 +37,5 @@ for lang, (catalog, prices, service) in routes.items():
 assert 'os-simple-home' in fetch("/").decode()
 assert 'home-masthead' in fetch("/iha-experience.js?release=" + digest).decode()
 
-for asset in ["iha-stay.jpg", "iha-case-review.jpg"]:
+for asset in ["iha-stay.jpg", "iha-case-review.jpg", "iha-legal-360-consultation.jpg"]:
     assert fetch("/assets/"+asset).startswith(b"\xff\xd8"), asset
