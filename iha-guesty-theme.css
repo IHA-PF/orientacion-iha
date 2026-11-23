@@ -372,3 +372,20 @@ html body :is(.pill-free,.tag,.status,.note-box,.sv-free,.sv-split) {
 html body :is(.tabs .tab,.btn,.chip,.fo-go,.pill-free){transition:background-color .2s,color .2s}
 html body #themebtn,html body .themebtn{display:none!important}
 /* Explicitly retain red emergency/SOS and safety warnings. */
+
+
+/* Dynamic header: earlier CSS hid the IHA letters outside the homepage. */
+html body>header.bar .os-wordmark{
+ display:inline-flex!important;visibility:visible!important;
+ align-items:center;color:#101010!important;
+ font:750 clamp(23px,2.5vw,34px)/1 system-ui,sans-serif!important;
+ letter-spacing:-.045em!important;
+ margin-right:4px!important;
+}
+html body>header.bar .brand{display:flex;align-items:center;gap:7px!important}
+html body>header.bar .brand-t{max-width:148px}
+html body>header.bar .brand-t b{color:#101010!important}
+@media(max-width:850px){
+ html body>header.bar .os-wordmark{font-size:22px!important}
+ html body>header.bar .brand-t small{display:none!important}
+}
