@@ -1,0 +1,83 @@
+/* IHA services — independent premium presentation, version 1.
+   Applied only to actual service detail pages and annual host-plan pages. */
+body.iha-service-premium{
+ --svc-ink:#162f2a;--svc-green:#076b5d;--svc-line:#d7e7e1;
+ --svc-paper:#fff;--svc-mist:#f0f7f4;--svc-fog:#e6f2ed;
+ background:#f7faf8;color:var(--svc-ink);color-scheme:light;
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+body.iha-service-premium :is(h1,h2,h3){font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important;letter-spacing:-.035em;color:#123b33;}
+body.iha-service-premium :is(a,button):focus-visible{outline:3px solid #057766;outline-offset:3px;}
+body.iha-service-premium>header{background:#fff;border-bottom:1px solid #e4eae7;}
+body.iha-service-premium>header .brand{color:#153a34;}
+body.iha-service-premium>header .brand small{color:#5a7770;}
+body.iha-service-premium main.w{max-width:1200px;margin-inline:auto;padding:24px clamp(16px,3.2vw,42px) 68px;}
+body.iha-service-premium .crumb{margin:6px 0 22px;color:#516e66;font-size:14px;}
+body.iha-service-premium .crumb a{color:#24685b;}
+.iha-service-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,.7fr);min-height:350px;gap:28px;overflow:hidden;background:linear-gradient(135deg,#f1f8f5 0%,#fff 61%);border:1px solid #dcece6;border-radius:28px;padding:clamp(28px,4.5vw,62px);box-shadow:0 20px 55px rgba(14,68,56,.06);}
+.iha-service-hero:before{content:"";position:absolute;width:440px;height:440px;border-radius:50%;right:-160px;top:-210px;background:radial-gradient(circle,#d5f4e9 0%,#ecf8f2 58%,transparent 72%);pointer-events:none;}
+.iha-service-hero-copy{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:0;}
+.iha-service-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.13em;color:#146c5b;margin-bottom:18px;}
+.iha-service-eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:#067766;}
+.iha-service-hero h1{font-size:clamp(33px,3.7vw,54px)!important;line-height:1.07!important;margin:0 0 18px!important;max-width:20ch;}
+.iha-service-hero .lead{font-size:clamp(16px,1.4vw,19px)!important;line-height:1.62;color:#405d54!important;max-width:60ch;margin:0 0 24px;}
+.iha-service-state{display:inline-block;padding:6px 12px;margin-bottom:16px;border-radius:99px;background:#fff0d5;color:#8d5d05;border:1px solid #f1dbac;font-size:13px;font-weight:650;}
+.iha-service-hero-action{display:inline-flex;align-items:center;gap:12px;background:#075f51;color:#fff!important;text-decoration:none;font-weight:700;padding:14px 23px;border-radius:100px;box-shadow:0 8px 25px #075f5118;}
+.iha-service-hero-action:after{content:"↗";font-size:20px;font-weight:400;line-height:1;}
+.iha-service-hero-action:hover{background:#034f42;}
+.iha-service-hero-art{position:relative;z-index:1;display:grid;place-items:center;min-width:0;overflow:hidden;border-radius:22px;background:radial-gradient(circle at 70% 25%,#52b9a4 0%,#126d5e 53%,#0b4b41 100%);isolation:isolate;}
+.iha-service-hero-art:before,.iha-service-hero-art:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.24);border-radius:35px;transform:rotate(-16deg);width:72%;height:84%;background:rgba(255,255,255,.06);}
+.iha-service-hero-art:after{transform:rotate(17deg) translate(17%,3%);width:58%;height:63%;background:rgba(255,255,255,.1);}
+.iha-service-art-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;color:white;padding:20px;}
+.iha-service-art-mark{font-weight:800;font-size:clamp(40px,5vw,73px);line-height:1;letter-spacing:-.06em;}
+.iha-service-art-text{font-size:12px;letter-spacing:.15em;font-weight:750;text-transform:uppercase;max-width:18ch;line-height:1.6;}
+.iha-service-steps{margin:28px 0 4px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.iha-service-step{padding:19px 19px 20px;background:#eef6f2;border:1px solid #dcece5;border-radius:17px;min-width:0;}
+.iha-service-step-index{display:block;color:#167965;font-weight:800;font-size:13px;letter-spacing:.1em;margin-bottom:9px;}
+.iha-service-step strong{display:block;font-size:15px;line-height:1.37;color:#173c35;}
+.iha-service-step p{margin:7px 0 0;font-size:13px;line-height:1.55;color:#59746a;}
+.iha-service-layout{display:grid;grid-template-columns:minmax(0,1.63fr) minmax(280px,.8fr);gap:clamp(20px,3vw,34px);align-items:start;margin-top:26px;}
+.iha-service-details{min-width:0;}
+body.iha-service-premium .iha-service-details section{
+ border:1px solid var(--svc-line);border-radius:19px;padding:clamp(20px,2.7vw,32px);background:white;margin-top:16px;
+ box-shadow:0 4px 16px rgba(13,55,46,.024);
+}
+body.iha-service-premium .iha-service-details section:first-of-type{margin-top:0}
+body.iha-service-premium .iha-service-details section h2,
+body.iha-service-premium .iha-service-aside section h2{font-size:clamp(20px,2vw,25px);line-height:1.3;margin-bottom:16px;}
+body.iha-service-premium .iha-service-details section li{margin:12px 0;line-height:1.65;}
+body.iha-service-premium .iha-service-details section a{color:#006d5b;}
+body.iha-service-premium .iha-service-details section.iha-service-scope ul{padding-left:0;list-style:none;}
+body.iha-service-premium .iha-service-details section.iha-service-scope li{position:relative;padding-left:30px;}
+body.iha-service-premium .iha-service-details section.iha-service-scope li:before{content:"✓";position:absolute;left:0;top:1px;display:grid;place-items:center;color:#0b765f;background:#e0f3e8;width:21px;height:21px;border-radius:50%;font-weight:800;font-size:13px;}
+body.iha-service-premium .iha-service-details section.iha-service-exclusions{background:#f6f9f7;}
+.iha-service-aside{position:sticky;top:24px;min-width:0;display:grid;gap:15px;}
+body.iha-service-premium .iha-service-aside section{margin:0;padding:clamp(20px,2.5vw,30px);border:1px solid #d6e7df;border-radius:22px;background:#fff;box-shadow:0 12px 30px #0e493d10;overflow-wrap:anywhere;}
+body.iha-service-premium .iha-service-aside section:first-child{background:#f5fbf8;}
+body.iha-service-premium .iha-service-aside section:first-child b{color:#0d564a;font-size:clamp(17px,1.6vw,22px);}
+body.iha-service-premium .iha-service-aside section.cta{background:#0a5548;color:white;border-color:#0a5548;}
+body.iha-service-premium .iha-service-aside section.cta p{color:#e5f5ed;font-size:14px;line-height:1.62;}
+body.iha-service-premium .iha-service-aside section.cta a.go{display:flex;width:100%;padding:15px;border-radius:99px;background:#ddf7ef!important;color:#094b3f!important;box-shadow:none!important;}
+body.iha-service-premium section.rel a{overflow-wrap:anywhere;}
+body.iha-service-premium main.w>.upd{font-size:13px;margin:26px 2px 12px;}
+body.iha-service-premium main.w>.langs{margin:22px 0 0;gap:12px;}
+body.iha-service-premium main.w>.langs a{background:#fff;border:1px solid #dbe8e2;padding:7px 12px;border-radius:99px;text-decoration:none;}
+body.iha-service-premium footer{background:#fff;border-top:1px solid #e5ede9;}
+@media(max-width:930px){
+ .iha-service-hero{grid-template-columns:1fr;min-height:0;}
+ .iha-service-hero-art{min-height:210px;}
+ .iha-service-layout{grid-template-columns:minmax(0,1fr);}
+ .iha-service-aside{position:static;grid-row:1;grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:610px){
+ body.iha-service-premium main.w{padding:15px 16px 44px;}
+ .iha-service-hero{padding:24px 20px;border-radius:20px;gap:18px;}
+ .iha-service-hero h1{font-size:clamp(30px,8vw,40px)!important;}
+ .iha-service-hero-art{min-height:158px;}
+ .iha-service-art-mark{font-size:54px;}
+ .iha-service-steps{grid-template-columns:1fr;}
+ .iha-service-step{padding:15px 17px;}
+ .iha-service-aside{grid-template-columns:1fr;}
+ body.iha-service-premium .iha-service-details section{padding:20px;}
+}
+@media(prefers-reduced-motion:reduce){.iha-service-hero-action{scroll-behavior:auto!important;transition:none!important;}}
