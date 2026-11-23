@@ -226,3 +226,11 @@ body header .brand .iha-wordmark-text{
  body header .brand>img.iha-brand-symbol{width:31px!important;height:31px!important;min-width:31px!important;margin-right:5px!important}
  body header .brand .iha-wordmark-text{font-size:19px;margin-right:5px}
 }
+
+
+/* Header action has highly specific historical rules; override both states. */
+html body:not(.iha-glass-scrolled):has(.os-simple-home)>header.bar .os-header-start,
+html body.iha-glass-scrolled:has(.os-simple-home)>header.bar .os-header-start,
+html body:has(.os-simple-home)>header.bar .os-header-start:hover{
+ background:#007a67!important;color:#ffffff!important;border-color:#007a67!important;
+}
