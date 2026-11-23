@@ -33,6 +33,9 @@ ready(()=>{
  const actions=document.createElement("div");actions.className="iha-global-actions";
  const action=document.createElement("a");action.className="iha-global-primary";action.href=hrefs.prepare;action.textContent=t.start;
  const tech=document.createElement("a");tech.className="iha-global-secondary";tech.href=hrefs.legal;tech.textContent=t.legal+" ↗";
+ if(main.querySelector("#compare")){
+   action.href="#compare";action.textContent=main.querySelector("#compare h2").textContent;
+ }
  actions.append(action,tech);left.append(actions);
  const picture=document.createElement("div");picture.className="iha-global-visual";
  const img=document.createElement("img");img.src=heroImage;img.alt="";img.width=900;img.height=650;img.decoding="async";img.fetchPriority="high";picture.append(img);
@@ -55,6 +58,17 @@ ready(()=>{
  const cta=document.createElement("div");cta.className="iha-global-final";
  const copy=document.createElement("div");const label=document.createElement("strong");label.textContent=t.cta;const p=document.createElement("p");p.textContent=t.ctaText;copy.append(label,p);
  const link=document.createElement("a");link.href=hrefs.prepare;link.textContent=t.ctaGo+" →";cta.append(copy,link);related.append(cta);
+ if(/^\/(es\/servicios|en\/services|fr\/services|pt\/servicos)\/[^/]+\//.test(location.pathname)){
+   const primary=main.querySelector(".cta a[href]");
+   if(primary){action.href=primary.href;action.textContent=primary.textContent}
+   const faqText={"es":["Preguntas frecuentes","¿Cómo se confirma el alcance?","Antes de contratar, solicite el alcance, el precio y las condiciones por escrito.","Catálogo de servicios","servicios"],"en":["Frequently asked questions","How is the scope confirmed?","Before engaging a service, ask for the scope, price and terms in writing.","Service catalogue","services"],"fr":["Questions fréquentes","Comment le périmètre est-il confirmé ?","Avant de vous engager, demandez le périmètre, le prix et les conditions par écrit.","Catalogue des services","services"],"pt":["Perguntas frequentes","Como é confirmado o escopo?","Antes de contratar, solicite o escopo, o preço e as condições por escrito.","Catálogo de serviços","servicos"]};
+   const [title,question,answer,catalogue,slug]=faqText[document.documentElement.lang.slice(0,2)]||faqText.es;
+   const faq=document.createElement("section"),heading=document.createElement("h2"),item=document.createElement("details"),summary=document.createElement("summary"),p=document.createElement("p");
+   heading.textContent=title;summary.textContent=question;p.textContent=answer;item.append(summary,p);faq.append(heading,item);
+   const scope=main.querySelector(":scope > section:nth-of-type(2) ul");
+   if(scope){const detail=document.createElement("details"),label=document.createElement("summary");label.textContent=scope.parentElement.querySelector("h2").textContent;detail.append(label,scope.cloneNode(true));faq.append(detail)}
+   main.append(faq);tech.href="/"+document.documentElement.lang.slice(0,2)+"/"+slug+"/";tech.textContent=catalogue;
+ }
  main.after(related);
 });
 })();

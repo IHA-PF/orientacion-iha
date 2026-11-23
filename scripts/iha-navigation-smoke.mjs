@@ -11,7 +11,7 @@ const targets=[
 ];
 await mkdir("test-artifacts",{recursive:true});
 try{
- for(const width of [390,820,1440]){
+ for(const width of [390,820,1100,1440,1500]){
   for(const [url,lang] of targets){
    const page=await browser.newPage({viewport:{width,height:950},colorScheme:"dark"});
    const errors=[];page.on("pageerror",e=>errors.push(e.message));
@@ -19,7 +19,7 @@ try{
    assert.equal(response?.status(),200,url+" HTTP status");
    await page.locator("body.iha-nav-ready > header").waitFor({state:"visible",timeout:13000});
    assert.equal(await page.locator("header .iha-nav-layout").count(),1,url+" one layout");
-   assert.equal(await page.locator("header .iha-nav-groups > details").count(),3,url+" 2 dropdowns + mobile access");
+   assert.equal(await page.locator("header .iha-nav-groups > details").count(),4,url+" three menus and mobile access");
    assert.equal(await page.locator("header .iha-nav-price").count(),1,url+" pricing link");
    assert.equal(await page.locator("header .iha-nav-start").count(),1,url+" start CTA");
    // Header transitions from the page's legacy theme to the new white translucent style.
@@ -40,12 +40,12 @@ try{
       navDisplay:getComputedStyle(g).display,
       cta:getComputedStyle(header.querySelector(".iha-nav-start")).backgroundColor,
       viewport:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,
-      href:header.querySelector(".iha-nav-price").getAttribute("href")};
+      href:header.querySelector(".iha-nav-price").parentElement.querySelector("a").getAttribute("href")};
    });
    assert.equal(state.logoLoaded,true,url+" IHA logo loads");
    assert.ok(state.headerBg.includes("255, 255, 255"),url+" white transparent navigation: "+JSON.stringify(state));
    assert.equal(state.cta,"rgb(216, 242, 242)",url+" light turquoise CTA");
-   assert.ok(state.href.includes("#servicios"),url+" pricing route must work");
+   assert.ok(/^\/(es\/servicios|en\/services|pt\/servicos|fr\/services)\/$/.test(state.href),url+" pricing route must work");
    assert.ok(state.scroll<=state.viewport+12,url+" horizontal overflow "+JSON.stringify(state));
    if(width===1440 && url==="/?lang=es#servicios"){
     const geometry=await page.evaluate(()=>{
@@ -72,7 +72,7 @@ try{
     await platform.locator("summary").click();
     await platform.locator(".iha-nav-panel a").first().waitFor({state:"visible"});
     assert.ok((await platform.locator(".iha-nav-panel a").count())>=4,url+" active submenu");
-    await page.locator("header .iha-nav-price").click({trial:true});
+    if(width===1440 && url.includes("#servicios"))await page.screenshot({path:"test-artifacts/mega-menu.png"});
     await page.keyboard.press("Escape");
     assert.equal(await platform.evaluate(el=>el.open),false,url+" Escape closes dropdown");
    }else{
