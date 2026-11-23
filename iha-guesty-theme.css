@@ -234,3 +234,12 @@ html body.iha-glass-scrolled:has(.os-simple-home)>header.bar .os-header-start,
 html body:has(.os-simple-home)>header.bar .os-header-start:hover{
  background:#007a67!important;color:#ffffff!important;border-color:#007a67!important;
 }
+
+
+/* The interactive geographic guide uses its own previously !important body ink. */
+html body:has(#app>.hero):not(:has(.os-simple-home)){
+ color:#101010!important;background:#ffffff!important;
+}
+html body:has(#app>.hero):not(:has(.os-simple-home)) .bar :is(.brand,.brand b,.lsel){
+ color:#101010!important;
+}
