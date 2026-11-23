@@ -291,3 +291,7 @@
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",enhance,{once:true});
   else enhance();
 })();
+
+
+/* IHA global brand deployment: applies to all static multilingual legal pages. */
+;(function(){var s=document.createElement("script");s.src="/iha-brand-system.js?v=20261123-v1";s.defer=true;document.head.appendChild(s)})();
