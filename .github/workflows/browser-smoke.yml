@@ -26,7 +26,7 @@ jobs:
       - name: Install Playwright
         run: |
           npm install --no-save --ignore-scripts --no-audit --no-fund playwright@1.58.2
-          npx playwright install --with-deps chromium
+          npx playwright install chromium
       - name: Run desktop and mobile browser tests
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/iha-http.log 2>&1 &
