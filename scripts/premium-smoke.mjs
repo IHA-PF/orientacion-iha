@@ -69,6 +69,25 @@ try{
    }
   }
  }
+ // Prevent reintroducing the damaged consultation asset on the homepage.
+ for(const [lang,width] of [["es",1440],["fr",390],["en",820],["pt",1440]]){
+   const page=await browser.newPage({viewport:{width,height:900}});
+   await page.goto("http://127.0.0.1:8765/?lang="+lang,{waitUntil:"domcontentloaded"});
+   const image=page.locator(".home-preview img");
+   await image.waitFor({state:"visible",timeout:12000});
+   const photo=await image.evaluate(el=>({
+     src:new URL(el.currentSrc).pathname,
+     loaded:el.complete&&el.naturalWidth>=800&&el.naturalHeight>=800,
+     filter:getComputedStyle(el).filter,
+     opacity:getComputedStyle(el).opacity
+   }));
+   assert.equal(photo.src,"/assets/iha-case-review.jpg","LEGAL 360 must use the verified clear local image "+JSON.stringify(photo));
+   assert.equal(photo.loaded,true,"LEGAL 360 image must decode at full source resolution "+JSON.stringify(photo));
+   assert.equal(photo.filter,"none","LEGAL 360 image must not be visually blurred");
+   assert.equal(photo.opacity,"1","LEGAL 360 image must not be faded");
+   if(lang==="es")await page.screenshot({path:"test-artifacts/legal360-home-preview-fixed.png",fullPage:false});
+   await page.close();
+ }
  // Transparent header acceptance: homepage, hero subpages and an illustrated service page.
  for(const [path,headerSel,heroSel] of [
    ["/?lang=es","header.bar",".os-simple-home"],
