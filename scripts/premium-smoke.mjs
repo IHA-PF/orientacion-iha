@@ -90,11 +90,22 @@ try{
   }));
   assert.equal(style.pos,"fixed",path+" header must overlay the hero");
   assert.notEqual(style.filter,"none",path+" header must have glass blur");
+  // A blurred dark opaque header is not a transparent header. Check actual alpha.
+  const alpha=c=>{const m=c.match(/rgba?\(([^)]+)\)/);return m?(m[1].split(",")[3]===undefined?1:Number(m[1].split(",")[3])):1};
+  assert.ok(alpha(style.background)<=0.38,path+" navbar must be genuinely transparent (alpha <= 0.38): "+JSON.stringify(style));
+  const artwork=await page.locator(heroSel).evaluate(el=>{
+    const computed=getComputedStyle(el);
+    if(el.classList.contains("iha-global-hero"))return Boolean(el.querySelector(".iha-global-visual img")?.complete);
+    return computed.backgroundImage.includes("iha-premium-");
+  });
+  assert.ok(artwork,path+" hero artwork must be behind transparent navbar");
   assert.ok(style.headerHeight>40,path+" must have a substantial nav");
   const top=await page.locator(heroSel).boundingBox();
   assert.ok(top&&top.y>=-3&&top.y<50,path+" must extend beneath the header: "+JSON.stringify(top));
   await page.evaluate(()=>window.scrollTo(0,550));
   await page.waitForFunction(()=>document.body.classList.contains("iha-glass-scrolled"),{timeout:3000});
+  const scrollColor=await page.locator(headerSel).evaluate(el=>getComputedStyle(el).backgroundColor);
+  assert.ok(alpha(scrollColor)>=0.85,path+" nav should become opaque when scrolled: "+scrollColor);
   await page.evaluate(()=>window.scrollTo(0,0));
   await page.waitForFunction(()=>!document.body.classList.contains("iha-glass-scrolled"),{timeout:3000});
   assert.equal(pageErrors.length,0,path+" must not have browser exceptions "+pageErrors.join(";"));
