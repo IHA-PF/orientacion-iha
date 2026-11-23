@@ -19,6 +19,15 @@ try {
     await page.locator("body.iha-nav-ready").waitFor({state:"attached"});
     assert.equal(await page.locator("h1").count(),1,url+" headline");
     if(type==="home"){
+     const banners=page.locator(".profile-banner");
+     assert.equal(await banners.count(),3);
+     for(const banner of await banners.all()){
+       await banner.scrollIntoViewIfNeeded();await banner.locator("img").evaluate(img=>img.decode());
+       await access("."+new URL(await banner.locator("a").getAttribute("href"),base).pathname+"index.html");
+     }
+     if(lang==="es"&&[390,1440].includes(width)){
+       await banners.first().scrollIntoViewIfNeeded();await page.screenshot({path:"test-artifacts/profile-banners-"+width+".png"});
+     }
      const tabs=page.locator("#iha-experience [role=tab]");
      await tabs.first().waitFor({state:"visible"});
      assert.equal(await tabs.locator(".service-visual").count(),3);
