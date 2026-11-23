@@ -58,10 +58,11 @@ try{
       };
       const headings=[textNode("h1"),textNode(".lead"),textNode(".eyebrow")].filter(Boolean);
       const secondary=textNode(".btn.secondary, .btn.outline");
-      return {headingColors:headings.map(col),headingLuminances:headings.map(x=>luminance(col(x))),secondaryColor:secondary?col(secondary):null,secondaryLuminance:secondary?luminance(col(secondary)):null,background:getComputedStyle(hero).backgroundImage};
+      return {headingColors:headings.map(col),headingLuminances:headings.map(x=>luminance(col(x))),secondaryColor:secondary?col(secondary):null,secondaryLuminance:secondary?luminance(col(secondary)):null,secondaryBackgroundLuminance:secondary?luminance(getComputedStyle(secondary).backgroundColor):null,background:getComputedStyle(hero).backgroundImage};
     });
     assert.ok(contrast.headingLuminances.every(x=>x<0.22),path+" light hero must use dark heading, lead and eyebrow text: "+JSON.stringify(contrast));
-    assert.ok(contrast.secondaryLuminance!==null&&contrast.secondaryLuminance<0.22,path+" secondary CTA needs dark, legible text: "+JSON.stringify(contrast));
+    const ctaContrast=(Math.max(contrast.secondaryLuminance,contrast.secondaryBackgroundLuminance)+0.05)/(Math.min(contrast.secondaryLuminance,contrast.secondaryBackgroundLuminance)+0.05);
+    assert.ok(contrast.secondaryLuminance!==null&&contrast.secondaryBackgroundLuminance!==null&&ctaContrast>=4.5,path+" secondary CTA needs readable contrast: "+JSON.stringify(contrast));
     if(lang==="es"&&subpage==="legal-360")await page.screenshot({path:"test-artifacts/legal360-contrast-"+width+".png",fullPage:false});
     console.log("Hero contrast",path,width,"OK");
     await page.close();
