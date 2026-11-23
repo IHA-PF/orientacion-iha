@@ -259,3 +259,116 @@ html body:has(.os-simple-home) .os-simple-cta:hover,
 html body:has(.os-simple-home) .os-host-cta:hover{
  background:#007a67!important;color:#fff!important;border-color:#007a67!important;
 }
+
+
+/* IHA PALETTE FIX v3 — root SPA 'Precios' and all dynamic views.
+   The legacy SPA has automatic prefers-color-scheme:dark variables and its own
+   pricing hero (.band.compact) / offer paths (.sv-path), independent of legacy pages.
+   Enforce Guesty-inspired white/teal without obscuring dark-on-light text. */
+html:root,html:root[data-theme="dark"],html:root[data-theme="light"]{
+ color-scheme:light!important;
+ --bg:#ffffff!important;--surface:#ffffff!important;--surface-2:#f5faf8!important;
+ --ink:#101010!important;--muted:#374151!important;
+ --line:#e5e7eb!important;--line-strong:#d1d5db!important;
+ --navy:#101010!important;--on-navy:#ffffff!important;
+ --teal:#007a67!important;--teal-soft:#e7f6ce!important;
+ --green:#007a67!important;--green-soft:#e7f6ce!important;
+ --focus:#007a67!important;--primary:#007a67!important;--on-primary:#ffffff!important;
+ --gold:#16665d!important;--gold-soft:#e7f6ce!important;
+ --gold-line:#e5e7eb!important;--on-navy-accent:#007a67!important;
+ --band-bg:#f5faf8!important;--band-ink:#101010!important;
+ --band-muted:#374151!important;--band-chip:#ffffff!important;
+ --band-chip-line:#e5e7eb!important;
+ --cta:#007a67!important;--cta-hover:#16665d!important;
+ --on-cta:#ffffff!important;--cta2:#ffffff!important;
+ --on-cta2:#101010!important;
+}
+html body,html body[data-th],html body[data-th="guia"]{
+ --bg:#ffffff!important;--surface:#ffffff!important;--surface-2:#f5faf8!important;
+ --ink:#101010!important;--muted:#374151!important;
+ --teal:#007a67!important;--teal-soft:#e7f6ce!important;
+ --navy:#101010!important;--primary:#007a67!important;
+ --band-bg:#f5faf8!important;--band-ink:#101010!important;
+ --band-muted:#374151!important;
+ --th:#007a67!important;--th-soft:#e7f6ce!important;
+ --ta:#f5faf8!important;--tb:#f5faf8!important;
+ --cta:#007a67!important;--cta-hover:#16665d!important;--on-cta:#fff!important;
+}
+html body:not(:has(.os-simple-home))>header.bar{
+ position:sticky!important;top:0!important;z-index:180!important;
+ background:rgba(255,255,255,.94)!important;
+ color:#101010!important;border-bottom:1px solid #e5e7eb!important;
+ backdrop-filter:blur(13px)!important;-webkit-backdrop-filter:blur(13px)!important;
+ box-shadow:0 5px 18px rgba(16,16,16,.045)!important;
+}
+html body>header.bar :is(.tabs .tab,.lbtn,.brand,.brand-t b,.brand-t span,.os-wordmark){
+ color:#101010!important;
+}
+html body>header.bar :is(.tabs .tab.on,.tabs .tab[aria-current="page"]){
+ color:#007a67!important;
+ border-bottom-color:#007a67!important;
+}
+html body>header.bar .os-header-start{
+ background:#007a67!important;border:1px solid #007a67!important;
+ color:#fff!important;border-radius:999px!important;
+}
+@media(min-width:1050px){
+ html body>header.bar .bar-in{max-width:1530px!important;gap:12px!important}
+ html body>header.bar .tabs{gap:5px!important;flex-wrap:nowrap!important;justify-content:flex-end}
+ html body>header.bar .tabs .tab{white-space:nowrap!important;line-height:1.2!important;padding-inline:9px!important}
+}
+html body .band.compact,html body section.band.compact,html body .band{
+ background:#f5faf8!important;color:#101010!important;
+ border-bottom:1px solid #e5e7eb!important;
+}
+html body .band :is(h1,h2,.eyebrow),html body .band.compact :is(h1,.eyebrow){
+ color:#101010!important;
+}
+html body .band .eyebrow{color:#16665d!important}
+html body .band .lead,html body .band .bg-rest,html body .band .bg-head{
+ color:#374151!important;
+}
+html body .sv-paths{background:transparent!important}
+html body .sv-paths .sv-path,html body .sv-path{
+ background:#fff!important;
+ color:#101010!important;
+ border:1px solid #e5e7eb!important;
+ border-top:4px solid #007a67!important;
+ box-shadow:0 10px 30px rgba(16,16,16,.055)!important;
+}
+html body .sv-path.sp-host,html body .sv-path.sp-free,html body .sv-path.sp-guest{
+ border-top-color:#007a67!important;
+}
+html body .sv-path :is(h2,h3,h4,strong,b,.sp-n,.sp-p,.sp-d,.sp-sub,ul,li,p),
+html body .sv-path :is(a,a span){
+ color:#101010!important;
+}
+html body .sv-path :is(.sp-sub,.sp-d){color:#374151!important}
+html body .sv-path a.fo-go,html body .sv-path a.sp-cta{
+ color:#007a67!important;
+}
+html body .sv-path .pill-free,
+html body .sv-path .tag,
+html body .sv-path .sp-badge{
+ background:#e7f6ce!important;color:#101010!important;
+ border-color:#e5e7eb!important;
+}
+html body .sv-path .sp-tiers,
+html body .sv-path .sp-tiers li,
+html body .sv-path .sp-tiers a{
+ background:#f5faf8!important;color:#101010!important;border-color:#e5e7eb!important;
+}
+html body .sv-path .icw{color:#007a67!important}
+html body .sv-path .icw svg{stroke:currentColor}
+html body .sv-path .sp-cta{
+ background:transparent!important;border-color:#e5e7eb!important;
+}
+html body .sv-paths .sv-path:focus-within{
+ outline:2px solid #007a67!important;outline-offset:2px!important;
+}
+html body :is(.pill-free,.tag,.status,.note-box,.sv-free,.sv-split) {
+ --gold:#007a67!important;--teal-soft:#e7f6ce!important;
+}
+html body :is(.tabs .tab,.btn,.chip,.fo-go,.pill-free){transition:background-color .2s,color .2s}
+html body #themebtn,html body .themebtn{display:none!important}
+/* Explicitly retain red emergency/SOS and safety warnings. */
