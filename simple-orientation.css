@@ -134,3 +134,24 @@ body:has(.os-simple-home) .fab-wrap{display:none!important}
   .os-benefit strong{font-size:10.5px}
 }
 @media(prefers-reduced-motion:reduce){.os-simple-cta,.os-host-cta{transition:none}}
+
+/* High-specificity overrides for the site's legacy :root:root:root dark header. */
+:root:root:root body:has(.os-simple-home) .bar{background:#faf7f2;border-bottom:1px solid #e8e7df}
+:root:root:root body:has(.os-simple-home) .bar .brand,
+:root:root:root body:has(.os-simple-home) .bar .brand-t b{color:#114b35}
+:root:root:root body:has(.os-simple-home) .bar .tab,
+:root:root:root body:has(.os-simple-home) .bar .tab[aria-current=page]{color:#193e30}
+:root:root:root body:has(.os-simple-home) .bar .tab:hover{color:#0d5b3d;background:#eaf0e7}
+:root:root:root body:has(.os-simple-home) .bar .tab[aria-current=page]:after{background:#166849}
+:root:root:root body:has(.os-simple-home) .bar .lbtn{color:#193e30;background:transparent;border-color:transparent}
+:root:root:root body:has(.os-simple-home) .bar .lbtn:hover{background:#eaf0e7;border-color:#e1e8de}
+:root:root:root body:has(.os-simple-home) .bar .sosbtn{color:#9f271f;background:#fde9e7;border:1px solid #f0d1ce}
+body:has(.os-simple-home) footer,
+body:has(.os-simple-home) footer .foot-in,
+body:has(.os-simple-home) footer .foot-brand{color:#284a3b}
+body:has(.os-simple-home) footer .foot-co small,
+body:has(.os-simple-home) footer .foot-mail,
+body:has(.os-simple-home) footer .foot-co{color:#5c7165}
+body:has(.os-simple-home) footer a,
+body:has(.os-simple-home) footer .foot-links a,
+body:has(.os-simple-home) footer .foot-mail a{color:#17583f}
