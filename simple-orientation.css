@@ -30,4 +30,4 @@
 body:has(.os-simple-home) .foot-cols{display:none!important}
 body:has(.os-simple-home) .os-footer-simple{display:flex;gap:14px 22px;flex-wrap:wrap;align-items:center;margin:14px 0 16px}
 .os-footer-simple a{font-size:13px;font-weight:700;color:var(--on-navy, #f1f6f2);text-decoration:underline;text-underline-offset:3px}
-body:has(.os-simple-home) #fab{display:none!important}
+body:has(.os-simple-home) .fab-wrap{display:none!important}
