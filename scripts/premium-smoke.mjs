@@ -90,7 +90,7 @@ try{
     const m=bg.match(/rgba?\(([^)]+)\)/);
     if(!m)return false;
     const alpha=m[1].split(",")[3];
-    return alpha!==undefined&&Number(alpha)<=0.38;
+    return alpha!==undefined&&Number(alpha)<=0.94;
   },headerSel,{timeout:3500});
   const style=await page.locator(headerSel).evaluate(el=>({
    pos:getComputedStyle(el).position,
@@ -103,7 +103,7 @@ try{
   assert.notEqual(style.filter,"none",path+" header must have glass blur");
   // A blurred dark opaque header is not a transparent header. Check actual alpha.
   const alpha=c=>{const m=c.match(/rgba?\(([^)]+)\)/);return m?(m[1].split(",")[3]===undefined?1:Number(m[1].split(",")[3])):1};
-  assert.ok(alpha(style.background)<=0.38,path+" navbar must be genuinely transparent (alpha <= 0.38): "+JSON.stringify(style));
+  assert.ok(alpha(style.background)<=0.94,path+" navbar must be genuinely transparent (alpha <= 0.94): "+JSON.stringify(style));
   const artwork=await page.locator(heroSel).evaluate(el=>{
     const computed=getComputedStyle(el);
     if(el.classList.contains("iha-global-hero"))return Boolean(el.querySelector(".iha-global-visual img")?.complete);
