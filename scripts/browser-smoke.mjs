@@ -4,10 +4,10 @@ import { chromium } from "playwright";
 
 const BASE = "http://127.0.0.1:8765";
 const strings = {
-  es:"¿Tienes un problema con una plataforma digital?",
-  en:"Having a problem with a digital platform?",
-  fr:"Un problème avec une plateforme numérique ?",
-  pt:"Problemas com uma plataforma digital?"
+  es:"Soluciones jurídicas e inteligencia para plataformas digitales",
+  en:"Legal solutions and intelligence for digital platforms",
+  fr:"Solutions juridiques et intelligence pour les plateformes numériques",
+  pt:"Soluções jurídicas e inteligência para plataformas digitais"
 };
 const browser = await chromium.launch({headless:true});
 const results = [];
@@ -44,6 +44,12 @@ try {
       }
       assert.equal((await headline.textContent())?.trim(),expectedTitle,"Wrong localized headline");
       assert.equal(await page.locator(".os-simple-choices button").count(),3,"Exactly three choices should be visible");
+      assert.equal(await page.locator(".os-two-cards > article").count(),2,"Both audience cards must be visible");
+      assert.equal(await page.locator(".os-benefit").count(),3,"Host needs three understandable benefits");
+      assert.equal(await page.locator(".os-host-cta").isVisible(),true,"Host solutions CTA not visible");
+      assert.equal(await page.locator(".os-host-link").getAttribute("href"),"digital-justice-os/","Technology link must use existing page");
+      assert.ok((await page.locator("#os-host-title").textContent())?.length>50,"Localized host title missing");
+      assert.equal(await page.locator(".os-header-start").textContent(),({es:"Comenzar",en:"Start",fr:"Commencer",pt:"Começar"})[lang],"Header CTA is not localized");
       assert.equal(await page.locator(".os-spotlight").count(),0,"The technology promo must not crowd the home");
       assert.equal(await page.locator(".os-simple-cta").isVisible(),true,"Action is not visible");
       const layout=await page.evaluate(()=>({
@@ -68,6 +74,13 @@ try {
         assert.ok(page.url().includes("#guia"),"Bookings did not open legal guide");
         const checked=await page.locator(".chips button[aria-pressed=true]").count();
         assert.equal(checked,1,"Guide should mark the selected category");
+      }
+      if(!mobile){
+        await page.goto(BASE+"/?lang="+lang,{waitUntil:"domcontentloaded"});
+        await page.locator(".os-host-cta").click();
+        await page.waitForURL(/#servicios/, {timeout:10000});
+        assert.equal(await page.locator(".os-simple-home").count(),0,"Host CTA did not open actual services");
+        assert.ok(await page.locator("#app h1").isVisible(),"Host CTA destination has no heading");
       }
       results.push(lang+"-"+(mobile?"mobile":"desktop")+": OK");
       await page.close();
