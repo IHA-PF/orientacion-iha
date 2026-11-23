@@ -389,3 +389,24 @@ html body.iha-nav-ready:not(.iha-glass-scrolled):has(.home-masthead)>header.bar{
  background:rgba(250,246,241,.93)!important;border-bottom-color:transparent!important
 }
 html body:has(.home-masthead)>header #lbtn::before,html body:has(.home-masthead)>header #lcur::after{display:none!important;content:none!important}
+
+
+/* 2026-11-23 — Transparent homepage navigation over the hero artwork.
+   Keep navigation readable; restore a light glass surface only after scrolling. */
+html body.iha-nav-ready:not(.iha-glass-scrolled):has(.os-simple-home)>header.bar,
+html body.iha-nav-ready:not(.iha-glass-scrolled):has(.home-masthead)>header.bar{
+  background:transparent!important;
+  background-color:transparent!important;
+  border-bottom-color:transparent!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+html body.iha-nav-ready.iha-glass-scrolled:has(.os-simple-home)>header.bar,
+html body.iha-nav-ready.iha-glass-scrolled:has(.home-masthead)>header.bar{
+  background:rgba(255,255,255,.88)!important;
+  border-bottom-color:rgba(16,16,16,.08)!important;
+  -webkit-backdrop-filter:blur(14px)!important;
+  backdrop-filter:blur(14px)!important;
+  box-shadow:0 4px 16px rgba(16,16,16,.045)!important;
+}
