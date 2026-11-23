@@ -52,6 +52,7 @@ try {
       assert.equal(await page.locator(".os-header-start").textContent(),({es:"Comenzar",en:"Start",fr:"Commencer",pt:"Começar"})[lang],"Header CTA is not localized");
       assert.equal(await page.locator(".os-spotlight").count(),0,"The technology promo must not crowd the home");
       assert.equal(await page.locator(".os-simple-cta").isVisible(),true,"Action is not visible");
+      if(mobile) assert.equal(await page.locator(".sosbtn").isVisible(),true,"Existing emergency action must remain visible on mobile");
       const layout=await page.evaluate(()=>({
         viewport:document.documentElement.clientWidth,
         bodyWidth:document.body.scrollWidth,
