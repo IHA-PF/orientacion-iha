@@ -250,7 +250,7 @@ html body #app .home-copy .os-premium-lead{
 .home-shortcuts{display:flex;flex-wrap:wrap;gap:12px}.home-shortcuts .store-link{color:#16584d;padding:14px 20px;background:white;border-radius:9px;font:600 16px/1.35 system-ui,sans-serif;text-decoration:none}
 .home-shortcuts .store-link:hover,.home-shortcuts .store-link:focus-visible{background:#dcf1ec}
 .home-preview{display:block;margin-top:clamp(32px,2.7vw,54px);padding:24px;background:white;border-radius:22px;box-shadow:0 2px 12px #403b3110;color:#18473d;text-decoration:none;overflow:hidden}
-.home-preview strong{font:600 22px/1.3 system-ui,sans-serif}.home-preview img{display:block;height:165px;width:100%;object-fit:cover;object-position:center 43%;margin-top:16px;border-radius:12px}
+.home-preview strong{font:600 22px/1.3 system-ui,sans-serif}.home-preview img{display:block;height:auto;width:100%;object-fit:contain;margin-top:16px;border-radius:12px}
 .home-picker{min-width:0;box-sizing:border-box;margin-top:clamp(150px,13.2vw,253px);padding:clamp(26px,2.8vw,54px);border:10px solid #f4f0ec;outline:2px solid white;background:#fff;border-radius:24px;box-shadow:0 16px 72px #44382923;text-align:center}
 .home-picker fieldset{min-width:0;border:0;padding:0;margin:0}.home-picker legend{float:none;width:100%;margin:0 auto 28px;padding:0;font:400 clamp(24px,1.85vw,36px)/1.15 system-ui,sans-serif;letter-spacing:-.04em;color:#191919}
 .home-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
@@ -262,7 +262,7 @@ html body #app .home-copy .os-premium-lead{
  html body #app .os-premium-inner:has(.home-masthead){width:calc(100% - 40px)}
  html body #app .home-masthead{display:flex!important;flex-direction:column;align-items:stretch;gap:26px;padding:35px 0!important}
  html body #app .home-copy h1{font-size:clamp(38px,6vw,52px)!important}
- .home-resources{margin-top:26px}.home-preview{display:none}.home-picker{margin-top:0;padding:24px 14px;border-width:6px}.home-shortcuts{gap:8px}.home-shortcuts .store-link{padding:10px 12px;font-size:14px}
+ .home-resources{margin-top:26px}.home-preview{display:block}.home-picker{margin-top:0;padding:24px 14px;border-width:6px}.home-shortcuts{gap:8px}.home-shortcuts .store-link{padding:10px 12px;font-size:14px}
  .home-picker legend{margin-bottom:20px}.home-option{font-size:14px}
 }
 
