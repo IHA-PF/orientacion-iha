@@ -463,7 +463,17 @@ function render(){
    [base,base+d.evidence+"/",catalog,base+d.price+"/"].forEach((url,i)=>links.append(link(labels[i+8],url)));
    const preview=make("a","home-preview");
    preview.href=legal;preview.append(make("strong","","IHA LEGAL 360"));
-   const art=make("img","");art.src="/assets/iha-legal-360-consultation.jpg";art.alt=({es:"Una abogada y un cliente organizan las pruebas y revisan juntos los próximos pasos.",fr:"Une avocate et un client organisent les preuves et examinent ensemble les prochaines étapes.",en:"A lawyer and client organise evidence and review the next steps together.",pt:"Uma advogada e um cliente organizam as provas e analisam juntos os próximos passos."})[lang];art.width=1536;art.height=1024;
+   const art=make("img","");
+   // The former consultation JPEG contained baked-in corruption (yellow/pink
+   // washout and mismatched image panels). Use a verified sharp local asset.
+   art.src="/assets/iha-case-review.jpg";
+   art.alt=({
+     es:"Profesional revisando documentación en su oficina junto a un computador portátil.",
+     fr:"Professionnelle examinant des documents dans son bureau avec un ordinateur portable.",
+     en:"Professional reviewing documents in an office alongside a laptop.",
+     pt:"Profissional analisando documentos em seu escritório com um computador portátil."
+   })[lang];
+   art.width=800;art.height=800;art.loading="eager";art.decoding="async";
    preview.append(art);copy.append(resources,preview);
    const panel=make("form","home-picker"),fieldset=make("fieldset","");
    const legend=make("legend","",labels[3]),options=make("div","home-options");
