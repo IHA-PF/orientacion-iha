@@ -59,6 +59,11 @@ body.iha-service-premium .iha-service-aside section:first-child b{color:#0d564a;
 body.iha-service-premium .iha-service-aside section.cta{background:#0a5548;color:white;border-color:#0a5548;}
 body.iha-service-premium .iha-service-aside section.cta p{color:#e5f5ed;font-size:14px;line-height:1.62;}
 body.iha-service-premium .iha-service-aside section.cta a.go{display:flex;width:100%;padding:15px;border-radius:99px;background:#ddf7ef!important;color:#094b3f!important;box-shadow:none!important;}
+body.iha-service-premium .iha-service-faq{background:#f6fbf8;border-color:#d5e9df;}
+body.iha-service-premium .iha-service-faq h2{margin-bottom:14px;}
+body.iha-service-premium .iha-service-faq details{border-top:1px solid #dcebe5;padding:15px 0;}
+body.iha-service-premium .iha-service-faq summary{cursor:pointer;color:#153e34;font-weight:700;line-height:1.5;padding-right:16px;}
+body.iha-service-premium .iha-service-faq details p{margin:12px 0 2px;color:#4d675e;line-height:1.7;}
 body.iha-service-premium section.rel a{overflow-wrap:anywhere;}
 body.iha-service-premium main.w>.upd{font-size:13px;margin:26px 2px 12px;}
 body.iha-service-premium main.w>.langs{margin:22px 0 0;gap:12px;}
