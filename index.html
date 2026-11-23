@@ -101,7 +101,7 @@ window.goatcounter = {no_onload: true};
       <div class="foot-col"><h2 class="foot-h" data-t="footGFirm"></h2>
         <a href="#guia" data-t="footGuia"></a>
         <a href="#como-trabajamos" data-t="footHow"></a>
-        <a href="#preguntas" data-t="footFaq"></a><a href="legal-360/">IHA LEGAL 360</a><a href="digital-justice-os/">IHA Digital Justice OS</a><a href="orientador/">Orientador por zona</a><a href="#express">Orientación exprés</a>
+        <a href="#preguntas" data-t="footFaq"></a><a href="legal-360/">IHA LEGAL 360</a><a href="digital-justice-os/">IHA Digital Justice OS</a><a href="orientador/" data-t="navZona"></a><a href="#express" data-t="navExpress"></a>
         <a href="#terminos" data-t="footTerms" data-legal hidden></a>
         <a href="#privacidad" data-t="privacyLink" data-legal hidden></a>
       </div>
@@ -124,7 +124,7 @@ input.value=O||"";
 controls.append(input,submit);
 form.append(lbl,controls,X("p",{class:"os-simple-caption"},t.note));
 form.addEventListener("submit",e=>{e.preventDefault();O=input.value.trim();ke("all");});
-const choose=X("p",{class:"os-simple-label"},t.choose),categories=X("div",{class:"os-simple-choices","aria-label":t.choose});
+const choose=X("p",{class:"os-simple-label"},t.choose),categories=X("div",{class:"os-simple-choices",role:"group","aria-label":t.choose});
 t.topics.forEach(([label,sector])=>{const b=X("button",{type:"button",class:"os-choice"},label);b.addEventListener("click",()=>{O=input.value.trim();ke(sector)});categories.append(b)});
 const extras=X("div",{class:"os-simple-extras"}),service=X("a",{href:"legal-360/"},t.services),technology=X("a",{href:"digital-justice-os/"},t.technology);
 extras.append(service,X("span",{"aria-hidden":"true"},"·"),technology);
