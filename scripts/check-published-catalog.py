@@ -11,11 +11,11 @@ def fetch(path):
     with urlopen(request, timeout=12) as response:
         return response.read()
 
-expected = Path("iha-store.css").read_bytes()
+expected = Path("iha-experience.css").read_bytes()
 digest = hashlib.sha256(expected).hexdigest()[:12]
 for attempt in range(35):
     try:
-        if fetch("/iha-store.css?release=" + digest) == expected:
+        if fetch("/iha-experience.css?release=" + digest) == expected:
             break
     except URLError:
         pass
@@ -35,3 +35,4 @@ for lang, (catalog, prices, service) in routes.items():
         assert marker in fetch(url).decode(), url
         print(ORIGIN + url)
 assert 'os-simple-home' in fetch("/").decode()
+assert 'home-masthead' in fetch("/iha-experience.js?release=" + digest).decode()

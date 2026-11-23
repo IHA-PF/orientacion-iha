@@ -51,6 +51,7 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           python3 scripts/audit-public-pages.py
+          node scripts/home-first-screen.mjs
           node scripts/platform-catalog-smoke.mjs
           node scripts/premium-smoke.mjs
           node scripts/iha-brand-smoke.mjs

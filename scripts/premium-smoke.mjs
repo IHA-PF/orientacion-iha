@@ -107,6 +107,7 @@ try{
   const artwork=await page.locator(heroSel).evaluate(el=>{
     const computed=getComputedStyle(el);
     if(el.classList.contains("iha-global-hero"))return Boolean(el.querySelector(".iha-global-visual img")?.complete);
+    if(el.classList.contains("os-simple-home"))return !!el.querySelector(".home-preview img")?.naturalWidth;
     return computed.backgroundImage.includes("iha-premium-");
   });
   assert.ok(artwork,path+" hero artwork must be behind transparent navbar");
