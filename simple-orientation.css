@@ -1,0 +1,26 @@
+/* IHA simplified orientation homepage: small first step, rich information stays in the guide. */
+.os-simple-home{background:#10362e;color:#f5f7f4;border:0;position:relative;isolation:isolate;overflow:hidden}
+.os-simple-home:before{content:"";width:420px;height:420px;position:absolute;right:-160px;top:-210px;border:1px solid rgba(246,213,92,.24);border-radius:50%;box-shadow:0 0 0 70px rgba(246,213,92,.035),0 0 0 140px rgba(246,213,92,.024);pointer-events:none}
+.os-simple-inner{padding-top:clamp(40px,7vw,74px);padding-bottom:clamp(40px,6vw,65px);max-width:860px;position:relative;z-index:1}
+.os-simple-kicker{font-size:12px;letter-spacing:.13em;font-weight:700;color:#f6d55c;text-transform:uppercase;margin:0 0 14px}
+.os-simple-home h1{color:#fff;font-family:var(--display,Georgia,serif);font-size:clamp(34px,5.8vw,55px);line-height:1.08;margin:0 0 17px;letter-spacing:-.018em;max-width:730px}
+.os-simple-lead{font-size:clamp(16px,2vw,19px);color:#d8e5dd;max-width:650px;line-height:1.55;margin:0 0 28px}
+.os-simple-form{display:grid;gap:8px;background:#fbfaf4;padding:17px 18px 18px;border-radius:15px;max-width:780px;box-shadow:0 12px 30px rgba(0,0,0,.11)}
+.os-simple-form label{font-size:14px;font-weight:700;color:#18382e}
+.os-simple-controls{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px}
+.os-simple-form input{min-width:0;width:100%;font-family:inherit;font-size:16px;color:#13241f;border:1px solid #c7d0c7;background:#fff;border-radius:10px;padding:13px 14px}
+.os-simple-form input:focus-visible,.os-choice:focus-visible,.os-simple-cta:focus-visible{outline:3px solid #e5b649;outline-offset:3px}
+.os-simple-form input::placeholder{color:#58675f;opacity:1}
+.os-simple-cta{border:0;padding:12px 20px;border-radius:10px;font:700 14px/1.2 inherit;color:#123127;background:#f6d55c;cursor:pointer;white-space:nowrap}
+.os-simple-cta:hover{background:#ffe38b}
+.os-simple-caption{font-size:12px;color:#56655d;margin:0}
+.os-simple-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c9ddd2;margin:23px 0 12px}
+.os-simple-choices{display:flex;flex-wrap:wrap;gap:10px}
+.os-choice{font:700 14px/1.2 inherit;background:transparent;color:#fff;border:1px solid rgba(240,248,241,.46);padding:12px 18px;border-radius:999px;cursor:pointer}
+.os-choice:hover{background:rgba(255,255,255,.13)}
+.os-simple-extras{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:21px}
+.os-simple-extras a{font-size:13px;color:#f6d55c;text-decoration:underline;text-underline-offset:3px}
+.os-simple-extras span{font-size:13px;color:#d0e0d7}
+.os-simple-note{font-size:12px;color:#bcd0c4;margin:17px 0 0;max-width:620px}
+@media(max-width:610px){.os-simple-inner{padding-top:36px;padding-bottom:42px}.os-simple-controls{grid-template-columns:1fr}.os-simple-form{padding:14px}.os-simple-cta{min-height:46px}.os-simple-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.os-choice{padding:12px 7px;font-size:12px}.os-simple-extras{gap:12px}}
+@media(max-width:390px){.os-simple-choices{grid-template-columns:1fr}.os-choice{font-size:14px}}
