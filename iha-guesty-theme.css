@@ -1,0 +1,217 @@
+/* IHA Design System / Guesty 2026 palette.
+   Tokens taken from publicly observed Guesty UI; independently authored IHA layout.
+   Main: #101010 ink, #ffffff canvas, #007a67 primary teal, #16665d secondary,
+   #e5e7eb border, #e7f6ce subtle selected state. */
+:root{
+ --iha-ink:#101010;--iha-paper:#ffffff;--iha-accent:#007a67;
+ --iha-accent-dark:#16665d;--iha-line:#e5e7eb;--iha-highlight:#e7f6ce;
+ --iha-mist:#f5faf8;--iha-copy:#374151;
+ --pine:#101010;--navy:#101010;--gold:#007a67;--yel:#007a67;
+ --beige:#ffffff;--sand:#f5faf8;--teal:#007a67;--surface:#ffffff;
+ --muted:#374151;--ink:#101010;--line:#e5e7eb;--link:#16665d;
+ --bg:#ffffff;--primary:#007a67;--on-primary:#ffffff;
+ --ihapine:#101010;--ihagreen:#007a67;--ihacream:#ffffff;--ihamuted:#374151;
+}
+html body{background:#fff!important;color:#101010}
+body a{accent-color:#007a67}
+body :is(button,a,input,select,textarea,summary):focus-visible{outline:3px solid #007a67!important;outline-offset:3px}
+body ::selection{background:#e7f6ce;color:#101010}
+/* One symbol-only mark throughout the app, next to the existing wordmark. */
+body header .brand>img.iha-brand-symbol,
+body header .brand>span>img.iha-brand-symbol,
+body header button.brand>img.iha-brand-symbol{
+ display:inline-block!important;visibility:visible!important;
+ width:41px!important;height:41px!important;min-width:41px!important;
+ object-fit:contain!important;filter:none!important;opacity:1!important;
+ margin:0 8px 0 0!important;flex:none!important;
+}
+body header .brand{color:#101010!important}
+body header .brand b,
+body header .brand small,
+body header .brand span,
+body header .os-wordmark{color:#101010!important}
+body header .brand-t{border-left-color:#e5e7eb!important}
+body header nav a,body header nav button,body header .tab,body header .lbtn{color:#101010!important}
+/* Header is transparent WHITE over artwork, then solid white, never forest green. */
+html body:has(.os-simple-home)>header.bar,
+html body.iha-site-surface>header,
+html body.iha-global-page>header{
+ background:rgba(255,255,255,.22)!important;
+ color:#101010!important;
+ border-bottom:1px solid rgba(16,16,16,.10)!important;
+ -webkit-backdrop-filter:blur(16px) saturate(115%)!important;
+ backdrop-filter:blur(16px) saturate(115%)!important;
+ box-shadow:0 5px 26px rgba(16,16,16,.035)!important;
+}
+html body.iha-glass-scrolled:has(.os-simple-home)>header.bar,
+html body.iha-site-surface.iha-glass-scrolled>header,
+html body.iha-global-page.iha-glass-scrolled>header{
+ background:rgba(255,255,255,.96)!important;
+ border-bottom:1px solid #e5e7eb!important;
+ box-shadow:0 9px 25px rgba(16,16,16,.075)!important;
+}
+html body:has(.os-simple-home)>header.bar :is(.brand,.brand-t b,.os-wordmark,.tabs .tab,.lbtn),
+html body.iha-site-surface>header :is(.brand,.brand b,.brand small,nav a),
+html body.iha-global-page>header :is(.brand,.brand b,.brand small,.iha-global-nav>a){
+ color:#101010!important;
+}
+html body.iha-global-page>header .go,
+html body:has(.os-simple-home)>header.bar .os-header-start,
+html body.iha-site-surface>header .btn{
+ background:#007a67!important;color:#fff!important;border-color:#007a67!important;
+ box-shadow:none!important;border-radius:999px!important;
+}
+html body:has(.os-simple-home)>header.bar .brand-t{border-left-color:#e5e7eb!important}
+html body:has(.os-simple-home)>header.bar .tabs .tab:hover,
+html body:has(.os-simple-home)>header.bar .lbtn:hover{
+ background:rgba(231,246,206,.80)!important;color:#101010!important;
+}
+html body:has(.os-simple-home)>header.bar .sosbtn{background:#fff1ef!important;color:#ad2922!important;border-color:#f3d2cd!important}
+/* Homepage: white Guesty-style canvas, color only in small teal accents. */
+html body:has(.os-simple-home){background:#fff!important;color:#101010!important}
+html body:has(.os-simple-home) .os-simple-home.os-premium{
+ color:#101010!important;
+ background-color:#fff!important;
+ background-image:linear-gradient(180deg,rgba(255,255,255,.49) 0%,rgba(255,255,255,.86) 250px,#fff 520px),url('/assets/iha-premium-host.svg')!important;
+}
+html body:has(.os-simple-home) :is(.os-premium h1,.os-card-top h2,.os-card-description,.os-premium-lead){
+ color:#101010!important;
+}
+html body:has(.os-simple-home) :is(.os-premium-eyebrow,.os-card-link,.os-audience-card a){
+ color:#16665d!important;
+}
+html body:has(.os-simple-home) .os-audience-card{
+ background:#fff!important;border:1px solid #e5e7eb!important;
+ box-shadow:0 9px 27px rgba(16,16,16,.045)!important;
+}
+html body:has(.os-simple-home) .os-symbol,
+html body:has(.os-simple-home) .os-host-perk,
+html body:has(.os-simple-home) .os-card-feature{
+ background:#f5faf8!important;color:#007a67!important;
+}
+html body:has(.os-simple-home) .os-simple-form :is(button,[type=submit]),
+html body:has(.os-simple-home) .os-guest .os-submit,
+html body:has(.os-simple-home) .os-audience-card .os-primary-cta,
+html body:has(.os-simple-home) .os-host-cta{
+ background:#007a67!important;color:#fff!important;border-color:#007a67!important;
+}
+html body:has(.os-simple-home) :is(.os-suggestions button,.os-card-chip,.os-quick-links button){
+ border-color:#e5e7eb!important;background:#fff!important;color:#101010!important;
+}
+html body:has(.os-simple-home) footer{background:#fff!important;color:#374151!important}
+html body:has(.os-simple-home) footer a{color:#16665d!important}
+/* Rich home marketing panels. */
+html body .iha-experience{
+ background:#fff!important;color:#101010!important;
+ --ihapine:#101010;--ihagreen:#007a67;--ihacream:#fff;--ihamuted:#374151;
+}
+html body .iha-experience .iha-trust{background:#f5faf8!important;border-color:#e5e7eb!important}
+html body .iha-experience :is(.iha-trust-item i,.iha-step>strong){color:#007a67!important}
+html body .iha-experience :is(h2,h3,.iha-card-body h3){color:#101010!important}
+html body .iha-experience :is(.iha-kicker,.iha-card-overline){color:#16665d!important}
+html body .iha-experience :is(.iha-photo-card,.iha-step){background:#fff!important;border-color:#e5e7eb!important}
+html body .iha-experience .iha-process{background:#f5faf8!important}
+html body .iha-experience :is(.iha-main-cta,.iha-card-body a){color:#007a67!important}
+html body .iha-experience .iha-main-cta{background:#007a67!important;color:#fff!important}
+html body .iha-experience .iha-final{background:#101010!important}
+html body .iha-experience .iha-final h2{color:#fff!important}
+html body .iha-experience .iha-final a{background:#007a67!important;color:#fff!important}
+/* 12 multilingual LEGAL 360 / Digital Justice OS / landing pages. */
+html body.iha-site-surface{background:#fff!important;color:#101010!important}
+html body.iha-site-surface > .hero{
+ background-color:#f5faf8!important;
+ background-image:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.88) 56%,rgba(255,255,255,.40) 100%),url('/assets/iha-premium-consumer.svg')!important;
+}
+html body.iha-site-surface > .hero :is(h1,.lead,.eyebrow){color:#101010!important}
+html body.iha-site-surface > .hero .eyebrow{color:#16665d!important}
+html body.iha-site-surface > .hero :is(.btn,.btn.secondary,.btn.outline){
+ background:#007a67!important;color:#fff!important;border-color:#007a67!important;
+}
+html body.iha-site-surface > .hero :is(.pill,.tag){
+ background:#fff!important;color:#101010!important;border-color:#e5e7eb!important;
+}
+html body.iha-site-surface :is(.module,.step,.audience,.card,.dj-node){
+ background:#fff!important;border-color:#e5e7eb!important;color:#101010!important;
+}
+html body.iha-site-surface :is(.module h3,.audience h3,.section-title,h2,h3){
+ color:#101010!important;
+}
+html body.iha-site-surface :is(.module-name,.num,.eyebrow){color:#16665d!important}
+html body.iha-site-surface .module .num{background:#101010!important;color:#fff!important}
+html body.iha-site-surface :is(.closing,.quote,.dj-hub){
+ background:#101010!important;color:#fff!important;
+}
+html body.iha-site-surface :is(.closing h2,.dj-hub h3){color:#fff!important}
+html body .iha-subpage-experience{background:#fff!important;color:#101010!important}
+html body .iha-subpage-experience :is(h2,h3,.iha-sub-copy h3){color:#101010!important}
+html body .iha-subpage-experience :is(.iha-mini-feature,.iha-sub-process){background:#f5faf8!important;border-color:#e5e7eb!important}
+html body .iha-subpage-experience :is(.iha-mini-feature>span,.iha-sub-eye,.iha-sub-steps article>span){color:#007a67!important}
+html body .iha-subpage-experience :is(.iha-sub-card,.iha-sub-steps article){background:#fff!important;border-color:#e5e7eb!important}
+html body .iha-subpage-experience .iha-sub-cta{background:#101010!important}
+html body .iha-subpage-experience .iha-sub-cta a{background:#007a67!important;color:#fff!important}
+/* Legacy article pages: shared classes cover the full multilingual article collection. */
+html body.iha-global-page{
+ background:#fff!important;color:#101010!important;
+ --bg:#fff;--surface:#fff;--ink:#101010;--muted:#374151;--line:#e5e7eb;
+}
+html body.iha-global-page .iha-global-hero{
+ background:#f5faf8!important;border:1px solid #e5e7eb!important;
+}
+html body.iha-global-page .iha-global-hero :is(h1,.lead,.crumb,.iha-global-eyebrow){
+ color:#101010!important;
+}
+html body.iha-global-page .iha-global-primary,
+html body.iha-global-page .iha-global-final>a,
+html body.iha-global-page main.w>section .go{
+ background:#007a67!important;color:#fff!important;border-color:#007a67!important;
+}
+html body.iha-global-page .iha-global-secondary{
+ border-color:#e5e7eb!important;background:#fff!important;color:#101010!important;
+}
+html body.iha-global-page .iha-global-trust-item,
+html body.iha-global-page .iha-global-feature-card,
+html body.iha-global-page .iha-global-steps article,
+html body.iha-global-page main.w>section{
+ background:#fff!important;color:#101010!important;border-color:#e5e7eb!important;
+ box-shadow:0 5px 18px rgba(16,16,16,.035)!important;
+}
+html body.iha-global-page :is(.iha-global-trust-icon,.iha-global-steps){
+ background:#f5faf8!important;color:#007a67!important;border-color:#e5e7eb!important;
+}
+html body.iha-global-page :is(.iha-global-feature-card h3,.iha-global-related h2,main.w>section h2,main.w>section h3){
+ color:#101010!important;
+}
+html body.iha-global-page .iha-global-final{background:#101010!important}
+html body.iha-global-page .iha-global-final :is(strong,p){color:#fff!important}
+html body.iha-global-page :is(main.w>section a,.iha-global-feature-card a){color:#16665d!important}
+html body.iha-global-page footer{background:#fff!important;border-color:#e5e7eb!important}
+/* Interactive legal guide. Retain emergency colors for 123 and high-risk notices. */
+html body:has(#app>.hero):not(:has(.os-simple-home)) .wrap{background:#fff}
+html body:has(#app>.hero):not(:has(.os-simple-home)) .bar{
+ background:rgba(255,255,255,.95)!important;color:#101010!important;border-bottom:1px solid #e5e7eb!important;
+}
+html body:has(#app>.hero):not(:has(.os-simple-home)) #app>.hero{
+ background-color:#f5faf8!important;color:#101010!important;
+ background-image:linear-gradient(90deg,rgba(255,255,255,.98),rgba(255,255,255,.76)),url('/assets/iha-premium-host.svg')!important;
+}
+html body:has(#app>.hero):not(:has(.os-simple-home)) #app>.hero :is(h1,.lead,.eye,.priv){
+ color:#101010!important;
+}
+html body:has(#app>.hero):not(:has(.os-simple-home)) :is(.btn,.tab[aria-selected=true],.cta){
+ background:#007a67!important;color:#fff!important;border-color:#007a67!important;
+}
+html body:has(#app>.hero):not(:has(.os-simple-home)) :is(.card,.act,.blk){
+ background:#fff!important;border-color:#e5e7eb!important;
+}
+html body:has(#app>.hero):not(:has(.os-simple-home)) :is(.chip,.tab){background:#f5faf8;color:#101010}
+/* AI Agents catalog */
+html body:has(.spotlight) {background:#fff!important;color:#101010!important}
+html body:has(.spotlight) header{background:#fff!important;border-bottom:1px solid #e5e7eb!important}
+html body:has(.spotlight) .intro{background:#101010!important;color:#fff!important}
+html body:has(.spotlight) .intro :is(h1,p,em){color:#fff!important}
+html body:has(.spotlight) :is(.access,.filters button[aria-pressed=true],.spotlight-copy a){
+ background:#007a67!important;color:#fff!important;border-color:#007a67!important;
+}
+html body:has(.spotlight) :is(.grid article,.spotlight-example){background:#fff!important;border-color:#e5e7eb!important}
+html body:has(.spotlight) .stage{background:#e7f6ce!important;color:#101010!important}
+/* Accessible states: warnings and SOS red intentionally remain semantic. */
