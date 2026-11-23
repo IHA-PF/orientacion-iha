@@ -10,7 +10,10 @@
  const current=document.currentScript;
  const base=current&&current.src?new URL(".",current.src):new URL("/",location.href);
  const path=(f)=>new URL(f,base).href;
- const css=document.createElement("link");css.rel="stylesheet";css.id="iha-brand-theme";css.href=path("iha-guesty-theme.css?v=20261123-v3");document.head.append(css);
+ const cssUrl=path("iha-guesty-theme.css?v=20261123-v3");
+ const existing=document.getElementById("iha-brand-theme")||document.querySelector('link[href*="iha-guesty-theme.css"]');
+ if(existing){existing.id="iha-brand-theme";if(existing.href!==cssUrl)existing.href=cssUrl;}
+ else {const css=document.createElement("link");css.rel="stylesheet";css.id="iha-brand-theme";css.href=cssUrl;document.head.append(css);}
  function apply(){
    const logo=path("assets/iha-mark.svg");
    const oldFavicon=document.querySelector("link[rel='icon']");
