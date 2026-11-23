@@ -56,12 +56,12 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           python3 scripts/audit-public-pages.py
+          node scripts/iha-service-premium-smoke.mjs
           node scripts/home-first-screen.mjs
           node scripts/platform-catalog-smoke.mjs
           node scripts/premium-smoke.mjs
           node scripts/iha-brand-smoke.mjs
           node scripts/iha-navigation-smoke.mjs
-          node scripts/iha-service-premium-smoke.mjs
           node scripts/iha-brand-coverage.mjs
       - name: Record reference geometry and review contact sheet
         if: github.event_name == 'pull_request' && github.head_ref == 'design/iha-platform-catalog'
