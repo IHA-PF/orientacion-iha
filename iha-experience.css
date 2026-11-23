@@ -268,3 +268,5 @@ html body #app .home-copy .os-premium-lead{
 
 .home-picker-brand{font:600 14px/1.4 system-ui,sans-serif;color:#305b52;margin:0 0 14px}
 html body #app .os-simple-home:has(.home-masthead)::before,html body #app .os-simple-home:has(.home-masthead)::after{display:none!important}
+
+@media(min-width:1200px){.home-shortcuts .store-link{min-width:clamp(100px,7.3vw,140px);text-align:center;box-sizing:border-box}}

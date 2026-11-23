@@ -281,7 +281,7 @@ pt:{eyebrow:"DOIS CAMINHOS. UMA MESMA PROTEÇÃO.",title:"Mais clareza jurídica
 };
 const homeCopy={
  "es": [
-  "Orientación jurídica para la vida digital",
+  "Orientación jurídica para quienes usan plataformas digitales",
   "Revisa tus opciones ante una compra, una reserva o un conflicto con una plataforma en Colombia. Organiza las pruebas y elige tu próximo paso.",
   "Recursos de IHA",
   "¿Qué necesitas resolver?",
@@ -295,7 +295,7 @@ const homeCopy={
   "Tarifas"
  ],
  "fr": [
-  "Une orientation juridique pour la vie numérique",
+  "Une orientation juridique pour les usagers des plateformes numériques",
   "Un achat, une réservation ou un litige avec une plateforme en Colombie ? Découvrez vos options, rassemblez les preuves et préparez votre prochaine démarche.",
   "Ressources IHA",
   "Quel est votre besoin ?",
@@ -309,7 +309,7 @@ const homeCopy={
   "Tarifs"
  ],
  "en": [
-  "Legal guidance for life on digital platforms",
+  "Legal guidance for people who use digital platforms",
   "Explore your options after a purchase, a booking or a dispute with a platform in Colombia. Gather your evidence and decide what to do next.",
   "IHA resources",
   "What do you need help with?",
@@ -323,7 +323,7 @@ const homeCopy={
   "Pricing"
  ],
  "pt": [
-  "Orientação jurídica para a vida digital",
+  "Orientação jurídica para quem usa plataformas digitais",
   "Conheça suas opções em uma compra, reserva ou disputa com uma plataforma na Colômbia. Organize as provas e prepare seu próximo passo.",
   "Recursos IHA",
   "O que você precisa resolver?",
