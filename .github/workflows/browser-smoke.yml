@@ -1,0 +1,43 @@
+name: Browser smoke test — simplified IHA home
+on:
+  push:
+    branches: [release/simple-orientation-20261123]
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'simple-orientation.css'
+      - 'scripts/browser-smoke.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Playwright
+        run: |
+          npm install --no-save --ignore-scripts --no-audit --no-fund playwright@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Run desktop and mobile browser tests
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/iha-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          node scripts/browser-smoke.mjs
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iha-orientation-browser-screenshots
+          path: test-artifacts/*.png
+          if-no-files-found: ignore
+          retention-days: 7
