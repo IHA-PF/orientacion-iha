@@ -267,3 +267,27 @@
 				goatcounter.bind_events()
 		})
 })();
+
+
+/* IHA site-wide visual bootstrap. Preserves GoatCounter, legal content and page actions. */
+;(function(){
+  "use strict";
+  var source=document.currentScript;
+  var base=source&&source.src?new URL(".",source.src):new URL("/",location.href);
+  function enhance(){
+    if(!document.body||document.body.classList.contains("iha-site-surface")||document.body.classList.contains("iha-global-page"))return;
+    if(!document.querySelector("main.w > h1"))return;
+    if(document.getElementById("iha-global-style"))return;
+    var link=document.createElement("link");
+    link.id="iha-global-style";
+    link.rel="stylesheet";
+    link.href=new URL("iha-global-legacy.css",base).href;
+    document.head.appendChild(link);
+    var script=document.createElement("script");
+    script.src=new URL("iha-global-legacy.js",base).href;
+    script.defer=true;
+    document.head.appendChild(script);
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",enhance,{once:true});
+  else enhance();
+})();
