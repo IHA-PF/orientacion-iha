@@ -16,7 +16,12 @@ assert.ok(home.includes('data-nav="guide"')&&home.includes('data-nav="servicios"
 assert.ok(home.includes('href="legal-360/"')&&home.includes('href="digital-justice-os/"'),"Services and technology accessible");
 assert.ok(home.includes('data-t="navZona"')&&home.includes('data-t="navExpress"'),"Secondary orientation links localized");
 assert.ok(!css.includes("14px/1.2 inherit"),"Valid font declarations");
-assert.ok(css.includes("@media(max-width:610px)"),"Mobile layout defined");
+assert.ok(css.includes("@media(max-width:700px)"),"Mobile layout defined");
+assert.ok(home.includes('class:"os-two-cards"'),"Two-column layout must exist");
+assert.ok(home.includes('class:"os-host-cta"'),"Professional services must be accessible");
+assert.ok(home.includes('href:"#servicios"'),"Host CTA must lead to existing services");
+assert.ok(home.includes('class:"os-technology-tab"')||home.includes('class="tab os-technology-tab"'),"Technology link must be in home navigation");
+assert.ok(css.includes("grid-template-columns:repeat(2,minmax(0,1fr))"),"Desktop layout should have two columns");
 
 const scripts = [...home.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)];
 const csp = home.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)">/)?.[1];
