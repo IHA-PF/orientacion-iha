@@ -81,6 +81,16 @@ try{
   assert.equal(response?.status(),200,path+" should load");
   await page.locator(heroSel).waitFor({state:"visible",timeout:10000});
   await page.waitForFunction(()=>document.body.dataset.ihaGlassBound==="true",{timeout:8000});
+  // Initial render may transition from the default header to the glass state.
+  // Wait until the CSS transition has finished before checking opacity.
+  await page.waitForFunction(selector=>{
+    const el=document.querySelector(selector);if(!el)return false;
+    const bg=getComputedStyle(el).backgroundColor;
+    const m=bg.match(/rgba?\(([^)]+)\)/);
+    if(!m)return false;
+    const alpha=m[1].split(",")[3];
+    return alpha!==undefined&&Number(alpha)<=0.38;
+  },headerSel,{timeout:3500});
   const style=await page.locator(headerSel).evaluate(el=>({
    pos:getComputedStyle(el).position,
    filter:getComputedStyle(el).backdropFilter||getComputedStyle(el).webkitBackdropFilter,
