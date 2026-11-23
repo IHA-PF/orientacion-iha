@@ -25,6 +25,11 @@ on:
       - 'fr/**'
       - 'pt/**'
       - 'scripts/premium-smoke.mjs'
+      - 'iha-service-premium.css'
+      - 'iha-service-premium.js'
+      - 'iha-service-catalog-premium.css'
+      - 'iha-service-catalog-premium.js'
+      - 'scripts/iha-service-premium-smoke.mjs'
       - '.github/workflows/premium-smoke.yml'
   pull_request:
   workflow_dispatch:
@@ -56,6 +61,7 @@ jobs:
           node scripts/premium-smoke.mjs
           node scripts/iha-brand-smoke.mjs
           node scripts/iha-navigation-smoke.mjs
+          node scripts/iha-service-premium-smoke.mjs
           node scripts/iha-brand-coverage.mjs
       - name: Record reference geometry and review contact sheet
         if: github.event_name == 'pull_request' && github.head_ref == 'design/iha-platform-catalog'
