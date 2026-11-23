@@ -1,0 +1,55 @@
+/* IHA premium service catalogue, ES / EN / FR / PT. Scope is only /services/ collections. */
+body.iha-store.iha-catalog-premium{background:#fafcfb;color:#142a24;}
+body.iha-catalog-premium .store-wrap{width:min(1240px,calc(100% - 56px));margin-inline:auto;}
+body.iha-catalog-premium .store-hero{
+ position:relative;overflow:hidden;grid-template-columns:1.12fr .88fr;gap:clamp(28px,4vw,62px);
+ border:1px solid #dcebe6;border-radius:29px;margin-top:26px;padding:clamp(35px,5vw,72px);
+ background:linear-gradient(115deg,#f0faf5,#ffffff 65%);box-shadow:0 18px 50px rgba(19,77,62,.045);
+}
+body.iha-catalog-premium .store-hero h1{color:#12382f;font-size:clamp(40px,4.8vw,64px);max-width:14ch;}
+body.iha-catalog-premium .store-hero p{color:#4e6860;max-width:55ch;}
+body.iha-catalog-premium .store-hero img{aspect-ratio:1.32;object-fit:contain;max-height:420px;background:#e4f4ed;border-radius:22px;padding:15px;}
+body.iha-catalog-premium .store-hero a.store-link{
+ display:inline-flex;margin-top:14px;border-radius:100px;background:#0b6355;padding:13px 23px;color:white!important;
+ text-decoration:none;font-weight:700;
+}
+body.iha-catalog-premium .store-links{margin:24px 0 14px;gap:11px;}
+body.iha-catalog-premium .store-links a{background:#fff;border-color:#d8e9e1;color:#145a4e;padding:12px 18px;font-size:14px;font-weight:650;}
+body.iha-catalog-premium .store-links a:hover{background:#e2f3ec;color:#134b41;}
+body.iha-catalog-premium .store-family{padding:clamp(48px,5vw,78px) 0;border-color:#e1eae5;}
+body.iha-catalog-premium .store-family h2{font-size:clamp(29px,3.1vw,43px);max-width:22ch;color:#153b32;}
+body.iha-catalog-premium .store-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+body.iha-catalog-premium .store-card{
+ position:relative;display:flex;align-items:flex-start;flex-direction:column;gap:15px;min-height:286px;
+ padding:clamp(25px,3vw,33px);border:1px solid #dceae3;border-radius:22px;background:#fff;
+ box-shadow:0 10px 24px rgba(11,60,47,.035);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+body.iha-catalog-premium .store-card:hover,body.iha-catalog-premium .store-card:focus-within{
+ transform:translateY(-3px);border-color:#8abfad;box-shadow:0 16px 32px rgba(11,60,47,.095);
+}
+body.iha-catalog-premium .store-card h3{font-size:clamp(20px,1.75vw,24px);font-weight:680;line-height:1.2;color:#163a32;letter-spacing:-.025em;}
+body.iha-catalog-premium .store-card p{color:#566c63;line-height:1.55;font-size:15px;}
+body.iha-catalog-premium .store-card p b{color:#0e5044;font-size:17px;}
+body.iha-catalog-premium .store-card a{
+ display:inline-flex;align-items:center;gap:6px;min-height:38px;margin-top:auto;text-decoration:none;
+ color:#006d59!important;font-size:14px;font-weight:750;border-bottom:1px solid currentColor;
+}
+body.iha-catalog-premium .store-card a:after{content:"↗";font-size:19px;line-height:1;}
+body.iha-catalog-premium .iha-catalog-tag{
+ display:inline-flex;align-items:center;align-self:flex-start;padding:5px 10px;border-radius:99px;
+ background:#fff2d8;color:#8e620e;border:1px solid #efd8a6;font-size:12px;font-weight:750;
+}
+body.iha-catalog-premium .store-card.iha-catalog-upcoming{background:#fcfaf5;}
+@media(max-width:940px){
+ body.iha-catalog-premium .store-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+ body.iha-catalog-premium .store-hero{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:680px){
+ body.iha-catalog-premium .store-wrap{width:calc(100% - 32px);}
+ body.iha-catalog-premium .store-hero{grid-template-columns:1fr;border-radius:20px;padding:27px 22px;margin-top:16px;gap:25px;}
+ body.iha-catalog-premium .store-hero img{max-height:220px;}
+ body.iha-catalog-premium .store-grid{grid-template-columns:1fr;gap:15px;}
+ body.iha-catalog-premium .store-card{min-height:0;padding:24px;}
+ body.iha-catalog-premium .store-links{margin-top:18px;}
+}
+@media(prefers-reduced-motion:reduce){body.iha-catalog-premium .store-card{transition:none;}body.iha-catalog-premium .store-card:hover{transform:none;}}

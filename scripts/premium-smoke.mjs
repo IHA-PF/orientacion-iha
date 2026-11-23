@@ -22,7 +22,11 @@ try{
    const res=await page.goto("http://127.0.0.1:8765"+path,{waitUntil:"domcontentloaded",timeout:30000});
    assert.equal(res?.status(),200,path+" must load");
    assert.equal(await page.locator("h1").count(),1,path+" must keep exactly one h1");
-   if(legacy){
+   if(path.includes("/servicios/analisis-de-su-caso/")){
+    await page.locator(".iha-service-hero").waitFor({state:"visible",timeout:9000});
+    assert.equal(await page.locator(".iha-service-aside section").count(),2,path+" must retain price and contact sections");
+    assert.ok(await page.locator("main details.iha-service-question").count()>=2,path+" service FAQ");
+   }else if(legacy){
     await page.locator(".iha-global-hero").waitFor({state:"visible",timeout:9000});
     assert.equal(await page.locator(".iha-global-feature-card").count(),3,path+" must have three premium cards");
     assert.equal(await page.locator(".iha-global-steps article").count(),3,path+" must have process cards");

@@ -25,6 +25,11 @@ on:
       - 'fr/**'
       - 'pt/**'
       - 'scripts/premium-smoke.mjs'
+      - 'iha-service-premium.css'
+      - 'iha-service-premium.js'
+      - 'iha-service-catalog-premium.css'
+      - 'iha-service-catalog-premium.js'
+      - 'scripts/iha-service-premium-smoke.mjs'
       - '.github/workflows/premium-smoke.yml'
   pull_request:
   workflow_dispatch:
@@ -51,6 +56,7 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           python3 scripts/audit-public-pages.py
+          node scripts/iha-service-premium-smoke.mjs
           node scripts/home-first-screen.mjs
           node scripts/platform-catalog-smoke.mjs
           node scripts/premium-smoke.mjs
