@@ -389,3 +389,31 @@ html body.iha-nav-ready:not(.iha-glass-scrolled):has(.home-masthead)>header.bar{
  background:rgba(250,246,241,.93)!important;border-bottom-color:transparent!important
 }
 html body:has(.home-masthead)>header #lbtn::before,html body:has(.home-masthead)>header #lcur::after{display:none!important;content:none!important}
+
+
+/* Glass masthead: the reference remains translucent even while scrolling.
+   Legacy rules above set 93–97% white, masking the content underneath.
+   Keep the real backdrop visible, soften it with blur, retain IHA dark text.
+   This only affects the navigation surface, not the homepage or page sections. */
+html body.iha-nav-ready>header,
+html body.iha-nav-ready:not(.iha-glass-scrolled):has(.home-masthead)>header.bar,
+html body.iha-nav-ready:not(.iha-glass-scrolled):has(.os-simple-home)>header.bar,
+html body.iha-nav-ready.iha-site-surface:not(.iha-glass-scrolled)>header,
+html body.iha-nav-ready.iha-global-page:not(.iha-glass-scrolled)>header{
+  background:rgba(255,255,255,.35)!important;
+  -webkit-backdrop-filter:blur(22px) saturate(140%)!important;
+  backdrop-filter:blur(22px) saturate(140%)!important;
+  border-bottom:1px solid rgba(16,16,16,.16)!important;
+  box-shadow:none!important;
+}
+html body.iha-nav-ready.iha-glass-scrolled>header,
+html body.iha-nav-ready.iha-glass-scrolled:has(.os-simple-home)>header.bar,
+html body.iha-nav-ready.iha-glass-scrolled:has(.home-masthead)>header.bar,
+html body.iha-nav-ready.iha-site-surface.iha-glass-scrolled>header,
+html body.iha-nav-ready.iha-global-page.iha-glass-scrolled>header{
+  background:rgba(255,255,255,.55)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(130%)!important;
+  backdrop-filter:blur(24px) saturate(130%)!important;
+  border-bottom:1px solid rgba(16,16,16,.14)!important;
+  box-shadow:0 2px 12px rgba(16,16,16,.045)!important;
+}
