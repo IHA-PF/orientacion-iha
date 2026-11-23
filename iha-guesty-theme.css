@@ -215,3 +215,14 @@ html body:has(.spotlight) :is(.access,.filters button[aria-pressed=true],.spotli
 html body:has(.spotlight) :is(.grid article,.spotlight-example){background:#fff!important;border-color:#e5e7eb!important}
 html body:has(.spotlight) .stage{background:#e7f6ce!important;color:#101010!important}
 /* Accessible states: warnings and SOS red intentionally remain semantic. */
+
+
+body header .brand .iha-wordmark-text{
+ display:inline-flex;align-items:center;flex:none;
+ margin:0 9px 0 0;color:#101010!important;
+ font:750 24px/1.05 system-ui,sans-serif;letter-spacing:-.055em;
+}
+@media(max-width:700px){
+ body header .brand>img.iha-brand-symbol{width:31px!important;height:31px!important;min-width:31px!important;margin-right:5px!important}
+ body header .brand .iha-wordmark-text{font-size:19px;margin-right:5px}
+}
