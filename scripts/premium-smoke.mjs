@@ -90,7 +90,7 @@ try{
     const m=bg.match(/rgba?\(([^)]+)\)/);
     if(!m)return false;
     const alpha=m[1].split(",")[3];
-    return alpha!==undefined&&Number(alpha)<=0.94;
+    return alpha!==undefined&&Number(alpha)<=0.5;
   },headerSel,{timeout:3500});
   const style=await page.locator(headerSel).evaluate(el=>({
    pos:getComputedStyle(el).position,
@@ -103,7 +103,7 @@ try{
   assert.notEqual(style.filter,"none",path+" header must have glass blur");
   // A blurred dark opaque header is not a transparent header. Check actual alpha.
   const alpha=c=>{const m=c.match(/rgba?\(([^)]+)\)/);return m?(m[1].split(",")[3]===undefined?1:Number(m[1].split(",")[3])):1};
-  assert.ok(alpha(style.background)<=0.94,path+" navbar must be genuinely transparent (alpha <= 0.94): "+JSON.stringify(style));
+  assert.ok(alpha(style.background)<=0.5,path+" initial navbar must show underlying content (alpha <= 0.50): "+JSON.stringify(style));
   const artwork=await page.locator(heroSel).evaluate(el=>{
     const computed=getComputedStyle(el);
     if(el.classList.contains("iha-global-hero"))return Boolean(el.querySelector(".iha-global-visual img")?.complete);
@@ -116,16 +116,17 @@ try{
   assert.ok(top&&top.y>=-3&&top.y<50,path+" must extend beneath the header: "+JSON.stringify(top));
   await page.evaluate(()=>window.scrollTo(0,550));
   await page.waitForFunction(()=>document.body.classList.contains("iha-glass-scrolled"),{timeout:3000});
-  // Scroll causes a CSS background transition. Assert its settled state.
+  // Even after scrolling, the reference header remains frosted rather than opaque.
   await page.waitForFunction(selector=>{
     const el=document.querySelector(selector);if(!el)return false;
     const c=getComputedStyle(el).backgroundColor;
     const m=c.match(/rgba?\(([^)]+)\)/);if(!m)return false;
     const alpha=m[1].split(",")[3];
-    return alpha===undefined||Number(alpha)>=0.85;
+    return alpha!==undefined&&Number(alpha)>=0.45&&Number(alpha)<=0.68;
   },headerSel,{timeout:3500});
   const scrollColor=await page.locator(headerSel).evaluate(el=>getComputedStyle(el).backgroundColor);
-  assert.ok(alpha(scrollColor)>=0.85,path+" nav should become opaque when scrolled: "+scrollColor);
+  if(path.includes("?lang=es"))await page.screenshot({path:"test-artifacts/iha-frosted-header-scrolled.png",fullPage:false});
+  assert.ok(alpha(scrollColor)>=0.45&&alpha(scrollColor)<=0.68,path+" scrolled navbar must remain translucent (0.45–0.68): "+scrollColor);
   await page.evaluate(()=>window.scrollTo(0,0));
   await page.waitForFunction(()=>!document.body.classList.contains("iha-glass-scrolled"),{timeout:3000});
   assert.equal(pageErrors.length,0,path+" must not have browser exceptions "+pageErrors.join(";"));
