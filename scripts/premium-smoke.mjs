@@ -68,4 +68,38 @@ try{
    }
   }
  }
+ // Transparent header acceptance: homepage, hero subpages and an illustrated service page.
+ for(const [path,headerSel,heroSel] of [
+   ["/?lang=es","header.bar",".os-simple-home"],
+   ["/es/legal-360/","body > header",".hero"],
+   ["/en/digital-justice-os/","body > header",".hero"],
+   ["/es/prepare-su-caso/","body > header",".iha-global-hero"]
+ ]){
+  const page=await browser.newPage({viewport:{width:1440,height:900}});
+  const pageErrors=[];page.on("pageerror",e=>pageErrors.push(e.message));
+  const response=await page.goto("http://127.0.0.1:8765"+path,{waitUntil:"domcontentloaded"});
+  assert.equal(response?.status(),200,path+" should load");
+  await page.locator(heroSel).waitFor({state:"visible",timeout:10000});
+  await page.waitForFunction(()=>document.body.dataset.ihaGlassBound==="true",{timeout:8000});
+  const style=await page.locator(headerSel).evaluate(el=>({
+   pos:getComputedStyle(el).position,
+   filter:getComputedStyle(el).backdropFilter||getComputedStyle(el).webkitBackdropFilter,
+   background:getComputedStyle(el).backgroundColor,
+   gradient:getComputedStyle(el).backgroundImage,
+   headerHeight:el.getBoundingClientRect().height
+  }));
+  assert.equal(style.pos,"fixed",path+" header must overlay the hero");
+  assert.notEqual(style.filter,"none",path+" header must have glass blur");
+  assert.ok(style.headerHeight>40,path+" must have a substantial nav");
+  const top=await page.locator(heroSel).boundingBox();
+  assert.ok(top&&top.y>=-3&&top.y<50,path+" must extend beneath the header: "+JSON.stringify(top));
+  await page.evaluate(()=>window.scrollTo(0,550));
+  await page.waitForFunction(()=>document.body.classList.contains("iha-glass-scrolled"),{timeout:3000});
+  await page.evaluate(()=>window.scrollTo(0,0));
+  await page.waitForFunction(()=>!document.body.classList.contains("iha-glass-scrolled"),{timeout:3000});
+  assert.equal(pageErrors.length,0,path+" must not have browser exceptions "+pageErrors.join(";"));
+  if(path.includes("legal-360"))await page.screenshot({path:"test-artifacts/legal360-transparent-header.png",fullPage:false});
+  console.log("Transparent header",path,"OK");
+  await page.close();
+ }
 }finally{await browser.close();}
