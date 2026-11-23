@@ -6,6 +6,9 @@ on:
       - 'count.js'
       - 'iha-brand-system.js'
       - 'iha-guesty-theme.css'
+      - 'iha-navigation.js'
+      - 'iha-navigation.css'
+      - 'scripts/iha-navigation-smoke.mjs'
       - 'ai-agents/**'
       - 'orientador/**'
       - 'scripts/iha-brand-smoke.mjs'
@@ -48,6 +51,7 @@ jobs:
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           node scripts/premium-smoke.mjs
           node scripts/iha-brand-smoke.mjs
+          node scripts/iha-navigation-smoke.mjs
           node scripts/iha-brand-coverage.mjs
       - name: Upload screenshots
         if: always()
