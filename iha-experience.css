@@ -64,3 +64,74 @@ body.iha-site-surface .hero .pill{
 }
 body.iha-site-surface .hero .btn.secondary:focus-visible,
 body.iha-site-surface .hero .btn.outline:focus-visible{outline:3px solid #bb8b18;outline-offset:3px}
+
+
+/* IHA glass navigation: homepage only, over the premium hero. */
+body:has(.os-simple-home) > header.bar{
+ position:fixed!important;inset:0 0 auto;width:100%;z-index:120;
+ background:linear-gradient(105deg,rgba(7,61,48,.78),rgba(11,62,53,.58))!important;
+ -webkit-backdrop-filter:blur(17px) saturate(145%);backdrop-filter:blur(17px) saturate(145%);
+ border-bottom:1px solid rgba(255,255,255,.16)!important;
+ box-shadow:0 7px 28px rgba(6,40,30,.06)!important;
+ transition:background .26s ease,box-shadow .26s ease,border-color .26s ease;
+}
+body.iha-glass-scrolled:has(.os-simple-home) > header.bar{
+ background:rgba(8,53,41,.94)!important;
+ border-bottom-color:rgba(255,255,255,.11)!important;
+ box-shadow:0 12px 29px rgba(3,34,23,.18)!important;
+}
+body:has(.os-simple-home) .os-simple-home.os-premium{
+ padding-top:calc(var(--iha-glass-h,76px) + 12px)!important;
+}
+body:has(.os-simple-home) header.bar .brand,
+body:has(.os-simple-home) header.bar .os-wordmark,
+body:has(.os-simple-home) header.bar .brand-t b,
+body:has(.os-simple-home) header.bar .tabs .tab,
+body:has(.os-simple-home) header.bar .lbtn{
+ color:#f7fcf8!important;
+}
+body:has(.os-simple-home) header.bar .brand-t{border-left-color:rgba(255,255,255,.42)!important}
+body:has(.os-simple-home) header.bar .tabs .tab:hover,
+body:has(.os-simple-home) header.bar .lbtn:hover{background:rgba(255,255,255,.15)!important}
+body:has(.os-simple-home) header.bar .os-header-start{
+ background:#e4f5ed!important;color:#0a4734!important;
+}
+body:has(.os-simple-home) header.bar .os-header-start:hover{background:#fff!important}
+body:has(.os-simple-home) header.bar .sosbtn{
+ background:rgba(255,241,235,.93)!important;color:#a52c22!important;
+ border-color:rgba(255,255,255,.48)!important;
+}
+@media(max-width:720px){
+ body:has(.os-simple-home) > header.bar{-webkit-backdrop-filter:blur(13px);backdrop-filter:blur(13px)}
+ body:has(.os-simple-home) .os-simple-home.os-premium{padding-top:calc(var(--iha-glass-h,110px) + 12px)!important}
+}
+@media(prefers-reduced-motion:reduce){body:has(.os-simple-home) > header.bar{transition:none!important}}
+
+
+/* IHA glass navigation: LEGAL 360 and Digital Justice OS over their hero. */
+body.iha-site-surface > header{
+ position:fixed!important;inset:0 0 auto;width:100%;z-index:120;
+ background:linear-gradient(105deg,rgba(7,61,48,.78),rgba(11,62,53,.58))!important;
+ color:#f7fcf8!important;
+ -webkit-backdrop-filter:blur(17px) saturate(145%);backdrop-filter:blur(17px) saturate(145%);
+ border-bottom:1px solid rgba(255,255,255,.16)!important;
+ box-shadow:0 7px 28px rgba(6,40,30,.06)!important;
+ transition:background .26s ease,box-shadow .26s ease;
+}
+body.iha-site-surface.iha-glass-scrolled > header{
+ background:rgba(8,53,41,.94)!important;
+ box-shadow:0 12px 29px rgba(3,34,23,.18)!important;
+}
+body.iha-site-surface > header .brand,
+body.iha-site-surface > header .brand b,
+body.iha-site-surface > header .brand small,
+body.iha-site-surface > header nav a{color:#f7fcf8!important}
+body.iha-site-surface > header .btn{border-radius:999px}
+body.iha-site-surface .hero{
+ padding-top:calc(var(--iha-glass-h,74px) + 66px)!important;
+}
+@media(max-width:720px){
+ body.iha-site-surface .hero{padding-top:calc(var(--iha-glass-h,76px) + 34px)!important}
+ body.iha-site-surface > header{-webkit-backdrop-filter:blur(13px);backdrop-filter:blur(13px)}
+}
+@media(prefers-reduced-motion:reduce){body.iha-site-surface > header{transition:none!important}}
