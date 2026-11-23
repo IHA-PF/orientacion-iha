@@ -1,7 +1,7 @@
 name: Validate IHA website orientation
 on:
   push:
-    branches: [feature/digital-justice-os-positioning]
+    branches: [feature/digital-justice-os-positioning, release/simple-orientation-20261123]
   pull_request:
     paths:
       - 'index.html'
