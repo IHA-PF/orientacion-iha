@@ -370,3 +370,12 @@ html body.iha-nav-ready>header .iha-nav-layout>.brand{
     padding-inline:5px!important;
   }
 }
+
+@media(min-width:1051px){
+ html body.iha-nav-ready>header .iha-nav-groups>details:not(.iha-mobile-access)[open]>.iha-nav-panel{
+ display:grid!important;grid-template-columns:1fr 1fr;gap:8px;min-width:0!important;width:min(490px,45vw)!important;max-width:none!important;padding:20px!important;border-radius:18px!important;
+ }
+ html body.iha-nav-ready>header .iha-nav-groups .iha-nav-entry{white-space:normal!important;padding:14px!important;background:#f3f8f6;border-radius:10px}
+}
+@media(max-width:1050px){html body.iha-nav-ready>header .iha-nav-mobile-open .iha-nav-groups{max-height:calc(100dvh - 76px);overflow-y:auto}}
+@media(prefers-reduced-motion:reduce){.iha-nav-layout *{transition:none!important;animation:none!important}}

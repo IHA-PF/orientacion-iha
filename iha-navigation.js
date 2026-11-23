@@ -13,6 +13,312 @@ const prepSlug={es:"prepare-su-caso",en:"prepare-your-case",fr:"preparez-votre-d
 const languageLabel={es:"Español",en:"English",fr:"Français",pt:"Português"};
 function create(tag,cls,txt){const el=document.createElement(tag);if(cls)el.className=cls;if(txt!=null)el.textContent=txt;return el}
 function lnk(text,href,cls){const e=create("a",cls,text);e.href=href;return e}
+const entries = {
+ "es": [
+  [
+   [
+    "Conozca IHA",
+    "/?lang=es#inicio"
+   ],
+   [
+    "Orientación gratuita",
+    "/?lang=es#guia"
+   ],
+   [
+    "IHA LEGAL 360",
+    "/es/legal-360/"
+   ],
+   [
+    "Digital Justice OS",
+    "/es/digital-justice-os/"
+   ],
+   [
+    "AI Agents",
+    "/ai-agents/"
+   ],
+   [
+    "Cómo funciona",
+    "/es/legal-360/#how"
+   ]
+  ],
+  [
+   [
+    "Consumidores",
+    "/es/servicios/#consumers"
+   ],
+   [
+    "Viajeros",
+    "/es/servicios/#travel"
+   ],
+   [
+    "Anfitriones",
+    "/es/servicios/#hosts"
+   ],
+   [
+    "Empresas",
+    "/es/servicios/#hosts"
+   ],
+   [
+    "Conflictos con plataformas",
+    "/es/servicios/#platforms"
+   ],
+   [
+    "Análisis de expediente",
+    "/es/servicios/analisis-de-su-caso/"
+   ],
+   [
+    "Preparar pruebas",
+    "/es/guia-de-pruebas/"
+   ]
+  ],
+  [
+   [
+    "Catálogo de servicios",
+    "/es/servicios/"
+   ],
+   [
+    "Orientación gratuita",
+    "/?lang=es#guia"
+   ],
+   [
+    "Acompañamiento personalizado",
+    "/es/servicios-y-precios/#compare"
+   ],
+   [
+    "Solicitar cotización",
+    "mailto:contacto@ihasolucioneslegales.com.co"
+   ]
+  ]
+ ],
+ "en": [
+  [
+   [
+    "About IHA",
+    "/?lang=en#inicio"
+   ],
+   [
+    "Free guidance",
+    "/?lang=en#guia"
+   ],
+   [
+    "IHA LEGAL 360",
+    "/en/legal-360/"
+   ],
+   [
+    "Digital Justice OS",
+    "/en/digital-justice-os/"
+   ],
+   [
+    "AI Agents",
+    "/ai-agents/"
+   ],
+   [
+    "How it works",
+    "/en/legal-360/#how"
+   ]
+  ],
+  [
+   [
+    "Consumers",
+    "/en/services/#consumers"
+   ],
+   [
+    "Travellers",
+    "/en/services/#travel"
+   ],
+   [
+    "Hosts",
+    "/en/services/#hosts"
+   ],
+   [
+    "Businesses",
+    "/en/services/#hosts"
+   ],
+   [
+    "Platform disputes",
+    "/en/services/#platforms"
+   ],
+   [
+    "Case analysis",
+    "/en/services/case-analysis/"
+   ],
+   [
+    "Prepare evidence",
+    "/en/evidence-guide/"
+   ]
+  ],
+  [
+   [
+    "Service catalogue",
+    "/en/services/"
+   ],
+   [
+    "Free guidance",
+    "/?lang=en#guia"
+   ],
+   [
+    "Personalised support",
+    "/en/services-and-prices/#compare"
+   ],
+   [
+    "Request a quote",
+    "mailto:contacto@ihasolucioneslegales.com.co"
+   ]
+  ]
+ ],
+ "fr": [
+  [
+   [
+    "Découvrir IHA",
+    "/?lang=fr#inicio"
+   ],
+   [
+    "Orientation gratuite",
+    "/?lang=fr#guia"
+   ],
+   [
+    "IHA LEGAL 360",
+    "/fr/legal-360/"
+   ],
+   [
+    "Digital Justice OS",
+    "/fr/digital-justice-os/"
+   ],
+   [
+    "Agents IA",
+    "/ai-agents/"
+   ],
+   [
+    "Comment ça marche",
+    "/fr/legal-360/#how"
+   ]
+  ],
+  [
+   [
+    "Consommateurs",
+    "/fr/services/#consumers"
+   ],
+   [
+    "Voyageurs",
+    "/fr/services/#travel"
+   ],
+   [
+    "Hôtes",
+    "/fr/services/#hosts"
+   ],
+   [
+    "Entreprises",
+    "/fr/services/#hosts"
+   ],
+   [
+    "Litiges avec les plateformes",
+    "/fr/services/#platforms"
+   ],
+   [
+    "Analyse de dossier",
+    "/fr/services/analyse-de-votre-dossier/"
+   ],
+   [
+    "Préparer les preuves",
+    "/fr/guide-des-preuves/"
+   ]
+  ],
+  [
+   [
+    "Catalogue des services",
+    "/fr/services/"
+   ],
+   [
+    "Orientation gratuite",
+    "/?lang=fr#guia"
+   ],
+   [
+    "Accompagnement personnalisé",
+    "/fr/services-et-prix/#compare"
+   ],
+   [
+    "Demander un devis",
+    "mailto:contacto@ihasolucioneslegales.com.co"
+   ]
+  ]
+ ],
+ "pt": [
+  [
+   [
+    "Conheça a IHA",
+    "/?lang=pt#inicio"
+   ],
+   [
+    "Orientação gratuita",
+    "/?lang=pt#guia"
+   ],
+   [
+    "IHA LEGAL 360",
+    "/pt/legal-360/"
+   ],
+   [
+    "Digital Justice OS",
+    "/pt/digital-justice-os/"
+   ],
+   [
+    "Agentes de IA",
+    "/ai-agents/"
+   ],
+   [
+    "Como funciona",
+    "/pt/legal-360/#how"
+   ]
+  ],
+  [
+   [
+    "Consumidores",
+    "/pt/servicos/#consumers"
+   ],
+   [
+    "Viajantes",
+    "/pt/servicos/#travel"
+   ],
+   [
+    "Anfitriões",
+    "/pt/servicos/#hosts"
+   ],
+   [
+    "Empresas",
+    "/pt/servicos/#hosts"
+   ],
+   [
+    "Conflitos com plataformas",
+    "/pt/servicos/#platforms"
+   ],
+   [
+    "Análise do caso",
+    "/pt/servicos/analise-do-seu-caso/"
+   ],
+   [
+    "Preparar provas",
+    "/pt/guia-de-provas/"
+   ]
+  ],
+  [
+   [
+    "Catálogo de serviços",
+    "/pt/servicos/"
+   ],
+   [
+    "Orientação gratuita",
+    "/?lang=pt#guia"
+   ],
+   [
+    "Acompanhamento personalizado",
+    "/pt/servicos-e-precos/#compare"
+   ],
+   [
+    "Solicitar orçamento",
+    "mailto:contacto@ihasolucioneslegales.com.co"
+   ]
+  ]
+ ]
+};
 function init(){
  const header=document.querySelector("body > header");
  if(!header || header.dataset.ihaNavInstalled)return;
@@ -34,9 +340,11 @@ function init(){
   for(const [title,url] of links)panel.append(lnk(title,url,"iha-nav-entry"));
   d.append(sum,panel);return {d,panel};
  };
- const platform=group(t.platform,[[t.home,paths.home],[t.guide,paths.guide],[t.digital,paths.digital],[t.agents,paths.agents]]);
- const solutions=group(t.solutions,[[t.guest,paths.guest],[t.host,paths.host],[t.legal,paths.legal],[t.prepare,paths.prepare]]);
- nav.append(platform.d,solutions.d,lnk(t.prices,paths.pricing,"iha-nav-price"));
+ const platform=group(t.platform,entries[lang][0]);
+ const solutions=group(t.solutions,entries[lang][1]);
+ const pricing=group(t.prices,entries[lang][2]);
+ pricing.d.querySelector("summary").classList.add("iha-nav-price");
+ nav.append(platform.d,solutions.d,pricing.d);
  const right=create("div","iha-nav-right");
  const oldTools=inner.querySelector(":scope > .tools");
  const oldLang=oldTools?.querySelector("#lm");
@@ -101,7 +409,7 @@ function init(){
  const closeAll=except=>header.querySelectorAll(".iha-nav-dropdown[open]").forEach(d=>{if(d!==except)d.open=false});
  header.querySelectorAll(".iha-nav-dropdown").forEach(d=>d.addEventListener("toggle",()=>{if(d.open)closeAll(d)}));
  document.addEventListener("click",e=>{if(!header.contains(e.target))closeAll()});
- document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeAll();inner.classList.remove("iha-nav-mobile-open");menuBtn.setAttribute("aria-expanded","false")}});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"){const active=header.querySelector("details[open] > summary");if(active)active.focus();else if(inner.classList.contains("iha-nav-mobile-open"))menuBtn.focus();closeAll();if(inner.classList.contains("iha-nav-mobile-open"))menuBtn.focus();inner.classList.remove("iha-nav-mobile-open");menuBtn.setAttribute("aria-expanded","false")}});
  menuBtn.addEventListener("click",()=>{const open=inner.classList.toggle("iha-nav-mobile-open");menuBtn.setAttribute("aria-expanded",String(open));if(!open)closeAll()});
  nav.addEventListener("click",e=>{if(e.target.closest("a")){inner.classList.remove("iha-nav-mobile-open");menuBtn.setAttribute("aria-expanded","false");closeAll()}});
  right.addEventListener("click",e=>{if(e.target.closest("a"))closeAll()});
@@ -110,15 +418,18 @@ function init(){
    const code=languageFromPath(),nt=messages[code]||messages.es;
    const route=(hash)=>"/?lang="+code+"#"+hash;
    const target={home:route("inicio"),guide:route("guia"),pricing:route("servicios"),guest:route("consumidor"),host:route("anfitrion"),legal:"/"+code+"/legal-360/",digital:"/"+code+"/digital-justice-os/",agents:"/ai-agents/",prepare:"/"+code+"/"+prepSlug[code]+"/"};
-   const setLinks=(parent,names)=>{
-     const links=parent.querySelectorAll(":scope > a.iha-nav-entry");
-     names.forEach(([key,href],i)=>{if(links[i]){links[i].textContent=nt[key];links[i].href=href}});
-   };
-   platform.d.querySelector("summary").firstChild.textContent=nt.platform;
-   solutions.d.querySelector("summary").firstChild.textContent=nt.solutions;
-   setLinks(platform.panel,[["home",target.home],["guide",target.guide],["digital",target.digital],["agents",target.agents]]);
-   setLinks(solutions.panel,[["guest",target.guest],["host",target.host],["legal",target.legal],["prepare",target.prepare]]);
-   const prices=nav.querySelector(".iha-nav-price");prices.textContent=nt.prices;prices.href=target.pricing;
+   [platform,solutions,pricing].forEach(({d,panel},index)=>{
+     const label=[nt.platform,nt.solutions,nt.prices][index];
+     const trigger=d.querySelector("summary");
+     trigger.firstChild.textContent=label;
+     trigger.setAttribute("aria-label",label);
+     panel.querySelectorAll(":scope > a").forEach((link,i)=>{
+       const [title,url]=entries[code][index][i];
+       link.textContent=title;
+       link.href=url;
+     });
+   });
+   nav.setAttribute("aria-label",nt.platform+" · "+nt.solutions);
    start.textContent=nt.start;start.href=target.guide;
    for(const d of [access,mobileAccess]){
      d.querySelector("summary").textContent=nt.access;
