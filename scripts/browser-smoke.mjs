@@ -79,7 +79,7 @@ try {
         await page.goto(BASE+"/?lang="+lang,{waitUntil:"domcontentloaded"});
         await page.locator(".os-host-cta").click();
         await page.waitForURL(/#servicios/, {timeout:10000});
-        assert.equal(await page.locator(".os-simple-home").count(),0,"Host CTA did not open actual services");
+        await page.locator(".os-simple-home").waitFor({state:"detached",timeout:12000});
         assert.ok(await page.locator("#app h1").isVisible(),"Host CTA destination has no heading");
       }
       results.push(lang+"-"+(mobile?"mobile":"desktop")+": OK");
