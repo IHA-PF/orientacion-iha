@@ -186,7 +186,7 @@ body.iha-nav-ready:not(:has(.os-simple-home)):not(.iha-site-surface):not(.iha-gl
  body.iha-nav-ready > header .iha-nav-right{gap:7px!important}
  body.iha-nav-ready > header .iha-nav-start{padding-inline:18px!important}
 }
-@media(max-width:800px){
+@media(max-width:1050px){
  body.iha-nav-ready > header > .iha-nav-layout{
    min-height:70px!important;padding:10px 16px!important;gap:8px!important;
  }
@@ -267,7 +267,7 @@ html body.iha-nav-ready.iha-glass-scrolled>header{
  background:rgba(255,255,255,.97)!important;
 }
 html body.iha-nav-ready>header .iha-nav-groups .iha-mobile-access{display:none!important}
-@media(max-width:800px){
+@media(max-width:1050px){
  html body.iha-nav-ready>header .iha-nav-layout.iha-nav-mobile-open .iha-nav-groups .iha-mobile-access{
    display:block!important;border-top:1px solid #e5e7eb!important;margin-top:4px!important;padding-top:5px!important;
  }
