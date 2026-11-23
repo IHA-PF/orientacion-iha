@@ -55,6 +55,10 @@ jobs:
           node scripts/iha-brand-smoke.mjs
           node scripts/iha-navigation-smoke.mjs
           node scripts/iha-brand-coverage.mjs
+      - name: Confirm the published catalogue and public routes
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          python3 scripts/check-published-catalog.py
       - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

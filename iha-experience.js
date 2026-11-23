@@ -294,9 +294,15 @@ function render(){
  const grid=parent=>{const g=make("div","store-grid");parent.append(g);return g};
  const card=(parent,title,copy,action,url)=>{const el=make("article","store-card");el.append(make("h3","",title));if(copy)el.append(make("p","",copy));if(action)el.append(link(action,url));parent.append(el)};
  const hero=app.querySelector(".os-premium-intro");
- if(hero&&!hero.querySelector(".store-link"))hero.append(link(t.button,"/"+lang+"/"+d.prepare+"/"));
+ if(hero&&!hero.querySelector(".store-link")){
+   const copy=make("div","store-hero-copy");
+   while(hero.firstChild)copy.append(hero.firstChild);
+   copy.append(link(t.button,base+d.prepare+"/"));
+   const artwork=make("img","store-hero-art");artwork.src="/assets/iha-premium-conflict.svg";artwork.alt="";artwork.width=900;artwork.height=650;artwork.fetchPriority="high";
+   hero.append(copy,artwork);
+ }
  const needs=block(d.catalogue), shortcuts=make("nav","store-links");needs.append(shortcuts);
- [[d.problem,"platforms"],[d.consumers,"consumers"],[d.hosts,"hosts"],[d.protect,"hosts"]].forEach(([label,id])=>shortcuts.append(link(label,catalog+"#"+id)));
+ [[d.problem,catalog+"#platforms"],[d.consumers,catalog+"#consumers"],[d.hosts,catalog+"#hosts"],[d.protect,base+d.host+"/"]].forEach(([label,url])=>shortcuts.append(link(label,url)));
  const steps=grid(block(d.how));t.steps.forEach(([,title,copy])=>card(steps,title,copy));
  const services=block(d.services),tabs=make("div","store-tabs");tabs.setAttribute("role","tablist");tabs.setAttribute("aria-label",d.services);services.append(tabs);
  const buttons=[],panels=[];
