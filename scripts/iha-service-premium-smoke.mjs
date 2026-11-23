@@ -30,6 +30,7 @@ try{
    assert.equal(await hero.locator("a.iha-service-hero-action").count(),1,path+" first CTA missing");
    assert.equal(await page.locator(".iha-service-layout").count(),1,path+" structure missing");
    assert.equal(await page.locator(".iha-service-steps .iha-service-step").count(),3,path+" must show 3 process steps");
+   assert.ok(await page.locator("main details.iha-service-question").count()>=2,path+" FAQ derived from existing terms");
    const sidebar=page.locator(".iha-service-aside");
    assert.equal(await sidebar.locator("section").count(),2,path+" must preserve pricing and contact sections");
    assert.ok((await sidebar.locator("section").first().innerText()).length>40,path+" price panel absent");
