@@ -30,7 +30,7 @@ try{
         text:getComputedStyle(document.body).color,bg:color(document.body),stylesheet:style?.href,
         iconHref:document.querySelector("link[rel=icon]")?.href || ""};
     });
-    assert.ok(state.markSrc?.endsWith("/assets/iha-mark.svg"),path+" approved mark must be in header");
+    assert.ok(state.markSrc?.endsWith("assets/iha-mark.svg"),path+" approved mark must be in header");
     assert.equal(state.markLoaded,true,path+" logo must load");
     assert.equal(state.text,"rgb(16, 16, 16)",path+" body text uses Guesty ink");
     assert.equal(state.bg,"rgb(255, 255, 255)",path+" body uses Guesty white");
