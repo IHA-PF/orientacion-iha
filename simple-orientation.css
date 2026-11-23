@@ -11,12 +11,12 @@
 .os-simple-form input{min-width:0;width:100%;font-family:inherit;font-size:16px;color:#13241f;border:1px solid #c7d0c7;background:#fff;border-radius:10px;padding:13px 14px}
 .os-simple-form input:focus-visible,.os-choice:focus-visible,.os-simple-cta:focus-visible{outline:3px solid #e5b649;outline-offset:3px}
 .os-simple-form input::placeholder{color:#58675f;opacity:1}
-.os-simple-cta{border:0;padding:12px 20px;border-radius:10px;font:700 14px/1.2 inherit;color:#123127;background:#f6d55c;cursor:pointer;white-space:nowrap}
+.os-simple-cta{border:0;padding:12px 20px;border-radius:10px;font-family:inherit;font-size:14px;font-weight:700;line-height:1.2;color:#123127;background:#f6d55c;cursor:pointer;white-space:nowrap}
 .os-simple-cta:hover{background:#ffe38b}
 .os-simple-caption{font-size:12px;color:#56655d;margin:0}
 .os-simple-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c9ddd2;margin:23px 0 12px}
 .os-simple-choices{display:flex;flex-wrap:wrap;gap:10px}
-.os-choice{font:700 14px/1.2 inherit;background:transparent;color:#fff;border:1px solid rgba(240,248,241,.46);padding:12px 18px;border-radius:999px;cursor:pointer}
+.os-choice{font-family:inherit;font-size:14px;font-weight:700;line-height:1.2;background:transparent;color:#fff;border:1px solid rgba(240,248,241,.46);padding:12px 18px;border-radius:999px;cursor:pointer}
 .os-choice:hover{background:rgba(255,255,255,.13)}
 .os-simple-extras{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:21px}
 .os-simple-extras a{font-size:13px;color:#f6d55c;text-decoration:underline;text-underline-offset:3px}
