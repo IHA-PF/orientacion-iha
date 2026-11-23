@@ -50,6 +50,7 @@ jobs:
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/iha-premium.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          python3 scripts/audit-public-pages.py
           node scripts/platform-catalog-smoke.mjs
           node scripts/premium-smoke.mjs
           node scripts/iha-brand-smoke.mjs

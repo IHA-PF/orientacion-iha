@@ -56,7 +56,7 @@ const entries = {
    ],
    [
     "Empresas",
-    "/pt/legal-360/#business"
+    "/es/legal-360/#business"
    ],
    [
     "Conflictos con plataformas",
@@ -284,7 +284,7 @@ const entries = {
    ],
    [
     "Empresas",
-    "/pt/servicos/#hosts"
+    "/pt/legal-360/#business"
    ],
    [
     "Conflitos com plataformas",
