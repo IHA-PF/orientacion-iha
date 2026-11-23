@@ -33,6 +33,9 @@ ready(()=>{
  const actions=document.createElement("div");actions.className="iha-global-actions";
  const action=document.createElement("a");action.className="iha-global-primary";action.href=hrefs.prepare;action.textContent=t.start;
  const tech=document.createElement("a");tech.className="iha-global-secondary";tech.href=hrefs.legal;tech.textContent=t.legal+" ↗";
+ if(main.querySelector("#compare")){
+   action.href="#compare";action.textContent=main.querySelector("#compare h2").textContent;
+ }
  actions.append(action,tech);left.append(actions);
  const picture=document.createElement("div");picture.className="iha-global-visual";
  const img=document.createElement("img");img.src=heroImage;img.alt="";img.width=900;img.height=650;img.decoding="async";img.fetchPriority="high";picture.append(img);

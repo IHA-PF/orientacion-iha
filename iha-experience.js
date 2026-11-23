@@ -296,6 +296,8 @@ function render(){
  const hero=app.querySelector(".os-premium-intro");
  if(hero&&!hero.querySelector(".store-link")){
    const copy=make("div","store-hero-copy");
+   const titles={es:"Tus derechos ante las plataformas digitales",en:"Your rights on digital platforms",fr:"Vos droits sur les plateformes numériques",pt:"Seus direitos nas plataformas digitais"};
+   hero.querySelector("h1").textContent=titles[lang];
    while(hero.firstChild)copy.append(hero.firstChild);
    copy.append(link(t.button,base+d.prepare+"/"));
    const artwork=make("img","store-hero-art");artwork.src="/assets/iha-premium-conflict.svg";artwork.alt="";artwork.width=900;artwork.height=650;artwork.fetchPriority="high";

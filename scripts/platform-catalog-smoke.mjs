@@ -42,6 +42,12 @@ try {
     if(lang==="es"&&[390,1440].includes(width))await page.screenshot({path:"test-artifacts/"+type+"-"+width+".png"});
    }
   }
+  const agentPath=lang==="es"?"/ai-agents/":"/"+lang+"/ai-agents/";
+  await page.goto(base+agentPath);
+  assert.equal(await page.locator("html").getAttribute("lang"),lang);
+  await page.locator(".filters button").nth(2).click();
+  assert.equal(await page.locator(".grid article:visible").count(),2);
+  assert.equal(await page.locator(".filters button").nth(2).getAttribute("aria-pressed"),"true");
   assert.deepEqual(errors,[]);await page.close();
  }
 }finally{await browser.close()}
