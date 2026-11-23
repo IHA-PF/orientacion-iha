@@ -284,3 +284,89 @@ html body.iha-nav-ready > header > .iha-nav-layout > :not(.brand):not(.iha-nav-g
  display:none!important;
 }
 html body.iha-nav-ready > header > .iha-nav-layout{max-width:100%!important;box-sizing:border-box!important}
+
+
+/* Header proportions, 2026-11-23.
+   Match the reference's *layout rhythm*: compact IHA mark at the far left,
+   a generous empty column, then Plataforma / Soluciones / Precio.
+   Original IHA branding and links remain unchanged. */
+html body.iha-nav-ready:has(.os-simple-home)>header.bar,
+html body.iha-nav-ready:not(:has(.os-simple-home))>header.bar,
+html body.iha-nav-ready.iha-site-surface>header,
+html body.iha-nav-ready.iha-global-page>header,
+html body.iha-nav-ready>header,
+html body.iha-nav-ready.iha-glass-scrolled>header{
+  background:rgba(255,255,255,.93)!important;
+  color:#101010!important;
+  -webkit-backdrop-filter:blur(18px) saturate(120%)!important;
+  backdrop-filter:blur(18px) saturate(120%)!important;
+  border-bottom:1px solid #e8e8e8!important;
+  box-shadow:none!important;
+}
+html body.iha-nav-ready.iha-glass-scrolled:has(.os-simple-home)>header.bar,
+html body.iha-nav-ready.iha-glass-scrolled:not(:has(.os-simple-home))>header.bar,
+html body.iha-nav-ready.iha-site-surface.iha-glass-scrolled>header,
+html body.iha-nav-ready.iha-global-page.iha-glass-scrolled>header{
+  background:rgba(255,255,255,.97)!important;
+}
+html body.iha-nav-ready>header.bar::after{display:none!important}
+html body.iha-nav-ready>header .brand .brand-t{display:none!important}
+html body.iha-nav-ready>header .iha-nav-layout>.brand{
+  max-width:none!important;white-space:nowrap!important;
+}
+
+/* At the reference width (~1500px), navigation text starts at x=366px.
+   The compact IHA logo ends around x=130px, preserving ~235px of whitespace. */
+@media(min-width:1250px){
+  html body.iha-nav-ready>header>.iha-nav-layout{
+    display:grid!important;
+    grid-template-columns:320px minmax(360px,1fr) auto!important;
+    column-gap:22px!important;
+    gap:22px!important;
+    min-height:88px!important;
+    padding:12px 24px!important;
+    align-items:center!important;
+  }
+  html body.iha-nav-ready>header .iha-nav-layout>.brand{
+    justify-self:start!important;
+    width:max-content!important;
+  }
+  html body.iha-nav-ready>header .iha-nav-groups{
+    width:max-content!important;
+    max-width:100%!important;
+    margin:0!important;
+    justify-content:flex-start!important;
+    gap:clamp(32px,3vw,45px)!important;
+  }
+  html body.iha-nav-ready>header .iha-nav-groups>.iha-nav-dropdown,
+  html body.iha-nav-ready>header .iha-nav-groups>.iha-nav-price{
+    flex:0 0 auto!important;
+  }
+  html body.iha-nav-ready>header .iha-nav-trigger,
+  html body.iha-nav-ready>header .iha-nav-price{
+    font-size:19px!important;font-weight:400!important;
+    padding:10px 0!important;border-radius:5px!important;
+    gap:10px!important;
+  }
+  html body.iha-nav-ready>header .iha-nav-right{
+    margin-left:0!important;justify-self:end!important;
+  }
+}
+/* Intermediate desktop: keep one line and reserve breathing room without
+   pushing language and CTA controls beyond the viewport. */
+@media(min-width:1051px) and (max-width:1249px){
+  html body.iha-nav-ready>header>.iha-nav-layout{
+    min-height:82px!important;
+    padding:12px 24px!important;
+    gap:clamp(15px,2vw,26px)!important;
+  }
+  html body.iha-nav-ready>header .iha-nav-groups{
+    margin-left:clamp(14px,2.4vw,30px)!important;
+    gap:clamp(12px,1.7vw,22px)!important;
+  }
+  html body.iha-nav-ready>header .iha-nav-trigger,
+  html body.iha-nav-ready>header .iha-nav-price{
+    font-size:16px!important;font-weight:400!important;
+    padding-inline:5px!important;
+  }
+}
