@@ -57,9 +57,12 @@ for(const lang of languages){
   assert.match(services,/href="\.\.\/digital-justice-os\/"/,"LEGAL 360 lacks correct link");
   counts.pages++;
 }
-assert.ok(read("index.html").includes('class="os-spotlight"'),"Main homepage lacks OS strip");
-assert.equal((read("index.html").match(/class="os-copy os-/g)||[]).length,4,"Main homepage locale count");
-assert.ok(read("index.html").includes('aria-label="IHA Digital Justice OS"'),"Main nav lacks OS link");
+const home=read("index.html");
+assert.ok(home.includes("os-simple-home"),"Main homepage lacks simplified orientation");
+assert.ok(home.includes('href="simple-orientation.css"'),"Simplified homepage stylesheet is missing");
+assert.equal((home.match(/class="os-spotlight"/g)||[]).length,0,"Legacy technical banner crowds the homepage");
+assert.ok(home.includes('href="digital-justice-os/"'),"Digital Justice OS must remain accessible");
+assert.ok(home.includes('href="legal-360/"'),"Legal services must remain accessible");
 assert.ok(read("digital-justice-os/index.html").includes("digital-justice-os-redirect.js"),"Locale router missing");
 assert.ok(read("digital-justice-os-redirect.js").includes("location.replace"),"Locale redirect missing");
 assert.ok(read("llms.txt").includes("## IHA Digital Justice OS"),"Language-model index missing project");
