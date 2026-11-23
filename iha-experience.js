@@ -29,3 +29,24 @@ function render(){
 }
 const app=document.getElementById("app");if(!app)return;new MutationObserver(render).observe(app,{childList:true});render();
 })();
+
+/* IHA translucent header scroll controller: one shared behavior per page. */
+(()=>{"use strict";
+ const target="body > header.bar";
+ function start(){
+   const header=document.querySelector(target);
+   if(!header||document.body.dataset.ihaGlassBound==="true")return;
+   document.body.dataset.ihaGlassBound="true";
+   const syncHeight=()=>{
+     const h=header.getBoundingClientRect().height;
+     if(h>0)document.documentElement.style.setProperty("--iha-glass-h",Math.ceil(h)+"px");
+   };
+   const syncScroll=()=>document.body.classList.toggle("iha-glass-scrolled",window.scrollY>24);
+   syncHeight();syncScroll();
+   window.addEventListener("resize",syncHeight,{passive:true});
+   window.addEventListener("scroll",syncScroll,{passive:true});
+   if(typeof ResizeObserver!=="undefined")new ResizeObserver(syncHeight).observe(header);
+ }
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});
+ else start();
+})();
