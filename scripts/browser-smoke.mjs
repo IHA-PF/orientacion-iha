@@ -58,6 +58,12 @@ try {
         font: getComputedStyle(document.querySelector(".os-simple-cta")).fontFamily,
         inputWidth:document.querySelector("#os-situation").getBoundingClientRect().width
       }));
+      const chrome=await page.evaluate(()=>({
+        header:getComputedStyle(document.querySelector(".bar")).backgroundColor,
+        footer:getComputedStyle(document.querySelector("footer .foot-in")).color
+      }));
+      assert.equal(chrome.header,"rgb(250, 247, 242)","Homepage header must follow the ivory visual identity");
+      assert.notEqual(chrome.footer,"rgb(255, 255, 255)","Footer text must remain readable on the light background");
       assert.ok(layout.inputWidth>=130,"Search input too narrow");
       assert.ok(layout.bodyWidth<=layout.viewport+6,"Horizontal overflow on "+lang+" "+(mobile?"mobile":"desktop")+": "+JSON.stringify(layout));
       assert.equal(errors.length,0,"Uncaught browser errors: "+errors.join("; "));
