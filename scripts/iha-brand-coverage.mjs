@@ -13,8 +13,9 @@ async function scan(root){
 let covered=0,redirect=0,uncovered=[];
 for(const file of await scan(".")){
  const s=await readFile(file,"utf8");
+ if(!/<body/i.test(s)){redirect++;continue;}
  if(/http-equiv=["']refresh["']/.test(s)){redirect++;continue;}
- if(/count\.js|iha-experience\.js|iha-brand-system\.js/.test(s)){covered++;continue;}
+ if(/count\.js|iha-experience\.js|iha-brand-system\.js|iha-guesty-theme\.css/.test(s)){covered++;continue;}
  uncovered.push(file);
 }
 console.log(JSON.stringify({htmlCovered:covered,redirects:redirect,uncovered},null,2));
