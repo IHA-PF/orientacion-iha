@@ -389,3 +389,13 @@ html body>header.bar .brand-t b{color:#101010!important}
  html body>header.bar .os-wordmark{font-size:22px!important}
  html body>header.bar .brand-t small{display:none!important}
 }
+
+
+/* Regional legal guide uses a highly specific selector for its hero CTA. */
+html body #app > .hero .btn,
+html body #app > .hero a.btn,
+html body #app > .hero button.btn{
+ background:#007a67!important;
+ color:#ffffff!important;
+ border-color:#007a67!important;
+}
