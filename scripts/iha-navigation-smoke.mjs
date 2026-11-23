@@ -22,6 +22,14 @@ try{
    assert.equal(await page.locator("header .iha-nav-groups > details").count(),3,url+" 2 dropdowns + mobile access");
    assert.equal(await page.locator("header .iha-nav-price").count(),1,url+" pricing link");
    assert.equal(await page.locator("header .iha-nav-start").count(),1,url+" start CTA");
+   // Header transitions from the page's legacy theme to the new white translucent style.
+   // Check after the transition has actually settled rather than sampling mid-animation.
+   await page.waitForFunction(()=>{
+     const h=document.querySelector("body.iha-nav-ready > header");
+     if(!h)return false;
+     const m=getComputedStyle(h).backgroundColor.match(/rgba?\(([^)]+)\)/);
+     return m&&m[1].split(",").slice(0,3).map(Number).every(x=>x>=250);
+   },null,{timeout:4500});
    const state=await page.evaluate(()=>{
     const header=document.querySelector("body > header"),g=header.querySelector(".iha-nav-groups"),n=header.querySelector(".iha-nav-right");
     const boxes=[header.querySelector(".brand"),g,n].map(x=>{const r=x.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height}});
