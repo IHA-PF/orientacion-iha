@@ -276,3 +276,11 @@ html body.iha-nav-ready>header .iha-nav-groups .iha-mobile-access{display:none!i
    box-shadow:none!important;margin-top:2px!important;
  }
 }
+
+
+/* Hide legacy header shortcuts as well as old nav/CTA: their extra links
+   otherwise force narrow-language pages to 485px on a 390px viewport. */
+html body.iha-nav-ready > header > .iha-nav-layout > :not(.brand):not(.iha-nav-groups):not(.iha-nav-right):not(.iha-nav-mobile-button){
+ display:none!important;
+}
+html body.iha-nav-ready > header > .iha-nav-layout{max-width:100%!important;box-sizing:border-box!important}
