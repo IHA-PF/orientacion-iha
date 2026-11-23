@@ -77,3 +77,34 @@ body.iha-global-page a:focus-visible{outline:3px solid #e6bb39!important;outline
 @media(max-width:920px){.iha-global-hero{grid-template-columns:1fr}.iha-global-visual{min-height:285px}.iha-global-trust{grid-template-columns:1fr}.iha-global-trust-item{padding:15px 20px}.iha-global-feature-grid{gap:13px}.iha-global-feature-card>div{padding:18px}.iha-global-steps{gap:13px;padding:16px}.iha-global-steps article{padding:18px}}
 @media(max-width:680px){body.iha-global-page header .hb{padding:13px 16px!important;min-height:0;gap:7px}body.iha-global-page header .brand{gap:8px;flex:1}body.iha-global-page header .brand b{font-size:14px}body.iha-global-page header .brand small{display:none}body.iha-global-page header .brand .mono{width:42px;height:33px}.iha-global-nav{order:5;width:100%;justify-content:space-between;gap:3px;padding:6px 0 2px}.iha-global-nav>a{font-size:11px;padding:8px 3px}body.iha-global-page header .go{padding:10px 14px!important;font-size:11px!important}.iha-global-hero{width:calc(100% - 24px);margin-top:15px;border-radius:22px}.iha-global-hero-copy{padding:27px 22px}.iha-global-hero-copy h1{font-size:38px!important}.iha-global-hero-copy .lead{font-size:15px!important}.iha-global-visual{min-height:230px}.iha-global-chip{bottom:15px;left:13px;font-size:11px}.iha-global-actions{gap:9px}.iha-global-primary,.iha-global-secondary{font-size:12px!important;padding:10px 13px}.iha-global-trust{width:calc(100% - 24px);margin:14px auto 32px;gap:9px}.iha-global-trust-icon{width:40px;height:40px;font-size:23px}.iha-global-trust strong{font-size:14px}.iha-global-trust small{font-size:11px}body.iha-global-page main.w{width:calc(100% - 24px)!important;padding-bottom:32px!important}body.iha-global-page main.w>section{padding:19px!important;border-radius:19px!important}body.iha-global-page main.w>section h2{font-size:24px}.iha-global-related{width:calc(100% - 24px);margin-bottom:35px}.iha-global-feature-grid,.iha-global-steps{grid-template-columns:1fr;gap:15px}.iha-global-feature-card p{min-height:0}.iha-global-feature-card>img{aspect-ratio:1.9}.iha-global-steps{padding:13px}.iha-global-final{flex-direction:column;align-items:stretch;padding:29px 21px}.iha-global-final>a{white-space:normal}body.iha-global-page footer .w{padding:13px!important}}
 @media(prefers-reduced-motion:reduce){.iha-global-page *, .iha-global-page *:before,.iha-global-page *:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* IHA glass navigation on premium illustrated legal articles and service pages. */
+body.iha-global-page > header{
+ position:fixed!important;inset:0 0 auto;width:100%;z-index:120;
+ background:linear-gradient(105deg,rgba(7,61,48,.78),rgba(11,62,53,.58))!important;
+ color:#f7fcf8!important;
+ border-bottom:1px solid rgba(255,255,255,.16)!important;
+ -webkit-backdrop-filter:blur(17px) saturate(145%);backdrop-filter:blur(17px) saturate(145%);
+ box-shadow:0 7px 28px rgba(6,40,30,.06)!important;
+ transition:background .26s ease,box-shadow .26s ease;
+}
+body.iha-global-page.iha-glass-scrolled > header{
+ background:rgba(8,53,41,.94)!important;
+ box-shadow:0 12px 29px rgba(3,34,23,.18)!important;
+}
+body.iha-global-page > header .brand,
+body.iha-global-page > header .brand b,
+body.iha-global-page > header .brand small,
+body.iha-global-page > header .iha-global-nav>a{color:#f7fcf8!important}
+body.iha-global-page > header .go{
+ background:#e4f5ed!important;color:#0a4734!important;
+ border-radius:999px!important;
+}
+body.iha-global-page .iha-global-hero{
+ margin-top:0!important;padding-top:calc(var(--iha-glass-h,78px) + 12px)!important;
+}
+@media(max-width:680px){
+ body.iha-global-page .iha-global-hero{padding-top:calc(var(--iha-glass-h,116px) + 10px)!important}
+ body.iha-global-page > header{-webkit-backdrop-filter:blur(13px);backdrop-filter:blur(13px)}
+}
+@media(prefers-reduced-motion:reduce){body.iha-global-page > header{transition:none!important}}
