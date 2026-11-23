@@ -296,12 +296,18 @@ html body.iha-nav-ready.iha-site-surface>header,
 html body.iha-nav-ready.iha-global-page>header,
 html body.iha-nav-ready>header,
 html body.iha-nav-ready.iha-glass-scrolled>header{
-  background:#fff!important;
+  background:rgba(255,255,255,.93)!important;
   color:#101010!important;
-  -webkit-backdrop-filter:none!important;
-  backdrop-filter:none!important;
+  -webkit-backdrop-filter:blur(18px) saturate(120%)!important;
+  backdrop-filter:blur(18px) saturate(120%)!important;
   border-bottom:1px solid #e8e8e8!important;
   box-shadow:none!important;
+}
+html body.iha-nav-ready.iha-glass-scrolled:has(.os-simple-home)>header.bar,
+html body.iha-nav-ready.iha-glass-scrolled:not(:has(.os-simple-home))>header.bar,
+html body.iha-nav-ready.iha-site-surface.iha-glass-scrolled>header,
+html body.iha-nav-ready.iha-global-page.iha-glass-scrolled>header{
+  background:rgba(255,255,255,.97)!important;
 }
 html body.iha-nav-ready>header.bar::after{display:none!important}
 html body.iha-nav-ready>header .brand .brand-t{display:none!important}
