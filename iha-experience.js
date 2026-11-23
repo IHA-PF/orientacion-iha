@@ -337,6 +337,44 @@ const homeCopy={
   "Preços"
  ]
 };
+const artLabels={
+ "es": [
+  "Alojamiento",
+  "Documentos",
+  "Pruebas",
+  "¿Qué ocurrió?",
+  "Reúne los soportes",
+  "Ordena los hechos",
+  "Revisión del caso"
+ ],
+ "en": [
+  "Property",
+  "Documents",
+  "Evidence",
+  "What happened?",
+  "Gather your evidence",
+  "Build a timeline",
+  "Case review"
+ ],
+ "fr": [
+  "Logement",
+  "Documents",
+  "Preuves",
+  "Que s’est-il passé ?",
+  "Rassemblez les preuves",
+  "Classez les faits",
+  "Étude du dossier"
+ ],
+ "pt": [
+  "Imóvel",
+  "Documentos",
+  "Provas",
+  "O que aconteceu?",
+  "Reúna os comprovantes",
+  "Organize os fatos",
+  "Análise do caso"
+ ]
+};
 function render(){
  const app=document.getElementById("app");
  if(!app?.querySelector(".os-simple-home")||document.getElementById("iha-experience"))return;
@@ -363,7 +401,7 @@ function render(){
    [base,base+d.evidence+"/",catalog,base+d.price+"/"].forEach((url,i)=>links.append(link(labels[i+8],url)));
    const preview=make("a","home-preview");
    preview.href=legal;preview.append(make("strong","","IHA LEGAL 360"));
-   const art=make("img","");art.src="/assets/iha-premium-conflict.svg";art.alt="";art.width=900;art.height=650;
+   const art=make("img","");art.src="/assets/iha-case-review.jpg";art.alt="";art.width=900;art.height=650;
    preview.append(art);copy.append(resources,preview);
    const panel=make("form","home-picker"),fieldset=make("fieldset","");
    const legend=make("legend","",labels[3]),options=make("div","home-options");
@@ -371,7 +409,9 @@ function render(){
    names.forEach((name,i)=>{
      const option=make("label","home-option"),radio=make("input","");
      radio.type="radio";radio.name="need";radio.value=destinations[i];radio.required=true;
-     const icon=make("img","");icon.src="/assets/iha-premium-"+name+".svg";icon.alt="";icon.width=58;icon.height=58;
+     const icon=i===0?make("span","home-document-icon","≡"):make("img","");
+     if(i!==0){icon.src=i===1?"/assets/iha-stay.jpg":"/assets/iha-case-review.jpg";icon.alt="";icon.width=58;icon.height=58}
+     icon.setAttribute("aria-hidden","true");
      option.append(radio,icon,make("span","",labels[4+i]));options.append(option);
    });
    fieldset.append(legend,options);
@@ -384,15 +424,33 @@ function render(){
  [[d.problem,catalog+"#platforms"],[d.consumers,catalog+"#consumers"],[d.hosts,catalog+"#hosts"],[d.protect,base+d.host+"/"]].forEach(([label,url])=>shortcuts.append(link(label,url)));
  const steps=grid(block(d.how));t.steps.forEach(([,title,copy])=>card(steps,title,copy));
  const services=block(d.services),tabs=make("div","store-tabs");tabs.setAttribute("role","tablist");tabs.setAttribute("aria-label",d.services);services.append(tabs);
+ services.classList.add("editorial-services");wrap.prepend(services);
+ const visualLabels=artLabels[lang]||artLabels.es;
  const buttons=[],panels=[];
+ function serviceVisual(index){
+   const visual=make("span","service-visual visual-"+index);
+   visual.setAttribute("aria-hidden","true");
+   if(index===1){
+     const stack=make("span","evidence-stack");
+     visualLabels.slice(3,6).forEach((label,i)=>stack.append(make("span","evidence-note note-"+i,label)));
+     visual.append(stack);
+   }else{
+     const photo=make("img","");
+     photo.src=index===0?"/assets/iha-stay.jpg":"/assets/iha-case-review.jpg";photo.alt="";photo.width=800;photo.height=800;photo.loading="lazy";photo.decoding="async";visual.append(photo);
+     const overlay=make("span",index===0?"property-tags":"case-slip");
+     if(index===0)visualLabels.slice(0,3).forEach(label=>overlay.append(make("span","",label)));
+     else overlay.append(make("span","case-rule","IHA"),make("span","",visualLabels[6]));
+     visual.append(overlay);
+   }
+   return visual;
+ }
  const select=i=>{buttons.forEach((b,j)=>{b.setAttribute("aria-selected",String(i===j));b.tabIndex=i===j?0:-1;panels[j].hidden=i!==j})};
  [d.hosts,d.conflicts,d.consumers].forEach((name,i)=>{
-   const tab=make("button","",name);tab.type="button";tab.id="family-tab-"+i;tab.setAttribute("role","tab");
+   const tab=make("button","editorial-tab");tab.append(serviceVisual(i),make("span","editorial-caption",name));tab.type="button";tab.id="family-tab-"+i;tab.setAttribute("role","tab");
    const panel=make("div","store-panel");panel.id="family-panel-"+i;panel.setAttribute("role","tabpanel");panel.setAttribute("aria-labelledby",tab.id);tab.setAttribute("aria-controls",panel.id);
-   const img=make("img","store-art");img.src="/assets/iha-premium-"+["host","conflict","consumer"][i]+".svg";img.alt="";img.loading="lazy";img.width=780;img.height=520;
    const copy=make("div");copy.append(make("h3","",t.heads[i]),make("p","store-copy",t.copy[i]),link(t.cta[i],catalog+"#"+["hosts","platforms","consumers"][i]));
-   panel.append(img,copy);services.append(panel);tabs.append(tab);buttons.push(tab);panels.push(panel);
-   tab.addEventListener("click",()=>select(i));tab.addEventListener("keydown",e=>{const next={ArrowRight:(i+1)%3,ArrowLeft:(i+2)%3,Home:0,End:2}[e.key];if(next!==undefined){e.preventDefault();select(next);buttons[next].focus()}});
+   panel.append(copy);services.append(panel);tabs.append(tab);buttons.push(tab);panels.push(panel);
+   tab.addEventListener("click",()=>{select(i);if(matchMedia("(max-width:700px)").matches)panel.scrollIntoView({block:"center"})});tab.addEventListener("keydown",e=>{const next={ArrowRight:(i+1)%3,ArrowLeft:(i+2)%3,Home:0,End:2}[e.key];if(next!==undefined){e.preventDefault();select(next);buttons[next].focus()}});
  });select(0);
  const profiles=grid(block(d.pro));[[d.travel,d.proof,base+d.evidence+"/"],[d.consumers,d.case,catalog+d.analysis+"/"],[d.hosts,d.protect,base+d.host+"/"]].forEach(([title,action,url])=>card(profiles,title,"",action,url));
  const mod=grid(block("IHA LEGAL 360"));modules[lang].forEach(([name,copy],i)=>card(mod,name,copy,d.view,legal+"#module-"+String(i+1).padStart(2,"0")));

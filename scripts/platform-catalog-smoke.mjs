@@ -21,6 +21,19 @@ try {
     if(type==="home"){
      const tabs=page.locator("#iha-experience [role=tab]");
      await tabs.first().waitFor({state:"visible"});
+     assert.equal(await tabs.locator(".service-visual").count(),3);
+     const visuals=page.locator(".editorial-services .store-tabs");
+     await visuals.scrollIntoViewIfNeeded();
+     await visuals.locator("img").evaluateAll(images=>Promise.all(images.map(img=>img.decode())));
+     const boxes=await tabs.locator(".service-visual").evaluateAll(items=>items.map(item=>{const {x,y,width,height}=item.getBoundingClientRect();return {x,y,width,height}}));
+     assert.ok(boxes.every(b=>b.width/b.height>0.98 && b.width/b.height<1.08));
+     assert.equal(Math.round(boxes[0].y)===Math.round(boxes[2].y),width>700);
+     if(lang==="es"&&width===1440){
+       await visuals.screenshot({path:"test-artifacts/editorial-services-desktop.png"});
+       const preview=await visuals.screenshot({type:"jpeg",quality:50});
+       console.log("SERVICE_PREVIEW="+preview.toString("base64"));
+     }
+     if(lang==="es"&&width===390)await visuals.screenshot({path:"test-artifacts/editorial-services-mobile.png"});
      await tabs.first().focus();await page.keyboard.press("ArrowRight");
      assert.equal(await tabs.nth(1).getAttribute("aria-selected"),"true");
      assert.equal(await page.locator("#iha-experience [role=tabpanel]:visible").count(),1);
