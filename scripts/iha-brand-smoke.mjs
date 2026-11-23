@@ -48,6 +48,7 @@ try{
       }
     }
     const dims=await page.evaluate(()=>({viewport:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth}));
+    if(dims.scroll>dims.viewport+10){const offenders=await page.evaluate(()=>[...document.querySelectorAll("body *")].map(el=>{const r=el.getBoundingClientRect();return {tag:el.tagName,classes:el.className?.toString().slice(0,75),right:Math.round(r.right),left:Math.round(r.left),width:Math.round(r.width),text:el.textContent?.trim().slice(0,35)}}).filter(o=>o.right>innerWidth+8&&o.width>0).sort((a,b)=>b.right-a.right).slice(0,12));console.log("Overflow diagnostic",path,width,JSON.stringify(offenders));}
     assert.ok(dims.scroll<=dims.viewport+10,path+" layout must not overflow: "+JSON.stringify(dims));
     console.log("Brand palette",path,width,"OK");
     await page.close();
