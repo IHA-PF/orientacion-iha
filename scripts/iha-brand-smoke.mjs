@@ -37,6 +37,12 @@ try{
     if(cta){
       const el=page.locator(cta).first();
       if(await el.count()){
+        // Legacy controls animate from their initial green into the new teal.
+        // Wait for the real computed value to settle before asserting.
+        await page.waitForFunction(selector=>{
+          const node=document.querySelector(selector);
+          return !!node&&getComputedStyle(node).backgroundColor==="rgb(0, 122, 103)";
+        },cta,{timeout:3500});
         const bg=await el.evaluate(x=>getComputedStyle(x).backgroundColor);
         assert.equal(bg,"rgb(0, 122, 103)",path+" primary action uses Guesty teal, was "+bg);
       }
