@@ -41,4 +41,14 @@
    }
  }
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",apply,{once:true});else apply();
+
+ // Load the new site-wide navigation on all legal guides, landing pages and tools.
+ const navCss=path("iha-navigation.css?v=20261123-nav1");
+ if(!document.querySelector('link[href*="iha-navigation.css"]')){
+   const l=document.createElement("link");l.rel="stylesheet";l.href=navCss;document.head.append(l);
+ }
+ if(!document.querySelector('script[src*="iha-navigation.js"]')){
+   const scr=document.createElement("script");scr.src=path("iha-navigation.js?v=20261123-nav1");scr.defer=true;document.head.append(scr);
+ }
+
 })();
