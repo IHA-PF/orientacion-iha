@@ -61,15 +61,28 @@ footer{border-top:1px solid var(--line);background:var(--surface);padding-block:
 footer b{color:var(--ink)}
 footer .org{display:flex;align-items:flex-start;gap:12px}footer .seal{flex:none;width:45px;height:48px}
 </style>
+<link rel="stylesheet" href="/iha-intake.css">
+<script src="/iha-intake.js" defer></script>
 </head>
-<body><header><div class="w hb"><a class="brand" href="../../?lang=en#prepare-su-caso"><img class="mono" src="/monograma-iha-144.webp" width="52" height="38" alt=""><span><b>Soluciones Legales</b><small>Legal advice on short-term rentals and platforms · Medellín</small></span></a><a class="go" href="../../?lang=en#prepare-su-caso">Open the guidance tool</a></div></header>
+<body><header><div class="w hb"><a class="brand" href="../../?lang=en"><img class="mono" src="/monograma-iha-144.webp" width="52" height="38" alt=""><span><b>Soluciones Legales</b><small>Legal advice on short-term rentals and platforms · Medellín</small></span></a><a class="go" href="../../?lang=en#guia">Open the guidance tool</a></div></header>
 <main class="w">
 <p class="crumb"><a href="../">Your rights and obligations in Colombia</a> › Request to a lawyer</p>
 <h1>Prepare your case</h1>
 <p class="lead">Tell us the essentials and send it on WhatsApp or by email. A lawyer reads it and replies within 2 business days with the service that suits you and its price. Sending it costs nothing.</p>
-<ul><li>Service you are interested in</li><li>Who the complaint is against (company or person)</li><li>Date of the events</li><li>Amount at stake, approximate (in Colombian pesos)</li><li>Description of the facts</li><li>What you want to achieve</li></ul>
 <p class="upd">In a few lines. Don’t include ID numbers, account numbers or passwords.</p>
-<section class="cta"><a class="go" href="../../?lang=en#prepare-su-caso">Prepare your case in writing</a></section>
+<noscript><p><a href="mailto:contacto@ihasolucioneslegales.com.co">Open email</a></p></noscript>
+<form id="iha-intake" class="iha-intake" method="post" hidden data-subject="Request for legal guidance · IHA">
+<label for="intake-need">What do you need help with?</label><select id="intake-need" required><option value="">Choose an option</option><option value="litige">Resolve a dispute</option><option value="hebergement">Bring a rental into compliance</option><option value="consultation">Consult a lawyer</option><option value="incertain">I’m not sure yet</option></select>
+<label for="intake-facts">What happened?</label><textarea id="intake-facts" rows="5" maxlength="1000" required></textarea>
+<label for="intake-goal">What outcome are you looking for?</label><textarea id="intake-goal" rows="2" maxlength="350" required></textarea>
+<label for="intake-date">Approximate date (optional)</label><input id="intake-date" type="text" maxlength="60">
+<button type="submit" class="go">Prepare my message</button>
+</form>
+<section class="iha-intake-draft" id="iha-intake-draft" hidden aria-labelledby="intake-draft-heading">
+<h2 id="intake-draft-heading" tabindex="-1">Review your draft and choose how to send it. The message has not been sent.</h2>
+<pre id="intake-preview"></pre>
+<div class="iha-intake-links"><a class="go" id="intake-whatsapp">Open WhatsApp</a><a class="go" id="intake-mail">Open email</a></div>
+</section>
 <section><h2><a href="../services-and-prices/">Free help first; if you need it, a lawyer does it for you</a></h2></section>
 <p class="sos">If you are in danger, call 123 (Colombia’s emergency line).</p>
 <nav class="langs" aria-label="Other languages"><a href="../../es/prepare-su-caso/" hreflang="es" lang="es">Español</a><a href="../../fr/preparez-votre-dossier/" hreflang="fr" lang="fr">Français</a><a href="../../pt/prepare-o-seu-caso/" hreflang="pt-BR" lang="pt-BR">Português</a></nav>

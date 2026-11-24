@@ -61,15 +61,28 @@ footer{border-top:1px solid var(--line);background:var(--surface);padding-block:
 footer b{color:var(--ink)}
 footer .org{display:flex;align-items:flex-start;gap:12px}footer .seal{flex:none;width:45px;height:48px}
 </style>
+<link rel="stylesheet" href="/iha-intake.css">
+<script src="/iha-intake.js" defer></script>
 </head>
-<body><header><div class="w hb"><a class="brand" href="../../?lang=es#prepare-su-caso"><img class="mono" src="/monograma-iha-144.webp" width="52" height="38" alt=""><span><b>Soluciones Legales</b><small>Asesoría legal en vivienda turística y plataformas · Medellín</small></span></a><a class="go" href="../../?lang=es#prepare-su-caso">Abrir la orientación</a></div></header>
+<body><header><div class="w hb"><a class="brand" href="../../?lang=es"><img class="mono" src="/monograma-iha-144.webp" width="52" height="38" alt=""><span><b>Soluciones Legales</b><small>Asesoría legal en vivienda turística y plataformas · Medellín</small></span></a><a class="go" href="../../?lang=es#guia">Abrir la orientación</a></div></header>
 <main class="w">
 <p class="crumb"><a href="../">Sus derechos y obligaciones en Colombia</a> › Solicitud a una abogada</p>
 <h1>Prepare su caso</h1>
 <p class="lead">Cuéntenos lo esencial y envíelo por WhatsApp o por correo. Una abogada lo lee y le responde en 2 días hábiles con el servicio que le conviene y su precio. Enviarlo no cuesta nada.</p>
-<ul><li>Servicio que le interesa</li><li>Contra quién es el reclamo (empresa o persona)</li><li>Fecha de los hechos</li><li>Monto en juego, aproximado (en pesos)</li><li>Descripción de los hechos</li><li>Qué quiere lograr</li></ul>
 <p class="upd">En pocas líneas. No incluya números de documentos, de cuentas ni contraseñas.</p>
-<section class="cta"><a class="go" href="../../?lang=es#prepare-su-caso">Prepare su caso por escrito</a></section>
+<noscript><p><a href="mailto:contacto@ihasolucioneslegales.com.co">Abrir el correo</a></p></noscript>
+<form id="iha-intake" class="iha-intake" method="post" hidden data-subject="Solicitud de orientación jurídica · IHA">
+<label for="intake-need">¿En qué podemos ayudarle?</label><select id="intake-need" required><option value="">Seleccione una opción</option><option value="litige">Resolver un conflicto</option><option value="hebergement">Poner un alojamiento en regla</option><option value="consultation">Consultar a una abogada</option><option value="incertain">No lo sé todavía</option></select>
+<label for="intake-facts">¿Qué ocurrió?</label><textarea id="intake-facts" rows="5" maxlength="1000" required></textarea>
+<label for="intake-goal">¿Qué quiere conseguir?</label><textarea id="intake-goal" rows="2" maxlength="350" required></textarea>
+<label for="intake-date">Fecha aproximada (opcional)</label><input id="intake-date" type="text" maxlength="60">
+<button type="submit" class="go">Preparar mi mensaje</button>
+</form>
+<section class="iha-intake-draft" id="iha-intake-draft" hidden aria-labelledby="intake-draft-heading">
+<h2 id="intake-draft-heading" tabindex="-1">Revise el borrador y elija cómo enviarlo. El mensaje todavía no se ha enviado.</h2>
+<pre id="intake-preview"></pre>
+<div class="iha-intake-links"><a class="go" id="intake-whatsapp">Abrir WhatsApp</a><a class="go" id="intake-mail">Abrir el correo</a></div>
+</section>
 <section><h2><a href="../servicios-y-precios/">Lo gratuito primero; si lo necesita, una abogada lo hace por usted</a></h2></section>
 <p class="sos">Si está en peligro, llame al 123 (línea de emergencias de Colombia).</p>
 <nav class="langs" aria-label="Otros idiomas"><a href="../../en/prepare-your-case/" hreflang="en" lang="en">English</a><a href="../../fr/preparez-votre-dossier/" hreflang="fr" lang="fr">Français</a><a href="../../pt/prepare-o-seu-caso/" hreflang="pt-BR" lang="pt-BR">Português</a></nav>

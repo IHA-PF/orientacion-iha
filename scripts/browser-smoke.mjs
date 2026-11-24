@@ -22,6 +22,7 @@ try {
       assert.equal((await page.locator("html").getAttribute("lang"))?.slice(0, 2), lang);
       assert.equal(await page.locator(".home-option").count(), 3);
 
+      assert.match(await page.locator("header .iha-nav-start").getAttribute("href") || "", /\/prepare/);
       const pricingLink = page.locator("header details:has(.iha-nav-price) a").first();
       assert.equal(await pricingLink.getAttribute("href"), catalogue);
       assert.ok(await page.locator("header .home-nav-agents").count());
@@ -33,6 +34,21 @@ try {
       assert.ok(await offers.nth(1).locator("a[href*='finca']").isVisible());
       assert.equal(await page.locator("main a[href*='online-course'], main a[href*='anfitrion-en-regla'], main a[href*='anfitriao-em-dia']").evaluateAll(links => links.filter(link => /curso|course|cours/.test(link.href)).length), 0);
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2), "Pricing fits viewport");
+      const startIntake = offers.first().locator("a[href*='situation=litige']");
+      await startIntake.click();
+      await page.locator("#iha-intake").waitFor({ state: "visible" });
+      assert.equal(await page.locator("#intake-need").inputValue(), "litige");
+      const facts = "Prueba ficticia: reserva & traslado";
+      await page.locator("#intake-facts").fill(facts);
+      await page.locator("#intake-goal").fill("Reembolso ficticio");
+      await page.locator("#iha-intake button").click();
+      await page.locator("#iha-intake-draft").waitFor({ state: "visible" });
+      assert.ok((await page.locator("#intake-preview").textContent()).includes(facts));
+      const whatsapp = new URL(await page.locator("#intake-whatsapp").getAttribute("href"));
+      assert.ok(whatsapp.searchParams.get("text").includes(facts));
+      assert.match(await page.locator("#intake-mail").getAttribute("href") || "", /^mailto:contacto@ihasolucioneslegales\.com\.co\?/);
+      await page.locator("#intake-facts").fill("Exemple modifié");
+      assert.equal(await page.locator("#iha-intake-draft").isVisible(), false);
       if (width === 1440) {
         await page.goto(base + "/?lang=" + lang + "#servicios");
         const purchase = page.locator("#sv-pick");

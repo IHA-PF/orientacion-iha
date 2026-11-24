@@ -391,7 +391,7 @@ function init(){
  accessPanel.append(aTitle,aNote,aRequest);
  access.append(accessTrigger,accessPanel);right.append(access);
  const mobileAccess=access.cloneNode(true);mobileAccess.classList.add("iha-mobile-access");nav.append(mobileAccess);
- const start=lnk(t.start,paths.guide,"iha-nav-start");
+ const start=lnk(t.start,paths.prepare,"iha-nav-start");
  right.append(start);
  const menuBtn=create("button","iha-nav-mobile-button");
  menuBtn.type="button";menuBtn.setAttribute("aria-label",t.menu);menuBtn.setAttribute("aria-expanded","false");
@@ -435,7 +435,7 @@ function init(){
      });
    });
    nav.setAttribute("aria-label",nt.platform+" · "+nt.solutions);
-   start.textContent=nt.start;start.href=target.guide;
+   start.textContent=nt.start;start.href=target.prepare;
    for(const d of [access,mobileAccess]){
      d.querySelector("summary").textContent=nt.access;
      d.querySelector(".iha-nav-access-title").textContent=nt.accessHead;
