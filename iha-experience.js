@@ -522,7 +522,12 @@ function render(){
    const tab=make("button","editorial-tab");tab.append(serviceVisual(i),make("span","editorial-caption",name));tab.type="button";tab.id="family-tab-"+i;tab.setAttribute("role","tab");
    const panel=make("div","store-panel");panel.id="family-panel-"+i;panel.setAttribute("role","tabpanel");panel.setAttribute("aria-labelledby",tab.id);tab.setAttribute("aria-controls",panel.id);
    const copy=make("div");copy.append(make("h3","",t.heads[i]),make("p","store-copy",t.copy[i]),link(t.cta[i],catalog+"#"+["hosts","platforms","consumers"][i]));
-   panel.append(copy);services.append(panel);tabs.append(tab);buttons.push(tab);panels.push(panel);
+   const tile=make("div","editorial-choice");tile.setAttribute("role","presentation");
+   const topics=["hebergement","litige","litige"];
+   const startLabel={es:"Comenzar orientación",en:"Start guidance",fr:"Commencer l’orientation",pt:"Iniciar orientação"}[lang]||"Comenzar orientación";
+   const start=link(startLabel,base+d.prepare+"/?situation="+topics[i]);start.classList.add("editorial-orientation");start.setAttribute("aria-label",startLabel+" · "+name);
+   tile.append(tab,start);tabs.append(tile);
+   panel.append(copy);services.append(panel);buttons.push(tab);panels.push(panel);
    tab.addEventListener("click",()=>{select(i);if(matchMedia("(max-width:700px)").matches)panel.scrollIntoView({block:"center"})});tab.addEventListener("keydown",e=>{const next={ArrowRight:(i+1)%3,ArrowLeft:(i+2)%3,Home:0,End:2}[e.key];if(next!==undefined){e.preventDefault();select(next);buttons[next].focus()}});
  });select(0);
  const [profileTitle,...stories]=profileCopy[lang]||profileCopy.es;
