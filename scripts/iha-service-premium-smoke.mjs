@@ -26,9 +26,10 @@ try{
    assert.equal(res?.status(),200,path+" returned non-200");
    const archived=/(?:curso-|cours-|online-course-|plan-consulta-|forfait-questions-|question-plan-|plano-consulta-|modelos-para-|templates-for-|modeles-pour-|pack-empezar-|start-compliant-pack-|pack-demarrer-|pack-comecar-)/.test(path);
    if(archived){
-    assert.equal(await page.locator("main h1").count(),1,path+" archive heading");
-    assert.equal(await page.locator("main a[href*='#servicios-']").count(),0,path+" no legacy purchase links");
-    assert.ok(await page.locator("main details").count()>=1,path+" old terms remain accessible");
+    await page.locator("h1").waitFor({state:"visible",timeout:10000});
+    assert.equal(await page.locator("h1").count(),1,path+" archive heading");
+    assert.equal(await page.locator("a[href*='#servicios-']").count(),0,path+" no legacy purchase links");
+    assert.ok(await page.locator("details").count()>=1,path+" old terms remain accessible");
     assert.equal(await page.locator(".langs a[hreflang]").count(),3,path+" archive language links");
     assert.deepEqual(errors,[],path+" browser exceptions");
     await page.close();
