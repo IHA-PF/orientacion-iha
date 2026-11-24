@@ -437,6 +437,13 @@ const profileCopy={
     ]
   ]
 };
+const legal360Intro={
+ es:["CÓMO FUNCIONA","Proteja sus derechos en la economía digital desde una única","plataforma jurídica inteligente","Conozca IHA LEGAL 360"],
+ en:["HOW IT WORKS","Protect your rights in the digital economy with one","intelligent legal platform","Discover IHA LEGAL 360"],
+ fr:["COMMENT ÇA MARCHE","Protégez vos droits dans l’économie numérique depuis une seule","plateforme juridique intelligente","Découvrez IHA LEGAL 360"],
+ pt:["COMO FUNCIONA","Proteja seus direitos na economia digital em uma única","plataforma jurídica inteligente","Conheça IHA LEGAL 360"]
+};
+
 function render(){
  const app=document.getElementById("app");
  if(!app?.querySelector(".os-simple-home")||document.getElementById("iha-experience"))return;
@@ -498,6 +505,19 @@ function render(){
  const steps=grid(block(d.how));t.steps.forEach(([,title,copy])=>card(steps,title,copy));
  const services=block(d.services),tabs=make("div","store-tabs");tabs.setAttribute("role","tablist");tabs.setAttribute("aria-label",d.services);services.append(tabs);
  services.classList.add("editorial-services");wrap.prepend(services);
+ const [introLabel,introLead,introEmphasis,introAction]=legal360Intro[lang]||legal360Intro.es;
+ const legalIntro=make("section","legal360-intro");
+ legalIntro.id="como-funciona";
+ legalIntro.setAttribute("aria-labelledby","legal360-intro-title");
+ const introCopy=make("div","legal360-intro-copy");
+ const introHeading=make("h2","legal360-intro-title",introLead+" ");
+ introHeading.id="legal360-intro-title";
+ introHeading.append(make("em","",introEmphasis),".");
+ introCopy.append(make("p","legal360-intro-label",introLabel),introHeading);
+ const introLink=make("a","legal360-intro-cta",introAction);
+ introLink.href=legal;
+ legalIntro.append(introCopy,introLink);
+ wrap.prepend(legalIntro);
  const visualLabels=artLabels[lang]||artLabels.es;
  const buttons=[],panels=[];
  function serviceVisual(index){

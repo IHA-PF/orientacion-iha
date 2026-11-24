@@ -275,6 +275,65 @@ html body #app .os-simple-home:has(.home-masthead)::before,html body #app .os-si
 #iha-experience:has(.editorial-services) .store-wrap{width:min(89.6%,1660px)}
 #iha-experience .editorial-services{padding-block:clamp(48px,6vw,110px)}
 #iha-experience .editorial-services h2{margin-bottom:clamp(30px,5vw,80px)}
+.legal360-intro{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) auto;
+ align-items:start;
+ gap:clamp(26px,5vw,88px);
+ padding-block:clamp(44px,5vw,88px);
+ background:#fff;
+ color:#101010;
+ border-bottom:1px solid #d4e4df;
+}
+#iha-experience .legal360-intro-label{
+ margin:0 0 16px;
+ font:550 clamp(.8rem,1.15vw,1.05rem)/1.35 system-ui,sans-serif;
+ letter-spacing:.025em;
+ color:#101010;
+}
+#iha-experience .legal360-intro-title{
+ margin:0;
+ font:450 clamp(2rem,4.4vw,5rem)/1.08 system-ui,sans-serif;
+ letter-spacing:-.047em;
+ color:#101010;
+}
+.legal360-intro-title em{
+ font-family:"Source Serif 4",Georgia,serif;
+ font-style:italic;
+ color:#484bc8;
+}
+@supports (background-clip:text){
+ .legal360-intro-title em{
+  background:linear-gradient(100deg,#1859bb,#6544c4);
+  background-clip:text;
+  color:transparent;
+ }
+}
+#iha-experience .legal360-intro-cta{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ justify-self:start;
+ min-height:52px;
+ margin-top:38px;
+ padding:13px clamp(20px,2.4vw,38px);
+ border-radius:999px;
+ background:#007466;
+ color:#fff;
+ font:600 1rem/1.3 system-ui,sans-serif;
+ text-align:center;
+ text-decoration:none;
+}
+#iha-experience .legal360-intro-cta:hover{background:#005e53}
+#iha-experience .legal360-intro-cta:focus-visible{outline:2px solid #101010;outline-offset:4px}
+@media(max-width:760px){
+ .legal360-intro{grid-template-columns:minmax(0,1fr)}
+ #iha-experience .legal360-intro-cta{margin-top:0}
+}
+@media(forced-colors:active){
+ .legal360-intro-title em{background:none;color:CanvasText}
+ #iha-experience .legal360-intro-cta{border:1px solid ButtonText}
+}
 .editorial-services .store-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.15vw,40px)}
 .editorial-services .store-tabs .editorial-tab{
  display:flex;flex-direction:column;align-items:stretch;gap:16px;padding:0;border:0;border-radius:0;
