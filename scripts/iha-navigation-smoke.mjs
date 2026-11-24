@@ -45,7 +45,7 @@ try{
    assert.equal(state.logoLoaded,true,url+" IHA logo loads");
    assert.ok(state.headerBg.includes("255, 255, 255"),url+" white transparent navigation: "+JSON.stringify(state));
    assert.equal(state.cta,"rgb(216, 242, 242)",url+" light turquoise CTA");
-   assert.ok(/^\/(es\/servicios|en\/services|pt\/servicos|fr\/services)\/$/.test(state.href),url+" pricing route must work");
+   assert.ok(/^\/(es\/servicios-y-precios|en\/services-and-prices|pt\/servicos-e-precos|fr\/services-et-prix)\/$/.test(state.href),url+" pricing route must work");
    assert.ok(state.scroll<=state.viewport+12,url+" horizontal overflow "+JSON.stringify(state));
    if(width===1440 && url==="/?lang=es#servicios"){
     const geometry=await page.evaluate(()=>{

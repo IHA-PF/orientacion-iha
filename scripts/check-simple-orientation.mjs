@@ -12,7 +12,8 @@ assert.ok(home.includes("os-simple-home"),"New orientation hero is the default h
 assert.equal((home.match(/class="os-spotlight"/g)||[]).length,0,"Old technical banner removed");
 assert.ok(home.includes('ke("all")')&&home.includes("ke(sector)"),"Guide stays reachable from search and category choices");
 assert.ok(home.includes("O=input.value.trim()"),"Search forwards the entered phrase to existing guide");
-assert.ok(home.includes('data-nav="guide"')&&home.includes('data-nav="servicios"'),"Guide/services remain in top nav");
+assert.ok(home.includes('data-nav="guide"'), "Guide remains in top nav");
+assert.match(home, /<a[^>]*id="iha-offer-nav"[^>]*href="\/es\/servicios-y-precios\/"/, "Pricing menu links to the current service catalogue");
 assert.ok(home.includes('href="legal-360/"')&&home.includes('href="digital-justice-os/"'),"Services and technology accessible");
 assert.ok(home.includes('data-t="navZona"')&&home.includes('data-t="navExpress"'),"Secondary orientation links localized");
 assert.ok(!css.includes("14px/1.2 inherit"),"Valid font declarations");

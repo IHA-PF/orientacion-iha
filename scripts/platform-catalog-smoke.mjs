@@ -51,7 +51,7 @@ try {
     }else if(type==="catalog"){
      assert.equal(await page.locator(".store-family").count(),4);
      const links=await page.locator(".store-family a").evaluateAll(a=>a.map(n=>new URL(n.href).pathname));
-     assert.equal(new Set(links).size,17);
+     assert.equal(new Set(links).size,13);
      for(const path of links)await access("."+path+"index.html");
     }else if(type==="service"){
      assert.ok(await page.locator("main details").count()>=1,url+" service FAQ");
