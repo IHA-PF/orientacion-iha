@@ -524,7 +524,8 @@ function render(){
    const copy=make("div");copy.append(make("h3","",t.heads[i]),make("p","store-copy",t.copy[i]),link(t.cta[i],catalog+"#"+["hosts","platforms","consumers"][i]));
    const tile=make("div","editorial-choice");tile.setAttribute("role","presentation");
    const topics=["hebergement","litige","litige"];
-   const startLabel={es:"Comenzar orientación",en:"Start guidance",fr:"Commencer l’orientation",pt:"Iniciar orientação"}[lang]||"Comenzar orientación";
+   const startLabels={"es":["Revisar mi alojamiento","Describir mi conflicto","Comenzar orientación"],"en":["Review my rental","Describe my dispute","Start guidance"],"fr":["Vérifier mon hébergement","Décrire mon litige","Commencer l’orientation"],"pt":["Revisar minha hospedagem","Descrever meu conflito","Iniciar orientação"]};
+   const startLabel=(startLabels[lang]||startLabels.es)[i];
    const start=link(startLabel,base+d.prepare+"/?situation="+topics[i]);start.classList.add("editorial-orientation");start.setAttribute("aria-label",startLabel+" · "+name);
    tile.append(tab,start);tabs.append(tile);
    panel.append(copy);services.append(panel);buttons.push(tab);panels.push(panel);

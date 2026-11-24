@@ -33,6 +33,7 @@ try {
      assert.equal(await tabs.locator(".service-visual").count(),3);
      const orientation=page.locator(".editorial-choice .editorial-orientation");
      assert.equal(await orientation.count(),3);
+     assert.equal(new Set(await orientation.allTextContents()).size,3);
      assert.deepEqual(await orientation.evaluateAll(links=>links.map(link=>new URL(link.href).searchParams.get("situation"))),["hebergement","litige","litige"]);
      const visuals=page.locator(".editorial-services .store-tabs");
      await visuals.scrollIntoViewIfNeeded();
