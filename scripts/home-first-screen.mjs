@@ -27,7 +27,7 @@ try{
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),"horizontal overflow");
   const option=page.locator(".home-option").nth(1);
   await option.click();await page.locator(".home-picker button").click();
-  await page.waitForURL("**/es/servicios/#travel");
+  await page.waitForURL("**/es/prepare-su-caso/?situation=hebergement");
   await page.close();
  }
 }finally{await browser.close()}

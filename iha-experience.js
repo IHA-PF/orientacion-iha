@@ -477,19 +477,20 @@ function render(){
    preview.append(art);copy.append(resources,preview);
    const panel=make("form","home-picker"),fieldset=make("fieldset","");
    const legend=make("legend","",labels[3]),options=make("div","home-options");
-   const names=["consumer","conflict","host"],destinations=["consumers","travel","hosts"];
-   names.forEach((name,i)=>{
+   const destinations=["litige","hebergement","consultation"];
+   const offerNames={"es":["Resolver un conflicto","Poner un alojamiento en regla","Consultar a una abogada"],"en":["Resolve a dispute","Bring a rental into compliance","Consult a lawyer"],"fr":["Résoudre un litige","Mettre un hébergement en règle","Consulter une avocate"],"pt":["Resolver um conflito","Regularizar uma hospedagem","Consultar uma advogada"]}[lang] || ["Resolver un conflicto","Poner un alojamiento en regla","Consultar a una abogada"];
+   destinations.forEach((topic,i)=>{
      const option=make("label","home-option"),radio=make("input","");
-     radio.type="radio";radio.name="need";radio.value=destinations[i];radio.required=true;
+     radio.type="radio";radio.name="need";radio.value=topic;radio.required=true;
      const icon=i===0?make("span","home-document-icon","≡"):make("img","");
      if(i!==0){icon.src=i===1?"/assets/iha-stay.jpg":"/assets/iha-case-review.jpg";icon.alt="";icon.width=58;icon.height=58}
      icon.setAttribute("aria-hidden","true");
-     option.append(radio,icon,make("span","",labels[4+i]));options.append(option);
+     option.append(radio,icon,make("span","",offerNames[i]));options.append(option);
    });
    fieldset.append(legend,options);
    const submit=make("button","",labels[7]);submit.type="submit";
    panel.append(make("p","home-picker-brand","IHA GROUP S.A.S. · Colombia"),fieldset,submit);
-   panel.addEventListener("submit",event=>{event.preventDefault();const selected=panel.querySelector("input:checked");if(selected)location.assign(catalog+"#"+selected.value)});
+   panel.addEventListener("submit",event=>{event.preventDefault();const selected=panel.querySelector("input:checked");if(selected)location.assign(base+d.prepare+"/?situation="+selected.value)});
    hero.replaceChildren(copy,panel);hero.classList.add("home-masthead");
  }
  const needs=block(d.catalogue), shortcuts=make("nav","store-links");needs.append(shortcuts);

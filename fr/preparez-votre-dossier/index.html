@@ -61,15 +61,28 @@ footer{border-top:1px solid var(--line);background:var(--surface);padding-block:
 footer b{color:var(--ink)}
 footer .org{display:flex;align-items:flex-start;gap:12px}footer .seal{flex:none;width:45px;height:48px}
 </style>
+<link rel="stylesheet" href="/iha-intake.css">
+<script src="/iha-intake.js" defer></script>
 </head>
-<body><header><div class="w hb"><a class="brand" href="../../?lang=fr#prepare-su-caso"><img class="mono" src="/monograma-iha-144.webp" width="52" height="38" alt=""><span><b>Soluciones Legales</b><small>Conseil juridique en location touristique et plateformes · Medellín</small></span></a><a class="go" href="../../?lang=fr#prepare-su-caso">Ouvrir l’orientation</a></div></header>
+<body><header><div class="w hb"><a class="brand" href="../../?lang=fr"><img class="mono" src="/monograma-iha-144.webp" width="52" height="38" alt=""><span><b>Soluciones Legales</b><small>Conseil juridique en location touristique et plateformes · Medellín</small></span></a><a class="go" href="../../?lang=fr#guia">Ouvrir l’orientation</a></div></header>
 <main class="w">
 <p class="crumb"><a href="../">Vos droits et obligations en Colombie</a> › Demande à une avocate</p>
 <h1>Préparez votre dossier</h1>
 <p class="lead">Dites-nous l’essentiel et envoyez-le par WhatsApp ou par e-mail. Une avocate le lit et vous répond sous 2 jours ouvrables avec le service adapté et son prix. L’envoi ne coûte rien.</p>
-<ul><li>Service qui vous intéresse</li><li>Contre qui (entreprise ou personne)</li><li>Date des faits</li><li>Montant en jeu, approximatif (en pesos colombiens)</li><li>Exposé des faits</li><li>Ce que vous voulez obtenir</li></ul>
 <p class="upd">En quelques lignes. N’indiquez ni numéros de pièce d’identité, ni numéros de compte, ni mots de passe.</p>
-<section class="cta"><a class="go" href="../../?lang=fr#prepare-su-caso">Préparer votre dossier par écrit</a></section>
+<noscript><p><a href="mailto:contacto@ihasolucioneslegales.com.co">Ouvrir l’e-mail</a></p></noscript>
+<form id="iha-intake" class="iha-intake" method="post" hidden data-subject="Demande d’orientation juridique · IHA">
+<label for="intake-need">Sur quoi souhaitez-vous être aidé ?</label><select id="intake-need" required><option value="">Choisissez une option</option><option value="litige">Résoudre un litige</option><option value="hebergement">Mettre un hébergement en règle</option><option value="consultation">Consulter une avocate</option><option value="incertain">Je ne sais pas encore</option></select>
+<label for="intake-facts">Que s’est-il passé ?</label><textarea id="intake-facts" rows="5" maxlength="1000" required></textarea>
+<label for="intake-goal">Quel résultat souhaitez-vous obtenir ?</label><textarea id="intake-goal" rows="2" maxlength="350" required></textarea>
+<label for="intake-date">Date approximative (facultative)</label><input id="intake-date" type="text" maxlength="60">
+<button type="submit" class="go">Préparer mon message</button>
+</form>
+<section class="iha-intake-draft" id="iha-intake-draft" hidden aria-labelledby="intake-draft-heading">
+<h2 id="intake-draft-heading" tabindex="-1">Relisez le brouillon et choisissez comment l’envoyer. Le message n’a pas encore été envoyé.</h2>
+<pre id="intake-preview"></pre>
+<div class="iha-intake-links"><a class="go" id="intake-whatsapp">Ouvrir WhatsApp</a><a class="go" id="intake-mail">Ouvrir l’e-mail</a></div>
+</section>
 <section><h2><a href="../services-et-prix/">D’abord le gratuit ; si besoin, une avocate s’en charge</a></h2></section>
 <p class="sos">En cas de danger, appelez le 123 (numéro d’urgence en Colombie).</p>
 <nav class="langs" aria-label="Autres langues"><a href="../../es/prepare-su-caso/" hreflang="es" lang="es">Español</a><a href="../../en/prepare-your-case/" hreflang="en" lang="en">English</a><a href="../../pt/prepare-o-seu-caso/" hreflang="pt-BR" lang="pt-BR">Português</a></nav>

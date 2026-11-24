@@ -4,10 +4,10 @@ if(window.__ihaNavigationActive)return;
 window.__ihaNavigationActive=true;
 const languageFromPath=()=>{const m=location.pathname.match(/^\/(es|en|fr|pt)(?:\/|$)/);return m?.[1]||document.documentElement.lang.slice(0,2).toLowerCase().replace("br","pt")||"es"};
 const messages={
- es:{platform:"Plataforma",solutions:"Soluciones",prices:"Precio",language:"Idioma",access:"Acceder",start:"Empezar",menu:"Menú",home:"Inicio",guide:"Guía jurídica",digital:"Digital Justice OS",agents:"AI Agents",legal:"LEGAL 360",guest:"Para huéspedes",host:"Para anfitriones",prepare:"Preparar mi caso",accessHead:"Acceso privado IHA",accessNote:"El portal privado está en preparación y el acceso será por invitación.",request:"Solicitar invitación",emergency:"Ayuda urgente · 123"},
- en:{platform:"Platform",solutions:"Solutions",prices:"Pricing",language:"Language",access:"Log in",start:"Get started",menu:"Menu",home:"Home",guide:"Legal guide",digital:"Digital Justice OS",agents:"AI Agents",legal:"LEGAL 360",guest:"For guests",host:"For hosts",prepare:"Prepare my case",accessHead:"IHA private access",accessNote:"The private portal is being prepared. Access will be by invitation.",request:"Request an invitation",emergency:"Emergency help · 123"},
- fr:{platform:"Plateforme",solutions:"Solutions",prices:"Tarifs",language:"Langue",access:"Accéder",start:"Commencer",menu:"Menu",home:"Accueil",guide:"Guide juridique",digital:"Digital Justice OS",agents:"Agents IA",legal:"LEGAL 360",guest:"Pour les voyageurs",host:"Pour les hôtes",prepare:"Préparer mon dossier",accessHead:"Accès privé IHA",accessNote:"Le portail privé est en préparation. L’accès se fera sur invitation.",request:"Demander une invitation",emergency:"Urgence · 123"},
- pt:{platform:"Plataforma",solutions:"Soluções",prices:"Preços",language:"Idioma",access:"Acessar",start:"Começar",menu:"Menu",home:"Início",guide:"Guia jurídico",digital:"Digital Justice OS",agents:"Agentes de IA",legal:"LEGAL 360",guest:"Para hóspedes",host:"Para anfitriões",prepare:"Preparar meu caso",accessHead:"Acesso privado IHA",accessNote:"O portal privado está em preparação e terá acesso por convite.",request:"Solicitar convite",emergency:"Emergência · 123"}
+ es:{platform:"Plataforma",solutions:"Soluciones",prices:"Precio",language:"Idioma",access:"Acceder",start:"Describir mi situación",menu:"Menú",home:"Inicio",guide:"Guía jurídica",digital:"Digital Justice OS",agents:"AI Agents",legal:"LEGAL 360",guest:"Para huéspedes",host:"Para anfitriones",prepare:"Preparar mi caso",accessHead:"Acceso privado IHA",accessNote:"El portal privado está en preparación y el acceso será por invitación.",request:"Solicitar invitación",emergency:"Ayuda urgente · 123"},
+ en:{platform:"Platform",solutions:"Solutions",prices:"Pricing",language:"Language",access:"Log in",start:"Describe my situation",menu:"Menu",home:"Home",guide:"Legal guide",digital:"Digital Justice OS",agents:"AI Agents",legal:"LEGAL 360",guest:"For guests",host:"For hosts",prepare:"Prepare my case",accessHead:"IHA private access",accessNote:"The private portal is being prepared. Access will be by invitation.",request:"Request an invitation",emergency:"Emergency help · 123"},
+ fr:{platform:"Plateforme",solutions:"Solutions",prices:"Tarifs",language:"Langue",access:"Accéder",start:"Décrire ma situation",menu:"Menu",home:"Accueil",guide:"Guide juridique",digital:"Digital Justice OS",agents:"Agents IA",legal:"LEGAL 360",guest:"Pour les voyageurs",host:"Pour les hôtes",prepare:"Préparer mon dossier",accessHead:"Accès privé IHA",accessNote:"Le portail privé est en préparation. L’accès se fera sur invitation.",request:"Demander une invitation",emergency:"Urgence · 123"},
+ pt:{platform:"Plataforma",solutions:"Soluções",prices:"Preços",language:"Idioma",access:"Acessar",start:"Descrever minha situação",menu:"Menu",home:"Início",guide:"Guia jurídico",digital:"Digital Justice OS",agents:"Agentes de IA",legal:"LEGAL 360",guest:"Para hóspedes",host:"Para anfitriões",prepare:"Preparar meu caso",accessHead:"Acesso privado IHA",accessNote:"O portal privado está em preparação e terá acesso por convite.",request:"Solicitar convite",emergency:"Emergência · 123"}
 };
 const prepSlug={es:"prepare-su-caso",en:"prepare-your-case",fr:"preparez-votre-dossier",pt:"prepare-o-seu-caso"};
 const languageLabel={es:"Español",en:"English",fr:"Français",pt:"Português"};
@@ -391,7 +391,7 @@ function init(){
  accessPanel.append(aTitle,aNote,aRequest);
  access.append(accessTrigger,accessPanel);right.append(access);
  const mobileAccess=access.cloneNode(true);mobileAccess.classList.add("iha-mobile-access");nav.append(mobileAccess);
- const start=lnk(t.start,paths.guide,"iha-nav-start");
+ const start=lnk(t.start,paths.prepare,"iha-nav-start");
  right.append(start);
  const menuBtn=create("button","iha-nav-mobile-button");
  menuBtn.type="button";menuBtn.setAttribute("aria-label",t.menu);menuBtn.setAttribute("aria-expanded","false");
@@ -435,7 +435,7 @@ function init(){
      });
    });
    nav.setAttribute("aria-label",nt.platform+" · "+nt.solutions);
-   start.textContent=nt.start;start.href=target.guide;
+   start.textContent=nt.start;start.href=target.prepare;
    for(const d of [access,mobileAccess]){
      d.querySelector("summary").textContent=nt.access;
      d.querySelector(".iha-nav-access-title").textContent=nt.accessHead;
