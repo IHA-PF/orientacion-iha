@@ -521,12 +521,13 @@ function render(){
  [d.hosts,d.conflicts,d.consumers].forEach((name,i)=>{
    const tab=make("button","editorial-tab");tab.append(serviceVisual(i),make("span","editorial-caption",name));tab.type="button";tab.id="family-tab-"+i;tab.setAttribute("role","tab");
    const panel=make("div","store-panel");panel.id="family-panel-"+i;panel.setAttribute("role","tabpanel");panel.setAttribute("aria-labelledby",tab.id);tab.setAttribute("aria-controls",panel.id);
-   const copy=make("div");copy.append(make("h3","",t.heads[i]),make("p","store-copy",t.copy[i]),link(t.cta[i],catalog+"#"+["hosts","platforms","consumers"][i]));
+   const copy=make("div");copy.append(make("h3","",t.heads[i]),make("p","store-copy",t.copy[i]));
+   if(i===2)copy.append(link(t.cta[i],catalog+"#consumers"));
    const tile=make("div","editorial-choice");tile.setAttribute("role","presentation");
    const topics=["hebergement","litige","litige"];
    const startLabels={"es":["Revisar mi alojamiento","Describir mi conflicto","Comenzar orientación"],"en":["Review my rental","Describe my dispute","Start guidance"],"fr":["Vérifier mon hébergement","Décrire mon litige","Commencer l’orientation"],"pt":["Revisar minha hospedagem","Descrever meu conflito","Iniciar orientação"]};
-   const startLabel=(startLabels[lang]||startLabels.es)[i];
-   const start=link(startLabel,base+d.prepare+"/?situation="+topics[i]);start.classList.add("editorial-orientation");start.setAttribute("aria-label",startLabel+" · "+name);
+   const startLabel=i<2?t.cta[i]:(startLabels[lang]||startLabels.es)[i];
+   const start=link(startLabel,i<2?catalog+"#"+["hosts","platforms"][i]:base+d.prepare+"/?situation="+topics[i]);start.classList.add("editorial-orientation");start.setAttribute("aria-label",startLabel+" · "+name);
    tile.append(tab,start);tabs.append(tile);
    panel.append(copy);services.append(panel);buttons.push(tab);panels.push(panel);
    tab.addEventListener("click",()=>{select(i);if(matchMedia("(max-width:700px)").matches)panel.scrollIntoView({block:"center"})});tab.addEventListener("keydown",e=>{const next={ArrowRight:(i+1)%3,ArrowLeft:(i+2)%3,Home:0,End:2}[e.key];if(next!==undefined){e.preventDefault();select(next);buttons[next].focus()}});
