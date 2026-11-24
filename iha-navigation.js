@@ -74,7 +74,7 @@ const entries = {
   [
    [
     "Catálogo de servicios",
-    "/es/servicios/"
+    "/es/servicios-y-precios/"
    ],
    [
     "Orientación gratuita",
@@ -150,7 +150,7 @@ const entries = {
   [
    [
     "Service catalogue",
-    "/en/services/"
+    "/en/services-and-prices/"
    ],
    [
     "Free guidance",
@@ -226,7 +226,7 @@ const entries = {
   [
    [
     "Catalogue des services",
-    "/fr/services/"
+    "/fr/services-et-prix/"
    ],
    [
     "Orientation gratuite",
@@ -302,7 +302,7 @@ const entries = {
   [
    [
     "Catálogo de serviços",
-    "/pt/servicos/"
+    "/pt/servicos-e-precos/"
    ],
    [
     "Orientação gratuita",
