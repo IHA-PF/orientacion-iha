@@ -401,3 +401,24 @@ html body #app .os-simple-home:has(.home-masthead)::before,html body #app .os-si
   .editorial-services .editorial-orientation{position:absolute;inset-inline-end:0;inset-block-end:calc(1.2 * clamp(1.15rem,1.5vw,1.75rem));max-width:10rem;white-space:normal}
  }
 }
+
+/* Staggered circular labels on the host and platform-dispute cards. */
+.service-visual .property-tags,
+.service-visual .evidence-stack{
+ position:absolute;inset:0;display:block;width:auto;max-width:none;z-index:1
+}
+.service-visual .property-tags>span,
+.service-visual .evidence-note{
+ position:absolute;display:grid;place-items:center;width:37%;aspect-ratio:1;
+ transform:translate(-50%,-50%);border-radius:50%;padding:clamp(4px,.7vw,12px);
+ text-align:center;font:650 clamp(.62rem,1.05vw,.93rem)/1.13 system-ui,sans-serif;
+ overflow-wrap:anywhere;box-sizing:border-box
+}
+.service-visual .property-tags>span{background:rgba(14,44,38,.9);color:#fff}
+.service-visual .evidence-note::before{display:none}
+.service-visual .property-tags>span:nth-child(1){left:25%;top:31%}
+.service-visual .property-tags>span:nth-child(2){left:73%;top:47%}
+.service-visual .property-tags>span:nth-child(3){left:37%;top:77%}
+.service-visual .evidence-note:nth-child(1){left:31%;top:24%}
+.service-visual .evidence-note:nth-child(2){left:73%;top:51%}
+.service-visual .evidence-note:nth-child(3){left:32%;top:76%}
