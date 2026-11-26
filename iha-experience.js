@@ -8,14 +8,14 @@ const directory={
   "host": "plan-anfitrion-en-regla",
   "prepare": "prepare-su-caso",
   "services": "Servicios jurídicos",
-  "intro": "Elija el servicio que corresponde a su situación. Cada ficha explica qué recibe, cuánto cuesta y cuáles son sus límites.",
+  "intro": "Elija su caso. Cada ficha dice qué recibe, cuánto cuesta y qué no incluye.",
   "how": "Cómo funciona",
   "consumers": "Consumidores",
   "travel": "Viajeros",
   "hosts": "Anfitriones",
   "business": "Empresas",
   "conflicts": "Conflictos con plataformas",
-  "case": "Análisis de expediente",
+  "case": "Análisis de su caso",
   "proof": "Preparar pruebas",
   "free": "Orientación gratuita",
   "personal": "Acompañamiento personalizado",
@@ -26,13 +26,13 @@ const directory={
   "compare": "Comparar opciones",
   "faq": "Preguntas frecuentes",
   "freeQ": "¿Qué puedo hacer gratis?",
-  "scopeQ": "¿Cómo se confirma el alcance?",
+  "scopeQ": "¿Cómo sé qué incluye?",
   "scope": "Antes de contratar, solicite el alcance, el precio y las condiciones por escrito.",
   "view": "Ver ficha",
-  "final": "Prepare su consulta jurídica",
-  "problem": "Controversias con plataformas",
-  "protect": "Consultar el plan para anfitriones",
-  "catalogue": "Catálogo de servicios",
+  "final": "Sepa qué hacer en 2 minutos",
+  "problem": "Problemas con plataformas",
+  "protect": "Plan para anfitriones",
+  "catalogue": "¿Qué necesita?",
   "about": "Conozca IHA"
  },
  "en": {
@@ -43,7 +43,7 @@ const directory={
   "host": "host-compliance-plan",
   "prepare": "prepare-your-case",
   "services": "Legal services",
-  "intro": "Find a service for your situation. Each page explains what you receive, its price and the limits of the engagement.",
+  "intro": "Pick your case. Each page says what you get, what it costs and what it doesn’t cover.",
   "how": "How it works",
   "consumers": "Consumers",
   "travel": "Travellers",
@@ -61,13 +61,13 @@ const directory={
   "compare": "Compare options",
   "faq": "Frequently asked questions",
   "freeQ": "What can I do for free?",
-  "scopeQ": "How is the scope confirmed?",
+  "scopeQ": "How do I know what’s included?",
   "scope": "Before engaging a service, ask for the scope, price and terms in writing.",
   "view": "View service",
-  "final": "Start with legal clarity",
-  "problem": "I have a problem with a platform",
-  "protect": "I want to protect my business",
-  "catalogue": "Service catalogue",
+  "final": "Find out what to do in 2 minutes",
+  "problem": "Platform problems",
+  "protect": "Host plan",
+  "catalogue": "What do you need?",
   "about": "About IHA"
  },
  "fr": {
@@ -78,14 +78,14 @@ const directory={
   "host": "abonnement-hote-en-regle",
   "prepare": "preparez-votre-dossier",
   "services": "Services juridiques",
-  "intro": "Trouvez le service adapté à votre situation. Chaque fiche précise les livrables, le prix et les limites de la prestation.",
+  "intro": "Choisissez votre cas. Chaque fiche indique ce que vous recevez, le prix et ce qui n’est pas inclus.",
   "how": "Comment ça marche",
   "consumers": "Consommateurs",
   "travel": "Voyageurs",
   "hosts": "Hôtes",
   "business": "Entreprises",
   "conflicts": "Litiges avec les plateformes",
-  "case": "Analyse de dossier",
+  "case": "Analyse de votre dossier",
   "proof": "Préparer les preuves",
   "free": "Orientation gratuite",
   "personal": "Accompagnement personnalisé",
@@ -96,13 +96,13 @@ const directory={
   "compare": "Comparer les options",
   "faq": "Questions fréquentes",
   "freeQ": "Que puis-je faire gratuitement ?",
-  "scopeQ": "Comment le périmètre est-il confirmé ?",
+  "scopeQ": "Comment savoir ce qui est inclus ?",
   "scope": "Avant de vous engager, demandez le périmètre, le prix et les conditions par écrit.",
   "view": "Voir la fiche",
-  "final": "Faites le premier pas en connaissance de vos droits",
-  "problem": "J’ai un problème avec une plateforme",
-  "protect": "Je souhaite protéger mon activité",
-  "catalogue": "Catalogue des services",
+  "final": "Sachez quoi faire en 2 minutes",
+  "problem": "Problèmes avec une plateforme",
+  "protect": "Abonnement hôte",
+  "catalogue": "De quoi avez-vous besoin ?",
   "about": "Découvrir IHA"
  },
  "pt": {
@@ -113,7 +113,7 @@ const directory={
   "host": "plano-anfitriao-em-dia",
   "prepare": "prepare-o-seu-caso",
   "services": "Serviços jurídicos",
-  "intro": "Encontre o serviço adequado à sua situação. Cada ficha explica o que você recebe, o preço e os limites da contratação.",
+  "intro": "Escolha seu caso. Cada ficha diz o que você recebe, quanto custa e o que não inclui.",
   "how": "Como funciona",
   "consumers": "Consumidores",
   "travel": "Viajantes",
@@ -131,13 +131,13 @@ const directory={
   "compare": "Comparar opções",
   "faq": "Perguntas frequentes",
   "freeQ": "O que posso fazer gratuitamente?",
-  "scopeQ": "Como é confirmado o escopo?",
+  "scopeQ": "Como sei o que está incluído?",
   "scope": "Antes de contratar, solicite o escopo, o preço e as condições por escrito.",
   "view": "Ver serviço",
-  "final": "Comece com clareza jurídica",
-  "problem": "Tenho um problema com uma plataforma",
-  "protect": "Quero proteger minha atividade",
-  "catalogue": "Catálogo de serviços",
+  "final": "Saiba o que fazer em 2 minutos",
+  "problem": "Problemas com plataformas",
+  "protect": "Plano para anfitriões",
+  "catalogue": "Do que você precisa?",
   "about": "Conheça a IHA"
  }
 };
@@ -145,163 +145,391 @@ const modules={
  "es": [
   [
    "IHA PREVENT",
-   "Identificar riesgos antes de que se conviertan en conflictos."
+   "Detecte riesgos antes de que sean conflictos."
   ],
   [
    "IHA EVIDENCE",
-   "Organizar los hechos y conservar sus soportes."
+   "Ordene los hechos y guarde las pruebas."
   ],
   [
    "IHA ANALYZE",
-   "Entender el problema desde el derecho colombiano."
+   "Entienda su caso según la ley colombiana."
   ],
   [
    "IHA RESOLVE",
-   "Gestionar la solución jurídica adecuada."
+   "Resuelva el conflicto por la vía adecuada."
   ],
   [
    "IHA MONITOR",
-   "No perder de vista compromisos y fechas importantes."
+   "No pierda plazos ni compromisos."
   ],
   [
    "IHA LEGAL CARE",
-   "Mantener un acompañamiento jurídico a lo largo del tiempo."
+   "Acompañamiento jurídico continuo."
   ]
  ],
  "en": [
   [
    "IHA PREVENT",
-   "Identify risks before they become disputes."
+   "Spot risks before they become disputes."
   ],
   [
    "IHA EVIDENCE",
-   "Organise the facts and preserve supporting records."
+   "Organise the facts and keep the evidence."
   ],
   [
    "IHA ANALYZE",
-   "Understand the issue under Colombian law."
+   "Understand your case under Colombian law."
   ],
   [
    "IHA RESOLVE",
-   "Manage an appropriate legal response."
+   "Resolve the dispute the right way."
   ],
   [
    "IHA MONITOR",
-   "Keep track of commitments and important dates."
+   "Never miss a deadline or commitment."
   ],
   [
    "IHA LEGAL CARE",
-   "Maintain legal support over time."
+   "Ongoing legal support."
   ]
  ],
  "fr": [
   [
    "IHA PREVENT",
-   "Identifier les risques avant qu'ils ne deviennent des litiges."
+   "Repérez les risques avant qu’ils ne deviennent des litiges."
   ],
   [
    "IHA EVIDENCE",
-   "Organiser les faits et conserver les pièces utiles."
+   "Organisez les faits et gardez les preuves."
   ],
   [
    "IHA ANALYZE",
-   "Comprendre le problème au regard du droit colombien."
+   "Comprenez votre cas selon le droit colombien."
   ],
   [
    "IHA RESOLVE",
-   "Mettre en œuvre la réponse juridique adaptée."
+   "Réglez le litige par la bonne voie."
   ],
   [
    "IHA MONITOR",
-   "Suivre les engagements et les échéances importantes."
+   "Ne manquez aucune échéance."
   ],
   [
    "IHA LEGAL CARE",
-   "Maintenir un accompagnement juridique dans la durée."
+   "Un suivi juridique dans la durée."
   ]
  ],
  "pt": [
   [
    "IHA PREVENT",
-   "Identificar riscos antes que se transformem em conflitos."
+   "Identifique riscos antes que virem conflitos."
   ],
   [
    "IHA EVIDENCE",
-   "Organizar os fatos e preservar os documentos de apoio."
+   "Organize os fatos e guarde as provas."
   ],
   [
    "IHA ANALYZE",
-   "Compreender o problema conforme o direito colombiano."
+   "Entenda seu caso pela lei colombiana."
   ],
   [
    "IHA RESOLVE",
-   "Gerenciar a solução jurídica adequada."
+   "Resolva o conflito pelo caminho certo."
   ],
   [
    "IHA MONITOR",
-   "Acompanhar compromissos e datas importantes."
+   "Não perca prazos nem compromissos."
   ],
   [
    "IHA LEGAL CARE",
-   "Manter acompanhamento jurídico ao longo do tempo."
+   "Acompanhamento jurídico contínuo."
   ]
  ]
 };
 const statusText={
  "es": [
   "Disponible hoy",
-  "Guías públicas, preparación de pruebas y orientación inicial.",
+  "Guías gratis, preparación de pruebas y orientación inicial.",
   "En desarrollo",
-  "Los motores de análisis y las funciones de automatización forman parte del proyecto Digital Justice OS."
+  "Motores de análisis y automatización de trámites."
  ],
  "en": [
   "Available today",
-  "Public guides, evidence preparation and initial legal guidance.",
+  "Free guides, evidence preparation and initial guidance.",
   "In development",
-  "The analysis engines and automation features are part of the Digital Justice OS project."
+  "Analysis engines and process automation."
  ],
  "fr": [
   "Disponible aujourd’hui",
-  "Guides publics, préparation des preuves et première orientation juridique.",
+  "Guides gratuits, préparation des preuves et première orientation.",
   "En développement",
-  "Les moteurs d’analyse et les fonctions d’automatisation font partie du projet Digital Justice OS."
+  "Moteurs d’analyse et automatisation des démarches."
  ],
  "pt": [
   "Disponível hoje",
-  "Guias públicos, preparação de provas e orientação inicial.",
+  "Guias grátis, preparação de provas e orientação inicial.",
   "Em desenvolvimento",
-  "Os motores de análise e as funções de automação fazem parte do projeto Digital Justice OS."
+  "Motores de análise e automação de processos."
  ]
 };
 const tr={
-es:{eyebrow:"DOS CAMINOS. UNA MISMA PROTECCIÓN.",title:"Más claridad jurídica para un mundo conectado.",description:"Para quienes ofrecen alojamiento y para quienes utilizan plataformas digitales. Entiende las obligaciones, prevén riesgos y descubre posibles vías de solución ante los conflictos.",features:["Normativa digital","Prevención de riesgos","Gestión de conflictos","Orientación clara"],details:["Requisitos según tu actividad","Documentar antes de escalar","Alternativas y seguimiento","Opciones disponibles en Colombia"],heads:["Cumplimiento para anfitriones","Análisis de controversias","Derechos de los usuarios de plataformas"],copy:["Orientación sobre obligaciones, registros y buenas prácticas en viviendas vinculadas a plataformas digitales.","Organice la correspondencia y los documentos para precisar los hechos y evaluar las vías de reclamación.","Consulte las opciones de orientación ante cancelaciones, cobros controvertidos, solicitudes de reembolso o publicidad engañosa."],tags:["Requisitos y documentos","Prevención de conflictos","Opciones de reclamación"],cta:["Explorar soluciones","Conocer los servicios","Comenzar orientación"],stepsTitle:"Del problema a los siguientes pasos, de forma clara.",steps:[["01","Describa los hechos","Indique las fechas, las partes y los documentos pertinentes."],["02","Examine las opciones","Consulte la normativa y las vías de reclamación disponibles."],["03","Defina la siguiente actuación","Consulte las guías o solicite una revisión profesional del expediente."]],alert:"Orientación informativa inicial. Cada caso exige revisar los hechos, pruebas y normas aplicables. Los módulos avanzados de automatización se encuentran en desarrollo.",final:"Tu situación merece una respuesta comprensible.",button:"Comenzar ahora"},
-en:{eyebrow:"TWO PATHS. ONE STANDARD OF PROTECTION.",title:"Greater legal clarity for a connected world.",description:"For accommodation providers and people using digital platforms. Understand obligations, anticipate risks and explore ways to address disputes.",features:["Digital regulation","Risk prevention","Dispute management","Clear guidance"],details:["Requirements for your activity","Document matters early","Options and follow-up","Available channels in Colombia"],heads:["Compliance for hosts","Better dispute management","Your rights on digital platforms"],copy:["Guidance on obligations, registration and best practice for accommodation listed on platforms.","Organize documents, messages and incidents, and explore ways to resolve issues early.","Cancellations, charges, refunds or misleading advertising: describe your issue and explore initial options."],tags:["Requirements and records","Dispute prevention","Complaint options"],cta:["Explore solutions","Discover services","Start guidance"],stepsTitle:"From the problem to next steps, clearly.",steps:[["01","Describe your situation","Identify the issue and key facts."],["02","Review the options","Explore regulations and available channels."],["03","Choose the next step","Use resources or request professional review."]],alert:"Initial informational guidance only. Each case requires a review of facts, evidence and applicable law. Advanced automation modules remain in development.",final:"Your situation deserves a clear response.",button:"Get started"},
-fr:{eyebrow:"DEUX PARCOURS. UNE MÊME PROTECTION.",title:"Plus de clarté juridique dans un monde connecté.",description:"Pour les hébergeurs et les utilisateurs de plateformes numériques. Comprenez les obligations, anticipez les risques et explorez les voies de résolution des litiges.",features:["Réglementation","Prévention","Gestion des litiges","Orientation claire"],details:["Exigences applicables","Documenter les incidents","Options et suivi","Voies possibles en Colombie"],heads:["Conformité des hébergeurs","Mieux gérer les litiges","Vos droits sur les plateformes"],copy:["Orientation sur les obligations, enregistrements et bonnes pratiques pour les logements proposés sur les plateformes.","Rassemblez les échanges et pièces utiles et examinez les solutions avant l'aggravation d'un désaccord.","Annulations, frais, remboursements ou publicité trompeuse : décrivez les faits et découvrez vos premières options."],tags:["Exigences et documents","Prévention des litiges","Voies de réclamation"],cta:["Explorer les solutions","Découvrir les services","Commencer"],stepsTitle:"Du problème aux prochaines étapes, simplement.",steps:[["01","Décrivez la situation","Identifiez le problème et les faits importants."],["02","Explorez les options","Consultez les règles et démarches possibles."],["03","Choisissez la suite","Utilisez les ressources ou demandez un avis professionnel."]],alert:"Première orientation informative. Chaque dossier exige l'examen des faits, preuves et règles applicables. Les modules avancés sont en développement.",final:"Votre situation mérite une réponse claire.",button:"Commencer"},
-pt:{eyebrow:"DOIS CAMINHOS. UMA MESMA PROTEÇÃO.",title:"Mais clareza jurídica em um mundo conectado.",description:"Para anfitriões e usuários de plataformas digitais. Entenda obrigações, antecipe riscos e explore caminhos para solucionar conflitos.",features:["Normas digitais","Prevenção","Gestão de conflitos","Orientação clara"],details:["Requisitos por atividade","Documentação preventiva","Alternativas e acompanhamento","Opções na Colômbia"],heads:["Conformidade para anfitriões","Melhor gestão de conflitos","Seus direitos nas plataformas"],copy:["Orientação sobre obrigações, registros e boas práticas para imóveis divulgados em plataformas digitais.","Organize mensagens, documentos e ocorrências, buscando soluções antes que o conflito aumente.","Cancelamentos, cobranças, reembolsos ou publicidade enganosa: descreva seu caso e veja opções iniciais."],tags:["Requisitos e documentos","Prevenção de conflitos","Opções de reclamação"],cta:["Explorar soluções","Conhecer serviços","Iniciar orientação"],stepsTitle:"Do problema aos próximos passos, com clareza.",steps:[["01","Descreva sua situação","Identifique o problema e os fatos principais."],["02","Explore as opções","Consulte regras e alternativas disponíveis."],["03","Escolha o próximo passo","Use recursos ou solicite análise profissional."]],alert:"Orientação inicial informativa. Cada caso exige análise de fatos, provas e legislação aplicável. Módulos avançados seguem em desenvolvimento.",final:"Sua situação merece uma resposta clara.",button:"Começar"}
+ "es": {
+  "eyebrow": "Dos caminos, una misma protección.",
+  "title": "Claridad jurídica para plataformas digitales.",
+  "description": "Para anfitriones y usuarios de plataformas. Conozca sus obligaciones, prevenga riesgos y resuelva conflictos.",
+  "features": [
+   "Normas",
+   "Prevención",
+   "Conflictos",
+   "Orientación clara"
+  ],
+  "details": [
+   "Requisitos según su actividad",
+   "Documente antes de escalar",
+   "Opciones y seguimiento",
+   "Vías disponibles en Colombia"
+  ],
+  "heads": [
+   "Anfitriones: ponga su vivienda en regla",
+   "Conflictos con plataformas",
+   "Sus derechos como consumidor"
+  ],
+  "copy": [
+   "Registros, obligaciones y buenas prácticas para alquilar por días.",
+   "Ordene mensajes y documentos. Vea cómo reclamar.",
+   "Cancelaciones, cobros, reembolsos o publicidad engañosa: vea qué puede hacer."
+  ],
+  "tags": [
+   "Requisitos y documentos",
+   "Prevención de conflictos",
+   "Opciones para reclamar"
+  ],
+  "cta": [
+   "Servicios para anfitriones",
+   "Servicios para conflictos",
+   "Servicios para consumidores"
+  ],
+  "stepsTitle": "Del problema al siguiente paso.",
+  "steps": [
+   [
+    "01",
+    "Cuente qué pasó",
+    "Fechas, partes y documentos."
+   ],
+   [
+    "02",
+    "Vea sus opciones",
+    "Qué dice la ley y dónde reclamar."
+   ],
+   [
+    "03",
+    "Elija qué hacer",
+    "Use la guía o pida que una abogada revise su caso."
+   ]
+  ],
+  "alert": "Orientación informativa. Cada caso exige revisar hechos, pruebas y normas. La automatización avanzada está en desarrollo.",
+  "final": "Su situación merece una respuesta clara.",
+  "button": "Ver mis opciones"
+ },
+ "en": {
+  "eyebrow": "Two paths, one standard of protection.",
+  "title": "Legal clarity for digital platforms.",
+  "description": "For hosts and platform users. Know your obligations, prevent risks and resolve disputes.",
+  "features": [
+   "Regulation",
+   "Prevention",
+   "Disputes",
+   "Clear guidance"
+  ],
+  "details": [
+   "Requirements for your activity",
+   "Document early",
+   "Options and follow-up",
+   "Channels in Colombia"
+  ],
+  "heads": [
+   "Hosts: get your rental compliant",
+   "Platform disputes",
+   "Your consumer rights"
+  ],
+  "copy": [
+   "Registration, obligations and good practice for short-term rentals.",
+   "Organise messages and documents. See how to complain.",
+   "Cancellations, charges, refunds or misleading ads: see what you can do."
+  ],
+  "tags": [
+   "Requirements and records",
+   "Dispute prevention",
+   "Ways to complain"
+  ],
+  "cta": [
+   "Host services",
+   "Dispute services",
+   "Consumer services"
+  ],
+  "stepsTitle": "From problem to next step.",
+  "steps": [
+   [
+    "01",
+    "Tell us what happened",
+    "Dates, parties and documents."
+   ],
+   [
+    "02",
+    "See your options",
+    "What the law says and where to complain."
+   ],
+   [
+    "03",
+    "Choose what to do",
+    "Use the guide or ask a lawyer to review your case."
+   ]
+  ],
+  "alert": "General information only. Each case needs a review of the facts, evidence and law. Advanced automation is in development.",
+  "final": "Your situation deserves a clear answer.",
+  "button": "See my options"
+ },
+ "fr": {
+  "eyebrow": "Deux parcours, une même protection.",
+  "title": "La clarté juridique pour les plateformes numériques.",
+  "description": "Pour les hôtes et les utilisateurs de plateformes. Connaissez vos obligations, prévenez les risques et réglez les litiges.",
+  "features": [
+   "Réglementation",
+   "Prévention",
+   "Litiges",
+   "Orientation claire"
+  ],
+  "details": [
+   "Exigences selon votre activité",
+   "Documentez tôt",
+   "Options et suivi",
+   "Voies possibles en Colombie"
+  ],
+  "heads": [
+   "Hôtes : mettez votre logement en règle",
+   "Litiges avec les plateformes",
+   "Vos droits de consommateur"
+  ],
+  "copy": [
+   "Enregistrements, obligations et bonnes pratiques pour la location courte durée.",
+   "Rassemblez messages et documents. Voyez comment réclamer.",
+   "Annulations, frais, remboursements ou publicité trompeuse : voyez ce que vous pouvez faire."
+  ],
+  "tags": [
+   "Exigences et documents",
+   "Prévention des litiges",
+   "Voies de réclamation"
+  ],
+  "cta": [
+   "Services aux hôtes",
+   "Services en cas de litige",
+   "Services aux consommateurs"
+  ],
+  "stepsTitle": "Du problème à la prochaine étape.",
+  "steps": [
+   [
+    "01",
+    "Racontez ce qui s’est passé",
+    "Dates, parties et documents."
+   ],
+   [
+    "02",
+    "Voyez vos options",
+    "Ce que dit la loi et où réclamer."
+   ],
+   [
+    "03",
+    "Choisissez la suite",
+    "Utilisez le guide ou demandez l’avis d’une avocate."
+   ]
+  ],
+  "alert": "Information générale uniquement. Chaque dossier exige l’examen des faits, des preuves et du droit. L’automatisation avancée est en développement.",
+  "final": "Votre situation mérite une réponse claire.",
+  "button": "Voir mes options"
+ },
+ "pt": {
+  "eyebrow": "Dois caminhos, uma mesma proteção.",
+  "title": "Clareza jurídica para plataformas digitais.",
+  "description": "Para anfitriões e usuários de plataformas. Conheça suas obrigações, previna riscos e resolva conflitos.",
+  "features": [
+   "Normas",
+   "Prevenção",
+   "Conflitos",
+   "Orientação clara"
+  ],
+  "details": [
+   "Requisitos por atividade",
+   "Documente cedo",
+   "Opções e acompanhamento",
+   "Canais na Colômbia"
+  ],
+  "heads": [
+   "Anfitriões: regularize seu imóvel",
+   "Conflitos com plataformas",
+   "Seus direitos de consumidor"
+  ],
+  "copy": [
+   "Registros, obrigações e boas práticas para aluguel por temporada.",
+   "Organize mensagens e documentos. Veja como reclamar.",
+   "Cancelamentos, cobranças, reembolsos ou publicidade enganosa: veja o que fazer."
+  ],
+  "tags": [
+   "Requisitos e documentos",
+   "Prevenção de conflitos",
+   "Opções de reclamação"
+  ],
+  "cta": [
+   "Serviços para anfitriões",
+   "Serviços para conflitos",
+   "Serviços para consumidores"
+  ],
+  "stepsTitle": "Do problema ao próximo passo.",
+  "steps": [
+   [
+    "01",
+    "Conte o que aconteceu",
+    "Datas, partes e documentos."
+   ],
+   [
+    "02",
+    "Veja suas opções",
+    "O que diz a lei e onde reclamar."
+   ],
+   [
+    "03",
+    "Escolha o que fazer",
+    "Use o guia ou peça a análise de uma advogada."
+   ]
+  ],
+  "alert": "Informação geral. Cada caso exige análise dos fatos, provas e leis. A automação avançada está em desenvolvimento.",
+  "final": "Sua situação merece uma resposta clara.",
+  "button": "Ver minhas opções"
+ }
 };
 const homeCopy={
  "es": [
-  "Orientación jurídica para quienes usan plataformas digitales",
-  "Consulte las vías de reclamación disponibles en Colombia para controversias relacionadas con compras, reservas y plataformas digitales. Identifique los documentos que respaldan su solicitud.",
-  "Recursos de IHA",
-  "¿Cuál es el objeto de su consulta?",
+  "¿Problema con una reserva, una compra o una app? Sepa qué hacer.",
+  "Gratis y en 2 minutos: vea qué dice la ley en Colombia, qué pruebas guardar y dónde reclamar.",
+  "Más recursos",
+  "¿Qué necesita?",
   "Una compra",
   "Una reserva",
-  "Mi actividad",
+  "Soy anfitrión",
   "Ver mis opciones",
   "Guía jurídica",
   "Pruebas",
   "Servicios",
-  "Tarifas"
+  "Precios"
  ],
  "fr": [
-  "Une orientation juridique pour les usagers des plateformes numériques",
-  "Un achat, une réservation ou un litige avec une plateforme en Colombie ? Découvrez vos options, rassemblez les preuves et préparez votre prochaine démarche.",
-  "Ressources IHA",
-  "Quel est l’objet de votre demande ?",
+  "Un problème avec une réservation, un achat ou une appli ? Sachez quoi faire.",
+  "Gratuit, en 2 minutes : ce que dit la loi colombienne, les preuves à garder et où réclamer.",
+  "Autres ressources",
+  "De quoi avez-vous besoin ?",
   "Un achat",
   "Une réservation",
-  "Mon activité",
+  "Je suis hôte",
   "Voir mes options",
   "Guide juridique",
   "Preuves",
@@ -309,27 +537,27 @@ const homeCopy={
   "Tarifs"
  ],
  "en": [
-  "Legal guidance for people who use digital platforms",
-  "Explore your options after a purchase, a booking or a dispute with a platform in Colombia. Supporting documents and decide what to do next.",
-  "IHA resources",
-  "What is the subject of your enquiry?",
+  "Problem with a booking, a purchase or an app? Find out what to do.",
+  "Free, in 2 minutes: see what Colombian law says, what evidence to keep and where to complain.",
+  "More resources",
+  "What do you need?",
   "A purchase",
   "A booking",
-  "My business",
-  "Explore my options",
+  "I'm a host",
+  "See my options",
   "Legal guide",
   "Evidence",
   "Services",
   "Pricing"
  ],
  "pt": [
-  "Orientação jurídica para quem usa plataformas digitais",
-  "Conheça suas opções em uma compra, reserva ou disputa com uma plataforma na Colômbia. Organize as provas e prepare seu próximo passo.",
-  "Recursos IHA",
-  "Qual é o objeto da consulta?",
+  "Problema com uma reserva, uma compra ou um app? Saiba o que fazer.",
+  "Grátis, em 2 minutos: veja o que diz a lei colombiana, que provas guardar e onde reclamar.",
+  "Mais recursos",
+  "Do que você precisa?",
   "Uma compra",
   "Uma reserva",
-  "Minha atividade",
+  "Sou anfitrião",
   "Ver minhas opções",
   "Guia jurídico",
   "Provas",
@@ -376,72 +604,92 @@ const artLabels={
  ]
 };
 const profileCopy={
-  "es": [
-    "Orientación según el ámbito de la consulta",
-    [
-      "Cancelación de reservas y discrepancias con el anuncio",
-      "Conserve la confirmación de la reserva, los mensajes y las fotografías del alojamiento. Estos documentos permiten identificar las condiciones ofrecidas y sustentar su reclamación."
-    ],
-    [
-      "Incumplimientos de entrega y cobros en disputa",
-      "La revisión del pedido, la factura y el comprobante de pago permite precisar el motivo de la reclamación y evaluar las opciones disponibles."
-    ],
-    [
-      "Obligaciones de los prestadores de alojamiento turístico",
-      "Consulte el plan para anfitriones e identifique los registros, documentos y obligaciones aplicables a su actividad en Colombia."
-    ]
+ "es": [
+  "Qué hacer según su caso",
+  [
+   "Le cancelaron la reserva o el lugar no era como en el anuncio",
+   "Guarde la confirmación, los mensajes y las fotos del lugar. Prueban lo que le ofrecieron."
   ],
-  "fr": [
-    "Orientation selon l’objet de votre demande",
-    [
-      "Annulation de réservation et hébergement non conforme à l’annonce",
-      "Conservez la confirmation de réservation, les échanges et les photographies du logement. Ces pièces permettent de comparer la prestation annoncée à celle fournie et d’étayer votre réclamation."
-    ],
-    [
-      "Défaut de livraison et contestation d’un paiement",
-      "L’examen de la commande, de la facture et du justificatif de paiement permet de préciser le motif de votre réclamation et d’évaluer les démarches possibles."
-    ],
-    [
-      "Obligations des exploitants d’hébergements touristiques",
-      "Consultez le programme destiné aux hôtes pour identifier les formalités, les documents et les obligations applicables à votre activité en Colombie."
-    ]
+  [
+   "El pedido no llegó o le cobraron de más",
+   "Guarde el pedido, la factura y el comprobante de pago. Con ellos podrá reclamar."
   ],
-  "en": [
-    "Guidance by type of enquiry",
-    [
-      "Booking cancellations and discrepancies with the listing",
-      "Keep the booking confirmation, correspondence and photographs of the accommodation. These records can establish what was offered and support a complaint."
-    ],
-    [
-      "Undelivered orders and disputed charges",
-      "A review of the order, invoice and payment record can clarify the grounds for a complaint and help identify the available options."
-    ],
-    [
-      "Compliance for tourist accommodation providers",
-      "Consult the host plan to identify registrations, records and obligations relevant to your accommodation business in Colombia."
-    ]
-  ],
-  "pt": [
-    "Orientação por tipo de consulta",
-    [
-      "Cancelamento de reservas e divergências em relação ao anúncio",
-      "Guarde a confirmação da reserva, as mensagens e as fotografias da hospedagem. Esses documentos ajudam a identificar as condições oferecidas e a fundamentar a reclamação."
-    ],
-    [
-      "Falhas na entrega e contestação de cobranças",
-      "A análise do pedido, da fatura e do comprovante de pagamento permite esclarecer o motivo da reclamação e avaliar as medidas disponíveis."
-    ],
-    [
-      "Obrigações dos prestadores de hospedagem turística",
-      "Consulte o plano para anfitriões e identifique os registros, documentos e obrigações aplicáveis à sua atividade na Colômbia."
-    ]
+  [
+   "Alquila su vivienda por días",
+   "Vea qué registros, documentos y obligaciones le aplican en Colombia."
   ]
+ ],
+ "fr": [
+  "Que faire selon votre cas",
+  [
+   "Réservation annulée ou logement différent de l’annonce",
+   "Gardez la confirmation, les messages et les photos du logement. Ils prouvent ce qui vous a été proposé."
+  ],
+  [
+   "Commande non livrée ou paiement contesté",
+   "Gardez la commande, la facture et le justificatif de paiement. Ils vous permettront de réclamer."
+  ],
+  [
+   "Vous louez un logement à la nuitée",
+   "Voyez quels enregistrements, documents et obligations s’appliquent à vous en Colombie."
+  ]
+ ],
+ "en": [
+  "What to do in your case",
+  [
+   "Your booking was cancelled or the place didn’t match the listing",
+   "Keep the confirmation, messages and photos of the place. They prove what you were offered."
+  ],
+  [
+   "Your order didn’t arrive or you were overcharged",
+   "Keep the order, invoice and payment receipt. You’ll need them to complain."
+  ],
+  [
+   "You rent out a property short-term",
+   "See which registrations, records and obligations apply to you in Colombia."
+  ]
+ ],
+ "pt": [
+  "O que fazer no seu caso",
+  [
+   "Reserva cancelada ou hospedagem diferente do anúncio",
+   "Guarde a confirmação, as mensagens e as fotos do lugar. Elas provam o que foi oferecido."
+  ],
+  [
+   "Pedido não entregue ou cobrança indevida",
+   "Guarde o pedido, a fatura e o comprovante de pagamento. Com eles, você poderá reclamar."
+  ],
+  [
+   "Você aluga seu imóvel por temporada",
+   "Veja quais registros, documentos e obrigações se aplicam a você na Colômbia."
+  ]
+ ]
 };
 const legal360Intro={
- es:["CÓMO FUNCIONA","Proteja sus derechos en la economía digital desde una única","plataforma jurídica inteligente","Conozca IHA LEGAL 360"],
- en:["HOW IT WORKS","Protect your rights in the digital economy with one","intelligent legal platform","Discover IHA LEGAL 360"],
- fr:["COMMENT ÇA MARCHE","Protégez vos droits dans l’économie numérique depuis une seule","plateforme juridique intelligente","Découvrez IHA LEGAL 360"],
- pt:["COMO FUNCIONA","Proteja seus direitos na economia digital em uma única","plataforma jurídica inteligente","Conheça IHA LEGAL 360"]
+ "es": [
+  "IHA LEGAL 360",
+  "Su caso, sus pruebas y sus plazos en",
+  "un solo lugar",
+  "Ver cómo funciona"
+ ],
+ "en": [
+  "IHA LEGAL 360",
+  "Your case, evidence and deadlines in",
+  "one place",
+  "See how it works"
+ ],
+ "fr": [
+  "IHA LEGAL 360",
+  "Votre dossier, vos preuves et vos délais",
+  "au même endroit",
+  "Voir comment ça marche"
+ ],
+ "pt": [
+  "IHA LEGAL 360",
+  "Seu caso, suas provas e seus prazos em",
+  "um só lugar",
+  "Ver como funciona"
+ ]
 };
 
 function render(){
@@ -555,7 +803,7 @@ function render(){
    if(i===2)copy.append(link(t.cta[i],catalog+"#consumers"));
    const tile=make("div","editorial-choice");tile.setAttribute("role","presentation");
    const topics=["hebergement","litige","litige"];
-   const startLabels={"es":["Revisar mi alojamiento","Describir mi conflicto","Comenzar orientación"],"en":["Review my rental","Describe my dispute","Start guidance"],"fr":["Vérifier mon hébergement","Décrire mon litige","Commencer l’orientation"],"pt":["Revisar minha hospedagem","Descrever meu conflito","Iniciar orientação"]};
+   const startLabels={"es":["Revisar mi alojamiento","Describir mi conflicto","Ver mis opciones"],"en":["Review my rental","Describe my dispute","See my options"],"fr":["Vérifier mon hébergement","Décrire mon litige","Voir mes options"],"pt":["Revisar minha hospedagem","Descrever meu conflito","Ver minhas opções"]};
    const startLabel=i<2?t.cta[i]:(startLabels[lang]||startLabels.es)[i];
    const start=link(startLabel,i<2?catalog+"#"+["hosts","platforms"][i]:base+d.prepare+"/?situation="+topics[i]);start.classList.add("editorial-orientation");start.setAttribute("aria-label",startLabel+" · "+name);
    tile.append(tab,start);tabs.append(tile);
