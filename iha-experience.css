@@ -435,3 +435,22 @@ html body #app .os-simple-home:has(.home-masthead)::before,html body #app .os-si
 .service-visual .evidence-note:nth-child(1){left:31%;top:24%}
 .service-visual .evidence-note:nth-child(2){left:73%;top:51%}
 .service-visual .evidence-note:nth-child(3){left:32%;top:76%}
+
+/* A short, staggered drift as each service image enters view. */
+@media(prefers-reduced-motion:no-preference){
+ .service-visual.circles-in-view :is(.property-tags>span,.evidence-note,.case-slip){
+  --drift-x:5px;--drift-y:-7px;--drift-delay:0s;
+  animation:iha-circle-drift 2.4s ease-in-out var(--drift-delay) both;
+ }
+ .service-visual.circles-in-view :is(.property-tags>span:nth-child(2),.evidence-note:nth-child(2)){
+  --drift-x:-6px;--drift-y:5px;--drift-delay:.16s
+ }
+ .service-visual.circles-in-view :is(.property-tags>span:nth-child(3),.evidence-note:nth-child(3),.case-slip){
+  --drift-x:4px;--drift-y:-5px;--drift-delay:.3s
+ }
+}
+@keyframes iha-circle-drift{
+ 0%,100%{translate:0 0}
+ 43%{translate:var(--drift-x) var(--drift-y)}
+ 72%{translate:-2px 2px}
+}

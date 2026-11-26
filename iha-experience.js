@@ -520,6 +520,15 @@ function render(){
  wrap.prepend(legalIntro);
  const visualLabels=artLabels[lang]||artLabels.es;
  const buttons=[],panels=[];
+ const circleObserver=typeof IntersectionObserver==="function" && !matchMedia("(prefers-reduced-motion: reduce)").matches
+   ?new IntersectionObserver((entries,observer)=>{
+     for(const entry of entries){
+       if(!entry.isIntersecting)continue;
+       entry.target.classList.add("circles-in-view");
+       observer.unobserve(entry.target);
+     }
+   },{threshold:.35})
+   :null;
  function serviceVisual(index){
    const visual=make("span","service-visual visual-"+index);
    visual.setAttribute("aria-hidden","true");
@@ -535,6 +544,7 @@ function render(){
      else overlay.append(make("span","case-rule","IHA"),make("span","",({es:"Derechos del consumidor",en:"Consumer rights",fr:"Droits des consommateurs",pt:"Direitos do consumidor"}[lang]||"Derechos del consumidor")));
      visual.append(overlay);
    }
+   circleObserver?.observe(visual);
    return visual;
  }
  const select=i=>{buttons.forEach((b,j)=>{b.setAttribute("aria-selected",String(i===j));b.tabIndex=i===j?0:-1;panels[j].hidden=i!==j})};
