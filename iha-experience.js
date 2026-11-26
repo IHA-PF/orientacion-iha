@@ -529,7 +529,7 @@ function render(){
      visual.append(stack);
    }else{
      const photo=make("img","");
-     photo.src=index===0?"/assets/iha-stay.jpg":"/assets/profile-buyer.jpg";photo.alt="";photo.width=800;photo.height=800;photo.loading="lazy";photo.decoding="async";visual.append(photo);
+     photo.src=index===0?"/assets/iha-stay.jpg":"/assets/consumer-orientation.jpg";photo.alt="";photo.width=800;photo.height=800;photo.loading="lazy";photo.decoding="async";visual.append(photo);
      const overlay=make("span",index===0?"property-tags":"case-slip");
      if(index===0)visualLabels.slice(0,3).forEach(label=>overlay.append(make("span","",label)));
      else overlay.append(make("span","case-rule","IHA"),make("span","",({es:"Derechos del consumidor",en:"Consumer rights",fr:"Droits des consommateurs",pt:"Direitos do consumidor"}[lang]||"Derechos del consumidor")));
