@@ -34,7 +34,11 @@ try {
      const orientation=page.locator(".editorial-choice .editorial-orientation");
      assert.equal(await orientation.count(),3);
      assert.equal(new Set(await orientation.allTextContents()).size,3);
-     assert.deepEqual(await orientation.evaluateAll(links=>links.map(link=>new URL(link.href).searchParams.get("situation"))),["hebergement","litige","litige"]);
+     const destinations=(await orientation.evaluateAll(links=>links.map(link=>link.href))).map(href=>new URL(href));
+     assert.deepEqual(destinations.slice(0,2).map(url=>[url.pathname,url.hash]),[
+       ["/"+lang+"/"+catalog+"/","#hosts"],["/"+lang+"/"+catalog+"/","#platforms"]
+     ]);
+     assert.equal(destinations[2].searchParams.get("situation"),"litige");
      const visuals=page.locator(".editorial-services .store-tabs");
      await visuals.scrollIntoViewIfNeeded();
      await visuals.locator("img").evaluateAll(images=>Promise.all(images.map(img=>img.decode())));
@@ -63,6 +67,24 @@ try {
      assert.equal(await page.locator("#compare .store-card").count(),4);
     }else if(type==="legal-360"){
      assert.equal(await page.locator("[id^=module-]").count(),6);
+     const motion=page.locator(".legal360-motion");
+     await motion.waitFor({state:"visible"});
+     const track=motion.locator("[data-motion-track]"), step=motion.locator("[data-motion-step]");
+     assert.equal(await track.locator("option").count(),5);
+     if([390,1440].includes(width)){
+       for(const [index,count] of [4,6,4,6,4].entries()){
+         await track.selectOption({index});
+         assert.equal(await step.locator("option").count(),count);
+         await step.selectOption({index:count-1});
+         assert.ok((await motion.locator("[data-motion-title]").textContent()).trim());
+         assert.equal(await motion.locator(".motion-scene svg path[d]").count(),3);
+         assert.ok(await motion.locator("[data-motion-next]").isDisabled());
+       }
+       await motion.locator("[data-motion-prev]").click();
+       assert.equal(await step.inputValue(),"2");
+       await motion.locator("[data-motion-replay]").click();
+       assert.equal(await motion.locator(".motion-scene").evaluate(scene=>scene.getAnimations({subtree:true}).length),0);
+     }
     }
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),url+" overflow at "+width);
     if(lang==="es"&&[390,1440].includes(width))await page.screenshot({path:"test-artifacts/"+type+"-"+width+".png"});
