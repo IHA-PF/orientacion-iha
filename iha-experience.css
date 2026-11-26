@@ -414,7 +414,20 @@ html body #app .os-simple-home:has(.home-masthead)::before,html body #app .os-si
  text-align:center;font:650 clamp(.62rem,1.05vw,.93rem)/1.13 system-ui,sans-serif;
  overflow-wrap:anywhere;box-sizing:border-box
 }
-.service-visual .property-tags>span{background:rgba(14,44,38,.9);color:#fff}
+.service-visual .property-tags>span,
+.service-visual .evidence-note,
+.service-visual .case-slip{
+ background:rgba(10,36,31,.27);color:#fff;backdrop-filter:none;
+ border:1px solid rgba(255,255,255,.63);box-shadow:none;
+ text-shadow:0 1px 3px #061a16,0 1px 7px #061a16
+}
+.service-visual .case-slip{
+ inset:auto;left:66%;top:71%;z-index:1;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;gap:.2em;text-align:center;
+ width:51%;max-width:11rem;aspect-ratio:1;box-sizing:border-box;border-radius:50%;
+ transform:translate(-50%,-50%);padding:clamp(6px,1.2vw,16px);
+ font:650 clamp(.7rem,1.15vw,1rem)/1.13 system-ui,sans-serif;overflow-wrap:anywhere
+}
 .service-visual .evidence-note::before{display:none}
 .service-visual .property-tags>span:nth-child(1){left:25%;top:31%}
 .service-visual .property-tags>span:nth-child(2){left:73%;top:47%}
