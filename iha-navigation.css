@@ -417,3 +417,26 @@ html body.iha-nav-ready.iha-global-page.iha-glass-scrolled>header{
   border-bottom:1px solid rgba(16,16,16,.14)!important;
   box-shadow:0 2px 12px rgba(16,16,16,.045)!important;
 }
+
+/* Compact header, 2026-11-26: smaller type and no boxes around menu items.
+   Page-level styles (e.g. FAQ accordions) must never frame the navigation. */
+html body.iha-nav-ready>header details.iha-nav-dropdown,
+html body.iha-nav-ready>header details.iha-nav-dropdown[open]{
+  background:transparent!important;border:0!important;border-radius:0!important;
+  padding:0!important;margin:0!important;box-shadow:none!important;
+}
+@media(min-width:1051px){
+  html body.iha-nav-ready>header>.iha-nav-layout{min-height:72px!important}
+  html body.iha-nav-ready>header .iha-nav-trigger,
+  html body.iha-nav-ready>header .iha-nav-price,
+  html body.iha-nav-ready>header .iha-nav-login,
+  body:has(.os-simple-home) header .iha-nav-groups .home-nav-extra{
+    font-size:16px!important;font-weight:450!important;
+  }
+  html body.iha-nav-ready>header .iha-nav-start,
+  html body.iha-nav-ready>header .iha-nav-start:hover{
+    min-height:40px!important;padding:8px 20px!important;font-size:15px!important;
+  }
+}
+/* One chevron only on the language button when it already draws its own icon. */
+html body.iha-nav-ready>header #lbtn:has(svg)::after{display:none!important;content:none!important}
