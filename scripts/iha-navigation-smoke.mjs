@@ -60,7 +60,7 @@ try{
     });
     assert.ok(geometry.firstX>=340&&geometry.firstX<=390,"Guesty-inspired first menu position "+JSON.stringify(geometry));
     assert.ok(geometry.logoToMenu>=170&&geometry.logoToMenu<=310,"Generous logo-to-menu whitespace "+JSON.stringify(geometry));
-    assert.ok(geometry.headerHeight>=84&&geometry.headerHeight<=100,"Reference-style header height "+JSON.stringify(geometry));
+    assert.ok(geometry.headerHeight>=68&&geometry.headerHeight<=84,"Compact IHA header height "+JSON.stringify(geometry));
     assert.equal(geometry.visibleWordmark,"none","Compact IHA header wordmark");
    }
    const group=page.locator("header .iha-nav-groups");
