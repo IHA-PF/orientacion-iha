@@ -284,7 +284,7 @@
     link.href=new URL("iha-global-legacy.css?v=glass-v2-20261123",base).href;
     document.head.appendChild(link);
     var script=document.createElement("script");
-    script.src=new URL("iha-global-legacy.js",base).href;
+    script.src=new URL("iha-global-legacy.js?v=20261126-copy",base).href;
     script.defer=true;
     document.head.appendChild(script);
   }
