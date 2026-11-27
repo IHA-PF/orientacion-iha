@@ -465,3 +465,15 @@ body.iha-nav-ready>header .iha-nav-flat .iha-nav-urgent{display:none}
 @media(min-width:1051px) and (max-width:1300px){
  html body.iha-nav-ready>header .brand .brand-t{display:none}
 }
+/* Navegación simple, versión ordenada (27/11/2026): misma tipografía que el resto de la cabecera,
+   mismo espacio entre los cuatro enlaces y ninguna regla heredada del antiguo menú «Precios». */
+@media(min-width:1051px){
+ html body.iha-nav-ready>header .iha-nav-flat{display:flex!important;align-items:center;gap:6px!important;margin:0 auto!important}
+ html body.iha-nav-ready>header .iha-nav-flat>a.iha-nav-link,
+ html body.iha-nav-ready>header .iha-nav-flat>a.iha-nav-link.iha-nav-price{font:400 16px/1.2 "Public Sans",system-ui,sans-serif!important;letter-spacing:0!important;padding:8px 14px!important;margin:0!important;color:#141413!important;border-radius:999px;background:transparent}
+ html body.iha-nav-ready>header .iha-nav-flat>a.iha-nav-link:hover{background:rgba(20,20,19,.06)!important}
+}
+@media(max-width:1050px){
+ html body.iha-nav-ready>header .iha-nav-layout.iha-nav-mobile-open>.iha-nav-flat>a.iha-nav-link,
+ html body.iha-nav-ready>header .iha-nav-layout.iha-nav-mobile-open>.iha-nav-flat>a.iha-nav-link.iha-nav-price{font:400 18px/1.25 "Public Sans",system-ui,sans-serif!important;padding:14px 16px!important;margin:0!important}
+}

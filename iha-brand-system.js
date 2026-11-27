@@ -46,7 +46,7 @@
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",apply,{once:true});else apply();
 
  // Load the new site-wide navigation on all legal guides, landing pages and tools.
- const navCss=path("iha-navigation.css?v=20261127-arch3");
+ const navCss=path("iha-navigation.css?v=20261127-tidy");
  const navStylesheet=document.querySelector('link[href*="iha-navigation.css"]');
  if(navStylesheet){if(navStylesheet.href!==navCss)navStylesheet.href=navCss;}
  else {
