@@ -10,7 +10,9 @@ const css = read("simple-orientation.css");
 assert.ok(home.includes('href="simple-orientation.css"'),"Homepage links responsive CSS");
 assert.ok(home.includes("os-simple-home"),"New orientation hero is the default home");
 assert.equal((home.match(/class="os-spotlight"/g)||[]).length,0,"Old technical banner removed");
-assert.ok(home.includes('ke("all")')&&home.includes("ke(sector)"),"Guide stays reachable from search and category choices");
+// Tarjetas de la portada (27/11/2026): la búsqueda propone las fichas que coinciden y abre su orientación;
+// las categorías abren la orientación de ese sector; la guía completa sigue en «Resolver un problema».
+assert.ok(home.includes('href:"#orientar-"+cs.id')&&home.includes('href:"#"+sector'),"Search and categories lead to the matching orientation");
 assert.ok(home.includes("O=input.value.trim()"),"Search forwards the entered phrase to existing guide");
 assert.ok(home.includes('data-nav="guide"'), "Guide remains in top nav");
 assert.match(home, /<a[^>]*id="iha-offer-nav"[^>]*href="\/es\/servicios-y-precios\/"/, "Pricing menu links to the single services page");
@@ -21,7 +23,7 @@ assert.ok(!css.includes("14px/1.2 inherit"),"Valid font declarations");
 assert.ok(css.includes("@media(max-width:700px)"),"Mobile layout defined");
 assert.ok(home.includes('class:"os-two-cards"'),"Two-column layout must exist");
 assert.ok(home.includes('class:"os-host-cta"'),"Professional services must be accessible");
-assert.ok(home.includes('href:"#servicios"'),"Host CTA must lead to existing services");
+assert.ok(home.includes('class:"os-host-cta",href:"#anfitrion"'),"Host CTA opens the free host check");
 assert.ok(!home.includes('os-technology-tab')&&!home.includes('os-ai-agents-tab'),"Internal concept tabs removed from the homepage");
 assert.ok(css.includes("grid-template-columns:repeat(2,minmax(0,1fr))"),"Desktop layout should have two columns");
 

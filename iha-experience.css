@@ -459,3 +459,14 @@ html body #app .os-simple-home:has(.home-masthead)::before,html body #app .os-si
 .home-option:has(input:checked) .home-option-sub{color:#173b33}
 .home-picker .home-picker-platform{display:block;margin:14px auto 0;max-width:30em;text-align:center;color:#096757;font:500 14px/1.35 system-ui,sans-serif;text-decoration:underline;text-underline-offset:3px}
 .home-picker .home-picker-platform:focus-visible{outline:2px solid #096757;outline-offset:3px;border-radius:4px}
+/* Tarjetas de la portada (27/11/2026): botón anfitrión legible y propuestas de fichas. */
+html body:has(.os-simple-home) .os-audience-card a.os-host-cta,html body:has(.os-simple-home) .os-audience-card a.os-host-cta:visited{color:#fff!important}
+.os-premium .os-matches{margin-top:12px}
+.os-premium .os-matches:empty{display:none}
+.os-premium .os-matches-h{margin:0 0 8px;font:600 14px/1.35 system-ui,sans-serif;color:#173b33}
+.os-premium .os-matches ul{list-style:none;margin:0 0 8px;padding:0;display:grid;gap:6px}
+.os-premium .os-matches li a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border:1px solid #cfe3dc;border-radius:12px;background:#f3faf7;color:#0f4d42;text-decoration:none;font:500 15px/1.3 system-ui,sans-serif}
+.os-premium .os-matches li a:hover,.os-premium .os-matches li a:focus-visible{border-color:#007a67;outline:none;box-shadow:0 0 0 2px #007a6733}
+.os-premium .os-matches li a svg{width:16px;height:16px;flex:none}
+.os-premium .os-matches-other{display:inline-block;margin-top:2px;color:#096757;font:500 14px/1.35 system-ui,sans-serif;text-decoration:underline;text-underline-offset:3px}
+.os-premium a.os-choice{text-decoration:none;display:inline-flex;align-items:center}

@@ -22,7 +22,15 @@
     label.textContent = subjectLabel + " ";
     line.append(label, document.createTextNode(asunto));
     form.prepend(line);
+    // Si el visitante llega con su caso o su servicio ya elegido, no se le vuelve a preguntar.
+    if (need.value) { need.hidden = true; need.labels[0].hidden = true; }
   }
+  const lang = document.documentElement.lang.slice(0, 2);
+  const factsLabel = {
+    consultation: { es: "¿Cuál es su pregunta?", en: "What is your question?", fr: "Quelle est votre question\u202f?", pt: "Qual é a sua pergunta?" },
+    hebergement: { es: "¿Qué necesita revisar?", en: "What do you need to check?", fr: "Que faut-il vérifier\u202f?", pt: "O que precisa verificar?" },
+  }[need.value];
+  if (factsLabel && factsLabel[lang]) facts.labels[0].textContent = factsLabel[lang];
 
   form.addEventListener("input", () => {
     draft.hidden = true;

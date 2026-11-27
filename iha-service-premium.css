@@ -87,3 +87,6 @@ body.iha-service-premium footer{background:#fff;border-top:1px solid #e5ede9;}
  body.iha-service-premium .iha-service-details section{padding:20px;}
 }
 @media(prefers-reduced-motion:reduce){.iha-service-hero-action{scroll-behavior:auto!important;transition:none!important;}}
+/* Recuadro con el precio del servicio (27/11/2026). */
+.iha-service-art-mark.iha-service-art-price{font-size:clamp(34px,4vw,56px);letter-spacing:-.03em;margin:6px 0}
+.iha-service-art-inner .iha-service-art-text{max-width:14em;text-align:center}

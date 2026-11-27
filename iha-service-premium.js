@@ -55,7 +55,11 @@
    const artwork=node("div","iha-service-hero-art");
    artwork.setAttribute("aria-hidden","true");
    const mark=node("div","iha-service-art-inner");
-   mark.append(node("span","iha-service-art-mark","IHA"),node("span","iha-service-art-text","LEGAL 360"));
+   // El recuadro muestra el precio del servicio (antes: «IHA · LEGAL 360», concepto interno).
+   const amountText=(price.querySelector("p")?.textContent||"").trim(),amount=amountText.match(/\$\s?[\d.,]+/);
+   const priceWord={es:"Precio",en:"Price",fr:"Prix",pt:"Preço"}[(document.documentElement.lang||"es").slice(0,2)]||"Precio";
+   if(amount){mark.append(node("span","iha-service-art-text",priceWord),node("span","iha-service-art-mark iha-service-art-price",amount[0].replace(/\s/g,"")),node("span","iha-service-art-text",amountText.slice(amountText.indexOf(amount[0])+amount[0].length).replace(/^[\s,]+/,"").split(/[.;]/)[0]))}
+   else mark.append(node("span","iha-service-art-mark","IHA"),node("span","iha-service-art-text","Soluciones Legales"));
    artwork.append(mark);hero.append(intro,artwork);
    const layout=node("div","iha-service-layout");
    const details=node("div","iha-service-details");
