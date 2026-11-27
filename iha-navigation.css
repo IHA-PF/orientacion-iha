@@ -540,3 +540,7 @@ html body.iha-nav-ready>header a.iha-nav-home{justify-self:start;width:max-conte
 @media (max-width:420px){html body.iha-nav-ready>header>.iha-nav-layout>.iha-nav-right>a.iha-nav-start{padding-inline:10px!important;font-size:14px!important;letter-spacing:0!important}html body.iha-nav-ready>header>.iha-nav-layout{padding-inline:12px!important}}
 @media (max-width:400px){html body.iha-nav-ready>header>.iha-nav-layout>.iha-nav-right>a.iha-nav-start{font-size:13px!important;padding-inline:9px!important}}
 @media (max-width:340px){html body.iha-nav-ready>header>.iha-nav-layout{padding-inline:8px!important}html body.iha-nav-ready>header a.iha-nav-home{width:34px!important;height:34px!important;padding:6px!important}html body.iha-nav-ready>header>.iha-nav-layout>.iha-nav-right>a.iha-nav-start{font-size:12px!important;padding-inline:8px!important}}
+
+/* 27/11/2026 · «IHA» en letras redondas (Nunito Black, OFL; subconjunto con solo I, H y A). */
+@font-face{font-family:"IHA Rounded";src:url("/fonts/nunito-iha-900.woff2") format("woff2");font-weight:900;font-style:normal;font-display:swap}
+html body.iha-nav-ready>header .brand :is(.os-wordmark,.iha-wordmark-text){font-family:"IHA Rounded","Public Sans",system-ui,sans-serif!important;font-weight:900!important;letter-spacing:0!important}
