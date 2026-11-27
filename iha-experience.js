@@ -745,4 +745,4 @@ const app=document.getElementById("app");if(!app)return;new MutationObserver(ren
 
 
 /* IHA global brand deployment for the dynamic main homepage. */
-;(function(){var s=document.createElement("script");s.src="/iha-brand-system.js?v=20261123-v5";s.defer=true;document.head.appendChild(s)})();
+;(function(){var s=document.createElement("script");s.src="/iha-brand-system.js?v=20261127-arc";s.defer=true;document.head.appendChild(s)})();

@@ -18,7 +18,7 @@
    const storeStyles=document.createElement("link");storeStyles.rel="stylesheet";storeStyles.href=path("iha-store.css");document.head.append(storeStyles);
  }
  function apply(){
-   const logo=path("assets/iha-mark.svg");
+   const logo=path("assets/iha-mark.svg?v=20261127-arc");
    const oldFavicon=document.querySelector("link[rel='icon']");
    if(oldFavicon){oldFavicon.href=logo;oldFavicon.type="image/svg+xml";}
    else{const icon=document.createElement("link");icon.rel="icon";icon.type="image/svg+xml";icon.href=logo;document.head.append(icon);}

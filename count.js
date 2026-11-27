@@ -294,4 +294,4 @@
 
 
 /* IHA global brand deployment: applies to all static multilingual legal pages. */
-;(function(){var s=document.createElement("script");s.src="/iha-brand-system.js?v=20261123-v5";s.defer=true;document.head.appendChild(s)})();
+;(function(){var s=document.createElement("script");s.src="/iha-brand-system.js?v=20261127-arc";s.defer=true;document.head.appendChild(s)})();
