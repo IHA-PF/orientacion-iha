@@ -88,6 +88,18 @@ function init(){
  accessPanel.append(aTitle,aNote,aRequest);
  access.append(accessTrigger,accessPanel);right.append(access);
  const mobileAccess=access.cloneNode(true);mobileAccess.classList.add("iha-mobile-access");nav.append(mobileAccess);
+ // Idiomas dentro del menú del teléfono (la barra no tiene sitio para el selector y el nombre a la vez).
+ const mLangs=create("div","iha-mobile-langs");
+ const fillMLangs=code=>{
+   mLangs.replaceChildren(create("span","iha-mobile-langs-label",(messages[code]||messages.es).language));
+   const alt={};for(const a of document.querySelectorAll('link[rel="alternate"][hreflang]'))alt[a.hreflang.slice(0,2).toLowerCase()]=a.href;
+   for(const c of ["es","en","fr","pt"]){
+     const url=location.pathname==="/"?"/?lang="+c+location.hash:(alt[c]||"/?lang="+c);
+     const a=lnk(languageLabel[c],url,"iha-nav-entry");a.lang=c;if(c===code)a.setAttribute("aria-current","true");mLangs.append(a);
+   }
+ };
+ fillMLangs(lang);nav.append(mLangs);
+ window.addEventListener("hashchange",()=>fillMLangs(languageFromPath()));
  const start=lnk(t.start,"/"+lang+"/"+prepSlug[lang]+"/","iha-nav-start");
  right.append(start);
  const menuBtn=create("button","iha-nav-mobile-button");
@@ -130,6 +142,7 @@ function init(){
    home.href="/?lang="+code;homeText.textContent=nt.home;home.setAttribute("aria-label",nt.homeLabel);
    wa.href="https://wa.me/"+WA+"?text="+encodeURIComponent(nt.waText);wa.setAttribute("aria-label",nt.waLabel);
    fillHours(nt);
+   fillMLangs(code);
    const urgent=nav.querySelector(".iha-nav-urgent span");if(urgent)urgent.textContent=nt.emergency;
  };
  const langWatcher=new MutationObserver(()=>syncLanguage());
