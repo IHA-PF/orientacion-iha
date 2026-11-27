@@ -23,8 +23,8 @@ try {
       assert.equal(await page.locator(".home-option").count(), 3);
 
       assert.match(await page.locator("header .iha-nav-start").getAttribute("href") || "", /\/prepare/);
-      // Navegación simple: cuatro enlaces directos; «Servicios y precios» es la página única de precios.
-      assert.equal(await page.locator("header .iha-nav-flat > a.iha-nav-link").count(), 4);
+      // Cabecera organizada: tres menús; «Precios» lleva a la página única de servicios y precios.
+      assert.equal(await page.locator("header .iha-nav-organised > details.iha-nav-menu").count(), 3);
       assert.equal(await page.locator("header a.iha-nav-price").getAttribute("href"), catalogue);
       assert.equal(await page.locator("header .home-nav-agents").count(), 0);
       const pricing = await page.goto(base + catalogue);
