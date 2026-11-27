@@ -25,9 +25,15 @@ try{
    console.log("HOME_REVIEW="+preview.toString("base64"));
   }
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),"horizontal overflow");
-  const option=page.locator(".home-option").nth(1);
-  await option.click();await page.locator(".home-picker button").click();
-  await page.waitForURL("**/es/prepare-su-caso/?situation=hebergement");
+  // Cada opción lleva a su servicio (27/11/2026): conflicto y alojamiento abren la orientación gratuita;
+  // «Consultar a una abogada» abre la ficha del servicio con su precio.
+  await page.locator(".home-option").nth(1).click();await page.locator(".home-picker button[type=submit]").click();
+  await page.waitForFunction(()=>location.hash==="#anfitrion"&&document.querySelector("#app .opt"));
+  await page.goto("http://127.0.0.1:8765/?lang=es");await page.locator("body.iha-nav-ready .home-picker").waitFor();
+  await page.locator(".home-option").nth(2).click();
+  assert.match(await page.locator(".home-picker button[type=submit]").innerText(),/servicio/);
+  await page.locator(".home-picker button[type=submit]").click();
+  await page.waitForURL("**/es/servicios/pregunta-escrita-a-una-abogada/");
   await page.close();
  }
 }finally{await browser.close()}

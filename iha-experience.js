@@ -603,6 +603,12 @@ function render(){
    const panel=make("form","home-picker"),fieldset=make("fieldset","");
    const legend=make("legend","",labels[3]),options=make("div","home-options");
    const destinations=["litige","hebergement","consultation"];
+   // Cada opción lleva a su servicio (revisión del 27/11/2026): orientación gratuita del conflicto,
+   // orientación gratuita del anfitrión, o la ficha del servicio «Pregunta escrita a una abogada» con su precio.
+   const pickerSubs={"es": ["Gratis · plazos y carta de reclamo", "Gratis · lo que le falta", "$62.800 · respuesta en 2 días hábiles"], "en": ["Free · deadlines and complaint letter", "Free · what you’re missing", "$62,800 COP · reply in 2 business days"], "fr": ["Gratuit · délais et lettre de réclamation", "Gratuit · ce qui vous manque", "62 800 COP · réponse en 2 jours ouvrables"], "pt": ["Grátis · prazos e carta de reclamação", "Grátis · o que falta", "$62.800 COP · resposta em 2 dias úteis"]}[lang]||["Gratis · plazos y carta de reclamo", "Gratis · lo que le falta", "$62.800 · respuesta en 2 días hábiles"];
+   const pickerOther={"es": ["Ver el servicio y el precio", "¿Una plataforma bloqueó su cuenta o retiene sus pagos?"], "en": ["See the service and price", "Did a platform block your account or hold your payouts?"], "fr": ["Voir le service et le prix", "Une plateforme a bloqué votre compte ou retient vos paiements ?"], "pt": ["Ver o serviço e o preço", "Uma plataforma bloqueou sua conta ou retém seus pagamentos?"]}[lang]||["Ver el servicio y el precio", "¿Una plataforma bloqueó su cuenta o retiene sus pagos?"];
+   const lawyerPage={"es": "/es/servicios/pregunta-escrita-a-una-abogada/", "en": "/en/services/written-question-to-a-lawyer/", "fr": "/fr/services/question-ecrite-a-une-avocate/", "pt": "/pt/servicos/pergunta-escrita-a-uma-advogada/"}[lang]||"/es/servicios/pregunta-escrita-a-una-abogada/";
+   const pickerGo=["#consumidor","#anfitrion",lawyerPage];
    const offerNames={"es":["Resolver un conflicto","Poner un alojamiento en regla","Consultar a una abogada"],"en":["Resolve a dispute","Bring a rental into compliance","Consult a lawyer"],"fr":["Résoudre un litige","Mettre un hébergement en règle","Consulter une avocate"],"pt":["Resolver um conflito","Regularizar uma hospedagem","Consultar uma advogada"]}[lang] || ["Resolver un conflicto","Poner un alojamiento en regla","Consultar a una abogada"];
    destinations.forEach((topic,i)=>{
      const option=make("label","home-option"),radio=make("input","");
@@ -610,12 +616,17 @@ function render(){
      const icon=i===0?make("span","home-document-icon","≡"):make("img","");
      if(i!==0){icon.src=i===1?"/assets/iha-stay.jpg":"/assets/iha-case-review.jpg";icon.alt="";icon.width=58;icon.height=58}
      icon.setAttribute("aria-hidden","true");
-     option.append(radio,icon,make("span","",offerNames[i]));options.append(option);
+     const sub=make("small","home-option-sub",pickerSubs[i]);
+     option.append(radio,icon,make("span","",offerNames[i]),sub);options.append(option);
    });
    fieldset.append(legend,options);
    const submit=make("button","",labels[7]);submit.type="submit";
-   panel.append(make("p","home-picker-brand","IHA GROUP S.A.S. · Colombia"),fieldset,submit);
-   panel.addEventListener("submit",event=>{event.preventDefault();const selected=panel.querySelector("input:checked");if(selected)location.assign(base+d.prepare+"/?situation="+selected.value)});
+   const platformLink=make("a","home-picker-platform",pickerOther[1]);platformLink.href="#plataforma";
+   panel.append(make("p","home-picker-brand","IHA GROUP S.A.S. · Colombia"),fieldset,submit,platformLink);
+   panel.addEventListener("change",()=>{const selected=panel.querySelector("input:checked");submit.textContent=selected&&selected.value==="consultation"?pickerOther[0]:labels[7]});
+   panel.addEventListener("submit",event=>{event.preventDefault();const selected=panel.querySelector("input:checked");if(!selected)return;
+     const target=pickerGo[destinations.indexOf(selected.value)];
+     if(target.charAt(0)==="#"){if(location.hash===target)window.dispatchEvent(new HashChangeEvent("hashchange"));else location.hash=target;}else location.assign(target)});
    hero.replaceChildren(copy,panel);hero.classList.add("home-masthead");
  }
  const needs=block(d.catalogue), shortcuts=make("nav","store-links");needs.append(shortcuts);
