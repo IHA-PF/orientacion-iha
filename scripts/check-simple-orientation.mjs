@@ -13,15 +13,16 @@ assert.equal((home.match(/class="os-spotlight"/g)||[]).length,0,"Old technical b
 assert.ok(home.includes('ke("all")')&&home.includes("ke(sector)"),"Guide stays reachable from search and category choices");
 assert.ok(home.includes("O=input.value.trim()"),"Search forwards the entered phrase to existing guide");
 assert.ok(home.includes('data-nav="guide"'), "Guide remains in top nav");
-assert.match(home, /<a[^>]*id="iha-offer-nav"[^>]*href="\/es\/servicios-y-precios\/"/, "Pricing menu links to the current service catalogue");
-assert.ok(home.includes('href="legal-360/"')&&home.includes('href="digital-justice-os/"'),"Services and technology accessible");
+assert.match(home, /<a[^>]*id="iha-offer-nav"[^>]*href="\/es\/servicios-y-precios\/"/, "Pricing menu links to the single services page");
+assert.ok(home.includes('href="#como-trabajamos"'),"How we work is reachable from the homepage");
+assert.ok(home.includes('<script src="/iha-routes.js'),"In-app copies redirect to their single static page");
 assert.ok(home.includes('data-t="navZona"')&&home.includes('data-t="navExpress"'),"Secondary orientation links localized");
 assert.ok(!css.includes("14px/1.2 inherit"),"Valid font declarations");
 assert.ok(css.includes("@media(max-width:700px)"),"Mobile layout defined");
 assert.ok(home.includes('class:"os-two-cards"'),"Two-column layout must exist");
 assert.ok(home.includes('class:"os-host-cta"'),"Professional services must be accessible");
 assert.ok(home.includes('href:"#servicios"'),"Host CTA must lead to existing services");
-assert.ok(home.includes('class:"os-technology-tab"')||home.includes('class="tab os-technology-tab"'),"Technology link must be in home navigation");
+assert.ok(!home.includes('os-technology-tab')&&!home.includes('os-ai-agents-tab'),"Internal concept tabs removed from the homepage");
 assert.ok(css.includes("grid-template-columns:repeat(2,minmax(0,1fr))"),"Desktop layout should have two columns");
 
 const scripts = [...home.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)];
@@ -40,19 +41,23 @@ for(const [,attrs,body] of scripts){
 }
 assert.ok(executableScripts>=2,"Homepage JavaScript syntax validated");
 
+// Arquitectura simple (27/11/2026): páginas fusionadas → página de renvío sin indexar.
+const moved={"legal-360":"#como-trabajamos","digital-justice-os":"#como-trabajamos","ai-agents":"#como-trabajamos"};
+const servicesSlug={es:["servicios","servicios-y-precios"],en:["services","services-and-prices"],fr:["services","services-et-prix"],pt:["servicos","servicos-e-precos"]};
 for(const lang of ["es","en","fr","pt"]){
+  for(const [dir,hash] of Object.entries(moved)){
+    if(lang==="es"&&dir==="ai-agents")continue;
+    const stub=read(lang+"/"+dir+"/index.html");
+    assert.ok(stub.includes('content="noindex')&&stub.includes("url=/?lang="+lang+hash),lang+"/"+dir+" redirects to how we work");
+  }
+  const [old,now]=servicesSlug[lang];
+  assert.ok(read(lang+"/"+old+"/index.html").includes("url=/"+lang+"/"+now+"/"),lang+" catalogue index redirects to the single services page");
   const hub=read(lang+"/index.html");
-  const page=read(lang+"/digital-justice-os/index.html");
-  const legal=read(lang+"/legal-360/index.html");
-  assert.ok(hub.includes('href="digital-justice-os/"'),lang+" hub links project page");
-  assert.ok(page.includes('href="../legal-360/"'),lang+" technology links actual legal services");
-  assert.ok(page.includes('href="../'),lang+" technology has working local navigation");
-  assert.ok(legal.includes('href="../digital-justice-os/"'),lang+" LEGAL 360 links technology");
-  assert.ok(existsSync(lang+"/digital-justice-os/index.html"));
-  assert.ok(page.includes("EN DESARROLLO")||page.includes("IN DEVELOPMENT")||page.includes("EN DÉVELOPPEMENT")||page.includes("EM DESENVOLVIMENTO"),lang+" clear development label");
-  assert.ok(page.includes("<title>")&&page.includes('rel="canonical"'),lang+" discoverable metadata");
-  assert.equal((page.match(/<details>/g)||[]).length,6,lang+" interactive map preserved");
+  assert.ok(!/href="[^"]*(legal-360|digital-justice-os)\//.test(hub),lang+" hub no longer links merged pages");
 }
-assert.ok(existsSync("orientador/index.html"),"Legacy geographic guidance kept");
-assert.ok(existsSync("digital-justice-os/index.html"),"Multilingual entry fallback kept");
+assert.ok(read("ai-agents/index.html").includes("url=/?lang=es#como-trabajamos"),"Agents page redirects");
+assert.ok(read("zona-prueba/index.html").includes("url=/orientador/"),"Test page redirects to the area guide");
+assert.ok(existsSync("orientador/index.html"),"Geographic guidance kept");
+const routes=read("iha-routes.js");
+assert.ok(routes.includes('"caso":')&&routes.includes('"servicio":'),"Route map generated");
 console.log("IHA simplified orientation: static checks and inline JavaScript parsing passed.");

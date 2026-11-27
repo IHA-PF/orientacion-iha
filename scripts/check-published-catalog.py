@@ -28,9 +28,11 @@ routes = {"es": ("servicios", "servicios-y-precios", "analisis-de-su-caso"),
           "fr": ("services", "services-et-prix", "analyse-de-votre-dossier"),
           "pt": ("servicos", "servicos-e-precos", "analise-do-seu-caso")}
 for lang, (catalog, prices, service) in routes.items():
-    for path, marker in [(catalog, 'class="store-family"'), (prices, 'id="compare"'),
-                         (catalog + "/" + service, '<h1>'), ("legal-360", 'id="module-06"'),
-                         ("digital-justice-os", '<h1')]:
+    # Arquitectura simple (27/11/2026): el índice del catálogo, LEGAL 360 y Digital Justice OS
+    # son páginas de renvío hacia «Servicios y precios» y «Cómo trabajamos».
+    for path, marker in [(catalog, 'url=/' + lang + '/' + prices + '/'), (prices, 'id="hosts"'),
+                         (catalog + "/" + service, '<h1>'), ("legal-360", '#como-trabajamos'),
+                         ("digital-justice-os", '#como-trabajamos')]:
         url = "/" + lang + "/" + path + "/"
         assert marker in fetch(url).decode(), url
         print(ORIGIN + url)

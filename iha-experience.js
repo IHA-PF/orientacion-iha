@@ -141,138 +141,8 @@ const directory={
   "about": "Conheça a IHA"
  }
 };
-const modules={
- "es": [
-  [
-   "IHA PREVENT",
-   "Detecte riesgos antes de que sean conflictos."
-  ],
-  [
-   "IHA EVIDENCE",
-   "Ordene los hechos y guarde las pruebas."
-  ],
-  [
-   "IHA ANALYZE",
-   "Entienda su caso según la ley colombiana."
-  ],
-  [
-   "IHA RESOLVE",
-   "Resuelva el conflicto por la vía adecuada."
-  ],
-  [
-   "IHA MONITOR",
-   "No pierda plazos ni compromisos."
-  ],
-  [
-   "IHA LEGAL CARE",
-   "Acompañamiento jurídico continuo."
-  ]
- ],
- "en": [
-  [
-   "IHA PREVENT",
-   "Spot risks before they become disputes."
-  ],
-  [
-   "IHA EVIDENCE",
-   "Organise the facts and keep the evidence."
-  ],
-  [
-   "IHA ANALYZE",
-   "Understand your case under Colombian law."
-  ],
-  [
-   "IHA RESOLVE",
-   "Resolve the dispute the right way."
-  ],
-  [
-   "IHA MONITOR",
-   "Never miss a deadline or commitment."
-  ],
-  [
-   "IHA LEGAL CARE",
-   "Ongoing legal support."
-  ]
- ],
- "fr": [
-  [
-   "IHA PREVENT",
-   "Repérez les risques avant qu’ils ne deviennent des litiges."
-  ],
-  [
-   "IHA EVIDENCE",
-   "Organisez les faits et gardez les preuves."
-  ],
-  [
-   "IHA ANALYZE",
-   "Comprenez votre cas selon le droit colombien."
-  ],
-  [
-   "IHA RESOLVE",
-   "Réglez le litige par la bonne voie."
-  ],
-  [
-   "IHA MONITOR",
-   "Ne manquez aucune échéance."
-  ],
-  [
-   "IHA LEGAL CARE",
-   "Un suivi juridique dans la durée."
-  ]
- ],
- "pt": [
-  [
-   "IHA PREVENT",
-   "Identifique riscos antes que virem conflitos."
-  ],
-  [
-   "IHA EVIDENCE",
-   "Organize os fatos e guarde as provas."
-  ],
-  [
-   "IHA ANALYZE",
-   "Entenda seu caso pela lei colombiana."
-  ],
-  [
-   "IHA RESOLVE",
-   "Resolva o conflito pelo caminho certo."
-  ],
-  [
-   "IHA MONITOR",
-   "Não perca prazos nem compromissos."
-  ],
-  [
-   "IHA LEGAL CARE",
-   "Acompanhamento jurídico contínuo."
-  ]
- ]
-};
-const statusText={
- "es": [
-  "Disponible hoy",
-  "Guías gratis, preparación de pruebas y orientación inicial.",
-  "En desarrollo",
-  "Motores de análisis y automatización de trámites."
- ],
- "en": [
-  "Available today",
-  "Free guides, evidence preparation and initial guidance.",
-  "In development",
-  "Analysis engines and process automation."
- ],
- "fr": [
-  "Disponible aujourd’hui",
-  "Guides gratuits, préparation des preuves et première orientation.",
-  "En développement",
-  "Moteurs d’analyse et automatisation des démarches."
- ],
- "pt": [
-  "Disponível hoje",
-  "Guias grátis, preparação de provas e orientação inicial.",
-  "Em desenvolvimento",
-  "Motores de análise e automação de processos."
- ]
-};
+
+
 const tr={
  "es": {
   "eyebrow": "Dos caminos, una misma protección.",
@@ -519,7 +389,7 @@ const homeCopy={
   "Ver mis opciones",
   "Guía jurídica",
   "Pruebas",
-  "Servicios",
+  "Servicios y precios",
   "Precios"
  ],
  "fr": [
@@ -533,7 +403,7 @@ const homeCopy={
   "Voir mes options",
   "Guide juridique",
   "Preuves",
-  "Services",
+  "Services et prix",
   "Tarifs"
  ],
  "en": [
@@ -547,7 +417,7 @@ const homeCopy={
   "See my options",
   "Legal guide",
   "Evidence",
-  "Services",
+  "Services and prices",
   "Pricing"
  ],
  "pt": [
@@ -561,7 +431,7 @@ const homeCopy={
   "Ver minhas opções",
   "Guia jurídico",
   "Provas",
-  "Serviços",
+  "Serviços e preços",
   "Preços"
  ]
 };
@@ -697,7 +567,7 @@ function render(){
  if(!app?.querySelector(".os-simple-home")||document.getElementById("iha-experience"))return;
  const lang=document.documentElement.lang.slice(0,2);
  const d=directory[lang]||directory.es, t=tr[lang]||tr.es;
- const base="/"+lang+"/",catalog=base+d.catalog+"/",legal=base+"legal-360/";
+ const base="/"+lang+"/",svcBase=base+d.catalog+"/",catalog=base+({es:"servicios-y-precios",en:"services-and-prices",fr:"services-et-prix",pt:"servicos-e-precos"}[lang]||"servicios-y-precios")+"/";
  const section=document.createElement("div");
  section.className="iha-store";section.id="iha-experience";
  const wrap=document.createElement("div");wrap.className="store-wrap";section.append(wrap);
@@ -715,9 +585,9 @@ function render(){
    copy.append(heading,lead);
    const resources=make("div","home-resources"),links=make("div","home-shortcuts");
    resources.append(make("p","",labels[2]),links);
-   [base,base+d.evidence+"/",catalog,base+d.price+"/"].forEach((url,i)=>links.append(link(labels[i+8],url)));
+   [base,base+d.evidence+"/",catalog].forEach((url,i)=>links.append(link(labels[i+8],url)));
    const preview=make("a","home-preview");
-   preview.href=legal;preview.append(make("strong","","IHA LEGAL 360"));
+   preview.href="#como-trabajamos";preview.append(make("strong","","IHA LEGAL 360"));
    const art=make("img","");
    // The former consultation JPEG contained baked-in corruption (yellow/pink
    // washout and mismatched image panels). Use a verified sharp local asset.
@@ -763,7 +633,7 @@ function render(){
  introHeading.append(make("em","",introEmphasis),".");
  introCopy.append(make("p","legal360-intro-label",introLabel),introHeading);
  const introLink=make("a","legal360-intro-cta",introAction);
- introLink.href=legal;
+ introLink.href="#como-trabajamos";
  legalIntro.append(introCopy,introLink);
  wrap.prepend(legalIntro);
  const visualLabels=artLabels[lang]||artLabels.es;
@@ -813,16 +683,13 @@ function render(){
  const [profileTitle,...stories]=profileCopy[lang]||profileCopy.es;
  const profiles=block(profileTitle);profiles.classList.add("profile-banners");
  const stack=make("div","profile-stack");profiles.append(stack);
- [[d.travel,d.proof,base+d.evidence+"/","traveller"],[d.consumers,d.case,catalog+d.analysis+"/","buyer"],[d.hosts,d.protect,base+d.host+"/","host"]].forEach(([audience,action,url,scene],i)=>{
+ [[d.travel,d.proof,base+d.evidence+"/","traveller"],[d.consumers,d.case,svcBase+d.analysis+"/","buyer"],[d.hosts,d.protect,base+d.host+"/","host"]].forEach(([audience,action,url,scene],i)=>{
    const banner=make("article","profile-banner");
    const photo=make("img","profile-photo");photo.src="/assets/profile-"+scene+".jpg";photo.alt="";photo.loading="lazy";photo.decoding="async";
    const title=make("div","profile-title");title.append(make("h3","",stories[i][0]),make("span","profile-label",audience));
    const detail=make("div","profile-detail");detail.append(make("p","",stories[i][1]),link(action,url));
    banner.append(photo,title,detail);stack.append(banner);
  });
- const mod=grid(block("IHA LEGAL 360"));modules[lang].forEach(([name,copy],i)=>card(mod,name,copy,d.view,legal+"#module-"+String(i+1).padStart(2,"0")));
- const tech=block("Digital Justice OS"),states=grid(tech),[live,available,planned,roadmap]=statusText[lang];
- card(states,live,available,d.free,base);card(states,planned,roadmap,"Digital Justice OS",base+"digital-justice-os/");
  const trust=block("IHA GROUP S.A.S.");trust.append(make("p","","NIT 900.365.039-8 · Medellín, Colombia"),make("p","store-copy",t.alert),link("contacto@ihasolucioneslegales.com.co","mailto:contacto@ihasolucioneslegales.com.co"));
  const close=block(d.final);close.classList.add("store-closing");close.append(link(t.button,base+d.prepare+"/"));
  app.append(section);

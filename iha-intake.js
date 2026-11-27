@@ -9,8 +9,20 @@
   const preview = document.getElementById("intake-preview");
   const whatsapp = document.getElementById("intake-whatsapp");
   const mail = document.getElementById("intake-mail");
-  const topic = new URLSearchParams(location.search).get("situation");
+  const params = new URLSearchParams(location.search);
+  const topic = params.get("situation");
   if (["litige", "hebergement", "consultation"].includes(topic)) need.value = topic;
+  // Asunto que llega desde la ficha de un caso o de un servicio: se muestra y va en el mensaje.
+  const subjectLabel = { es: "Asunto:", en: "Subject:", fr: "Objet :", pt: "Assunto:" }[document.documentElement.lang.slice(0, 2)] || "Asunto:";
+  const asunto = (params.get("asunto") || "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, 120);
+  if (asunto) {
+    const line = document.createElement("p");
+    line.className = "intake-topic";
+    const label = document.createElement("strong");
+    label.textContent = subjectLabel + " ";
+    line.append(label, document.createTextNode(asunto));
+    form.prepend(line);
+  }
 
   form.addEventListener("input", () => {
     draft.hidden = true;
@@ -23,7 +35,7 @@
     goal.value = goal.value.trim();
     if (!form.reportValidity()) return;
     const subject = form.dataset.subject;
-    const sections = [subject, need.labels[0].textContent + " " + need.selectedOptions[0].text];
+    const sections = [subject, ...(asunto ? [subjectLabel + " " + asunto] : []), need.labels[0].textContent + " " + need.selectedOptions[0].text];
     for (const field of [facts, goal, date]) {
       if (field.value.trim()) sections.push(field.labels[0].textContent + "\n" + field.value.trim());
     }

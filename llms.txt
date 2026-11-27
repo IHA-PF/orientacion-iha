@@ -2,15 +2,13 @@
 
 > Asesoría legal especializada en vivienda turística en Medellín, para anfitriones y para huéspedes, con orientación gratuita en español, inglés, francés y portugués sobre plataformas digitales, viajes y derechos del consumidor en Colombia. Cada ficha cita la norma colombiana que aplica. Es información general, no una consulta jurídica; los servicios con abogada tienen precio fijo publicado, IVA incluido. Razón social: IHA GROUP S.A.S., NIT 900.365.039-8, con sede en Medellín.
 
-## IHA Digital Justice OS — plataforma jurídica para la economía digital
+## Cómo trabajamos
 
-IHA Digital Justice OS es un proyecto tecnológico **en desarrollo**, especializado en plataformas digitales y su aplicación jurídica en Colombia. Busca conectar normas, pruebas, actuaciones, cambios normativos y resultados concretos, con supervisión profesional. **No es un sistema automatizado actualmente disponible.** IHA LEGAL 360 agrupa servicios jurídicos ya ofrecidos por la empresa.
+La orientación es gratuita; el trabajo jurídico tiene precio fijo publicado y lo hacen abogados colombianos. Las herramientas de IA internas (IHA LEGAL 360, en desarrollo) ayudan a la abogada; no dan respuestas automáticas sobre un caso.
 
-- [Digital Justice OS — Español](https://ihasolucioneslegales.com.co/es/digital-justice-os/)
-- [Digital Justice OS — English](https://ihasolucioneslegales.com.co/en/digital-justice-os/)
-- [Digital Justice OS — Français](https://ihasolucioneslegales.com.co/fr/digital-justice-os/)
-- [Digital Justice OS — Português](https://ihasolucioneslegales.com.co/pt/digital-justice-os/)
-- [IHA LEGAL 360 — Servicios disponibles](https://ihasolucioneslegales.com.co/es/legal-360/)
+- [Cómo trabajamos](https://ihasolucioneslegales.com.co/?lang=es#como-trabajamos)
+- [Servicios y precios](https://ihasolucioneslegales.com.co/es/servicios/)
+- [Envíe su caso a una abogada](https://ihasolucioneslegales.com.co/es/prepare-su-caso/)
 
 ## Español
 
@@ -18,8 +16,8 @@ IHA Digital Justice OS es un proyecto tecnológico **en desarrollo**, especializ
 - [Preguntas frecuentes](https://ihasolucioneslegales.com.co/es/preguntas-frecuentes/)
 - [Lo que podría cambiar para la vivienda turística](https://ihasolucioneslegales.com.co/es/novedades-vivienda-turistica/)
 - [¿Cuánto le debe la aerolínea por la demora?](https://ihasolucioneslegales.com.co/es/compensacion-por-demora-de-vuelo/)
-- [Prepare su caso](https://ihasolucioneslegales.com.co/es/prepare-su-caso/)
-- [Lo gratuito primero; si lo necesita, una abogada lo hace por usted](https://ihasolucioneslegales.com.co/es/servicios-y-precios/)
+- [Envíe su caso a una abogada](https://ihasolucioneslegales.com.co/es/prepare-su-caso/)
+- [Lo gratuito primero; si lo necesita, una abogada lo hace por usted](https://ihasolucioneslegales.com.co/es/servicios/)
 - [¿Alquila por días? Mantenga su vivienda en regla](https://ihasolucioneslegales.com.co/es/plan-anfitrion-en-regla/)
 
 ## English
@@ -29,7 +27,7 @@ IHA Digital Justice OS es un proyecto tecnológico **en desarrollo**, especializ
 - [What could change for short-term rentals](https://ihasolucioneslegales.com.co/en/short-term-rental-updates/)
 - [How much does the airline owe you for the delay?](https://ihasolucioneslegales.com.co/en/flight-delay-compensation-colombia/)
 - [Prepare your case](https://ihasolucioneslegales.com.co/en/prepare-your-case/)
-- [Free help first; if you need it, a lawyer does it for you](https://ihasolucioneslegales.com.co/en/services-and-prices/)
+- [Free help first; if you need it, a lawyer does it for you](https://ihasolucioneslegales.com.co/en/services/)
 - [Renting short-term? Keep your property compliant](https://ihasolucioneslegales.com.co/en/host-compliance-plan/)
 
 ## Français
@@ -39,7 +37,7 @@ IHA Digital Justice OS es un proyecto tecnológico **en desarrollo**, especializ
 - [Ce qui pourrait changer pour la location touristique](https://ihasolucioneslegales.com.co/fr/actualites-location-touristique/)
 - [Combien la compagnie vous doit-elle pour le retard ?](https://ihasolucioneslegales.com.co/fr/indemnisation-retard-vol-colombie/)
 - [Préparez votre dossier](https://ihasolucioneslegales.com.co/fr/preparez-votre-dossier/)
-- [D’abord le gratuit ; si besoin, une avocate s’en charge](https://ihasolucioneslegales.com.co/fr/services-et-prix/)
+- [D’abord le gratuit ; si besoin, une avocate s’en charge](https://ihasolucioneslegales.com.co/fr/services/)
 - [Vous louez à la nuitée ? Gardez votre logement en règle](https://ihasolucioneslegales.com.co/fr/abonnement-hote-en-regle/)
 
 ## Português
@@ -49,7 +47,7 @@ IHA Digital Justice OS es un proyecto tecnológico **en desarrollo**, especializ
 - [O que pode mudar para o aluguel por temporada](https://ihasolucioneslegales.com.co/pt/novidades-moradia-turistica/)
 - [Quanto a companhia aérea lhe deve pelo atraso?](https://ihasolucioneslegales.com.co/pt/compensacao-atraso-voo-colombia/)
 - [Prepare o seu caso](https://ihasolucioneslegales.com.co/pt/prepare-o-seu-caso/)
-- [Primeiro o gratuito; se precisar, uma advogada faz por você](https://ihasolucioneslegales.com.co/pt/servicos-e-precos/)
+- [Primeiro o gratuito; se precisar, uma advogada faz por você](https://ihasolucioneslegales.com.co/pt/servicos/)
 - [Aluga por temporada? Mantenha seu imóvel em dia](https://ihasolucioneslegales.com.co/pt/plano-anfitriao-em-dia/)
 
 ## Fichas (español)
@@ -107,13 +105,3 @@ IHA Digital Justice OS es un proyecto tecnológico **en desarrollo**, especializ
 - [Reservé por una app por un mes o más: ¿qué reglas aplican?](https://ihasolucioneslegales.com.co/es/reserve-por-una-app-por-un-mes-o-mas-que-reglas-aplican/)
 
 
-## IHA LEGAL 360 — acompañamiento jurídico integral
-
-La transformación digital avanza. Tus derechos también. IHA LEGAL 360 conecta prevención, organización de pruebas, análisis jurídico, resolución y seguimiento en Colombia.
-
-- [Español](https://ihasolucioneslegales.com.co/es/legal-360/): prevención, organización de pruebas, análisis jurídico, resolución y seguimiento.
-- [English](https://ihasolucioneslegales.com.co/en/legal-360/): integrated legal support in Colombia.
-- [Français](https://ihasolucioneslegales.com.co/fr/legal-360/): accompagnement juridique intégré en Colombie.
-- [Português](https://ihasolucioneslegales.com.co/pt/legal-360/): acompanhamento jurídico integrado na Colômbia.
-
-LEGAL 360 integra servicios jurídicos existentes. El portal privado unificado y algunas automatizaciones siguen en desarrollo y no se presentan como funcionalidades ya disponibles.

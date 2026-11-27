@@ -1,96 +1,60 @@
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
 import { mkdir } from "node:fs/promises";
+// Navegación simple (27/11/2026): cuatro enlaces directos, una acción principal y el acceso al portal.
 const browser=await chromium.launch({headless:true});
 const targets=[
- ["/?lang=es#servicios","es"],
- ["/es/legal-360/","es"],
- ["/fr/preparez-votre-dossier/","fr"],
- ["/pt/digital-justice-os/","pt"],
- ["/ai-agents/","es"]
+ ["/?lang=es","es"],
+ ["/?lang=en","en"],
+ ["/?lang=fr","fr"],
+ ["/?lang=pt","pt"]
 ];
+const expected={
+ es:["/?lang=es#guia","/es/plan-anfitrion-en-regla/","/es/servicios-y-precios/","/?lang=es#como-trabajamos","/es/prepare-su-caso/"],
+ en:["/?lang=en#guia","/en/host-compliance-plan/","/en/services-and-prices/","/?lang=en#como-trabajamos","/en/prepare-your-case/"],
+ fr:["/?lang=fr#guia","/fr/abonnement-hote-en-regle/","/fr/services-et-prix/","/?lang=fr#como-trabajamos","/fr/preparez-votre-dossier/"],
+ pt:["/?lang=pt#guia","/pt/plano-anfitriao-em-dia/","/pt/servicos-e-precos/","/?lang=pt#como-trabajamos","/pt/prepare-o-seu-caso/"]
+};
 await mkdir("test-artifacts",{recursive:true});
 try{
- for(const width of [390,820,1100,1440,1500]){
+ for(const width of [390,820,1100,1440]){
   for(const [url,lang] of targets){
    const page=await browser.newPage({viewport:{width,height:950},colorScheme:"dark"});
    const errors=[];page.on("pageerror",e=>errors.push(e.message));
    const response=await page.goto("http://127.0.0.1:8765"+url,{waitUntil:"domcontentloaded"});
    assert.equal(response?.status(),200,url+" HTTP status");
    await page.locator("body.iha-nav-ready > header").waitFor({state:"visible",timeout:13000});
+   const finalLang=(await page.locator("html").getAttribute("lang")).slice(0,2);
+   const want=expected[finalLang]||expected.es;
    assert.equal(await page.locator("header .iha-nav-layout").count(),1,url+" one layout");
-   assert.equal(await page.locator("header .iha-nav-groups > details").count(),4,url+" three menus and mobile access");
-   assert.equal(await page.locator("header .iha-nav-price").count(),1,url+" pricing link");
-   assert.equal(await page.locator("header .iha-nav-start").count(),1,url+" start CTA");
-   // Header transitions from the page's legacy theme to the new white translucent style.
-   // Check after the transition has actually settled rather than sampling mid-animation.
-   await page.waitForFunction(()=>{
-     const h=document.querySelector("body.iha-nav-ready > header");
-     if(!h)return false;
-     const m=getComputedStyle(h).backgroundColor.match(/rgba?\(([^)]+)\)/);
-     return m&&m[1].split(",").slice(0,3).map(Number).every(x=>x===255);
-   },null,{timeout:4500});
+   const links=page.locator("header .iha-nav-flat > a.iha-nav-link");
+   assert.equal(await links.count(),4,url+" four direct links");
+   assert.equal(await page.locator("header .iha-nav-groups > details:not(.iha-mobile-access)").count(),0,url+" no dropdown menus");
+   const hrefs=await links.evaluateAll(a=>a.map(x=>x.getAttribute("href")));
+   assert.deepEqual(hrefs,want.slice(0,4),url+" link targets");
+   assert.equal(await page.locator("header .iha-nav-start").getAttribute("href"),want[4],url+" main action sends the case");
    const state=await page.evaluate(()=>{
     const header=document.querySelector("body > header"),g=header.querySelector(".iha-nav-groups"),n=header.querySelector(".iha-nav-right");
-    const boxes=[header.querySelector(".brand"),g,n].map(x=>{const r=x.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height}});
-    return {headerBg:getComputedStyle(header).backgroundColor,
-      heroText:getComputedStyle(header).color,
-      logoLoaded:header.querySelector("img.iha-brand-symbol")?.complete&&header.querySelector("img.iha-brand-symbol")?.naturalWidth>0,
-      boxes,menuDisplay:getComputedStyle(header.querySelector(".iha-nav-mobile-button")).display,
-      navDisplay:getComputedStyle(g).display,
-      cta:getComputedStyle(header.querySelector(".iha-nav-start")).backgroundColor,
-      viewport:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,
-      href:header.querySelector(".iha-nav-price").parentElement.querySelector("a").getAttribute("href")};
+    const boxes=[header.querySelector(".brand"),g,n].map(x=>{const r=x.getBoundingClientRect();return {x:r.x,w:r.width}});
+    return {boxes,menuDisplay:getComputedStyle(header.querySelector(".iha-nav-mobile-button")).display,navDisplay:getComputedStyle(g).display,
+      viewport:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth};
    });
-   assert.equal(state.logoLoaded,true,url+" IHA logo loads");
-   assert.ok(state.headerBg.includes("255, 255, 255"),url+" white transparent navigation: "+JSON.stringify(state));
-   assert.equal(state.cta,"rgb(216, 242, 242)",url+" light turquoise CTA");
-   assert.ok(/^\/(es\/servicios-y-precios|en\/services-and-prices|pt\/servicos-e-precos|fr\/services-et-prix)\/$/.test(state.href),url+" pricing route must work");
    assert.ok(state.scroll<=state.viewport+12,url+" horizontal overflow "+JSON.stringify(state));
-   if(width===1440 && url==="/?lang=es#servicios"){
-    const geometry=await page.evaluate(()=>{
-      const header=document.querySelector("body.iha-nav-ready > header");
-      const brand=header.querySelector(".brand").getBoundingClientRect();
-      const first=header.querySelector(".iha-nav-groups > details > summary").getBoundingClientRect();
-      const nav=header.querySelector(".iha-nav-groups");
-      return {logoToMenu:first.left-brand.right,firstX:first.left,
-        headerHeight:header.getBoundingClientRect().height,
-        visibleWordmark:getComputedStyle(header.querySelector(".brand .brand-t")).display,
-        navGap:getComputedStyle(nav).columnGap};
-    });
-    assert.ok(geometry.firstX>=340&&geometry.firstX<=390,"Guesty-inspired first menu position "+JSON.stringify(geometry));
-    assert.ok(geometry.logoToMenu>=170&&geometry.logoToMenu<=310,"Generous logo-to-menu whitespace "+JSON.stringify(geometry));
-    assert.ok(geometry.headerHeight>=68&&geometry.headerHeight<=84,"Compact IHA header height "+JSON.stringify(geometry));
-    assert.equal(geometry.visibleWordmark,"none","Compact IHA header wordmark");
-   }
-   const group=page.locator("header .iha-nav-groups");
-   const platform=group.locator(":scope > details").first();
    if(width>1050){
     assert.notEqual(state.navDisplay,"none",url+" desktop nav should show");
     assert.equal(state.menuDisplay,"none",url+" desktop menu button should hide");
-    assert.ok(state.boxes[0].x<state.boxes[1].x && state.boxes[1].x<state.boxes[2].x,url+" order brand, menus, actions "+JSON.stringify(state.boxes));
-    await platform.locator("summary").click();
-    await platform.locator(".iha-nav-panel a").first().waitFor({state:"visible"});
-    assert.ok((await platform.locator(".iha-nav-panel a").count())>=4,url+" active submenu");
-    if(width===1440 && url.includes("#servicios"))await page.screenshot({path:"test-artifacts/mega-menu.png"});
-    await page.keyboard.press("Escape");
-    assert.equal(await platform.evaluate(el=>el.open),false,url+" Escape closes dropdown");
+    assert.ok(state.boxes[0].x<state.boxes[1].x&&state.boxes[1].x<state.boxes[2].x,url+" order brand, links, actions "+JSON.stringify(state.boxes));
+    if(width===1440&&url==="/?lang=es")await page.screenshot({path:"test-artifacts/iha-navigation-desktop.png",fullPage:false});
    }else{
     assert.equal(state.navDisplay,"none",url+" mobile navigation closed by default");
     const menu=page.locator("header .iha-nav-mobile-button");
     await menu.click();
     assert.equal(await menu.getAttribute("aria-expanded"),"true");
-    await group.waitFor({state:"visible"});
-    await platform.locator("summary").click();
-    await platform.locator(".iha-nav-panel a").first().waitFor({state:"visible"});
-    assert.equal(await group.locator(".iha-mobile-access").count(),1,url+" portal access in mobile nav");
-    await menu.click();assert.equal(await menu.getAttribute("aria-expanded"),"false");
-   }
-   if(width===1440&&lang==="es"&&url.includes("servicios")){
-    await page.screenshot({path:"test-artifacts/iha-navigation-pricing-desktop.png",fullPage:false});
-   }
-   if(width===390&&lang==="es"&&url.includes("legal-360")){
-    await page.screenshot({path:"test-artifacts/iha-navigation-legal-mobile.png",fullPage:false});
+    await links.first().waitFor({state:"visible"});
+    assert.equal(await page.locator("header .iha-nav-flat .iha-mobile-access").count(),1,url+" portal access in mobile nav");
+    if(width===390&&url==="/?lang=es")await page.screenshot({path:"test-artifacts/iha-navigation-mobile.png",fullPage:false});
+    await page.keyboard.press("Escape");
+    assert.equal(await menu.getAttribute("aria-expanded"),"false",url+" Escape closes the menu");
    }
    assert.equal(errors.length,0,url+" browser errors: "+JSON.stringify(errors));
    console.log("Navigation",url,width,"OK");

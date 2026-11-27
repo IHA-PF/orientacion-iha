@@ -12,7 +12,8 @@ try {
   const errors=[];page.on("pageerror",e=>errors.push(e.message));
   for(const width of [390,820,1100,1440,1500]){
    await page.setViewportSize({width,height:950});
-   const urls=[["home","/?lang="+lang],["catalog","/"+lang+"/"+catalog+"/"],["service","/"+lang+"/"+catalog+"/"+analysis+"/"],["pricing","/"+lang+"/"+price+"/"],["legal-360","/"+lang+"/legal-360/"],["digital-justice-os","/"+lang+"/digital-justice-os/"]];
+   // Arquitectura simple: el índice del catálogo, LEGAL 360 y Digital Justice OS son páginas de renvío.
+   const urls=[["home","/?lang="+lang],["service","/"+lang+"/"+catalog+"/"+analysis+"/"],["pricing","/"+lang+"/"+price+"/"]];
    for(const [type,url] of urls){
     const response=await page.goto(base+url,{waitUntil:"domcontentloaded"});
     assert.equal(response.status(),200,url);
@@ -36,7 +37,7 @@ try {
      assert.equal(new Set(await orientation.allTextContents()).size,3);
      const destinations=(await orientation.evaluateAll(links=>links.map(link=>link.href))).map(href=>new URL(href));
      assert.deepEqual(destinations.slice(0,2).map(url=>[url.pathname,url.hash]),[
-       ["/"+lang+"/"+catalog+"/","#hosts"],["/"+lang+"/"+catalog+"/","#platforms"]
+       ["/"+lang+"/"+price+"/","#hosts"],["/"+lang+"/"+price+"/","#platforms"]
      ]);
      assert.equal(destinations[2].searchParams.get("situation"),"litige");
      const visuals=page.locator(".editorial-services .store-tabs");
@@ -54,7 +55,8 @@ try {
      await tabs.first().focus();await page.keyboard.press("ArrowRight");
      assert.equal(await tabs.nth(1).getAttribute("aria-selected"),"true");
      assert.equal(await page.locator("#iha-experience [role=tabpanel]:visible").count(),1);
-     assert.equal(await page.locator("#iha-experience a[href*='#module-']").count(),6);
+     // Los bloques internos (módulos LEGAL 360, estado de Digital Justice OS) ya no están en la portada.
+     assert.equal(await page.locator("#iha-experience a[href*='#module-'], #iha-experience a[href*='digital-justice-os']").count(),0);
      await page.evaluate(()=>{document.activeElement.blur();scrollTo({top:0,behavior:"instant"})});
     }else if(type==="catalog"){
      assert.equal(await page.locator(".store-family").count(),4);
@@ -64,8 +66,10 @@ try {
     }else if(type==="service"){
      assert.ok(await page.locator("main details").count()>=1,url+" service FAQ");
     }else if(type==="pricing"){
-     assert.equal(await page.locator("#compare .store-card").count(),4);
-    }else if(type==="legal-360"){
+     assert.equal(await page.locator("[aria-labelledby='iha-offer-title'] article").count(),3,url+" three doors");
+     for(const id of ["hosts","travel","consumers","platforms"])assert.equal(await page.locator("#"+id).count(),1,url+" anchor "+id);
+     assert.equal(await page.locator("#compare, .l360-promo, [aria-labelledby='iha-stack-title']").count(),0,url+" no duplicate blocks");
+    }else if(type==="legal-360-removed"){
      assert.equal(await page.locator("[id^=module-]").count(),6);
      const motion=page.locator(".legal360-motion");
      await motion.waitFor({state:"visible"});
@@ -90,12 +94,12 @@ try {
     if(lang==="es"&&[390,1440].includes(width))await page.screenshot({path:"test-artifacts/"+type+"-"+width+".png"});
    }
   }
-  const agentPath=lang==="es"?"/ai-agents/":"/"+lang+"/ai-agents/";
-  await page.goto(base+agentPath);
-  assert.equal(await page.locator("html").getAttribute("lang"),lang);
-  await page.locator(".filters button").nth(2).click();
-  assert.equal(await page.locator(".grid article:visible").count(),2);
-  assert.equal(await page.locator(".filters button").nth(2).getAttribute("aria-pressed"),"true");
+  for(const moved of [lang==="es"?"/ai-agents/":"/"+lang+"/ai-agents/","/"+lang+"/legal-360/","/"+lang+"/digital-justice-os/"]){
+    await page.goto(base+moved);
+    await page.waitForURL(u=>u.pathname==="/"&&u.hash==="#como-trabajamos",{timeout:8000});
+  }
+  await page.goto(base+"/"+lang+"/"+catalog+"/#hosts");
+  await page.waitForURL(u=>u.pathname==="/"+lang+"/"+price+"/",{timeout:8000});
   assert.deepEqual(errors,[]);await page.close();
  }
 }finally{await browser.close()}

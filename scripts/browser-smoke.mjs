@@ -23,9 +23,10 @@ try {
       assert.equal(await page.locator(".home-option").count(), 3);
 
       assert.match(await page.locator("header .iha-nav-start").getAttribute("href") || "", /\/prepare/);
-      const pricingLink = page.locator("header details:has(.iha-nav-price) a").first();
-      assert.equal(await pricingLink.getAttribute("href"), catalogue);
-      assert.ok(await page.locator("header .home-nav-agents").count());
+      // Navegación simple: cuatro enlaces directos; «Servicios y precios» es la página única de precios.
+      assert.equal(await page.locator("header .iha-nav-flat > a.iha-nav-link").count(), 4);
+      assert.equal(await page.locator("header a.iha-nav-price").getAttribute("href"), catalogue);
+      assert.equal(await page.locator("header .home-nav-agents").count(), 0);
       const pricing = await page.goto(base + catalogue);
       assert.equal(pricing?.status(), 200);
       const offers = page.locator("[aria-labelledby='iha-offer-title'] article");
@@ -50,12 +51,9 @@ try {
       await page.locator("#intake-facts").fill("Exemple modifié");
       assert.equal(await page.locator("#iha-intake-draft").isVisible(), false);
       if (width === 1440) {
+        // La copia de los servicios dentro de la aplicación lleva a la página única.
         await page.goto(base + "/?lang=" + lang + "#servicios");
-        const purchase = page.locator("#sv-pick");
-        await purchase.waitFor({ state: "attached" });
-        for (const id of ["curso", "consulta", "modelos", "pack"]) {
-          assert.equal(await purchase.locator("option[value='" + id + "']").count(), 0, id + " is no longer requestable");
-        }
+        await page.waitForURL(url => url.pathname === catalogue);
       }
       assert.deepEqual(errors, []);
       await page.close();

@@ -9,9 +9,7 @@ const cases=[
  ["/pt/prepare-o-seu-caso/","pt",true],
  ["/es/me-cancelaron-la-reserva/","es",true],
  ["/es/servicios/analisis-de-su-caso/","es",true],
- ["/es/servicios-y-precios/","es",true],
- ["/fr/legal-360/","fr",false],
- ["/pt/digital-justice-os/","pt",false]
+ ["/es/servicios-y-precios/","es",true]
 ];
 try{
  await mkdir("test-artifacts",{recursive:true});
@@ -28,8 +26,9 @@ try{
     assert.ok(await page.locator("main details.iha-service-question").count()>=2,path+" service FAQ");
    }else if(legacy){
     await page.locator(".iha-global-hero").waitFor({state:"visible",timeout:9000});
-    assert.equal(await page.locator(".iha-global-feature-card").count(),3,path+" must have three premium cards");
-    assert.equal(await page.locator(".iha-global-steps article").count(),3,path+" must have process cards");
+    // Arquitectura simple (27/11/2026): sin franja ni tarjetas genéricas repetidas en cada página.
+    assert.equal(await page.locator(".iha-global-feature-card, .iha-global-trust").count(),0,path+" no generic repeated blocks");
+    assert.equal(await page.locator(".iha-global-actions a").count(),2,path+" two clear actions");
     assert.equal(await page.locator(".iha-global-visual img").evaluate(n=>n.complete && n.naturalWidth>0),true,path+" hero must load image");
     const style=await page.locator(".iha-global-hero").evaluate(n=>getComputedStyle(n).display);
     assert.equal(style,"grid",path+" premium grid CSS should be active");
@@ -44,35 +43,7 @@ try{
    await page.close();
   }
  }
- // Contrast regression: pale premium heroes must never retain white-on-white text.
- for(const lang of ["es","en","fr","pt"]){
-  for(const subpage of ["legal-360","digital-justice-os"]){
-   for(const width of [390,1440]){
-    const page=await browser.newPage({viewport:{width,height:900}});
-    const path="/"+lang+"/"+subpage+"/";
-    const result=await page.goto("http://127.0.0.1:8765"+path,{waitUntil:"domcontentloaded"});
-    assert.equal(result?.status(),200,path+" must load");
-    const contrast=await page.locator(".hero").evaluate(hero=>{
-      const textNode=selector=>hero.querySelector(selector);
-      const col=el=>getComputedStyle(el).color;
-      const rgb=s=>s.match(/[\d.]+/g).slice(0,3).map(Number);
-      const luminance=s=>{
-       const channels=rgb(s).map(c=>{c/=255;return c<=0.04045?c/12.92:((c+0.055)/1.055)**2.4});
-       return channels[0]*0.2126+channels[1]*0.7152+channels[2]*0.0722;
-      };
-      const headings=[textNode("h1"),textNode(".lead"),textNode(".eyebrow")].filter(Boolean);
-      const secondary=textNode(".btn.secondary, .btn.outline");
-      return {headingColors:headings.map(col),headingLuminances:headings.map(x=>luminance(col(x))),secondaryColor:secondary?col(secondary):null,secondaryLuminance:secondary?luminance(col(secondary)):null,secondaryBackgroundLuminance:secondary?luminance(getComputedStyle(secondary).backgroundColor):null,background:getComputedStyle(hero).backgroundImage};
-    });
-    assert.ok(contrast.headingLuminances.every(x=>x<0.22),path+" light hero must use dark heading, lead and eyebrow text: "+JSON.stringify(contrast));
-    const ctaContrast=(Math.max(contrast.secondaryLuminance,contrast.secondaryBackgroundLuminance)+0.05)/(Math.min(contrast.secondaryLuminance,contrast.secondaryBackgroundLuminance)+0.05);
-    assert.ok(contrast.secondaryLuminance!==null&&contrast.secondaryBackgroundLuminance!==null&&ctaContrast>=4.5,path+" secondary CTA needs readable contrast: "+JSON.stringify(contrast));
-    if(lang==="es"&&subpage==="legal-360")await page.screenshot({path:"test-artifacts/legal360-contrast-"+width+".png",fullPage:false});
-    console.log("Hero contrast",path,width,"OK");
-    await page.close();
-   }
-  }
- }
+ // LEGAL 360 y Digital Justice OS se fusionaron en «Cómo trabajamos» (27/11/2026): sin páginas propias que probar.
  // Prevent reintroducing the damaged consultation asset on the homepage.
  for(const [lang,width] of [["es",1440],["fr",390],["en",820],["pt",1440]]){
    const page=await browser.newPage({viewport:{width,height:900}});
@@ -95,8 +66,6 @@ try{
  // Transparent header acceptance: homepage, hero subpages and an illustrated service page.
  for(const [path,headerSel,heroSel] of [
    ["/?lang=es","header.bar",".os-simple-home"],
-   ["/es/legal-360/","body > header",".hero"],
-   ["/en/digital-justice-os/","body > header",".hero"],
    ["/es/prepare-su-caso/","body > header",".iha-global-hero"]
  ]){
   const page=await browser.newPage({viewport:{width:1440,height:900}});

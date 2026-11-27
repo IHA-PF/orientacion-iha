@@ -57,14 +57,12 @@ try{
    await page.close();
    count++;
   }
+  // El índice del catálogo se fusionó con «Servicios y precios» (27/11/2026): una sola página de precios.
+  const prices={es:"servicios-y-precios",en:"services-and-prices",fr:"services-et-prix",pt:"servicos-e-precos"}[lang];
   const catalog=await ctx.newPage();
-  const res=await catalog.goto(base+"/"+dir+"/",{waitUntil:"domcontentloaded"});
-  assert.equal(res?.status(),200,lang+" catalog HTTP error");
-  await catalog.locator("body.iha-catalog-premium").waitFor({state:"attached",timeout:10000});
-  assert.equal(await catalog.locator(".store-family").count(),4,lang+" four families");
-  assert.equal(await catalog.locator(".store-card").count(),13,lang+" thirteen active entries");
-  assert.equal(await catalog.locator(".iha-catalog-upcoming").count(),1,lang+" one planned offer");
-  assert.equal(await catalog.locator(".iha-catalog-upcoming .iha-catalog-tag").count(),1,lang+" status tag visible");
+  await catalog.goto(base+"/"+dir+"/#hosts",{waitUntil:"domcontentloaded"});
+  await catalog.waitForURL(u=>u.pathname==="/"+lang+"/"+prices+"/"&&u.hash==="#hosts",{timeout:10000});
+  assert.equal(await catalog.locator("[aria-labelledby='iha-offer-title'] article").count(),3,lang+" three doors");
   if(lang==="es")await catalog.screenshot({path:"test-artifacts/service-catalog-es-desktop.png",fullPage:false});
   await catalog.close();
  }
@@ -80,5 +78,5 @@ try{
   await page.close();
  }
  await mobile.close();
- console.log("Premium service test passed: "+count+" individual pages, four catalogues, four mobile samples.");
+ console.log("Premium service test passed: "+count+" individual pages, four services pages, four mobile samples.");
 }finally{await ctx.close();await browser.close();}
