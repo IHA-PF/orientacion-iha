@@ -701,6 +701,20 @@ function render(){
    const detail=make("div","profile-detail");detail.append(make("p","",stories[i][1]),link(action,url));
    banner.append(photo,title,detail);stack.append(banner);
  });
+ // «Lo nuevo» (27/11/2026): las dos novedades más recientes, con su fecha y su estado, y el enlace a la página completa.
+ const news={
+  es:{t:"Lo nuevo para anfitriones",n:"Lo que se sabe al 13 de noviembre de 2026. Lo que sigue en proyecto todavía no es norma vigente.",url:"/es/novedades-vivienda-turistica/",more:"Ver todas las novedades",items:[["Borrador","Decreto del Registro Nacional de Turismo","Un RNT por cada vivienda, con su número visible en cada anuncio. Las plataformas retirarían los anuncios sin RNT vigente."],["En discusión","Nuevo POT de Medellín","Restringiría las zonas donde se permite la vivienda turística, también en barrios residenciales."]]},
+  en:{t:"What’s new for hosts",n:"What is known as of 13 November 2026. Drafts are not law yet.",url:"/en/short-term-rental-updates/",more:"See all updates",items:[["Draft","National Tourism Registry decree","One RNT per home, with its number shown in every listing. Platforms would remove listings without a valid RNT."],["Under discussion","Medellín’s new zoning plan (POT)","It would restrict where short-term rentals are allowed, including residential neighbourhoods."]]},
+  fr:{t:"Du nouveau pour les hôtes",n:"Ce que l’on sait au 13 novembre 2026. Un projet n’est pas encore en vigueur.",url:"/fr/actualites-location-touristique/",more:"Voir toutes les actualités",items:[["Projet","Décret sur le Registre national du tourisme","Un RNT par logement, avec son numéro visible dans chaque annonce. Les plateformes retireraient les annonces sans RNT valide."],["En discussion","Nouveau POT de Medellín","Il limiterait les zones où la location touristique est permise, y compris dans les quartiers résidentiels."]]},
+  pt:{t:"Novidades para anfitriões",n:"O que se sabe em 13 de novembro de 2026. O que ainda é projeto não é norma vigente.",url:"/pt/novidades-moradia-turistica/",more:"Ver todas as novidades",items:[["Projeto","Decreto do Registro Nacional de Turismo","Um RNT por imóvel, com o número visível em cada anúncio. As plataformas retirariam os anúncios sem RNT vigente."],["Em discussão","Novo POT de Medellín","Restringiria as zonas onde o aluguel por temporada é permitido, inclusive em bairros residenciais."]]}
+ }[lang]||null;
+ if(news){
+  const box=block(news.t);box.classList.add("store-news");box.id="lo-nuevo";
+  box.append(make("p","store-news-note",news.n));
+  const list=grid(box);
+  news.items.forEach(([status,title,copy])=>{const el=make("article","store-card store-news-card");el.append(make("p","store-news-status",status),make("h3","",title),make("p","",copy));list.append(el)});
+  box.append(link(news.more,news.url));
+ }
  const trust=block("IHA GROUP S.A.S.");trust.append(make("p","","NIT 900.365.039-8 · Medellín, Colombia"),make("p","store-copy",t.alert),link("contacto@ihasolucioneslegales.com.co","mailto:contacto@ihasolucioneslegales.com.co"));
  const close=block(d.final);close.classList.add("store-closing");close.append(link(t.button,base+d.prepare+"/"));
  app.append(section);

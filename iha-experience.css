@@ -470,3 +470,10 @@ html body:has(.os-simple-home) .os-audience-card a.os-host-cta,html body:has(.os
 .os-premium .os-matches li a svg{width:16px;height:16px;flex:none}
 .os-premium .os-matches-other{display:inline-block;margin-top:2px;color:#096757;font:500 14px/1.35 system-ui,sans-serif;text-decoration:underline;text-underline-offset:3px}
 .os-premium a.os-choice{text-decoration:none;display:inline-flex;align-items:center}
+
+/* 27/11/2026 · «Lo nuevo» en la portada. */
+.store-news .store-news-note{margin:4px 0 18px;color:#4b5b57;max-width:62ch}
+.store-news .store-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.store-news .store-news-status{display:inline-block;margin:0 0 10px;padding:3px 10px;border-radius:999px;background:#fff4cc;color:#5c4400;font-size:14px;font-weight:600}
+.store-news .store-news-card h3{margin-top:0}
+.store-news>.store-link{margin-top:18px}

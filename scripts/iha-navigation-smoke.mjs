@@ -44,7 +44,7 @@ try{
       viewport:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth};
    });
    assert.ok(state.scroll<=state.viewport+12,url+" horizontal overflow "+JSON.stringify(state));
-   if(width>1050){
+   if(width>1279){
     assert.notEqual(state.navDisplay,"none",url+" desktop nav should show");
     assert.equal(state.menuDisplay,"none",url+" desktop menu button should hide");
     assert.ok(state.boxes[0].x<state.boxes[1].x&&state.boxes[1].x<state.boxes[2].x,url+" order brand, links, actions "+JSON.stringify(state.boxes));

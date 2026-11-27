@@ -4,10 +4,10 @@ if(window.__ihaNavigationActive)return;
 window.__ihaNavigationActive=true;
 const languageFromPath=()=>{const m=location.pathname.match(/^\/(es|en|fr|pt)(?:\/|$)/);return m?.[1]||document.documentElement.lang.slice(0,2).toLowerCase().replace("br","pt")||"es"};
 const messages={
- es:{nav:"Navegación principal",problem:"Resolver un problema",hosts:"Anfitriones",prices:"Servicios y precios",how:"Cómo trabajamos",language:"Idioma",access:"Acceder",start:"Enviar mi caso",menu:"Menú",accessHead:"Acceso privado IHA",accessNote:"El portal privado está en preparación y el acceso será por invitación.",request:"Solicitar invitación",emergency:"Ayuda urgente · 123"},
- en:{nav:"Main navigation",problem:"Solve a problem",hosts:"Hosts",prices:"Services and prices",how:"How we work",language:"Language",access:"Log in",start:"Send my case",menu:"Menu",accessHead:"IHA private access",accessNote:"The private portal is being prepared. Access will be by invitation.",request:"Request an invitation",emergency:"Emergency help · 123"},
- fr:{nav:"Navigation principale",problem:"Résoudre un problème",hosts:"Hôtes",prices:"Services et prix",how:"Notre méthode",language:"Langue",access:"Accéder",start:"Envoyer mon dossier",menu:"Menu",accessHead:"Accès privé IHA",accessNote:"Le portail privé est en préparation. L’accès se fera sur invitation.",request:"Demander une invitation",emergency:"Urgence · 123"},
- pt:{nav:"Navegação principal",problem:"Resolver um problema",hosts:"Anfitriões",prices:"Serviços e preços",how:"Como trabalhamos",language:"Idioma",access:"Acessar",start:"Enviar meu caso",menu:"Menu",accessHead:"Acesso privado IHA",accessNote:"O portal privado está em preparação e terá acesso por convite.",request:"Solicitar convite",emergency:"Emergência · 123"}
+ es:{nav:"Navegación principal",problem:"Resolver un problema",hosts:"Anfitriones",prices:"Servicios y precios",how:"Cómo trabajamos",language:"Idioma",access:"Acceder",start:"Enviar mi caso",menu:"Menú",accessHead:"Acceso privado IHA",accessNote:"El portal privado está en preparación y el acceso será por invitación.",request:"Solicitar invitación",emergency:"Ayuda urgente · 123",home:"Inicio",homeLabel:"Volver al inicio de IHA Soluciones Legales",wa:"WhatsApp",waLabel:"Escribir a IHA por WhatsApp",waText:"Hola, IHA. Tengo una pregunta:",hours:"Atención: lunes a viernes, de 8:00 a. m. a 6:00 p. m. (hora de Colombia). WhatsApp: "},
+ en:{nav:"Main navigation",problem:"Solve a problem",hosts:"Hosts",prices:"Services and prices",how:"How we work",language:"Language",access:"Log in",start:"Send my case",menu:"Menu",accessHead:"IHA private access",accessNote:"The private portal is being prepared. Access will be by invitation.",request:"Request an invitation",emergency:"Emergency help · 123",home:"Home",homeLabel:"Back to the IHA Soluciones Legales home page",wa:"WhatsApp",waLabel:"Message IHA on WhatsApp",waText:"Hello IHA, I have a question:",hours:"Hours: Monday to Friday, 8:00 a.m. to 6:00 p.m. (Colombia time). WhatsApp: "},
+ fr:{nav:"Navigation principale",problem:"Résoudre un problème",hosts:"Hôtes",prices:"Services et prix",how:"Notre méthode",language:"Langue",access:"Accéder",start:"Envoyer mon dossier",menu:"Menu",accessHead:"Accès privé IHA",accessNote:"Le portail privé est en préparation. L’accès se fera sur invitation.",request:"Demander une invitation",emergency:"Urgence · 123",home:"Accueil",homeLabel:"Revenir à l’accueil d’IHA Soluciones Legales",wa:"WhatsApp",waLabel:"Écrire à IHA sur WhatsApp",waText:"Bonjour IHA, j’ai une question :",hours:"Horaires : du lundi au vendredi, de 8 h à 18 h (heure de Colombie). WhatsApp : "},
+ pt:{nav:"Navegação principal",problem:"Resolver um problema",hosts:"Anfitriões",prices:"Serviços e preços",how:"Como trabalhamos",language:"Idioma",access:"Acessar",start:"Enviar meu caso",menu:"Menu",accessHead:"Acesso privado IHA",accessNote:"O portal privado está em preparação e terá acesso por convite.",request:"Solicitar convite",emergency:"Emergência · 123",home:"Início",homeLabel:"Voltar ao início da IHA Soluciones Legales",wa:"WhatsApp",waLabel:"Escrever para a IHA pelo WhatsApp",waText:"Olá, IHA. Tenho uma pergunta:",hours:"Atendimento: segunda a sexta, das 8h às 18h (horário da Colômbia). WhatsApp: "}
 };
 // Cabecera organizada como la de Guesty (27/11/2026): tres menús con grupos y una línea de descripción
 // por entrada (Soluciones, Servicios, Recursos), dos enlaces directos (Precios, Cómo trabajamos)
@@ -127,11 +127,42 @@ function init(){
      const req=d.querySelector(".iha-nav-request");req.textContent=nt.request;req.href="mailto:contacto@ihasolucioneslegales.com.co?subject="+encodeURIComponent("IHA LEGAL 360 - "+nt.request);
    }
    menuBtn.setAttribute("aria-label",nt.menu);
+   home.href="/?lang="+code;homeText.textContent=nt.home;home.setAttribute("aria-label",nt.homeLabel);
+   wa.href="https://wa.me/"+WA+"?text="+encodeURIComponent(nt.waText);wa.setAttribute("aria-label",nt.waLabel);
+   fillHours(nt);
    const urgent=nav.querySelector(".iha-nav-urgent span");if(urgent)urgent.textContent=nt.emergency;
  };
  const langWatcher=new MutationObserver(()=>syncLanguage());
  langWatcher.observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
 
+ // Botón «Inicio» (27/11/2026): visible fuera de la portada para volver al menú principal.
+ const home=lnk("", "/?lang="+lang,"iha-nav-home");
+ const homeIcon=document.createElementNS("http://www.w3.org/2000/svg","svg");homeIcon.setAttribute("viewBox","0 0 24 24");homeIcon.setAttribute("aria-hidden","true");
+ homeIcon.innerHTML='<path d="M3 11.2 12 4l9 7.2M5.5 9.5V20h4.8v-5.6h3.4V20h4.8V9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+ const homeText=create("span","iha-nav-home-text",t.home);home.append(homeIcon,homeText);home.setAttribute("aria-label",t.homeLabel);
+ brand.after(home);
+ const syncHome=()=>{const atHome=location.pathname==="/"&&(!location.hash||location.hash==="#"||location.hash==="#inicio");home.hidden=atHome;inner.classList.toggle("iha-nav-has-home",!atHome)};
+ syncHome();window.addEventListener("hashchange",syncHome);
+ // Botón de WhatsApp siempre visible, salvo en el formulario de envío (ya tiene su propio botón).
+ const WA="573013832196";
+ const isIntake=Object.values(prepSlug).some(slug=>location.pathname.includes("/"+slug+"/"))||location.hash==="#prepare-su-caso";
+ const wa=lnk("", "https://wa.me/"+WA+"?text="+encodeURIComponent(t.waText),"iha-wa");
+ wa.target="_blank";wa.rel="noopener";wa.setAttribute("aria-label",t.waLabel);
+ const waIcon=document.createElementNS("http://www.w3.org/2000/svg","svg");waIcon.setAttribute("viewBox","0 0 24 24");waIcon.setAttribute("aria-hidden","true");
+ waIcon.innerHTML='<path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.3-1.1A8.5 8.5 0 1 0 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9.1 8.3c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .5-.1.7l-.5.6c-.1.1-.1.3 0 .5.6 1 1.4 1.8 2.4 2.4.2.1.4.1.5 0l.6-.6c.2-.2.4-.2.7-.1l1.6.7c.3.1.4.3.4.6v.4c0 .4-.2.7-.5.9-.6.4-1.4.5-2.1.3a8.2 8.2 0 0 1-5.3-5.2c-.3-.8-.1-1.6.3-2.3Z" fill="currentColor"/>';
+ const waText=create("span","iha-wa-text",t.wa);wa.append(waIcon,waText);
+ const syncWa=()=>{const hide=isIntake||location.hash==="#prepare-su-caso";wa.hidden=hide;document.body.classList.toggle("iha-wa-on",!hide)};
+ if(!document.querySelector("a.iha-wa")){document.body.append(wa);syncWa();window.addEventListener("hashchange",syncWa)}
+ // Horario de atención en el pie de página, junto al correo de contacto.
+ const footer=document.querySelector("body > footer")||document.querySelector("footer");
+ const hours=create("p","iha-hours");
+ const fillHours=tt=>{hours.replaceChildren(document.createTextNode(tt.hours));const w=lnk("+57 301 383 2196","https://wa.me/"+WA);w.rel="noopener";w.target="_blank";hours.append(w)};
+ fillHours(t);
+ if(footer&&!footer.querySelector(".iha-hours")){
+   const mail=footer.querySelector('a[href^="mailto:contacto@"],#foot-mail');
+   const row=mail?.closest("p");
+   if(row)row.after(hours);else (footer.querySelector(".w,.in,.wrap")||footer).append(hours);
+ }
  header.dataset.ihaNavInstalled="true";
  document.body.classList.add("iha-nav-ready");
 }

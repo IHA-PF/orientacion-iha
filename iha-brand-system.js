@@ -46,14 +46,14 @@
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",apply,{once:true});else apply();
 
  // Load the new site-wide navigation on all legal guides, landing pages and tools.
- const navCss=path("iha-navigation.css?v=20261127-guesty2");
+ const navCss=path("iha-navigation.css?v=20261127-contact");
  const navStylesheet=document.querySelector('link[href*="iha-navigation.css"]');
  if(navStylesheet){if(navStylesheet.href!==navCss)navStylesheet.href=navCss;}
  else {
    const l=document.createElement("link");l.rel="stylesheet";l.href=navCss;document.head.append(l);
  }
- if(!document.querySelector('script[src*="iha-navigation.js?v=20261127-guesty2"]')){
-   const scr=document.createElement("script");scr.src=path("iha-navigation.js?v=20261127-guesty2");scr.defer=true;document.head.append(scr);
+ if(!document.querySelector('script[src*="iha-navigation.js?v=20261127-contact"]')){
+   const scr=document.createElement("script");scr.src=path("iha-navigation.js?v=20261127-contact");scr.defer=true;document.head.append(scr);
  }
 
 })();
