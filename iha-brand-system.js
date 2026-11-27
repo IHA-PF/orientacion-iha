@@ -52,8 +52,8 @@
  else {
    const l=document.createElement("link");l.rel="stylesheet";l.href=navCss;document.head.append(l);
  }
- if(!document.querySelector('script[src*="iha-navigation.js?v=20261127-guesty"]')){
-   const scr=document.createElement("script");scr.src=path("iha-navigation.js?v=20261127-guesty");scr.defer=true;document.head.append(scr);
+ if(!document.querySelector('script[src*="iha-navigation.js?v=20261127-guesty2"]')){
+   const scr=document.createElement("script");scr.src=path("iha-navigation.js?v=20261127-guesty2");scr.defer=true;document.head.append(scr);
  }
 
 })();
