@@ -540,3 +540,7 @@ html body.iha-nav-ready>header a.iha-nav-home{justify-self:start;width:max-conte
 @media (max-width:420px){html body.iha-nav-ready>header>.iha-nav-layout>.iha-nav-right>a.iha-nav-start{padding-inline:10px!important;font-size:14px!important;letter-spacing:0!important}html body.iha-nav-ready>header>.iha-nav-layout{padding-inline:12px!important}}
 @media (max-width:400px){html body.iha-nav-ready>header>.iha-nav-layout>.iha-nav-right>a.iha-nav-start{font-size:13px!important;padding-inline:9px!important}}
 @media (max-width:340px){html body.iha-nav-ready>header>.iha-nav-layout{padding-inline:8px!important}html body.iha-nav-ready>header a.iha-nav-home{width:34px!important;height:34px!important;padding:6px!important}html body.iha-nav-ready>header>.iha-nav-layout>.iha-nav-right>a.iha-nav-start{font-size:12px!important;padding-inline:8px!important}}
+
+/* 27/11/2026 · Nuevo símbolo: cuadro verde con «IHA». El texto «IHA» junto al símbolo queda solo para lectores de pantalla. */
+html body.iha-nav-ready>header .brand :is(.os-wordmark,.iha-wordmark-text){position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
+html body.iha-nav-ready>header .brand img.iha-brand-symbol{width:44px!important;height:44px!important;border-radius:11px}
